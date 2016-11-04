@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_call_for_proposal_default.ds.inc
@@ -62,7 +61,7 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
       ),
     ),
     'social_bookmark_webtools' => array(
-      'weight' => '11',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -72,7 +71,7 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
       'format' => 'dt_call_for_proposal_status_message_formatter',
     ),
     'dt_call_for_proposal_published' => array(
-      'weight' => '25',
+      'weight' => '24',
       'label' => 'inline',
       'format' => 'default',
       'formatter_settings' => array(
@@ -133,6 +132,11 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_deadlines' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
   );
   $export['node|call_for_proposal|full'] = $ds_fieldsetting;
 
@@ -169,6 +173,11 @@ function dt_call_for_proposal_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_core_topics' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_cfp_program' => array(
       'formatter_settings' => array(
         'ft' => array(
@@ -197,8 +206,15 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_stacked';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'dt_call_for_proposal_meta',
+        2 => 'group_cfp_meta',
+        4 => 'content_type_label',
+        5 => 'title',
+        6 => 'field_core_introduction',
+      ),
       'central' => array(
-        0 => 'field_core_files',
+        1 => 'field_core_files',
         3 => 'field_core_contacts',
         9 => 'field_core_background',
         10 => 'group_cfp_details',
@@ -206,24 +222,18 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
         12 => 'group_cfp_documents',
         13 => 'group_cfp_contact',
         14 => 'group_cfp_related',
-        15 => 'group_cfp_social_networks',
-        16 => 'social_bookmark_webtools',
-        17 => 'field_core_links',
-        18 => 'field_cfp_call_reference',
-        19 => 'dt_call_for_proposal_published',
-        20 => 'field_core_date_opening',
-        21 => 'field_grants_awarded_link',
-        22 => 'hr_1',
-        23 => 'field_cfp_program',
-        24 => 'field_core_topics',
-        25 => 'field_core_departments',
-      ),
-      'left_header' => array(
-        1 => 'group_cfp_meta',
-        2 => 'dt_call_for_proposal_meta',
-        4 => 'content_type_label',
-        5 => 'title',
-        6 => 'field_core_introduction',
+        15 => 'social_bookmark_webtools',
+        16 => 'field_core_links',
+        17 => 'field_cfp_call_reference',
+        18 => 'dt_call_for_proposal_published',
+        19 => 'field_core_date_opening',
+        20 => 'field_cfp_deadline_model',
+        21 => 'field_core_deadlines',
+        22 => 'field_grants_awarded_link',
+        23 => 'hr_1',
+        24 => 'field_cfp_program',
+        25 => 'field_core_topics',
+        26 => 'field_core_departments',
       ),
       'top' => array(
         7 => 'dt_call_for_proposal_status_message',
@@ -233,9 +243,9 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
+      'dt_call_for_proposal_meta' => 'left_header',
       'field_core_files' => 'central',
       'group_cfp_meta' => 'left_header',
-      'dt_call_for_proposal_meta' => 'left_header',
       'field_core_contacts' => 'central',
       'content_type_label' => 'left_header',
       'title' => 'left_header',
@@ -248,12 +258,13 @@ function dt_call_for_proposal_default_ds_layout_settings_info() {
       'group_cfp_documents' => 'central',
       'group_cfp_contact' => 'central',
       'group_cfp_related' => 'central',
-      'group_cfp_social_networks' => 'central',
       'social_bookmark_webtools' => 'central',
       'field_core_links' => 'central',
       'field_cfp_call_reference' => 'central',
       'dt_call_for_proposal_published' => 'central',
       'field_core_date_opening' => 'central',
+      'field_cfp_deadline_model' => 'central',
+      'field_core_deadlines' => 'central',
       'field_grants_awarded_link' => 'central',
       'hr_1' => 'central',
       'field_cfp_program' => 'central',

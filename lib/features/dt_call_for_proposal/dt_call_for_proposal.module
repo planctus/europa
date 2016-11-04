@@ -41,26 +41,33 @@ function dt_call_for_proposal_entitycache_node_load($entities) {
  */
 function _dt_call_for_proposal_calculate_status(&$entity) {
   $opening = FALSE;
+  $closing = FALSE;
   // Entity metadata wrapper, so we dont have to think about languages.
   $wrapper = entity_metadata_wrapper('node', $entity);
+
   // Get the opening time.
   if ($wrapper->__isset('field_core_date_opening') && !empty($wrapper->field_core_date_opening->value())) {
     $opening = $wrapper->field_core_date_opening->value();
   }
 
-  if (!($opening)) {
-    // If we cannot calculate the status, weset it to open.
+  // Get the closing time.
+  if ($wrapper->__isset('field_core_deadlines') && !empty($wrapper->field_core_deadlines->value())) {
+    $closing = $wrapper->field_core_deadlines->value();
+    // Sort the array so that it is always in the good order.
+    asort($closing);
+  }
+
+  if (!$opening && !$closing) {
+    // If we cannot calculate the status, we set it to open.
     $wrapper->field_cfp_status->set('open');
     return;
   }
-  else {
-    if ($wrapper->__isset('field_core_deadlines')) {
-      // Closing date is optional, if it's not set we assume it is the
-      // "end of the day", considering that opening date has day granualarity.
-      $closing = !empty($wrapper->field_core_deadlines->value()) ? $wrapper->field_core_deadlines->value() : $opening + 86399;
-      // We use the last value in case we have multiple.
-      $closing = is_array($closing) ? end($closing) : $closing;
-    }
+  elseif ($closing) {
+    // Closing date is optional, if it's not set we assume it is the
+    // "end of the day", considering that opening date has day granualarity.
+    $closing = !empty($wrapper->field_core_deadlines->value()) ? $closing : $opening + 86399;
+    // We use the last value in case we have multiple.
+    $closing = is_array($closing) ? end($closing) : $closing;
   }
 
   $now = time();

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_call_for_proposal_default.features.field_instance.inc
@@ -108,10 +107,11 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'weight' => 46,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'i18n_field',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'i18n_list_default',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -225,7 +225,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -289,7 +289,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -493,10 +493,10 @@ function dt_call_for_proposal_default_field_default_field_instances() {
           'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'ec_date_j_f_y',
@@ -565,7 +565,7 @@ function dt_call_for_proposal_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 39,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -640,10 +640,17 @@ Note: the status of the calls change from open to closed when the last deadline 
         'weight' => 45,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
+        'label' => 'inline',
+        'module' => 'dt_date_format',
+        'settings' => array(
+          'base_format' => 'j F Y, G:i',
+          'item_wrapper' => 'p',
+          'separator' => 'none',
+          'timezone_wrapper' => 'round',
+          'use_timezone' => 1,
+        ),
+        'type' => 'dt_date',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -767,7 +774,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -983,7 +990,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1201,7 +1208,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1341,7 +1348,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1396,7 +1403,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1462,7 +1469,7 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'hidden',

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_call_for_proposal_default.field_group.inc
@@ -192,8 +191,10 @@ function dt_call_for_proposal_default_field_group_info() {
       3 => 'field_core_date_opening',
       4 => 'field_cfp_program',
       5 => 'field_grants_awarded_link',
-      6 => 'hr_1',
-      7 => 'dt_call_for_proposal_published',
+      6 => 'field_core_deadlines',
+      7 => 'field_cfp_deadline_model',
+      8 => 'hr_1',
+      9 => 'dt_call_for_proposal_published',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(

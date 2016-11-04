@@ -83,48 +83,37 @@ function _dt_call_for_proposal_ds_fields_status_message($field) {
   switch ($emw->field_cfp_status->value()) {
 
     case 'open':
-      $render_config['#message_title'] = t('This call is open.');
-      $render_config['#message_body'] = t('You can send in your proposal before the closing date.');
+      $render_config['#message_title'] = t('This call is currently open.');
+
+      if ($emw->__isset('field_core_deadlines') && $close_date = _dt_call_for_proposal_get_deadline($field, $emw, 'all', TRUE)) {
+        $render_config['#message_body'] = '<p>' . t('If you want to participate in the call, you must submit your application before the deadline:</p>');
+        $render_config['#message_body'] .= $close_date;
+      }
       break;
 
     case 'upcoming':
-      if ($emw->__isset('field_core_date_opening')) {
-        $date_opening = $emw->field_core_date_opening->value();
-
-        if (!empty($date_opening)) {
-          $open_date = format_date($date_opening, 'ec_date_j_f_y');
-          $render_config['#message_body'] = t('The call will be opened on') . ' ' . $open_date;
-        }
-
-        $render_config['#message_title'] = t('This call is upcoming.');
+      $render_config['#message_title'] = t('This call is upcoming.');
+      if ($emw->__isset('field_core_date_opening') && $date_opening = $emw->field_core_date_opening->value()) {
+        $open_date = format_date($date_opening, 'ec_date_j_f_y');
+        $render_config['#message_body'] = '<p>' . t('The call will be opened on') . ' ' . $open_date . '.</p>';
       }
       else {
-        $render_config['#message_title'] = t('This call is upcoming.');
-        $render_config['#message_body'] = t('The call will be opened soon.');
+        $render_config['#message_body'] = '<p>' . t('The call will be opened soon.') . '</p>';
       }
       break;
 
     case 'closed':
-      if ($emw->__isset('field_core_deadlines') && $emw->__isset('field_grants_awarded_link')) {
-        $date_closing = $emw->field_core_deadlines->value();
-        $render_config['#message_body'] = '';
+      $close_date = strip_tags(_dt_call_for_proposal_get_deadline($field, $emw, 'single'));
+      $render_config['#message_title'] = t('This call is closed.');
+      $render_config['#message_body'] = '<p>';
+      $render_config['#message_body'] = t('This call was closed on !close_date', ['!close_date' => $close_date . '. ']);
 
-        if (!empty($date_closing)) {
-          $close_date = format_date($date_closing, 'ec_date_j_f_y');
-          $render_config['#message_body'] = t('This call was closed on !close_date', ['!close_date' => $close_date . '. ']);
-        }
-
-        $grants_awarded = $emw->field_grants_awarded_link->value();
-
-        $render_config['#message_title'] = t('This call is closed.');
+      if ($emw->__isset('field_grants_awarded_link') && $grants_awarded = $emw->field_grants_awarded_link->value()) {
         $render_config['#message_body'] .= t('Consult the results of this call in the !grants_awarded.', [
           '!grants_awarded' => l($grants_awarded['title'], $grants_awarded['url']),
         ]);
       }
-      else {
-        $render_config['#message_title'] = t('This call is closed.');
-      }
-
+      $render_config['#message_body'] .= '</p>';
       break;
 
     default:
