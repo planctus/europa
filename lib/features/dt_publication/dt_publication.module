@@ -187,6 +187,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
     if (empty($node->field_publications_visibility) || !$node->field_publications_visibility[LANGUAGE_NONE][0]['value']) {
       $view->executed = TRUE;
       $view->build = TRUE;
+      $view->display['block']->handler->default_display->options['empty'] = [];
     }
     else {
       $prev_filters = $view->display_handler->get_option('filters');
