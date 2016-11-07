@@ -176,7 +176,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -559,7 +559,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '22',
+    'weight' => '28',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -664,11 +664,8 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Topics',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_info_homepage_topic_intro',
-      1 => 'field_info_homepage_topic_link',
-    ),
+    'weight' => '24',
+    'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
       'label' => 'Topics',

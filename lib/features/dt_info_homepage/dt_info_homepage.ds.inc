@@ -140,30 +140,20 @@ function dt_info_homepage_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'central' => array(
-        0 => 'field_info_homepage_topic_intro',
-        2 => 'group_info_homepage_section_top',
-        3 => 'field_info_homepage_topic_link',
-        4 => 'group_info_homepage_section_bot',
-        5 => 'group_info_highlights',
-        6 => 'group_topics',
-        7 => 'field_info_secondary_links',
-        8 => 'field_info_classes',
-        9 => 'field_info_highlights',
-      ),
       'left_header' => array(
-        1 => 'field_core_introduction',
+        0 => 'field_core_introduction',
+      ),
+      'central' => array(
+        1 => 'group_info_homepage_section_top',
+        2 => 'group_info_highlights',
+        3 => 'field_info_classes',
+        4 => 'field_info_highlights',
       ),
     ),
     'fields' => array(
-      'field_info_homepage_topic_intro' => 'central',
       'field_core_introduction' => 'left_header',
       'group_info_homepage_section_top' => 'central',
-      'field_info_homepage_topic_link' => 'central',
-      'group_info_homepage_section_bot' => 'central',
       'group_info_highlights' => 'central',
-      'group_topics' => 'central',
-      'field_info_secondary_links' => 'central',
       'field_info_classes' => 'central',
       'field_info_highlights' => 'central',
     ),
