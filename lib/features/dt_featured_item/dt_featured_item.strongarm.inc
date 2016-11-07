@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_featured_item.strongarm.inc
@@ -120,6 +119,36 @@ function dt_featured_item_strongarm() {
       ),
       'image_label' => array(
         'custom_settings' => TRUE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(

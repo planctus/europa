@@ -16,6 +16,7 @@ function dt_core_pol_install() {
     // Roles and permissions.
     'dt_roles_permissions',
     'dt_list_view_content',
+    'dt_info_homepage',
   ];
   module_enable($dt_modules);
 
@@ -202,4 +203,11 @@ function dt_core_pol_update_7110() {
  */
 function dt_core_pol_update_7111() {
   module_enable(['dt_list_view_content']);
+}
+
+/**
+ * DTTSB-1202: Enable homepage content type.
+ */
+function dt_core_pol_update_7112() {
+  module_enable(['dt_info_homepage']);
 }

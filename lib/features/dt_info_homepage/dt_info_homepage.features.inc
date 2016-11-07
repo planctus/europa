@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_info_homepage.features.inc
@@ -26,9 +25,9 @@ function dt_info_homepage_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_info_homepage_node_info() {
   $items = array(
     'info_homepage' => array(
-      'name' => t('Information homepage'),
+      'name' => t('Homepage'),
       'base' => 'node_content',
-      'description' => t('Content type to serve as homepage for DT Information site.'),
+      'description' => t('Content type to serve Informational and Political homepages.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

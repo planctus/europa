@@ -79,7 +79,7 @@ Feature: Legacy links
     Given "Featured item" content:
       | title                          | language | status | field_core_legacy_link        | field_feat_item_reference |
       | Featured external and internal | en       | 1      | test - http://example.en/test | Page Title                |
-    Given I am viewing a "Information homepage" content:
+    Given I am viewing a "Homepage" content:
       | title                 | Frontpage title                                                  |
       | language              | en                                                               |
       | field_info_highlights | Featured item, Featured external, Featured external and internal |

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_featured_item.field_group.inc
