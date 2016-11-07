@@ -126,6 +126,13 @@ function dt_core_pol_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'dt_shared_functions_dt_latest_visibility';
+  $strongarm->value = TRUE;
+  $export['dt_shared_functions_dt_latest_visibility'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'theme_political_settings';
   $strongarm->value = array(
     'toggle_logo' => 1,
