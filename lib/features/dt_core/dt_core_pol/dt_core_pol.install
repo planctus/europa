@@ -16,6 +16,7 @@ function dt_core_pol_install() {
     // Roles and permissions.
     'dt_roles_permissions',
     'dt_list_view_content',
+    'dt_info_homepage',
   ];
   module_enable($dt_modules);
 
