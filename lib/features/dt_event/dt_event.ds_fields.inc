@@ -465,13 +465,16 @@ function _dt_event_ds_fields_book_your_seat($field) {
   ) {
     // If registration is still open we can show the button.
     if (
-      $emw->field_event_registration_end->value() > time()
+      $field['view_mode'] !== 'teaser'
+      && $emw->field_event_registration_end->value() > time()
       && $emw->field_event_registration->value()
-      && $field['view_mode'] !== 'teaser'
     ) {
-      $registration = $emw->field_event_registration->value();
+      // The desired language.
+      $langcode = $GLOBALS['language_content']->language;
+      // Get the field data.
+      $registration = $emw->language($langcode)->field_event_registration->value();
       // Our button text will default if not filled in.
-      $button_link = $registration['display_url'];
+      $button_link = $registration['url'];
       $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
     }
     // Special case if ongoing and live stream is available.

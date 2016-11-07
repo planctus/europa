@@ -388,8 +388,8 @@ function dt_publication_field_group_info() {
     'weight' => '23',
     'children' => array(
       0 => 'field_eurovoc_taxonomy',
-      1 => 'field_core_nal_countries',
-      2 => 'field_core_tags',
+      1 => 'field_core_tags',
+      2 => 'field_core_nal_countries',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

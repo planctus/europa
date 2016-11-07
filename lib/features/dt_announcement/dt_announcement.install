@@ -128,7 +128,7 @@ function dt_announcement_update_7107() {
 }
 
 /**
- * NEXTEUROPA-6003: update the page then the announcement feature.
+ * NEXTEUROPA-6003: Update the page then the announcement feature.
  */
 function dt_announcement_update_7108() {
   features_revert_module('dt_page');
@@ -174,9 +174,9 @@ function dt_announcement_update_7112() {
 /**
  * NEXTEUROPA-7497: Announcement publishing date.
  */
-function dt_announcement_update_7113($sandbox) {
+function dt_announcement_update_7113(&$sandbox) {
   if (!isset($sandbox['max'])) {
-    // Reverting Announcement.
+    // Reverting the feature.
     features_revert_module('dt_announcement');
 
     // Query all nid of announcements.
@@ -246,7 +246,6 @@ function dt_announcement_update_7114() {
       }
     }
   }
-
 }
 
 /**
@@ -277,5 +276,4 @@ function dt_announcement_update_7115() {
       field_delete_field($field);
     }
   }
-
 }

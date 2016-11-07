@@ -12,6 +12,7 @@ default:
         - Drupal\nexteuropa\Context\EditorialWorkflowContext
         - Drupal\nexteuropa\Context\BetterRegulationContext
         - Drupal\nexteuropa\Context\TranslationContext
+        - Drupal\nexteuropa\Context\FeedsContext
       filters:
         tags: "~@wip&&${behat.test_tags}"
       paths:

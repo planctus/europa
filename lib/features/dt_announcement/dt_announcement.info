@@ -1,7 +1,7 @@
 name = Announcement
 description = Announcement content type related settings.
 core = 7.x
-package = Nexteuropa Digital Transformation
+package = NextEuropa Digital Transformation
 dependencies[] = dt_list_view_content
 dependencies[] = dt_page
 dependencies[] = dt_policy

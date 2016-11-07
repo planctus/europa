@@ -12,35 +12,109 @@ module_load_include('inc', 'dt_call_for_proposal_default', 'dt_call_for_proposal
  * Implements hook_preprocess_field().
  */
 function dt_call_for_proposal_default_preprocess_field(&$vars) {
-  if ($vars['element']['#field_name'] == 'field_cfp_status') {
+  // Entity metadata wrapper.
+  $emw = entity_metadata_wrapper('node', $vars['element']['#object']);
 
-    $emw = entity_metadata_wrapper('node', $vars['element']['#object']);
-    $status = $emw->field_cfp_status->value();
-    $status = !empty($status) ? $status : $vars['element']['#items'][0]['value'];
-    $prefix = t('Call status:');
-    $new_status = $prefix . ' ' . $status;
+  switch ($vars['element']['#field_name']) {
 
-    // Existing classes.
-    preg_match('#class="(.*?)"#', $vars['element'][0]['#markup'], $classes);
-    // Current output.
-    preg_match('#>(.*?)<#', $vars['element'][0]['#markup'], $old_status);
+    case 'field_cfp_status':
+      $status = $emw->field_cfp_status->value();
+      $status = !empty($status) ? $status : $vars['element']['#items'][0]['value'];
+      $prefix = t('Call status:');
+      $new_status = $prefix . ' ' . $status;
 
-    $existing = $classes[1];
+      // Existing classes.
+      preg_match('#class="(.*?)"#', $vars['element'][0]['#markup'], $classes);
+      // Current output.
+      preg_match('#>(.*?)<#', $vars['element'][0]['#markup'], $old_status);
 
-    switch ($status) {
-      case 'upcoming':
-        $classes[1] .= ' label--next';
-        break;
+      $existing = $classes[1];
 
-      case 'open':
-        $classes[1] .= ' label--highlight';
-        break;
+      switch ($status) {
+        case 'upcoming':
+          $classes[1] .= ' label--next';
+          break;
 
-      case 'closed':
-        $classes[1] .= ' label--status';
-        break;
+        case 'open':
+          $classes[1] .= ' label--highlight';
+          break;
+
+        case 'closed':
+          $classes[1] .= ' label--status';
+          break;
+      }
+
+      $vars['items'][0]['#markup'] = $vars['element'][0]['#markup'] = str_replace([$existing, $old_status[1]], [$classes[1], $new_status], $vars['element'][0]['#markup']);
+      break;
+
+    case 'field_core_deadlines':
+      $deadlines = $emw->field_core_deadlines->value();
+      // If we have more than one value.
+      if (is_array($deadlines) && count($deadlines) > 1) {
+        $vars['label'] = t('Deadlines');
+      }
+      break;
+  }
+}
+
+/**
+ * Helper function to get the deadlines formatted.
+ *
+ * @param array $field
+ *   The field array.
+ * @param object $emw
+ *   Entity metadata wrapper.
+ * @param string $context
+ *   Used to output all the values or just one.
+ *
+ * @return mixed
+ *   Formatted string or FALSE.
+ */
+function _dt_call_for_proposal_get_deadline($field, $emw, $context = 'single', $exclude = FALSE) {
+  if ($emw->__isset('field_core_deadlines')) {
+    $date_closing = $emw->field_core_deadlines->value();
+    // Sort the array so that it is always in the good order.
+    asort($date_closing);
+
+    if (!empty($date_closing)) {
+      if ($context != 'all' && is_array($date_closing)) {
+        $date_closing = end($date_closing);
+        $timezone = end($field['entity']->field_core_deadlines[LANGUAGE_NONE])['timezone'];
+      }
+
+      $date_closing = is_array($date_closing) ? $date_closing : [$date_closing];
+      $output = '';
+
+      foreach ($date_closing as $delta => $date) {
+        if ($date < time() && $exclude) {
+          unset($date_closing[$delta]);
+          continue;
+        }
+
+        if (!isset($timezone)) {
+          $timezone = $field['entity']->field_core_deadlines[LANGUAGE_NONE][$delta]['timezone'];
+        }
+
+        $output .= '<p class="dashed">' . format_date($date, 'custom', 'j F Y, G:i') . ' (' . $timezone . ')' . '</p>';
+      }
+
+      return $output;
     }
+  }
 
-    $vars['items'][0]['#markup'] = $vars['element'][0]['#markup'] = str_replace([$existing, $old_status[1]], [$classes[1], $new_status], $vars['element'][0]['#markup']);
+  return FALSE;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function dt_call_for_proposal_default_node_view($node, $view_mode, $langcode) {
+  if ($node->type == "call_for_proposal" && $view_mode == 'full') {
+    $emw = entity_metadata_wrapper('node', $node);
+    $status = $emw->field_cfp_status->value();
+
+    if ($status != 'closed') {
+      hide($node->content['field_grants_awarded_link']);
+    }
   }
 }

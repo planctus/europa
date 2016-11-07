@@ -49,25 +49,53 @@ Feature: Checking different state of events
       | Event status test: cancelled       | event is cancelled   | see        | This event has been cancelled   |
 
   # "Book your seat" should appear.
-  Scenario: "Book your seat" button should appear.
+  Scenario: "Book your seat" button should appear and be translatable.
   "Book your seat" button displaying criteria:
   - Before the event or event is ongoing.
   - Have registration link, minimum the link.
   - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
   - Not "Fully booked".
   - When the event status is not "cancelled".
+    Given I am logged in as a user with the "Administrator" role
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
       | field_event_status                    | no                                                         |
       | field_event_is_fully_booked           | no                                                         |
-      | field_event_registration              | Registration title - http://localhost                      |
+      | field_event_registration              | Registration title - http://google.com                     |
       | field_event_registration_end:value    | 1893456000                                                 |
       | field_event_registration_end:timezone | Europe/Budapest                                            |
       | field_event_date:value                | 1893456000                                                 |
       | field_event_date:value2               | 1893456000                                                 |
       | field_event_date:timezone             | Europe/Budapest                                            |
       | status                                | 1                                                          |
-    Then I should see the link "Registration title"
+      | language                              | en                                                         |
+    Then I should see the link "Registration title" linking to "http://google.com"
+    Then I should see "Book your seat test, button should appears, link and title"
+    And I go to add "nl" translation
+    And I fill in "title_field[nl][0][value]" with "Reserveer je zit test, knop zichtbaar, link en titel"
+    And I fill in "field_event_registration[nl][0][title]" with "Registratie titel"
+    And I fill in "field_event_registration[nl][0][url]" with "http://google.be"
+    And I select "Global editorial team" from "Your groups (all languages)"
+    And I select "published" from "Moderation state"
+    And I press the "Save" button
+    Then I should see "Reserveer je zit test, knop zichtbaar, link en titel"
+    Then I should see the link "Registratie titel" linking to "http://google.be"
+
+
+      # "Book your seat" should appear.
+  Scenario: "Book your seat" can link to an e-mail adress
+    Given I am viewing an "Event" content:
+      | title                                 | Book your seat test, button should appears, link and title |
+      | field_event_status                    | no                                                         |
+      | field_event_is_fully_booked           | no                                                         |
+      | field_event_registration              | Registration title - mailto:info@ec.europa.eu              |
+      | field_event_registration_end:value    | 1893456000                                                 |
+      | field_event_registration_end:timezone | Europe/Budapest                                            |
+      | field_event_date:value                | 1893456000                                                 |
+      | field_event_date:value2               | 1893456000                                                 |
+      | field_event_date:timezone             | Europe/Budapest                                            |
+      | status                                | 1                                                          |
+    Then I should see the link "Registration title" linking to "mailto:info@ec.europa.eu"
 
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear, when only registration link added.
@@ -156,26 +184,29 @@ Feature: Checking different state of events
     Then I should see "Follow the latest progress and get involved."
 
   # "Watch live streaming" button.
-  Scenario: "Watch live streaming" button should appear.
+  Scenario: "Watch live streaming" button should appear on ongoing event.
   In case of the following conjunction:
   - "Live streaming available": yes.
   - "Date and time of live streaming" current moment is between start and end time of live streaming.
   - When the event status is not "cancelled".
   - "Live streaming link" is given.
     Given I am viewing an "Event" content:
-      | title                                       | Watch live streaming test, button should appears |
-      | field_event_status                          | no                                               |
-      | field_event_is_live_streaming               | yes                                              |
-      | field_event_live_streaming_date:show_todate | 1                                                |
-      | field_event_live_streaming_date:value       | 42854400                                         |
-      | field_event_live_streaming_date:value2      | 1893456000                                       |
-      | field_event_live_streaming_date:timezone    | Europe/Budapest                                  |
-      | field_event_live_streaming_link             | http://localhost                                 |
-      | field_event_date:value                      | 1893456000                                       |
-      | field_event_date:value2                     | 1893456000                                       |
-      | field_event_date:timezone                   | Europe/Budapest                                  |
-      | status                                      | 1                                                |
+      | title                                       | Watch live test, button should appear |
+      | field_event_status                          | no                                    |
+      | field_event_is_live_streaming               | yes                                   |
+      | field_event_live_streaming_date:show_todate | 1                                     |
+      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value2      | 1893456000                            |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
+      | field_event_live_streaming_link             | http://localhost                      |
+      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value2                     | 1893456000                            |
+      | field_event_date:timezone                   | Europe/Budapest                       |
+      | status                                      | 1                                     |
     Then I should see the link "Watch live streaming"
+    Then I should see "This event has started"
+    Then I should see a ".field--dt-event-status-message-2 .messages--icon-center.live a" element
+    Then I should see "Watch live streaming" in the ".messages--icon-center.live" element
     And I index all indexes
     And I go to "events"
     Then I should see the link "Watch live streaming"

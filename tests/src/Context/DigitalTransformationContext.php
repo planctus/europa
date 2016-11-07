@@ -180,7 +180,7 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * Check select box value.
    *
-   * @Then the selects :selector should be set to :value
+   * @Then the select(s) :selector should be set to :value
    */
   public function theSelectsShouldBeSetTo($selector, $value) {
     $this->assertSession()->elementAttributeContains('css', $selector . ' option[selected="selected"]', 'value', $value);

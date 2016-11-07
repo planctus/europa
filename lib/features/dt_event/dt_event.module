@@ -100,18 +100,14 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
 function dt_event_preprocess_file_entity(&$variables) {
   // Make sure we only do this for event entity's.
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
-    // Also add the file modifier.
-    $variables['classes_array'][] = 'file--condensed';
-
     // We define the wrapper once and apply it when we need it.
     $caption_wrapper = [
       '#prefix' => '<div class="file__caption">',
       '#suffix' => '</div>',
     ];
-
+    // If it is a video, we have to apply additional modifiers.
     if ($variables['type'] == 'video') {
-      // If it is a video, we have to apply additional modifiers.
-      $variables['classes_array'][] = 'file-video--withbackground';
+      $variables['classes_array'][] = 'file-video--with-background';
       // Also add the description to the content render array.
       if (isset($variables['content']['field_video_description'])) {
         $variables['content']['field_video_description']['#label_display'] = 'hidden';
@@ -295,6 +291,6 @@ function dt_event_nexteuropa_formatters_view_modes_alter(&$view_modes) {
  */
 function dt_event_preprocess_dt_event_status(&$variables) {
   if (isset($variables['message_body'])) {
-    $variables['message_body'] = drupal_html_to_text($variables['message_body']);
+    $variables['message_body'] = filter_xss($variables['message_body']);
   }
 }

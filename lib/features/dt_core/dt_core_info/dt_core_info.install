@@ -38,11 +38,11 @@ function dt_core_info_install() {
     'integration_consumer_ui',
     'dt_integration_announcement_consumer',
     'dt_file_import',
-    // NAL service integrations.
     'dt_nal_services',
     'dt_nal_countries',
     'dt_list_view_content',
     'dt_law_default',
+    'dt_announcement_news_prd_importer',
   ];
   module_enable($features);
 
@@ -200,14 +200,14 @@ function dt_core_info_update_7116() {
 }
 
 /**
- * DTTSB-851: Enable integration announcement consumer.
+ * DTTSB-851: Enable DT Announcement Integration Consumer.
  */
 function dt_core_info_update_7117() {
   module_enable(['dt_integration_announcement_consumer']);
 }
 
 /**
- * DTTSB-885: Enable dt_file_import.
+ * DTTSB-885: Enable DT File and Publication Import.
  */
 function dt_core_info_update_7118() {
   module_enable(['dt_file_import']);
@@ -226,4 +226,12 @@ function dt_core_info_update_7119() {
 function dt_core_info_update_7120() {
   module_enable(['dt_job', 'dt_job_default']);
   features_revert_module('dt_person');
+}
+
+/**
+ * DTTSB-1180: Enables the News PRD importer.
+ */
+function dt_core_info_update_7121() {
+  module_enable(['dt_announcement_news_prd_importer']);
+  _dt_roles_permissions_import_import('site manager', TRUE);
 }
