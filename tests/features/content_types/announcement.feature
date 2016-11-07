@@ -46,13 +46,13 @@ Feature: Announcement content type
     Given I am logged in as a user with the "administrator" role
     And I go to "node/add/announcement"
     Then I should have the following options for "Announcement type":
-      | press release  |
-      | speech         |
-      | news article   |
-      | announcement   |
-      | blog post      |
-      | statement      |
-      | factsheet      |
-      | legal document |
-      | document       |
-      | weekly meeting |
+      | Press release                    |
+      | Factsheet                        |
+      | Daily news                       |
+      | Speech                           |
+      | Commissioners' weekly activity   |
+      | Upcoming events                  |
+      | Statement                        |
+      | News                             |
+      | News article                     |
+      | Weekly meeting                   |

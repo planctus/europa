@@ -200,6 +200,30 @@ function dt_publication_ds_field_settings_info() {
 }
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function dt_publication_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'publications_list';
+  $ds_field->label = 'Publications List';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'views|publication_list-block',
+    'block_render' => '3',
+  );
+  $export['publications_list'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function dt_publication_ds_layout_settings_info() {
@@ -353,6 +377,34 @@ function dt_publication_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|publication|teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|publication|title';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'publication';
+  $ds_layout->view_mode = 'title';
+  $ds_layout->layout = 'ne_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'main' => array(
+        0 => 'title_field',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'main',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|publication|title'] = $ds_layout;
 
   return $export;
 }

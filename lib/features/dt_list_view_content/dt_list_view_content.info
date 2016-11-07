@@ -1,7 +1,7 @@
 name = List view content
 description = Content overrides for list views
 core = 7.x
-package = Nexteuropa Digital Transformation
+package = NextEuropa Digital Transformation
 dependencies[] = bean_admin_ui
 dependencies[] = ctools
 dependencies[] = dt_core

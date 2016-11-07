@@ -1,5 +1,5 @@
 name = CWT News
-description = News importer and announcements
+description = News importer and announcements.
 core = 7.x
 package = CWT
 php = 5.5
