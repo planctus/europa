@@ -58,12 +58,39 @@ function dt_publication_strongarm() {
         'custom_settings' => FALSE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
         'custom_settings' => FALSE,
       ),
       'file' => array(
+        'custom_settings' => FALSE,
+      ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'name' => array(
         'custom_settings' => FALSE,
       ),
     ),

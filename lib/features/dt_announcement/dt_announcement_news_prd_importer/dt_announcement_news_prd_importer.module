@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * @file
+ * Code for the DT Announcement News PRD Importer feature.
+ */
+
+include_once 'dt_announcement_news_prd_importer.features.inc';
+
+/**
+ * Implements hook_feeds_after_parse().
+ */
+function dt_announcement_news_prd_importer_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+  if ($source->id == 'news_prd' && $source->feed_nid !== FALSE) {
+    $config = $source->importer()->processor->getConfig();
+
+    // Load feed importer node to access fields values of departments,
+    // persons and priorities to map them.
+    $feed_node = node_load($source->feed_nid);
+    $feed_node_wrapper = entity_metadata_wrapper('node', $feed_node);
+
+    // Check Xpath expressions for guid, announcement type, department,
+    // person and priority.
+    if (isset($config['mappings'])) {
+      foreach ($config['mappings'] as $mapping) {
+        switch ($mapping['target']) {
+          case 'guid':
+            $guid_exp = $mapping['source'];
+            break;
+
+          case 'field_announcement_type':
+            $news_type_exp = $mapping['source'];
+            break;
+
+          case 'field_core_department:etid':
+            $department_exp = $mapping['source'];
+            break;
+
+          case 'field_core_persons:etid':
+            $person_exp = $mapping['source'];
+            break;
+
+          case 'field_core_priorities:etid':
+            $priority_exp = $mapping['source'];
+            break;
+
+          case 'status':
+            $status_exp = $mapping['source'];
+            break;
+
+          case 'field_core_type_content':
+            $legacy_exp = $mapping['source'];
+            break;
+        }
+      }
+    }
+
+    // PRD News type mapping values.
+    $news_type_mapping = [
+      'ip' => 'press_release',
+      'stat' => 'press_release',
+      'olaf' => 'press_release',
+      'epso' => 'press_release',
+      'ac' => 'press_release',
+    ];
+    // Departments mapping values.
+    $department_abbr_mapping = [
+      'stat' => 'DG ESTAT',
+      'olaf' => 'OLAF',
+      'epso' => 'EPSO',
+    ];
+
+    foreach ($result->items as &$item) {
+      // Setting announcements type.
+      if (!isset($item[$news_type_exp])) {
+        // Retrieve the news type value from the feed URL.
+        preg_match('/(?<=press-release_).*?(?=-)/', $item[$guid_exp], $matches);
+        if (count($matches)) {
+          // Mapping PRD news type values to Announcement type values.
+          $news_type = drupal_strtolower($matches[0]);
+          $item[$news_type_exp] = array_key_exists($news_type, $news_type_mapping) ? $news_type_mapping[$news_type] : $news_type;
+        }
+      }
+      // Setting departments.
+      if (!isset($item[$department_exp]) && !empty($feed_node_wrapper->field_core_departments)) {
+        $departments = [];
+        // Mapping departments based in PRD news type value.
+        if (isset($news_type) && array_key_exists($news_type, $department_abbr_mapping)) {
+          $query = new EntityFieldQuery();
+          $department = $query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'department')
+            ->propertyCondition('status', NODE_PUBLISHED)
+            ->fieldCondition('field_core_abbreviation', 'value', $department_abbr_mapping[$news_type], '=')
+            ->range(0, 1)
+            ->execute();
+          if (isset($department['node'])) {
+            $departments[] = current($department['node'])->nid;
+          }
+        }
+        // Add the values from the importer's field.
+        $item[$department_exp] = array_merge($departments, $feed_node_wrapper->field_core_departments->raw());
+      }
+      // Setting persons.
+      if (!isset($item[$person_exp]) && !empty($feed_node_wrapper->field_core_persons)) {
+        $item[$person_exp] = $feed_node_wrapper->field_core_persons->raw();
+      }
+      // Setting priorities.
+      if (!isset($item[$priority_exp]) && !empty($feed_node_wrapper->field_core_priorities)) {
+        $item[$priority_exp] = $feed_node_wrapper->field_core_priorities->raw();
+      }
+      // Publish item by default.
+      if (!isset($item[$status_exp])) {
+        $item[$status_exp] = 1;
+      }
+      // Force to be legacy linked.
+      if (!isset($item[$legacy_exp])) {
+        $item[$legacy_exp] = 'legacy';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function dt_announcement_news_prd_importer_feeds_presave(FeedsSource $source, $entity, $item, $entity_id) {
+  // Feeds does not support entity translation, so we pre process the created
+  // node to adjust language on the translatable fields that are populated by
+  // the importer.
+  if ($source->id == 'news_prd' && $source->feed_nid !== FALSE) {
+    // Make new node inherit language from importer.
+    $feed_node = node_load($source->feed_nid);
+    $entity->language = $feed_node->language;
+    $translatable_fields = [
+      'field_core_type_content',
+      'field_core_description',
+      'field_core_legacy_link',
+      'field_announcement_type',
+    ];
+    foreach ($translatable_fields as $field_name) {
+      _dt_announcement_news_prd_importer_fix_translatable($entity, $field_name, $feed_node->language);
+    }
+  }
+}
+
+/**
+ * Move field values to language aware version.
+ *
+ * @param object $entity
+ *   Node we are about to save.
+ * @param string $field_name
+ *   Field where we need to process tha data.
+ * @param string $target_language
+ *   Target language.
+ */
+function _dt_announcement_news_prd_importer_fix_translatable(&$entity, $field_name, $target_language) {
+  if (!empty($entity->{$field_name}) && isset($entity->{$field_name}[LANGUAGE_NONE])) {
+    $entity->{$field_name}[$target_language] = $entity->{$field_name}[LANGUAGE_NONE];
+    unset($entity->{$field_name}[LANGUAGE_NONE]);
+  }
+}

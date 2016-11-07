@@ -72,16 +72,19 @@ function dt_page_extended_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'scheduler_settings' => array(
           'weight' => '14',
         ),
         'language' => array(
           'weight' => '11',
+        ),
+        'redirect' => array(
+          'weight' => '5',
         ),
       ),
       'display' => array(),
