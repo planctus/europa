@@ -71,3 +71,11 @@ function dt_info_homepage_update_7103() {
     }
   }
 }
+
+/**
+ * DTTSB-1202: Updating permissions.
+ */
+function dt_info_homepage_update_7104() {
+  // Update permissions.
+  _dt_roles_permissions_import_import('all');
+}
