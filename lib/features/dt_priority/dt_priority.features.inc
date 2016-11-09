@@ -10,8 +10,8 @@
  */
 function dt_priority_default_cer() {
   $items = array();
-  $items['node:priority:field_core_child_policies*node:basic_page:field_core_parent'] = entity_import('cer', '{
-    "identifier" : "node:priority:field_core_child_policies*node:basic_page:field_core_parent",
+  $items['node:priority:field_core_child_policies*node:basic_page:field_core_parents'] = entity_import('cer', '{
+    "identifier" : "node:priority:field_core_child_policies*node:basic_page:field_core_parents",
     "cer_bidirectional" : { "und" : [ { "value" : "1" } ] },
     "cer_enabled" : { "und" : [ { "value" : "1" } ] },
     "cer_weight" : { "und" : [ { "value" : "0" } ] },
