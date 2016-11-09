@@ -79,7 +79,6 @@ function _dt_call_for_proposal_get_deadline($field, $emw, $context = 'single', $
     if (!empty($date_closing)) {
       if ($context != 'all' && is_array($date_closing)) {
         $date_closing = end($date_closing);
-        $timezone = end($field['entity']->field_core_deadlines[LANGUAGE_NONE])['timezone'];
       }
 
       $date_closing = is_array($date_closing) ? $date_closing : [$date_closing];
@@ -90,12 +89,7 @@ function _dt_call_for_proposal_get_deadline($field, $emw, $context = 'single', $
           unset($date_closing[$delta]);
           continue;
         }
-
-        if (!isset($timezone)) {
-          $timezone = $field['entity']->field_core_deadlines[LANGUAGE_NONE][$delta]['timezone'];
-        }
-
-        $output .= '<p class="dashed">' . format_date($date, 'custom', 'j F Y, G:i') . ' (' . $timezone . ')' . '</p>';
+        $output .= '<p class="dashed">' . format_date($date, 'custom', 'j F Y, G.i (T)') . '</p>';
       }
 
       return $output;

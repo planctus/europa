@@ -17,7 +17,7 @@ Feature: Call for proposal content type
       | field_core_deadlines             | 1893542400                  |
     Then I should see "This call is currently open." in the ".messages" element
     Then I should see "If you want to participate in the call, you must submit your application before the deadline:" in the ".messages" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -29,7 +29,7 @@ Feature: Call for proposal content type
     Then I should see "Single-stage" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadline" in the ".field--field-core-deadlines .field__label" element
     Then I should not see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
 
   Scenario: "Open call" two stage
     Given I am viewing a "call_for_proposal":
@@ -48,8 +48,8 @@ Feature: Call for proposal content type
       | field_core_deadlines             | 1893542400, 1894147200      |
     Then I should see "This call is currently open." in the ".messages" element
     Then I should see "If you want to participate in the call, you must submit your application before the deadline:" in the ".messages" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -60,8 +60,8 @@ Feature: Call for proposal content type
     Then I should see "Deadline model" in the ".field--field-cfp-deadline-model .field__label" element
     Then I should see "Two-stage" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
 
   Scenario: "Open call" Multiple cut-off
     Given I am viewing a "call_for_proposal":
@@ -80,9 +80,9 @@ Feature: Call for proposal content type
       | field_core_deadlines             | 1893542400, 1894147200, 1895616000 |
     Then I should see "This call is currently open." in the ".messages" element
     Then I should see "If you want to participate in the call, you must submit your application before the deadline:" in the ".messages" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should see "26 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should see "26 January 2030, 1.00 (CET)" in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -93,9 +93,9 @@ Feature: Call for proposal content type
     Then I should see "Deadline model" in the ".field--field-cfp-deadline-model .field__label" element
     Then I should see "Multiple cut-off" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "26 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "26 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
 
   Scenario: "Open call" Multiple cut-off with expired date
     Given I am viewing a "call_for_proposal":
@@ -114,9 +114,9 @@ Feature: Call for proposal content type
       | field_core_deadlines             | 1453766400, 1893542400, 1894147200 |
     Then I should see "This call is currently open." in the ".messages" element
     Then I should see "If you want to participate in the call, you must submit your application before the deadline:" in the ".messages" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should not see "26 January 2016, 1:00 (Europe/Brussels)" in the ".messages" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should not see "26 January 2016, 1.00 (CET)" in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -127,9 +127,9 @@ Feature: Call for proposal content type
     Then I should see "Deadline model" in the ".field--field-cfp-deadline-model .field__label" element
     Then I should see "Multiple cut-off" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "26 January 2016, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__item--expired" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "26 January 2016, 1.00 (CET)" in the ".field--field-core-deadlines .field__item--expired" element
 
   Scenario: "Open call" Multiple cut-off with expired date in random order
     Given I am viewing a "call_for_proposal":
@@ -148,9 +148,9 @@ Feature: Call for proposal content type
       | field_core_deadlines             | 1893542400, 1894147200, 1453766400 |
     Then I should see "This call is currently open." in the ".messages" element
     Then I should see "If you want to participate in the call, you must submit your application before the deadline:" in the ".messages" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".messages" element
-    Then I should not see "26 January 2016, 1:00 (Europe/Brussels)" in the ".messages" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".messages" element
+    Then I should not see "26 January 2016, 1.00 (CET)" in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -161,9 +161,9 @@ Feature: Call for proposal content type
     Then I should see "Deadline model" in the ".field--field-cfp-deadline-model .field__label" element
     Then I should see "Multiple cut-off" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "9 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
-    Then I should see "26 January 2016, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__item--expired" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "9 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "26 January 2016, 1.00 (CET)" in the ".field--field-core-deadlines .field__item--expired" element
 
 
   Scenario: "Closed call" single stage
@@ -181,7 +181,7 @@ Feature: Call for proposal content type
       # Sat, 02 Jan 2016 00:00:00 GMT
       | field_core_deadlines             | 1451692800                  |
     Then I should see "This call is closed." in the ".messages" element
-    Then I should see "This call was closed on 2 January 2016, 1:00 (Europe/Brussels)." in the ".messages" element
+    Then I should see "This call was closed on 2 January 2016, 1.00 (CET)." in the ".messages" element
     Then I should see the heading "CFP title"
     Then I should see the heading "Details"
     Then I should see "CFP introduction"
@@ -193,7 +193,7 @@ Feature: Call for proposal content type
     Then I should see "Single-stage" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadline" in the ".field--field-core-deadlines .field__label" element
     Then I should not see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2016, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items .field__item--expired" element
+    Then I should see "2 January 2016, 1.00 (CET)" in the ".field--field-core-deadlines .field__items .field__item--expired" element
 
   Scenario: "Upcoming call" single stage
     Given I am viewing a "call_for_proposal":
@@ -226,4 +226,4 @@ Feature: Call for proposal content type
     Then I should see "Single-stage" in the ".field--field-cfp-deadline-model .field__items" element
     Then I should see "Deadline" in the ".field--field-core-deadlines .field__label" element
     Then I should not see "Deadlines" in the ".field--field-core-deadlines .field__label" element
-    Then I should see "2 January 2030, 1:00 (Europe/Brussels)" in the ".field--field-core-deadlines .field__items" element
+    Then I should see "2 January 2030, 1.00 (CET)" in the ".field--field-core-deadlines .field__items" element

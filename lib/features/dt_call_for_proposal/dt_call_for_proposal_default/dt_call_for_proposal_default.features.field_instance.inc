@@ -643,11 +643,11 @@ Note: the status of the calls change from open to closed when the last deadline 
         'label' => 'inline',
         'module' => 'dt_date_format',
         'settings' => array(
-          'base_format' => 'j F Y, G:i',
+          'base_format' => 'j F Y, G.i (T)',
           'item_wrapper' => 'p',
           'separator' => 'none',
           'timezone_wrapper' => 'round',
-          'use_timezone' => 1,
+          'use_timezone' => 0,
         ),
         'type' => 'dt_date',
         'weight' => 27,
