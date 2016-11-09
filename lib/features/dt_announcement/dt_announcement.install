@@ -277,3 +277,29 @@ function dt_announcement_update_7115() {
     }
   }
 }
+
+/**
+ * DTTSB-1180: Changing the allowed values of the announcement type field.
+ */
+function dt_announcement_update_7116() {
+  // Get the field info.
+  $announcement_type_field_info = field_info_field('field_announcement_type');
+  // Get a reference to the values.
+  $values = &$announcement_type_field_info['settings']['allowed_values'];
+
+  $values = [
+    'press_release' => 'Press release',
+    'memo' => 'Factsheet',
+    'mex' => 'Daily news',
+    'speech' => 'Speech',
+    'cldr' => 'Commissioners\' weekly activity',
+    'agenda' => 'Upcoming events',
+    'statement' => 'Statement',
+    'news' => 'News',
+    'news_article' => 'News article',
+    'wm' => 'Weekly meeting',
+  ];
+
+  // Save the field.
+  field_update_field($announcement_type_field_info);
+}
