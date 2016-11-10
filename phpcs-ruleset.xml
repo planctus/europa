@@ -105,24 +105,6 @@
         <exclude-pattern>*.*</exclude-pattern>
     </rule>
 
-    <!-- Links should be allowed in html files
-     And we will ignore the generated files. -->
-    <rule ref="QualityAssurance.Functions.HardcodedLink">
-        <exclude-pattern>*.tpl.php</exclude-pattern>
-        <exclude-pattern>*.ds.*.inc</exclude-pattern>
-        <exclude-pattern>*.default_*.inc</exclude-pattern>
-        <exclude-pattern>*.file_default_displays.*.inc</exclude-pattern>
-        <exclude-pattern>*.views_default.*.inc</exclude-pattern>
-        <exclude-pattern>*.facetapi_defaults.*.inc</exclude-pattern>
-        <exclude-pattern>*.custom_formatters.*.inc</exclude-pattern>
-        <exclude-pattern>*.context.*.inc</exclude-pattern>
-        <exclude-pattern>*.strongarm.*.inc</exclude-pattern>
-        <exclude-pattern>*.variable.*.inc</exclude-pattern>
-        <exclude-pattern>*.features.*.inc</exclude-pattern>
-        <exclude-pattern>*.field_group.inc</exclude-pattern>
-        <exclude-pattern>src/Phing</exclude-pattern>
-    </rule>
-
     <!-- Wysiwyg profiles exported in Features do not have a trailing period. -->
     <!-- Remove this once https://www.drupal.org/node/2724173 is in. -->
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
