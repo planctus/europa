@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation
 dependencies[] = date
 dependencies[] = dt_core
+dependencies[] = field_group
 dependencies[] = i18n_taxonomy
 dependencies[] = link
 dependencies[] = nexteuropa_formatters
