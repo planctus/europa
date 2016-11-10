@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * nexteuropa_file.features.field_instance.inc
@@ -109,7 +108,7 @@ For example, a document published on an unknown date in 2015 can be dated as 1/1
       'description_field' => 0,
       'entity_translation_sync' => 0,
       'file_directory' => '',
-      'file_extensions' => 'odt ods odp pdf svg mp3 mp4 png jpg jpeg gif doc docx xls xlsx zip rar',
+      'file_extensions' => 'odt ods odp pdf svg mp3 mp4 png jpg jpeg gif doc docx xls xlsx zip rar tmx',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
