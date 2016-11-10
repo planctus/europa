@@ -12,14 +12,14 @@ class DtDateRangeFormat {
   /**
    * The UNIX timestamp of the start date.
    *
-   * @var int $startDate
+   * @var int
    */
   private $startDate;
 
   /**
    * The UNIX timestamp of the start date.
    *
-   * @var int $endDate
+   * @var int
    */
   private $endDate;
 
@@ -30,21 +30,21 @@ class DtDateRangeFormat {
    *   We have the following additional options:
    *   sd_{date} or ed_{date} representing the StartDate and EndDate.
    *
-   * @var array $format
+   * @var array
    */
   private $format;
 
   /**
    * The date's timezone, falls back to drupal default.
    *
-   * @var string $timezone
+   * @var string
    */
   private $timezone;
 
   /**
    * The language code to use.
    *
-   * @var string $language
+   * @var string
    */
   private $language;
 

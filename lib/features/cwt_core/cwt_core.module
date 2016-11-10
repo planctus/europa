@@ -859,8 +859,6 @@ function cwt_core_form_locale_languages_overview_form_alter(&$form, &$form_state
 function cwt_core_preprocess_views_view_rss(&$vars) {
   $view = &$vars['view'];
   if ($view->name == 'blog_commisioner' || $view->name == 'biography_news') {
-    $options  = &$vars['options'];
-    $items    = &$vars['rows'];
     // Replace token in title.
     $editorial_section = trim($view->result[0]->field_editorial_section_taxonomy_term_data_title);
     $vars['title'] = str_replace('[title_1]', $editorial_section, $vars['title']);

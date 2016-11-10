@@ -133,9 +133,9 @@ function cwt_translation_get_related_jobs($job_id) {
   $or = db_or();
   foreach ($original_items as $original_item) {
     $or->condition(db_and()
-        ->condition('tji.plugin', $original_item->plugin)
-        ->condition('tji.item_type', $original_item->item_type)
-        ->condition('tji.item_id', $original_item->item_id)
+      ->condition('tji.plugin', $original_item->plugin)
+      ->condition('tji.item_type', $original_item->item_type)
+      ->condition('tji.item_id', $original_item->item_id)
     );
   }
   $query->condition($or);
