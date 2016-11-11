@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_biography.views_default.inc
@@ -1780,9 +1779,6 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_locality']['field'] = 'field_biography_address_locality';
   $handler->display->display_options['fields']['field_biography_address_locality']['label'] = '';
   $handler->display->display_options['fields']['field_biography_address_locality']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_address_locality']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_address_locality']['alter']['text'] = '<span>[field_biography_address_postal_code]</span>
-  <span>[field_biography_address_locality]</span>';
   $handler->display->display_options['fields']['field_biography_address_locality']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_locality']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Country */

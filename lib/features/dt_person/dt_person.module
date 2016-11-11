@@ -61,7 +61,9 @@ function dt_person_field_attach_view_alter(&$output, $context) {
   // Append RDF term mappings on displayed taxonomy links.
   foreach (element_children($output) as $field_name) {
     $element = &$output[$field_name];
-    if ($element['#field_type'] == 'entityreference' && $element['#field_name'] == 'field_core_persons' && $element['#formatter'] == 'context_nav_item') {
+    if ($element['#field_type'] == 'entityreference'
+      && $element['#field_name'] == 'field_core_persons'
+      && $element['#formatter'] == 'context_nav_item') {
 
       // Set our default wrapper label.
       $wrapper_label = t('Commissioner');
@@ -121,9 +123,12 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       $display_settings = field_info_instance('node', 'field_core_persons', $context['entity']->type);
 
       // Check our settings.
-      $has_expander = isset($display_settings['display'][$context['view_mode']]['settings']['expander_has_expander']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_has_expander'] : FALSE;
-      $trim_at = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_at']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_at'] : FALSE;
-      $trim_to = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_to']) ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_to'] : FALSE;
+      $has_expander = isset($display_settings['display'][$context['view_mode']]['settings']['expander_has_expander'])
+        ? $display_settings['display'][$context['view_mode']]['settings']['expander_has_expander'] : FALSE;
+      $trim_at = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_at'])
+        ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_at'] : FALSE;
+      $trim_to = isset($display_settings['display'][$context['view_mode']]['settings']['expander_trim_to'])
+        ? $display_settings['display'][$context['view_mode']]['settings']['expander_trim_to'] : FALSE;
 
       // Update the label.
       $element = array_merge(
@@ -158,6 +163,7 @@ function dt_person_menu() {
     ];
     return $items;
   }
+
   return NULL;
 }
 
@@ -175,6 +181,7 @@ function _masquerade_tab_access($account) {
   if (isset($_SESSION['masquerading']) || user_access('masquerade as user') || user_access('masquerade as admin')) {
     return TRUE;
   }
+
   return FALSE;
 }
 
@@ -256,6 +263,7 @@ function _dt_person_token_replace_fullname($field) {
     }
     return l($field['properties']['first_name'] . ' ' . $field['properties']['last_name'], $field['properties']['link'], $options);
   }
+
   return NULL;
 }
 
@@ -274,6 +282,7 @@ function _dt_person_token_replace($field) {
     $value = token_replace($value, [$field['entity_type'] => $field['entity']], ['clear' => TRUE]);
     return $value;
   }
+
   return NULL;
 }
 
@@ -371,6 +380,7 @@ function _dt_person_get_default_photo_file($node) {
   if ($fid = variable_get('dt_person_photo_default_' . drupal_strtolower($emw->field_person_gender->value()), FALSE)) {
     return file_load($fid);
   }
+
   return FALSE;
 }
 

@@ -16,7 +16,10 @@ include_once 'cwt_biography.features.inc';
 function cwt_biography_init() {
   // Check if we are on the full node view of a non-English Biography node.
   $menu_item = menu_get_item();
-  if ($menu_item['path'] == 'node/%' && ($node = menu_get_object()) && $node->type == 'biography' && $node->language != 'en') {
+  if ($menu_item['path'] == 'node/%'
+      && ($node = menu_get_object())
+      && $node->type == 'biography'
+      && $node->language != 'en') {
     // Check if the node has been flagged as partially translated.
     $items = field_get_items('node', $node, 'field_partial_translation');
     $item = reset($items);
@@ -102,7 +105,9 @@ function cwt_biography_field_group_pre_render(&$element, $group, &$form) {
  */
 function cwt_biography_preprocess_item_list(&$variables) {
   // Check if the context is inpage nav to avoid running heavier operations.
-  if (isset($variables['attributes']['class']) && is_array($variables['attributes']['class']) && in_array('inpage-nav__list', $variables['attributes']['class'])) {
+  if (isset($variables['attributes']['class'])
+      && is_array($variables['attributes']['class'])
+      && in_array('inpage-nav__list', $variables['attributes']['class'])) {
     if ($node = menu_get_object('node')) {
       if ($node->type == 'biography' && $role = field_get_items('node', $node, 'field_biography_role')) {
         $role_term = taxonomy_term_load($role[0]['tid']);
@@ -243,7 +248,10 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
  * Implements hook_ds_pre_render_alter().
  */
 function cwt_biography_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
-  if ($context['entity_type'] == 'node' && $context['bundle'] == 'biography' && $context['view_mode'] == 'full' && empty($vars['content']['group_bio_contact'])) {
+  if ($context['entity_type'] == 'node'
+      && $context['bundle'] == 'biography'
+      && $context['view_mode'] == 'full'
+      && empty($vars['content']['group_bio_contact'])) {
     foreach ($layout_render_array['top'] as &$item) {
       if (!empty($item['group_bio_top_wrapper'])) {
         unset($item['group_bio_top_wrapper']['group_bio_col']['group_bio_top_footer']['collapse_button']);

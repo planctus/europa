@@ -5,4 +5,4 @@
  * Contains the markup for the status label.
  */
 ?>
-<span class="<?php echo $role_class; ?>"><?php echo $role_text; ?></span>
+<span class="<?php print $role_class; ?>"><?php print $role_text; ?></span>
