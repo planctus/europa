@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event_default.features.field_instance.inc
@@ -4025,7 +4024,7 @@ http://ec.europa.eu/avservices/play.cfm?ref=I122468&videolang=INT&devurl=http://
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add the link where you must register in order to attend the event.');
+  t('Add the link where you must register in order to attend the event. Note: you can use mailto:example@mail.com to insert an e-mail.');
   t('Agenda');
   t('All places have been booked.');
   t('Aspect ratio 4:3 (w:h). Minimum width: 320 px.');

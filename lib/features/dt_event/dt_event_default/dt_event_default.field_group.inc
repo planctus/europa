@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event_default.field_group.inc
@@ -1797,6 +1796,7 @@ function dt_event_default_field_group_info() {
       1 => 'social_bookmark_webtools',
       2 => 'dt_event_stream_embed',
       3 => 'dt_event_stream_embed_intro',
+      4 => 'dt_event_livestream_header',
     ),
     'format_type' => 'div',
     'format_settings' => array(
