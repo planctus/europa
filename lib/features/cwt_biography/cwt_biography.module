@@ -83,18 +83,23 @@ function cwt_biography_node_view($node, $view_mode, $langcode) {
 function cwt_biography_field_group_pre_render(&$element, $group, &$form) {
   if ($node = menu_get_object('node')) {
     // Remove team if none set.
-    if ($node->type == 'biography' && empty($node->field_biography_team) && is_null($form['type']['#id'])) {
-      unset($element['field_editorial_section']);
-    }
-    if ($node->type == 'biography' && $role = field_get_items('node', $node, 'field_biography_role')) {
-      $role_term = taxonomy_term_load($role[0]['tid']);
-      // Checks if it's the biography page of the president.
-      $is_president = !$role_term ? FALSE : _commissioner_uuid_is('president', $role_term->uuid);
-      if ($is_president && $group->label == t('Responsibilities')) {
-        // Changes the title section "Responsibilities" by "Role" and also the
-        // section ID for the inpage_nav.
-        $group->label = t('Role');
-        $group->format_settings['instance_settings']['attributes'] = 'id="role"';
+    if ($node->type == 'biography') {
+      if (empty($node->field_biography_team)
+          && isset($form['type'])
+          && is_null($form['type']['#id'])) {
+        unset($element['field_editorial_section']);
+      }
+
+      if ($role = field_get_items('node', $node, 'field_biography_role')) {
+        $role_term = taxonomy_term_load($role[0]['tid']);
+        // Checks if it's the biography page of the president.
+        $is_president = !$role_term ? FALSE : _commissioner_uuid_is('president', $role_term->uuid);
+        if ($is_president && $group->label == t('Responsibilities')) {
+          // Changes the title section "Responsibilities" by "Role" and also the
+          // section ID for the inpage_nav.
+          $group->label = t('Role');
+          $group->format_settings['instance_settings']['attributes'] = 'id="role"';
+        }
       }
     }
   }

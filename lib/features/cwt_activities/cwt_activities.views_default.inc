@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_activities.views_default.inc
