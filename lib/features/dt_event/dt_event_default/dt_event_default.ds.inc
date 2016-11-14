@@ -117,16 +117,6 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_livestream';
   $ds_fieldsetting->settings = array(
-    'event_livestream_header' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
     'event_livestream_title' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -794,21 +784,19 @@ function dt_event_default_ds_layout_settings_info() {
       'central' => array(
         1 => 'dt_event_livestream_header',
         2 => 'dt_event_scribble_embed',
-        3 => 'event_livestream_header',
-        4 => 'group_section',
-        5 => 'dt_event_stream_embed_intro',
-        6 => 'dt_event_stream_embed',
-        7 => 'social_bookmark_webtools',
-        8 => 'group_row',
-        9 => 'group_video',
-        10 => 'group_chat',
+        3 => 'group_section',
+        4 => 'dt_event_stream_embed_intro',
+        5 => 'dt_event_stream_embed',
+        6 => 'social_bookmark_webtools',
+        7 => 'group_row',
+        8 => 'group_video',
+        9 => 'group_chat',
       ),
     ),
     'fields' => array(
       'event_livestream_title' => 'left_header',
       'dt_event_livestream_header' => 'central',
       'dt_event_scribble_embed' => 'central',
-      'event_livestream_header' => 'central',
       'group_section' => 'central',
       'dt_event_stream_embed_intro' => 'central',
       'dt_event_stream_embed' => 'central',
