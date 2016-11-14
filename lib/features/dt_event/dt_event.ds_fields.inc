@@ -790,8 +790,9 @@ function _dt_event_ds_fields_date_and_time($field) {
 /**
  * Helper function for DS, to show the event location.
  *
- * @param $field
- *    Field with entity.
+ * @param array $field
+ *    Hold the current context of the field.
+ *
  * @return string
  *    Return the markup.
  */
@@ -801,9 +802,8 @@ function _dt_event_ds_fields_livestream_header($field) {
   $markup = '';
 
   if ($location) {
-    $markup = t('<h2>Live from ' . $location['locality'] . '</h2>');
+    $markup = t('<h2>Live from @location</h2>', ['@location' => $location['locality']]);
   }
 
   return $markup;
 }
-
