@@ -181,9 +181,11 @@ function dt_core_pol_update_7109() {
 }
 
 /**
- * DTTSB-954: Update menu items.
+ * DTTSB-954: Update menu items (7110).
+ *
+ * Enable dt_list_view_content (7111) and homepage content type (7112).
  */
-function dt_core_pol_update_7110() {
+function dt_core_pol_update_7112() {
   // Collect all menu link items which assigned to 'dt_core_pol' module.
   $mlids = db_select('menu_links', 'ml')
     ->condition('module', 'dt_core_pol')
@@ -196,18 +198,6 @@ function dt_core_pol_update_7110() {
     $menu_link['module'] = 'menu';
     menu_link_save($menu_link);
   }
-}
-
-/**
- * Enable dt_list_view_content.
- */
-function dt_core_pol_update_7111() {
-  module_enable(['dt_list_view_content']);
-}
-
-/**
- * DTTSB-1202: Enable homepage content type.
- */
-function dt_core_pol_update_7112() {
-  module_enable(['dt_info_homepage']);
+  // Enable new modules.
+  module_enable(['dt_list_view_content', 'dt_info_homepage']);
 }
