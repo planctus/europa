@@ -210,7 +210,7 @@ function _dt_event_ds_fields_scribble_embed($field) {
   if ($entity->__isset('field_event_scribble_id') && $scribble_id = $entity->field_event_scribble_id->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
     $markup = [
-      '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '" allowfullscreen="allowfullscreen"></iframe>',
+      '#markup' => '<iframe width="100%" height="600" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '" allowfullscreen="allowfullscreen"></iframe>',
     ];
 
     if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
@@ -238,7 +238,7 @@ function _dt_event_ds_fields_stream_embed($field) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
     if (isset($stream_url['url'])) {
       $markup = [
-        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '" allowfullscreen="allowfullscreen"></iframe>',
+        '#markup' => '<iframe width="100%" height="315" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '" allowfullscreen="allowfullscreen"></iframe>',
       ];
 
       return drupal_render($markup);
