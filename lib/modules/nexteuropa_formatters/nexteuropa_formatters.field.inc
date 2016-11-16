@@ -66,6 +66,12 @@ function nexteuropa_formatters_field_formatter_info() {
         'force_language_default' => 0,
       ),
     ),
+    'link_button_download' => array(
+      'label' => t('Download button'),
+      'field types' => array(
+        'link_field',
+      ),
+    ),
     'link_button_primary' => array(
       'label' => t('Link button primary'),
       'field types' => array(
@@ -489,6 +495,38 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           $element[$delta] = array(
             '#markup' => '<h3 class="' . $class . '">' . $item['safe_value'] . '</h3>',
           );
+        }
+        break;
+
+      case 'feedback_counter':
+        $class = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+        foreach ($items as $delta => $item) {
+          if ($item['value'] > 0) {
+            $element[$delta] = [
+              '#markup' => '<span class="icon ' . $class . '">' . t('Feedback (%value)', ['%value' => $item['value']]) . '</span>',
+            ];
+          }
+        }
+        break;
+
+      case 'link_button_download':
+        foreach ($items as $delta => $item) {
+
+          // Emulate the file array.
+          $file = new stdClass();
+          $file->type = 'document';
+          $file->uri = $item['url'];
+          $file->filename = $item['title'];
+          $file->entity = $entity;
+
+          $url = [];
+          $url['path'] = $item['url'];
+          $url['options'] = [];
+
+          // @todo: refactor this https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1284.
+          $element[$delta] = [
+            '#markup' => _europa_file_markup($file, $url, NULL, FALSE, TRUE),
+          ];
         }
         break;
 
