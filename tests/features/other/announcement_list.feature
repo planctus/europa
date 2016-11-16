@@ -9,6 +9,7 @@ Feature: As an administrator
       | Label                                 | Announcements                                               |
       | Description                           | Descripition Highlights, press releases and speeches        |
       | Introduction                          | <p>Introduction Highlights, press releases and speeches</p> |
+      | List view content                     | <p>List view content</p>                                    |
       | View                                  | announcements.page_1                                        |
       | Link block title                      | Other news sources                                          |
       | edit-field-list-view-links-en-0-title | Title 1                                                     |
@@ -18,4 +19,5 @@ Feature: As an administrator
     Then I should see "Other news sources" in the ".link-block" element
     And I should see "Title 1" in the ".link-block .link-block__links" element
     And I should see "Introduction Highlights, press releases and speeches" in the ".page-header" element
+    And I should see "List view content" in the "#block-system-main .block__content .view p" element
     And the metatag attribute "description" should have the value "Descripition Highlights, press releases and speeches"

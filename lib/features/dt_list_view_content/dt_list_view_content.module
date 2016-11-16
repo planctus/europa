@@ -101,7 +101,7 @@ function dt_list_view_content_preprocess_views_view(&$variables) {
   if ($views_content = _dt_list_view_get_bean_content($variables['view'])) {
     if (isset($views_content['content']['value'])) {
       // Set the content if available.
-      $variables['title_prefix'] = filter_xss($views_content['content']['value']);
+      $variables['title_prefix'] = filter_xss_admin($views_content['content']['value']);
     }
   }
 }
