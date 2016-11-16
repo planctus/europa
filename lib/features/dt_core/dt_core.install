@@ -1023,3 +1023,10 @@ function dt_core_update_7175(&$sandbox) {
   // Update field.
   _dt_core_enable_entity_translation('field_core_quick_nav_links', $sandbox);
 }
+
+/**
+ * DTTSB-1235: Enabling Localization update module.
+ */
+function dt_core_update_7176() {
+  module_enable(['l10n_update']);
+}
