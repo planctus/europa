@@ -7,11 +7,7 @@ namespace Drupal\nexteuropa_eurovoc;
  */
 class EuroVoc extends EuroVocBase {
 
-  /**
-   * List of file names which contain concept relationships.
-   *
-   * @var array
-   */
+  // List of file names which contain concept relationships.
   private $relationships = [
     'descriptors-thesauri' => 'desc_thes',
     'broader-terms' => 'relation_bt',
@@ -19,11 +15,7 @@ class EuroVoc extends EuroVocBase {
     'related' => 'relation_rt',
   ];
 
-  /**
-   * That will contain the $relationships with their full data.
-   *
-   * @var array
-   */
+  // That will contain the $relationships with their full data.
   private $relationshipsTable = [];
 
   /**

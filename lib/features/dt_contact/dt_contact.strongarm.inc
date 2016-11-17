@@ -118,6 +118,9 @@ function dt_contact_strongarm() {
       'name' => array(
         'custom_settings' => FALSE,
       ),
+      'job' => array(
+        'custom_settings' => TRUE,
+      ),
       'event_collection' => array(
         'custom_settings' => FALSE,
       ),
@@ -131,6 +134,9 @@ function dt_contact_strongarm() {
         'custom_settings' => FALSE,
       ),
       'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
         'custom_settings' => FALSE,
       ),
     ),

@@ -11,15 +11,15 @@ include_once 'dt_editorial.features.inc';
  * Implements hook_views_data_alter().
  */
 function dt_editorial_views_data_alter(&$data) {
-  $data['node']['revision_current_user'] = array(
+  $data['node']['revision_current_user'] = [
     'title' => t('Current user has a revision: boolean'),
     'help' => t('All nodes where the currently authenticated user has a revision'),
     'group' => t('DT Editorial'),
     'real field' => 'nid',
-    'filter' => array(
+    'filter' => [
       'handler' => 'dt_editorial_handler_filter_revision_current_user',
-    ),
-  );
+    ],
+  ];
 }
 
 // @codingStandardsIgnoreStart
@@ -176,7 +176,7 @@ function _dt_editorial_user_is_member($user, $roles = []) {
  * @param string $role_name
  *   Search query string.
  *
- * @return mixed
+ * @return mixed $result
  *   The list of OG roles with all db fields.
  */
 function _dt_editorial_get_og_roles($role_name = NULL) {
@@ -195,7 +195,7 @@ function _dt_editorial_get_og_roles($role_name = NULL) {
  * @param null|object $account
  *   The user account object, current global user will be used if not specified.
  *
- * @return array
+ * @return array $result
  *   List of groups' information about the given user account.
  */
 function _dt_editorial_get_user_og_roles($account = NULL) {
@@ -559,13 +559,13 @@ function dt_editorial_dt_node_settings_config_fields($form) {
  */
 function dt_editorial_workbench_content_alter(&$output) {
   if (!empty($output)) {
-    $output['workbench_current_user'] = array(
+    $output['workbench_current_user'] = [
       '#title' => t('My Profile'),
       '#view' => 'current_user_with_editorial_groups',
       '#view_display' => 'block_editorial_roles',
-      '#attributes' => array('class' => array('left', 'clearfix')),
+      '#attributes' => ['class' => ['left', 'clearfix']],
       '#theme' => 'workbench_element',
-    );
+    ];
   }
 }
 
@@ -603,12 +603,12 @@ function dt_editorial_preprocess_views_view(&$variables) {
  * Implements hook_theme().
  */
 function dt_editorial_theme($existing, $type, $theme, $path) {
-  return array(
-    'dt_editorial_views_view' => array(
+  return [
+    'dt_editorial_views_view' => [
       'path' => drupal_get_path('module', 'dt_editorial') . '/templates',
       'template' => 'dt-editorial--views-view',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -636,7 +636,7 @@ function dt_editorial_url_outbound_alter(&$path, &$options, $original_path) {
     if (!isset($page_node)) {
       $page_node = menu_get_object();
       $needle = '/draft';
-      $page_node_viewing_draft = (drupal_substr(current_path(), -strlen($needle)) === $needle);
+      $page_node_viewing_draft = (drupal_substr(current_path(), -drupal_strlen($needle)) === $needle);
     }
     if (!empty($page_node) && isset($page_node->nid)
       && $page_node->nid !== $options['entity']->nid

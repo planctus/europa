@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_featured_item.field_group.inc
@@ -263,7 +262,7 @@ function dt_featured_item_field_group_info() {
     'format_settings' => array(
       'label' => 'Featured item wrapper',
       'instance_settings' => array(
-        'classes' => 'featured-item',
+        'classes' => 'featured-item featured-item__extended',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
@@ -293,7 +292,7 @@ function dt_featured_item_field_group_info() {
     'format_settings' => array(
       'label' => 'Featured item wrapper',
       'instance_settings' => array(
-        'classes' => 'featured-item',
+        'classes' => 'featured-item featured-item__extended',
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',

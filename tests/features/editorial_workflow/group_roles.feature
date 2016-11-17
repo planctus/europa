@@ -1,4 +1,4 @@
-@api @information
+@api @information @political
 Feature: In order to make roles and permissions management easy
   As an administrator user
   I want to have the same roles and permissions in each Editorial team

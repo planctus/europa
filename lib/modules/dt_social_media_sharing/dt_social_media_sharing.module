@@ -33,7 +33,8 @@ function dt_social_media_sharing_preprocess_page(&$variables) {
  */
 function dt_social_media_sharing_block_info() {
   $blocks = [];
-  $blocks['social_media_sharing']['info'] = t('Social Media Sharing');
+  $blocks['social_media_sharing']['info'] = t('Social Media Sharing (horizontal)');
+  $blocks['social_media_sharing_vertical']['info'] = t('Social Media Sharing (vertical)');
   return $blocks;
 }
 
@@ -62,19 +63,6 @@ function dt_social_media_sharing_block_configure($delta = '') {
         '#required' => TRUE,
         '#weight' => 1,
       ];
-
-      $form['dt_social_media_sharing_block_type'] = [
-        '#type' => 'select',
-        '#title' => t('Select which type of block do you need'),
-        '#options' => [
-          'vertical' => t('vertical'),
-          'horizontal' => t('horizontal'),
-        ],
-        '#default_value' => variable_get('dt_social_media_sharing_block_type', FALSE),
-        '#required' => FALSE,
-        '#weight' => 2,
-      ];
-
       break;
   }
 
@@ -91,7 +79,6 @@ function dt_social_media_sharing_block_save($delta = '', $edit = []) {
         variable_set('dt_social_media_sharing_json_code', $edit['dt_social_media_sharing_json_code']);
       }
       variable_set('dt_social_media_sharing_js_url', $edit['dt_social_media_sharing_js_url']);
-      variable_set('dt_social_media_sharing_block_type', $edit['dt_social_media_sharing_block_type']);
       break;
   }
 }
@@ -101,12 +88,13 @@ function dt_social_media_sharing_block_save($delta = '', $edit = []) {
  */
 function dt_social_media_sharing_block_view($delta = '') {
   $block = [];
-  switch ($delta) {
-    case 'social_media_sharing':
-      drupal_add_js(variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js'), 'external');
-      $block['content'] = _dt_social_media_sharing_view_helper();
-      break;
+
+  if (in_array($delta, ['social_media_sharing', 'social_media_sharing_vertical'])) {
+    drupal_add_js(variable_get('dt_social_media_sharing_js_url', '//europa.eu/webtools/load.js'), 'external');
+    $class = ($delta == 'social_media_sharing') ? 'horizontal' : 'vertical';
+    $block['content'] = '<div class="social-media-links--webtool-' . $class . '">' . _dt_social_media_sharing_view_helper() . '</div>';
   }
+
   return $block;
 }
 
@@ -114,12 +102,8 @@ function dt_social_media_sharing_block_view($delta = '') {
  * Generate the content of the social media sharing block.
  */
 function _dt_social_media_sharing_view_helper() {
-  $type = variable_get('dt_social_media_sharing_block_type');
-  $modifier = $type ? ' social-media-links--webtool-' . $type : FALSE;
-  $text = '<div class="social-media-links' . $modifier . '">';
-  $text .= '<span class="social-media-links__label">' . t('Share this page') . ':</span>';
+  $text = '<span class="social-media-links__label">' . t('Share this page') . ':</span>';
   $text .= variable_get('dt_social_media_sharing_json_code', _dt_social_media_sharing_default_json());
-  $text .= '</div>';
 
   return $text;
 }
@@ -147,7 +131,7 @@ function _dt_social_media_sharing_default_json() {
     ],
     "stats": true,
     "css": {
-      "list": "wtShareList social-media-links"
+      "list": "wtShareList"
     }
   }
 </script>';
@@ -164,10 +148,23 @@ function dt_social_media_sharing_ds_fields_info($entity_type) {
   $ds_fields = [];
 
   $ds_fields['social_bookmark_webtools'] = [
-    'title' => t('Social Bookmark Webtools'),
+    'title' => t('Social Bookmark Webtools (horizontal)'),
     'field_type' => DS_FIELD_TYPE_BLOCK,
     'properties' => [
       'block' => 'dt_social_media_sharing|social_media_sharing',
+      'block_render' => '1',
+    ],
+    'ui_limit' => '',
+    'entities' => [
+      'node' => 'node',
+    ],
+  ];
+
+  $ds_fields['social_bookmark_webtools_vertical'] = [
+    'title' => t('Social Bookmark Webtools (vertical)'),
+    'field_type' => DS_FIELD_TYPE_BLOCK,
+    'properties' => [
+      'block' => 'dt_social_media_sharing_vertical|social_media_sharing_vertical',
       'block_render' => '1',
     ],
     'ui_limit' => '',

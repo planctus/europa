@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_info_homepage.features.field_base.inc
@@ -27,7 +26,7 @@ function dt_info_homepage_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'titleoverwrite_field_behavior' => array(
@@ -67,10 +66,52 @@ function dt_info_homepage_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'titleoverwrite_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'featured_item' => 'featured_item',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_info_homepage_hero_links'.
+  $field_bases['field_info_homepage_hero_links'] = array(
+    'active' => 1,
+    'cardinality' => 2,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_info_homepage_hero_links',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'remoteoverride_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
             'status' => 0,
           ),
           'views-select-list' => array(
@@ -157,7 +198,7 @@ function dt_info_homepage_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'titleoverwrite_field_behavior' => array(

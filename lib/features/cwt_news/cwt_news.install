@@ -10,8 +10,8 @@
  */
 function cwt_news_update_7101() {
   $role = user_role_load_by_name('administrator');
-  $permissions = array(
+  $permissions = [
     'edit links on aggregated news items',
-  );
+  ];
   user_role_grant_permissions($role->rid, $permissions);
 }

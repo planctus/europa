@@ -1,0 +1,953 @@
+{
+  "_embedded": {
+    "feedbackV1": [
+      {
+        "createdDate": "2016\/06\/20 10:12:45",
+        "modifiedDate": "2016\/06\/20 10:12:45",
+        "id": 3,
+        "feedback": "People travel to wonder at the height of mountains, at the huge waves of the sea, at the long courses of rivers, at the vast compass of the ocean, at the circular motion of the stars; and they pass by this initiative without wondering. How can this be?",
+        "dateFeedback": "2016\/06\/20 10:12:45",
+        "language": "EN",
+        "userType": "ACADEMIC_RESEARCH_INSTITTUTION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "POL",
+        "organization": "Polska Izba Ksi\u0105\u017cki",
+        "tr_number": "376799322401-53",
+        "companySize": "LARGE",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172745",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/3"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/3{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/3\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/3\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 10:13:47",
+        "modifiedDate": "2016\/06\/20 12:57:30",
+        "id": 4,
+        "feedback": "Your attitude, not your aptitude, will determine your altitude.",
+        "dateFeedback": "2016\/06\/20 10:13:47",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "COD",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "REJECTED",
+        "reviewed": true,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172745",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/21 15:16:58",
+        "modifiedDate": "2016\/06\/21 15:17:12",
+        "id": 16,
+        "feedback": "Mais c\u0027est formidable celui ci!",
+        "dateFeedback": "2016\/06\/21 15:16:58",
+        "language": "FR",
+        "userType": "EU_CITIZEN",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "FRA",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": "But it is great!\n",
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172844",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/16"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/16{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/16\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/16\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/07\/08 17:26:29",
+        "modifiedDate": "2016\/07\/08 17:26:29",
+        "id": 33,
+        "feedback": "ChemSec comments on the draft criteria for identifying Endocrine Disrupting Chemicals\r\n\r\nIn short:\r\n\u2022ChemSec welcomes that the Commission is basing the suggested criteria on the definition from WHO\/IPCS (2002)\r\n\u2022ChemSec also welcomes that the Commission has acknowledged the scientific consensus, thereby having suggested criteria for identification of EDCs without potency thresholds.\r\nHOWEVER\r\n\u2022ChemSec is deeply concerned about the deviations from the WHO\/IPCS definition and from the original legal text. The deviations may be minor in wording, but very significant in meaning. Therefore, if the suggested criteria are not amended, they will fail their purpose of protecting human health and the environment. Why this is so, is detailed below:\r\n\r\nMain issues of concern:\r\n\r\n1. The suggested criteria are too narrow to be protective and are also inconsistent with identification of CMR substances.\r\nIn the roadmap option 2, a substance is identified as an EDC when there is a strong \u0022presumption\u0022 that a substance is able to cause endocrine-mediated adverse effects. In the Commission draft proposal, it needs instead to be \u0022known\u0022 that a substance causes an endocrine-mediated adverse effect. Thus the burden of proof has been significantly raised. This change is further problematic as it is not coherent with the way CMR substances are identified and regulated. While CMRs both of category 1A (known) and category 1B (presumed) are targeted by legal follow-up actions, EDCs will only have a category corresponding to 1A, which cannot be justified neither scientifically nor politically. ChemSec believes that including more categories, based on level of evidence, is not only consistent with other EU regulation, but it would also help increase transparency and predictability.\r\n\r\n2. The draft proposal favours standardised studies over peer-reviewed independent academic studies for the identification of EDCs.\r\nAlthough we welcome that the proposal clearly states that evidence should not be limited to standardised studies, the proposal clearly makes a distinction between these and \u0022other scientific information\u0022 in favour of standard studies. This is especially clear as it says that all other scientific information should be assessed using systematic review, while the standard studies must not be part of such a review. Naturally all scientific evidence, standard studies or not, should be part of the assessment, using a weight-of-evidence approach. In a field where it is well acknowledged that there are not yet good enough standard studies available to study endocrine disrupting effects, it is particularly strange to favour such studies over peer-reviewed, officially available scientific forefront studies.\r\n\r\nFor the suggested criteria for the Plant Protection Products regulation:\r\n\r\n3. The Commission has exceeded its mandate by suggesting additional changes in the legal text, outside of the criteria part. The suggested changes even further restrict the possibilities of regulating relevant substances with endocrine disrupting properties.\r\nThe suggested changes in wordings will reduce the number of EDCs in the end being regulated if implemented. The most important one is the change from negligible exposure to negligible risk, which alters the balance between hazard and risk as base for regulation. To make these changes is not within the mandate of the Commission and clearly these changes should therefore not be accepted.\r\n\r\nWe urge for the EU institutions not to accept the current proposed criteria without having the points above addressed, as these criteria will not function to protect human health and the environment. The suggested criteria are also problematic for progressive companies who are already actively working to protect their consumers from EDCs, and who would benefit from clear, broad and inclusive\u003C- text end here. This is more text added to the limit of the feedback to see if 4000 character is possible. ",
+        "dateFeedback": "2016\/07\/08 17:26:29",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "Tom",
+        "surname": "CLEYMANS",
+        "email": "",
+        "country": "ALB",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)179856",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko\/20100101 Firefox\/47.0",
+        "login": "cleymto",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/33"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/33{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/33\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/33\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 13:08:55",
+        "modifiedDate": "2016\/06\/20 13:09:05",
+        "id": 6,
+        "feedback": "Er zijn geen files op de extra mijl.",
+        "dateFeedback": "2016\/06\/20 13:08:55",
+        "language": "NL",
+        "userType": "BUSINESS_ASSOCIATION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "ITA",
+        "organization": "ITALIA BRAND GROUP",
+        "tr_number": "570855922405-12",
+        "companySize": "SMALL",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": "There are no congestion problems on the additional miles.\n",
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176004",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/6"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/6{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/6\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/6\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 13:14:12",
+        "modifiedDate": "2016\/06\/21 15:40:58",
+        "id": 7,
+        "feedback": "Mais oui c\u0027est bon!",
+        "dateFeedback": "2016\/06\/20 13:14:12",
+        "language": "FR",
+        "userType": "EU_CITIZEN",
+        "firstName": "",
+        "surname": "",
+        "email": "",
+        "country": "FRA",
+        "organization": "",
+        "tr_number": "",
+        "companySize": null,
+        "scope": null,
+        "publication": "ANONYMOUS",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": true,
+        "reportsNumber": 1,
+        "englishfeedback": "But it is good!\n",
+        "firstReportDate": "2016\/06\/21 15:40:58",
+        "referenceInitiative": "Ares(2016)176015",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 58,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/7"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/7{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/7\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/7\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 15:10:59",
+        "modifiedDate": "2016\/06\/20 15:11:19",
+        "id": 13,
+        "feedback": "My feedback field is required.",
+        "dateFeedback": "2016\/06\/20 15:10:59",
+        "language": "BG",
+        "userType": "NON_EU_CITIZEN",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "AFG",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": "My feedback field is required.\n",
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172404",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/13"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/13{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/13\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/13\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 15:11:49",
+        "modifiedDate": "2016\/06\/20 15:12:01",
+        "id": 14,
+        "feedback": "My feedback field is required. Again.",
+        "dateFeedback": "2016\/06\/20 15:11:49",
+        "language": "PL",
+        "userType": "EU_CITIZEN",
+        "firstName": "",
+        "surname": "",
+        "email": "",
+        "country": "ALB",
+        "organization": "",
+        "tr_number": "",
+        "companySize": null,
+        "scope": null,
+        "publication": "ANONYMOUS",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": "We feedback field is required.  Again\u2019.\n",
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172404",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/14"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/14{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/14\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/14\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/23 09:42:26",
+        "modifiedDate": "2016\/06\/23 09:42:26",
+        "id": 20,
+        "feedback": "Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.\r\n\r\nDonec sodales sagittis magna. Integer tincidunt.",
+        "dateFeedback": "2016\/06\/23 09:42:26",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "John",
+        "surname": "Doe",
+        "email": "",
+        "country": "BRA",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176015",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.84 Safari\/537.36",
+        "login": "admin",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/20"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/20{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/20\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/20\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/27 10:28:52",
+        "modifiedDate": "2016\/06\/27 10:28:52",
+        "id": 24,
+        "feedback": "Men go abroad to wonder at the heights of mountains, at the huge waves of the sea, at the long courses of the rivers, at the vast compass of the ocean, at the circular motions of the stars, and they pass by this initiative without wondering.",
+        "dateFeedback": "2016\/06\/27 10:28:52",
+        "language": "EN",
+        "userType": "BUSINESS_ASSOCIATION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "BEL",
+        "organization": "Acxiom Deutschland GmbH",
+        "tr_number": "108992722468-55",
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)178392",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/24"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/24{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/24\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/24\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/27 10:45:21",
+        "modifiedDate": "2016\/07\/01 15:20:41",
+        "id": 25,
+        "feedback": "Formidable, formidable\r\nCette initiative est formidable, j\u0027\u00e9tais fort minable\r\nNous \u00e9tions formidables\r\nFormidable\r\nCette initiative est formidable, j\u0027\u00e9tais fort minable\r\nNous \u00e9tions formidables",
+        "dateFeedback": "2016\/06\/27 10:45:21",
+        "language": "FR",
+        "userType": "BUSINESS_ASSOCIATION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "MYS",
+        "organization": "PERSATUAN PAKATAN BERINTEGRITI SABAH",
+        "tr_number": "359281722465-77",
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": true,
+        "reportsNumber": 5,
+        "englishfeedback": "Great, fantastic\nThis initiative is very great, I was woefully inadequate\nWe were huge\nExcellent\nThis initiative is very great, I was woefully inadequate\nWe were huge\n",
+        "firstReportDate": "2016\/06\/27 10:46:34",
+        "referenceInitiative": "Ares(2016)178392",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 52,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/25"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/25{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/25\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/25\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/27 15:27:30",
+        "modifiedDate": "2016\/06\/27 15:27:30",
+        "id": 27,
+        "feedback": "asdfasdfa",
+        "dateFeedback": "2016\/06\/27 15:27:30",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "John",
+        "surname": "Deo",
+        "email": "",
+        "country": "DZA",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)177809",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.103 Safari\/537.36",
+        "login": "admin",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/27"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/27{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/27\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/27\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 18:11:51",
+        "modifiedDate": "2016\/06\/17 18:11:51",
+        "id": 1,
+        "feedback": "I think this initiative is very good for testing a feedback. ",
+        "dateFeedback": "2016\/06\/17 18:11:51",
+        "language": "EN",
+        "userType": "NGO",
+        "firstName": "John",
+        "surname": "Doe",
+        "email": "",
+        "country": "AUT",
+        "organization": "Animal NGO",
+        "tr_number": "197830122389-52",
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)171996",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko\/20100101 Firefox\/45.0",
+        "login": "admin",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/1"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/1{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/1\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/1\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 10:05:34",
+        "modifiedDate": "2016\/06\/20 10:05:34",
+        "id": 2,
+        "feedback": "Men go abroad to wonder at the heights of mountains, at the huge waves of the sea, at the long courses of the rivers, at the vast compass of the ocean, at the circular motions of the stars, and they pass by this initiative without wondering.",
+        "dateFeedback": "2016\/06\/20 10:05:34",
+        "language": "EN",
+        "userType": "CONSUMER_ORGANISATION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "FJI",
+        "organization": "Association of McKenzie Friends",
+        "tr_number": "738315922400-50",
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172464",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/2"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/2{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/2\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/2\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/21 15:43:56",
+        "modifiedDate": "2016\/06\/21 15:43:56",
+        "id": 17,
+        "feedback": "In ac felis quis tortor malesuada pretium. Fusce egestas elit eget lorem. Praesent venenatis metus at tortor pulvinar varius.\r\n\r\nIn hac habitasse platea dictumst. Duis leo. Fusce commodo aliquam arcu.\r\n\r\nPellentesque ut neque. Cras id dui. Fusce vulputate eleifend sapien.\r\n\r\nPraesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem ut ipsum. Proin viverra, ligula sit amet ultrices semper, ligula arcu tristique sapien, a accumsan nisi mauris ac eros. Nam pretium turpis et arcu.",
+        "dateFeedback": "2016\/06\/21 15:43:56",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "",
+        "surname": "",
+        "email": "",
+        "country": "BEL",
+        "organization": "",
+        "tr_number": "",
+        "companySize": null,
+        "scope": null,
+        "publication": "ANONYMOUS",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176015",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.84 Safari\/537.36",
+        "login": "admin",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/17"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/17{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/17\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/17\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/21 16:50:18",
+        "modifiedDate": "2016\/06\/21 16:50:18",
+        "id": 18,
+        "feedback": "test",
+        "dateFeedback": "2016\/06\/21 16:50:18",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "John",
+        "surname": "Doe",
+        "email": "",
+        "country": "AUT",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176533",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.103 Safari\/537.36",
+        "login": "user_contributor",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/27 15:29:01",
+        "modifiedDate": "2016\/06\/27 15:29:01",
+        "id": 28,
+        "feedback": "sadfasdfa",
+        "dateFeedback": "2016\/06\/27 15:29:01",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "John",
+        "surname": "Deo",
+        "email": "",
+        "country": "AFG",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)172844",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.103 Safari\/537.36",
+        "login": "admin",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/28"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/28{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/28\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/28\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/28 15:15:25",
+        "modifiedDate": "2016\/07\/01 11:29:31",
+        "id": 29,
+        "feedback": "TEST",
+        "dateFeedback": "2016\/06\/28 15:15:25",
+        "language": "EN",
+        "userType": "EU_CITIZEN",
+        "firstName": "John",
+        "surname": "Smith",
+        "email": "",
+        "country": "AGO",
+        "organization": null,
+        "tr_number": null,
+        "companySize": null,
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": true,
+        "reportsNumber": 1,
+        "englishfeedback": null,
+        "firstReportDate": "2016\/07\/01 11:29:31",
+        "referenceInitiative": "Ares(2016)178392",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko\/20100101 Firefox\/45.0",
+        "login": "user_administrator",
+        "daysElapsedSinceFirstReport": 48,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/29"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/29{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/29\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/29\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 14:05:41",
+        "modifiedDate": "2016\/06\/20 14:05:41",
+        "id": 10,
+        "feedback": "Wooohooooooooooooooooooooo",
+        "dateFeedback": "2016\/06\/20 14:05:41",
+        "language": "EN",
+        "userType": "BUSINESS_ASSOCIATION",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "ITA",
+        "organization": "ITALIA BRAND GROUP",
+        "tr_number": null,
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176015",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/10"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/10{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/10\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/10\/reports"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 14:06:42",
+        "modifiedDate": "2016\/06\/20 14:06:42",
+        "id": 11,
+        "feedback": "Boohooooooooooooooo",
+        "dateFeedback": "2016\/06\/20 14:06:42",
+        "language": "EN",
+        "userType": "COMPANY",
+        "firstName": "Hugh",
+        "surname": "PRIOR",
+        "email": "",
+        "country": "DEU",
+        "organization": "DDV Deutscher Dialogmarketing Verband e.V.",
+        "tr_number": null,
+        "companySize": "MICRO",
+        "scope": null,
+        "publication": "WITHINFO",
+        "status": "PUBLISHED",
+        "reviewed": false,
+        "hasToBeReviewed": false,
+        "reportsNumber": 0,
+        "englishfeedback": null,
+        "firstReportDate": null,
+        "referenceInitiative": "Ares(2016)176015",
+        "statusChanged": false,
+        "historyEventOccurs": false,
+        "historyType": null,
+        "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+        "login": "npriohug",
+        "daysElapsedSinceFirstReport": 0,
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/11"
+          },
+          "feedbackV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/11{?projection}",
+            "templated": true
+          },
+          "initiative": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/11\/initiative"
+          },
+          "reports": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/11\/reports"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "first": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1?page=0\u0026size=20"
+    },
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1"
+    },
+    "next": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1?page=1\u0026size=20"
+    },
+    "last": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1?page=4\u0026size=20"
+    },
+    "profile": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/profile\/feedbackV1"
+    },
+    "search": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 82,
+    "totalPages": 5,
+    "number": 0
+  },
+  "code": "200"
+}

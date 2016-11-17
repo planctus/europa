@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>PRD</title>
+        <link>http://europa.eu/rapid/search-result.htm?format=RSS</link>
+        <description>PRD test RSS</description>
+        <language>EN</language>
+        <copyright>Copyright Test PRD</copyright>
+        <item>
+            <title>Press release of Priority</title>
+            <link>http://test.prd/press-release_IP-333333_en.htm</link>
+            <description>Press release of Priority</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_IP-333333_en.htm</guid>
+        </item>
+    </channel>
+</rss>
+

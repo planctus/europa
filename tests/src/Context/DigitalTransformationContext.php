@@ -17,7 +17,6 @@ class DigitalTransformationContext extends RawDrupalContext {
    * List of languages.
    *
    * @var array
-   *   List of available languages.
    */
   private $languageList;
 
@@ -95,8 +94,7 @@ class DigitalTransformationContext extends RawDrupalContext {
     }
 
     // Redirect the user to the new language page.
-    $this->visitPath($this->currentNode()
-      ->getNodePath() . '_' . $language_code);
+    $this->visitPath($this->currentNode()->getNodePath() . '_' . $language_code);
   }
 
   /**
@@ -182,18 +180,20 @@ class DigitalTransformationContext extends RawDrupalContext {
   /**
    * Check select box value.
    *
-   * @Then the selects :selector should be set to :value
+   * @Then the select(s) :selector should be set to :value
    */
   public function theSelectsShouldBeSetTo($selector, $value) {
-    $selects = $this->getSession()->getPage()->findAll('css', $selector);
-    if ($selects === NULL) {
-      throw new ExpectationException('Could not find select element matching the selector: ' . $selector, $this->getSession());
-    }
-    foreach ($selects as $select) {
-      if ($select->getValue() !== $value) {
-        throw new ExpectationException('Select with the id ' . $select->getAttribute('id') . ' is not set to ' . $value . ' and it should be', $this->getSession());
-      }
-    }
+    $this->assertSession()->elementAttributeContains('css', $selector . ' option[selected="selected"]', 'value', $value);
+  }
+
+  /**
+   * Check select box value.
+   *
+   * @Then the selects :selector should not be set to :value
+   */
+  public function theSelectsShouldNotBeSetTo($selector, $value) {
+    $this->assertSession()
+      ->elementAttributeNotContains('css', $selector . ' option[selected="selected"]', 'value', $value);
   }
 
   /**
@@ -568,7 +568,7 @@ class DigitalTransformationContext extends RawDrupalContext {
       $node->type = $type;
       for ($i = 0; $i < $quantity; $i++) {
         $new_node = clone($node);
-        $new_node->title  = $new_node->title . " $i";
+        $new_node->title = $new_node->title . " $i";
         $this->nodeCreate($new_node);
       }
     }
@@ -651,6 +651,65 @@ class DigitalTransformationContext extends RawDrupalContext {
     if (!is_object($element) || $expected_value !== $element->getAttribute('value')) {
       throw new ExpectationException(sprintf('The ' . $input_name . ' input does not contain %s', $expected_value), $this->getSession());
     }
+  }
+
+  /**
+   * Selects an element from a autocomplete field.
+   *
+   * @When /^I select the first autocomplete option for "([^"]*)" on the "([^"]*)" field$/
+   */
+  public function iSelectFirstAutocomplete($prefix, $identifier) {
+    $session = $this->getSession();
+    $page = $session->getPage();
+    $element = $page->findField($identifier);
+    if (empty($element)) {
+      throw new \Exception(sprintf('We couldn\'t find "%s" on the page', $identifier));
+    }
+    $page->fillField($identifier, $prefix);
+
+    $xpath = $element->getXpath();
+    $driver = $session->getDriver();
+
+    // Autocomplete.js uses key down/up events directly.
+    // Press the backspace key.
+    $driver->keyDown($xpath, 8);
+    $driver->keyUp($xpath, 8);
+
+    // Retype the last character.
+    $chars = str_split($prefix);
+    $last_char = array_pop($chars);
+    $driver->keyDown($xpath, $last_char);
+    $driver->keyUp($xpath, $last_char);
+
+    // Wait for AJAX to finish.
+    $this->getSession()->wait(5000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+
+    // And make sure the autocomplete is showing.
+    $this->getSession()->wait(5000, 'jQuery("#autocomplete").show().length > 0');
+
+    // And wait for 1 second just to be sure.
+    sleep(1);
+
+    // Press the down arrow to select the first option.
+    $driver->keyDown($xpath, 40);
+    $driver->keyUp($xpath, 40);
+
+    // Press the Enter key to confirm selection, copying the value into the
+    // field.
+    $driver->keyDown($xpath, 13);
+    $driver->keyUp($xpath, 13);
+
+    // Wait for AJAX to finish.
+    $this->getSession()->wait(5000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+  }
+
+  /**
+   * Sets a variable to a value.
+   *
+   * @Given I set the variable :variable to :value
+   */
+  public function iSetTheVariableTo($variable, $value) {
+    variable_set($variable, $value);
   }
 
 }

@@ -11,24 +11,24 @@ include_once 'cwt_translation.features.inc';
  * Implements hook_tmgmt_file_format_plugin_info().
  */
 function cwt_translation_tmgmt_file_format_plugin_info() {
-  return array(
-    'xml' => array(
+  return [
+    'xml' => [
       'label' => t('DGT supported XML'),
       'plugin controller class' => 'TMGMTFileFormatDGT',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
  * Implements hook_theme().
  */
 function cwt_translation_theme() {
-  return array(
-    'cwt_translation_dgt_template' => array(
+  return [
+    'cwt_translation_dgt_template' => [
       'path' => drupal_get_path('module', 'cwt_translation') . '/templates',
       'template' => 'cwt_translation_dgt_template',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -127,7 +127,7 @@ function cwt_translation_get_related_jobs($job_id) {
   // GROUP BY tjid;
   // @endcode
   $query = db_select('tmgmt_job_item', 'tji')
-    ->fields('tji', array('tjid'))
+    ->fields('tji', ['tjid'])
     ->groupBy('tji.tjid');
 
   $or = db_or();
@@ -157,7 +157,7 @@ function cwt_translation_get_related_jobs($job_id) {
  */
 function cwt_translation_get_job_item_ids($job_id) {
   return db_select('tmgmt_job_item', 'tji')
-    ->fields('tji', array('tjiid'))
+    ->fields('tji', ['tjiid'])
     ->condition('tji.tjid', $job_id)
     ->execute()
     ->fetchCol();

@@ -247,6 +247,63 @@ function dt_topic_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-topic-field_core_latest_visibility'.
+  $field_instances['node-topic-field_core_latest_visibility'] = array(
+    'bundle' => 'topic',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 47,
+    ),
+  );
+
   // Exported field_instance: 'node-topic-field_core_legacy_link'.
   $field_instances['node-topic-field_core_legacy_link'] = array(
     'bundle' => 'topic',
@@ -1229,7 +1286,7 @@ function dt_topic_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => 49,
     ),
     'widget_type' => 'options_select',
   );
@@ -1307,7 +1364,7 @@ function dt_topic_field_default_field_instances() {
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => -4,
+      'weight' => 48,
     ),
   );
 
@@ -1426,6 +1483,7 @@ function dt_topic_field_default_field_instances() {
   t('Groups audience');
   t('Introduction');
   t('Legacy link');
+  t('Latest visibility');
   t('Link');
   t('More Link');
   t('Objectives');
@@ -1438,6 +1496,7 @@ function dt_topic_field_default_field_instances() {
   t('Select a number of other topics related to this topic.');
   t('Select a number of priorities related to this topic.');
   t('Select the commissioner responsible for this topic.');
+  t('Select this checkbox to show the latest block in this page');
   t('Social Network Links');
   t('Targets');
   t('Taxonomy');

@@ -53,7 +53,7 @@ function dt_policy_input_update_7103() {
   $content_type = 'policy_input';
   // Copy the field content.
   _dt_shared_field_value_copy('node', $content_type, 'field_core_link', 'field_core_legacy_link');
-  drupal_set_message(t('Copied %content_type.', array('%content_type' => $content_type)));
+  drupal_set_message(t('Copied %content_type.', ['%content_type' => $content_type]));
 
   // Remove field instance.
   if ($instance = field_info_instance('node', 'field_core_link', $content_type)) {

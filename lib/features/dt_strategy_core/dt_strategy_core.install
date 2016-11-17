@@ -10,10 +10,10 @@
  */
 function dt_strategy_core_install() {
   // Enabling functional features.
-  $features = array(
+  $features = [
     'dt_policy_area',
     'dt_policy',
-  );
+  ];
   module_enable($features);
 }
 
@@ -29,14 +29,14 @@ function dt_strategy_core_uninstall() {
  */
 function dt_strategy_core_update_7101() {
   // The features to enable.
-  $features = array(
+  $features = [
     'dt_policy_area',
     'dt_strategy_core',
     'dt_policy_implementation',
     'dt_policy_keyfile',
     'dt_policy_input',
     'dt_policy',
-  );
+  ];
   module_enable($features);
 
   // Reverting the features.

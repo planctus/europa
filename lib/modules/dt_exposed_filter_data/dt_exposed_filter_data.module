@@ -9,14 +9,14 @@
  * Implements hook_theme().
  */
 function dt_exposed_filter_data_theme() {
-  return array(
-    'exposed_filter_data' => array(
+  return [
+    'exposed_filter_data' => [
       'template' => 'dt_exposed_filter_data',
-      'variables' => array(
+      'variables' => [
         'view' => NULL,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -88,16 +88,37 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
     // If it is different from the default option, we can assume it has data.
     if (isset($exposed_input[$identifier]) && $exposed_input[$identifier] !== $all_string) {
       $displays[$identifier]['label'] = $filter->options['expose']['label'];
-      // If we can get the value from the filter we use it.
-      if (isset($filter->value_options) && is_array($filter->value_options) && isset($filter->value_options[$exposed_input[$identifier]])) {
-        $displays[$identifier]['value'] = $filter->value_options[$exposed_input[$identifier]];
+
+      // Get more information about the class.
+      $reflection_class = new ReflectionClass($filter);
+
+      // Check if the class has the value_options property.
+      if ($reflection_class->hasProperty('value_options')) {
+        // We need to know if we can access the property, otherwise we use it in
+        // a different way.
+        $property = $reflection_class->getProperty('value_options');
+
+        // If we can get the value from the filter we use it.
+        if ($property->isPublic() && isset($filter->value_options[$exposed_input[$identifier]])) {
+          $displays[$identifier]['value'] = $filter->value_options[$exposed_input[$identifier]];
+        }
+        elseif ($reflection_class->hasMethod('value_form')) {
+          // We emulate the form building and take the values from there.
+          $form = [];
+          $form_state = ['exposed' => TRUE];
+          $filter->value_form($form, $form_state);
+          if (isset($form['value']['#options']) && isset($form['value']['#options'][$exposed_input[$identifier]])) {
+            $displays[$identifier]['value'] = $form['value']['#options'][$exposed_input[$identifier]];
+          }
+        }
       }
-      // Fallback to the original value.
-      else {
+
+      // The last fallback is the original value.
+      if (!isset($displays[$identifier]['value'])) {
         if (isset($filter->definition['vocabulary'])) {
           $displays[$identifier]['vocabulary'] = $filter->definition['vocabulary'];
         }
-        // We can sometimes depending on the filter,have a nested array.
+        // We can sometimes depending on the filter, have a nested array.
         if (isset($exposed_input[$identifier]['value']['date'])) {
           $exposed_input[$identifier] = $exposed_input[$identifier]['value'];
         }
@@ -110,9 +131,8 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   // Date_filter_min and date_filter_max is a special case as by using these
   // identifiers, we should display the between facet.
   if (array_key_exists('date_filter_min', $displays) || array_key_exists('date_filter_max', $displays)) {
-
-    $start = isset($displays['date_filter_min']) ? filter_xss($displays['date_filter_min']['value']['date']) : NULL;
-    $end = isset($displays['date_filter_max']) ? filter_xss($displays['date_filter_max']['value']['date']) : NULL;
+    $start = !empty($displays['date_filter_min']['value']['date']) ? filter_xss($displays['date_filter_min']['value']['date']) : '';
+    $end = !empty($displays['date_filter_max']['value']['date']) ? filter_xss($displays['date_filter_max']['value']['date']) : '';
 
     $displays['date_between'] = [
       'label' => '',
@@ -123,19 +143,17 @@ function dt_exposed_filter_data_preprocess_exposed_filter_data(&$vars) {
   }
 
   // If we have data in our $display array, we add the facets.
-  if (isset($displays)) {
-    foreach ($displays as $data) {
-      // When it are dates, it is an array.
-      if (is_array($data['value']) && isset($data['value']['date']) && !empty($data['value']['date'])) {
-        $data['value'] = $data['value']['date'];
+  foreach ($displays as $data) {
+    // When it are dates, it is an array.
+    if (is_array($data['value']) && isset($data['value']['date']) && !empty($data['value']['date'])) {
+      $data['value'] = $data['value']['date'];
+    }
+    if (!is_array($data['value']) && !empty($data['value'])) {
+      // If the data has a vocabulary. We get the term. This is a fallback.
+      if (isset($data['vocabulary']) && $term = i18n_taxonomy_localize_terms(taxonomy_term_load(filter_xss($data['value'])))) {
+        $data['value'] = $term->name;
       }
-      if (!is_array($data['value']) && !empty($data['value'])) {
-        // If the data has a vocabulary. We get the term. This is a fallback.
-        if (isset($data['vocabulary']) && $term = i18n_taxonomy_localize_terms(taxonomy_term_load(filter_xss($data['value'])))) {
-          $data['value'] = $term->name;
-        }
-        $vars['exposed_filters'][$data['label']] = filter_xss($data['value']);
-      }
+      $vars['exposed_filters'][$data['label']] = filter_xss($data['value']);
     }
   }
 }
@@ -195,6 +213,7 @@ function _dt_exposed_filter_data_get_date_facet_tags($date_min = NULL, $date_max
   elseif (!empty($date_max_formatted)) {
     return t('To @date', ['@date' => $date_max_formatted]);
   }
+
   return NULL;
 }
 

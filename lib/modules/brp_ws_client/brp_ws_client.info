@@ -1,0 +1,11 @@
+name = BRP Web Service client
+description = Provides connection to remote BRP REST Web Service.
+core = 7.x
+package = BRP Web Services
+php = 5.5
+multisite_version = 2.2
+
+dependencies[] = clients
+dependencies[] = registry_autoload
+files[] = brp_ws_client.inc
+registry_autoload[] = PSR-4

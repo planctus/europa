@@ -18,6 +18,7 @@ Feature: Publication content type should have 2 types of visualization.
       | field_core_files                | My File Title                      |
       | status                          | 1                                  |
     Then I should see text matching "Files"
+    Then I should not see an ".meta--header" element
     But I should not see text matching "Documents"
 
   Scenario: Collection of publications (documents)
@@ -32,6 +33,7 @@ Feature: Publication content type should have 2 types of visualization.
       | field_core_date_published:value | 1400980800                         |
       | field_core_date_published:value | 1400980800                         |
     Then I should see text matching "Documents"
+    Then I should see "COLLECTION" in the ".meta--header" element
     And I should see text matching "Collection"
 
   Scenario Outline: Anonymous users can see the date published value in the last-modified metatag

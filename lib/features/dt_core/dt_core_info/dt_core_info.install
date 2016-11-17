@@ -36,6 +36,13 @@ function dt_core_info_install() {
     'nexteuropa_integration',
     'integration_producer_ui',
     'integration_consumer_ui',
+    'dt_integration_announcement_consumer',
+    'dt_file_import',
+    'dt_nal_services',
+    'dt_nal_countries',
+    'dt_list_view_content',
+    'dt_law_default',
+    'dt_announcement_news_prd_importer',
   ];
   module_enable($features);
 
@@ -190,4 +197,26 @@ function dt_core_info_update_7116() {
     'integration_consumer_ui',
   ];
   module_enable($modules);
+}
+
+/**
+ * DTTSB-851: Enable DT Announcement Integration Consumer.
+ *
+ * DTTSB-885: Enable DT File and Publication Import.
+ * DTTSB-1052: Enable NAL Countries.
+ * DTTSB-1057: Enable the job content type.
+ * DTTSB-1180: Enables the News PRD importer.
+ */
+function dt_core_info_update_7121() {
+  module_enable([
+    'dt_integration_announcement_consumer',
+    'dt_file_import',
+    'dt_nal_services',
+    'dt_nal_countries',
+    'dt_job',
+    'dt_job_default',
+    'dt_announcement_news_prd_importer',
+  ]);
+  features_revert_module('dt_person');
+  _dt_roles_permissions_import_import('site manager', TRUE);
 }

@@ -1,0 +1,1678 @@
+{
+  "_embedded": {
+    "initiativesV1": [
+      {
+        "createdDate": "2016\/06\/20 10:45:06",
+        "modifiedDate": "2016\/06\/20 13:08:55",
+        "id": 2130,
+        "reference": "Ares(2016)176004",
+        "referenceNumber": "ISC\/2016\/02072",
+        "shortTitle": "TESTS FICHIERS ZIP ANNEXE",
+        "title": " COMMISSION DELEGATED DECISION on [\u2026]",
+        "publishedDate": "2016\/06\/20 10:45:05",
+        "decideSendDate": "2016\/06\/20 10:39:45",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/18 23:59:59",
+        "dg": "SG",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Valerie",
+        "authorSurname": "GALLOO",
+        "authorMail": "Valerie.GALLOO@ec.europa.eu",
+        "authorPhoneNumber": "69522",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/20 10:45:06",
+            "modifiedDate": "2016\/06\/20 10:45:06",
+            "filename": "PART-2016-3437V1.docx",
+            "title": " COMMISSION DELEGATED DECISION on [\u2026]",
+            "documentId": "090166e482c96f20",
+            "language": "EN",
+            "size": 200769,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/20 10:45:06",
+            "modifiedDate": "2016\/06\/20 10:45:06",
+            "filename": "PART-2016-3438V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482c96f1f",
+            "language": "EN",
+            "size": 171013,
+            "pages": 1,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 1,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2130"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2130{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2130"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2130"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2130\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/20 11:00:05",
+        "modifiedDate": "2016\/06\/23 09:42:26",
+        "id": 2136,
+        "reference": "Ares(2016)176015",
+        "referenceNumber": "ISC\/2016\/02071",
+        "shortTitle": "Test of parts and ares ref",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+        "publishedDate": "2016\/06\/20 11:00:05",
+        "decideSendDate": "2016\/06\/20 10:53:18",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/18 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.3.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Tom",
+        "authorSurname": "CLEYMANS",
+        "authorMail": "Tom.CLEYMANS@ext.ec.europa.eu",
+        "authorPhoneNumber": "87499",
+        "committee": "C43400",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/20 11:00:05",
+            "modifiedDate": "2016\/06\/20 11:00:05",
+            "filename": "PART-2016-3433V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+            "documentId": "090166e482c9701c",
+            "language": "EN",
+            "size": 203428,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/20 11:00:05",
+            "modifiedDate": "2016\/06\/20 11:00:05",
+            "filename": "PART-2016-3432V1.xlsx",
+            "title": "ANNEX-1-pt1\/2",
+            "documentId": "090166e482c9701b",
+            "language": "EN",
+            "size": 139001,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/20 11:00:05",
+            "modifiedDate": "2016\/06\/20 11:00:05",
+            "filename": "PART-2016-3442V1.xlsx",
+            "title": "ANNEX-1-pt2\/2",
+            "documentId": "090166e482c9701a",
+            "language": "EN",
+            "size": 131099,
+            "pages": 5,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-2",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/20 11:00:05",
+            "modifiedDate": "2016\/06\/20 11:00:05",
+            "filename": "PART-2016-3443V1.xlsx",
+            "title": "ANNEX-2",
+            "documentId": "090166e482c97019",
+            "language": "EN",
+            "size": 139001,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 8,
+        "reportedFeedback": 1,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 1,
+        "firstReportDate": "2016\/06\/21 15:40:58",
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 58,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2136"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2136{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2136"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2136"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2136\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/21 13:10:05",
+        "modifiedDate": "2016\/06\/21 13:10:05",
+        "id": 2163,
+        "reference": "Ares(2016)176518",
+        "referenceNumber": "ISC\/2016\/02102",
+        "shortTitle": "This is a test with Greek text",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+        "publishedDate": "2016\/06\/21 13:10:05",
+        "decideSendDate": "2016\/06\/21 13:04:11",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/19 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.3.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Tom",
+        "authorSurname": "CLEYMANS",
+        "authorMail": "Tom.CLEYMANS@ext.ec.europa.eu",
+        "authorPhoneNumber": "87499",
+        "committee": "C39800",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/21 13:10:05",
+            "modifiedDate": "2016\/06\/21 13:10:05",
+            "filename": "PART-2016-3505V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+            "documentId": "090166e482cad557",
+            "language": "EN",
+            "size": 203373,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/21 13:10:05",
+            "modifiedDate": "2016\/06\/21 13:10:05",
+            "filename": "PART-2016-3507V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482cad559",
+            "language": "EL",
+            "size": 230422,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/21 13:10:05",
+            "modifiedDate": "2016\/06\/21 13:10:05",
+            "filename": "PART-2016-3506V1.docx",
+            "title": "ANNEX-2",
+            "documentId": "090166e482cad558",
+            "language": "EL",
+            "size": 230467,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2163"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2163{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2163"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2163"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2163\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/21 13:55:05",
+        "modifiedDate": "2016\/06\/23 15:29:58",
+        "id": 2169,
+        "reference": "Ares(2016)176533",
+        "referenceNumber": "ISC\/2016\/02105",
+        "shortTitle": "Test mixed greek english",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 on [\u2026]",
+        "publishedDate": "2016\/06\/21 13:55:05",
+        "decideSendDate": "2016\/06\/21 13:45:08",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/19 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.3.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Tom",
+        "authorSurname": "CLEYMANS",
+        "authorMail": "Tom.CLEYMANS@ext.ec.europa.eu",
+        "authorPhoneNumber": "87499",
+        "committee": "C47800",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/21 13:55:05",
+            "modifiedDate": "2016\/06\/21 13:55:05",
+            "filename": "PART-2016-3512V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 on [\u2026]",
+            "documentId": "090166e482cadb2f",
+            "language": "EN",
+            "size": 201002,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/21 13:55:05",
+            "modifiedDate": "2016\/06\/21 13:55:05",
+            "filename": "PART-2016-3514V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482cadb31",
+            "language": "EN",
+            "size": 133090,
+            "pages": 1,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/21 13:55:05",
+            "modifiedDate": "2016\/06\/21 13:55:05",
+            "filename": "PART-2016-3513V1.docx",
+            "title": "ANNEX-2",
+            "documentId": "090166e482cadb2e",
+            "language": "EL",
+            "size": 230423,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/21 13:55:05",
+            "modifiedDate": "2016\/06\/21 13:55:05",
+            "filename": "PART-2016-3511V1.docx",
+            "title": "ANNEX-3",
+            "documentId": "090166e482cadb30",
+            "language": "EL",
+            "size": 230423,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "3-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 4,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2169"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2169{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2169"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2169"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2169\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/22 15:23:05",
+        "modifiedDate": "2016\/06\/22 15:23:05",
+        "id": 2183,
+        "reference": "Ares(2016)176910",
+        "referenceNumber": "ISC\/2016\/02114",
+        "shortTitle": "d",
+        "title": " COMMISSION DELEGATED DECISION (EU) \u2026\/\u2026 on [\u2026]",
+        "publishedDate": "2016\/06\/22 15:23:05",
+        "decideSendDate": "2016\/06\/22 15:19:03",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/20 23:59:59",
+        "dg": "SG",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Veerle",
+        "authorSurname": "CUMPS",
+        "authorMail": "Veerle.CUMPS@ec.europa.eu",
+        "authorPhoneNumber": "67061",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/22 15:23:05",
+            "modifiedDate": "2016\/06\/22 15:23:05",
+            "filename": "PART-2016-3527V1.docx",
+            "title": " COMMISSION DELEGATED DECISION (EU) \u2026\/\u2026 on [\u2026]",
+            "documentId": "090166e482cbb99d",
+            "language": "EN",
+            "size": 201799,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2183"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2183{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2183"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2183"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2183\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/23 15:54:05",
+        "modifiedDate": "2016\/06\/27 15:27:30",
+        "id": 2191,
+        "reference": "Ares(2016)177809",
+        "referenceNumber": "ISC\/2016\/02116",
+        "shortTitle": "Scenario 1 Fede test",
+        "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... test test test BRP",
+        "publishedDate": "2016\/06\/23 15:54:05",
+        "decideSendDate": "2016\/06\/23 15:45:23",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/21 23:59:59",
+        "dg": "AGRI",
+        "unit": "DIGIT.B.2.004",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Federica",
+        "authorSurname": "GIOVANNINI",
+        "authorMail": "Federica.GIOVANNINI@ext.ec.europa.eu",
+        "authorPhoneNumber": "51366",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/23 15:54:05",
+            "modifiedDate": "2016\/06\/23 15:54:05",
+            "filename": "PART-2016-3540V1.docx",
+            "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... test test test BRP",
+            "documentId": "090166e482cc8877",
+            "language": "EN",
+            "size": 206527,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 2,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2191"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2191{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2191"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2191"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2191\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/24 11:22:05",
+        "modifiedDate": "2016\/07\/12 15:12:04",
+        "id": 2195,
+        "reference": "Ares(2016)178392",
+        "referenceNumber": "ISC\/2016\/02128",
+        "shortTitle": "Publication test",
+        "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... test test test BRP",
+        "publishedDate": "2016\/06\/24 11:22:05",
+        "decideSendDate": "2016\/06\/24 11:17:32",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/22 23:59:59",
+        "dg": "AGRI",
+        "unit": "DIGIT.B.2.004",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Federica",
+        "authorSurname": "GIOVANNINI",
+        "authorMail": "Federica.GIOVANNINI@ext.ec.europa.eu",
+        "authorPhoneNumber": "51366",
+        "committee": null,
+        "expertGroup": "E01296",
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/24 11:22:05",
+            "modifiedDate": "2016\/06\/24 11:22:05",
+            "filename": "PART-2016-3562V1.docx",
+            "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... test test test BRP",
+            "documentId": "090166e482cd2dab",
+            "language": "EN",
+            "size": 206526,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 4,
+        "reportedFeedback": 2,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 2,
+        "firstReportDate": "2016\/07\/01 11:29:31",
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 49,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2195"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2195{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2195"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2195"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2195\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/27 15:03:05",
+        "modifiedDate": "2016\/06\/27 15:03:05",
+        "id": 2205,
+        "reference": "Ares(2016)179507",
+        "referenceNumber": "ISC\/2016\/02154",
+        "shortTitle": "test luciano2 27\/06",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 TEST on [\u2026]",
+        "publishedDate": "2016\/06\/27 15:03:05",
+        "decideSendDate": "2016\/06\/27 14:53:33",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/25 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.1.002",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Marco",
+        "authorSurname": "LUCIANO",
+        "authorMail": "Marco.LUCIANO@ext.ec.europa.eu",
+        "authorPhoneNumber": "50062",
+        "committee": "C39300",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/27 15:03:05",
+            "modifiedDate": "2016\/06\/27 15:03:05",
+            "filename": "PART-2016-3609V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 TEST on [\u2026]",
+            "documentId": "090166e482cf0dd6",
+            "language": "EN",
+            "size": 201047,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2205"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2205{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2205"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2205"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2205\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/28 12:02:05",
+        "modifiedDate": "2016\/07\/26 16:13:42",
+        "id": 2209,
+        "reference": "Ares(2016)179856",
+        "referenceNumber": "ISC\/2016\/02183",
+        "shortTitle": "28\/6\/2016 - Imports",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+        "publishedDate": "2016\/06\/28 12:02:05",
+        "decideSendDate": "2016\/06\/28 11:57:22",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/26 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.3.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Saritha",
+        "authorSurname": "GUDUR",
+        "authorMail": "Saritha.GUDUR@ext.ec.europa.eu",
+        "authorPhoneNumber": "89367",
+        "committee": "C47800",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/28 12:02:05",
+            "modifiedDate": "2016\/06\/28 12:02:05",
+            "filename": "PART-2016-3646V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+            "documentId": "090166e482cfa85f",
+            "language": "EN",
+            "size": 203425,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/28 12:02:05",
+            "modifiedDate": "2016\/06\/28 12:02:05",
+            "filename": "PART-2016-3647V1.doc",
+            "title": "ANNEX   CP-038 ",
+            "documentId": "090166e482cfa85e",
+            "language": "EN",
+            "size": 151993,
+            "pages": 30,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 35,
+        "reportedFeedback": 1,
+        "reviewedFeedback": 1,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": "2016\/07\/01 12:04:41",
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 49,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2209"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2209{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2209"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2209"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2209\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/07\/28 17:07:16",
+        "modifiedDate": "2016\/08\/10 19:49:55",
+        "id": 2303,
+        "reference": "Ares(2016)202400",
+        "referenceNumber": "ISC\/2016\/02703",
+        "shortTitle": "Anonimisation of PDF documents",
+        "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+        "publishedDate": "2016\/07\/28 17:07:14",
+        "decideSendDate": "2016\/07\/28 17:02:38",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/08\/25 23:59:59",
+        "dg": "SG",
+        "unit": "SG.R.3.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Tom",
+        "authorSurname": "CLEYMANS",
+        "authorMail": "Tom.CLEYMANS@ext.ec.europa.eu",
+        "authorPhoneNumber": "87499",
+        "committee": "C43400",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/07\/28 17:07:16",
+            "modifiedDate": "2016\/07\/28 17:07:16",
+            "filename": "PART-2016-4293V1.docx",
+            "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+            "documentId": "090166e482e6cf58",
+            "language": "EN",
+            "size": 203380,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/07\/28 17:07:16",
+            "modifiedDate": "2016\/07\/28 17:07:16",
+            "filename": "PART-2016-4294V1.pdf",
+            "title": "ANNEX-1",
+            "documentId": "090166e482e6cb1c",
+            "language": "EN",
+            "size": 201279,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/07\/28 17:07:16",
+            "modifiedDate": "2016\/07\/28 17:07:16",
+            "filename": "PART-2016-4295V1.pdf",
+            "title": "ANNEX-2",
+            "documentId": "090166e482e6cf57",
+            "language": "EN",
+            "size": 204605,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 11,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "OPEN",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2303"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2303{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2303"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2303"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2303\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/08\/16 15:47:19",
+        "modifiedDate": "2016\/08\/16 15:47:19",
+        "id": 2388,
+        "reference": "Ares(2016)212998",
+        "referenceNumber": "ISC\/2016\/02025",
+        "shortTitle": "Clean air",
+        "title": " COMMISSION IMPLEMENTING DECISION (EU) \u2026\/\u2026 on [\u2026]",
+        "publishedDate": "2016\/08\/16 15:47:18",
+        "decideSendDate": "2016\/08\/16 15:42:12",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/09\/13 23:59:59",
+        "dg": "SG",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Veerle",
+        "authorSurname": "CUMPS",
+        "authorMail": "Veerle.CUMPS@ec.europa.eu",
+        "authorPhoneNumber": "67061",
+        "committee": "C35000",
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/08\/16 15:47:19",
+            "modifiedDate": "2016\/08\/16 15:47:19",
+            "filename": "PART-2016-3370V2.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION (EU) \u2026\/\u2026 on [\u2026]",
+            "documentId": "090166e482f3e709",
+            "language": "EN",
+            "size": 197873,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "OPEN",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2388"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2388{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2388"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2388"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2388\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/04\/17 17:51:55",
+        "modifiedDate": "2016\/04\/17 17:51:55",
+        "id": 1933,
+        "reference": "Ares(2016)155095",
+        "referenceNumber": "ISC\/2016\/00306",
+        "shortTitle": "Jcw 13052016 court to publish",
+        "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... on [\u2026]",
+        "publishedDate": "2016\/04\/17 17:51:54",
+        "decideSendDate": "2016\/05\/13 07:49:50",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/05\/15 23:59:59",
+        "dg": "AGRI",
+        "unit": "DIGIT.B.2.004",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Geraud",
+        "authorSurname": "BERTON",
+        "authorMail": "Geraud.BERTON@ec.europa.eu",
+        "authorPhoneNumber": "55073",
+        "committee": null,
+        "expertGroup": "E99999",
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:51:55",
+            "modifiedDate": "2016\/06\/17 17:51:55",
+            "filename": "PART-2016-3054V1.docx",
+            "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... on [\u2026]",
+            "documentId": "090166e482ae86bd",
+            "language": "EN",
+            "size": 161274,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1933"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1933{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1933"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1933"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1933\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2015\/06\/17 17:51:56",
+        "modifiedDate": "2015\/06\/17 17:51:56",
+        "id": 1935,
+        "reference": "Ares(2016)155102",
+        "referenceNumber": "ISC\/2016\/00307",
+        "shortTitle": "Jcw 13052016 for pub plein dexpert en short",
+        "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... on [\u2026]",
+        "publishedDate": "2015\/06\/17 17:51:55",
+        "decideSendDate": "2016\/05\/13 08:29:20",
+        "feedbackPeriod": 4,
+        "endDate": "2015\/07\/15 23:59:59",
+        "dg": "AGRI",
+        "unit": "DIGIT.B.2.004",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Olivier",
+        "authorSurname": "TOULY",
+        "authorMail": "Olivier.TOULY@ec.europa.eu",
+        "authorPhoneNumber": "86803",
+        "committee": null,
+        "expertGroup": "E99999",
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:51:56",
+            "modifiedDate": "2016\/06\/17 17:51:56",
+            "filename": "PART-2016-3056V1.docx",
+            "title": " COMMISSION DELEGATED REGULATION (EU) \u2026\/... on [\u2026]",
+            "documentId": "090166e482ae88fd",
+            "language": "EN",
+            "size": 161274,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1935"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1935{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1935"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1935"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1935\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:51:56",
+        "modifiedDate": "2016\/06\/17 17:51:56",
+        "id": 1937,
+        "reference": "Ares(2016)155127",
+        "referenceNumber": "ISC\/2016\/01293",
+        "shortTitle": "Modification programme de d\u00e9veloppement rural de l\u0027Aquitaine",
+        "title": " D\u00c9CISION D\u2019EX\u00c9CUTION DE LA COMMISSION relative \u00e0 [\u2026]",
+        "publishedDate": "2016\/06\/17 17:51:56",
+        "decideSendDate": "2016\/05\/13 09:42:40",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "AGRI",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Joelle",
+        "authorSurname": "MEUNIER",
+        "authorMail": "meunijo@ec.europa.eu",
+        "authorPhoneNumber": "62742",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:51:56",
+            "modifiedDate": "2016\/06\/17 17:51:56",
+            "filename": "PART-2016-2384V2.docx",
+            "title": " D\u00c9CISION D\u2019EX\u00c9CUTION DE LA COMMISSION relative \u00e0 [\u2026]",
+            "documentId": "090166e482ae954d",
+            "language": "FR",
+            "size": 170562,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1937"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1937{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1937"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1937"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1937\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/22 08:44:05",
+        "modifiedDate": "2016\/06\/29 11:49:56",
+        "id": 2178,
+        "reference": "Ares(2016)176768",
+        "referenceNumber": "ISC\/2016\/02088",
+        "shortTitle": "TEST DU 21 06 2016 - PATCH CISNET",
+        "title": " COMMISSION DELEGATED REGULATION (EU) No \u2026\/.. on [\u2026]",
+        "publishedDate": "2016\/06\/22 08:44:05",
+        "decideSendDate": "2016\/06\/22 08:37:11",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/20 23:59:59",
+        "dg": "SG",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Valerie",
+        "authorSurname": "GALLOO",
+        "authorMail": "Valerie.GALLOO@ec.europa.eu",
+        "authorPhoneNumber": "69522",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/22 08:44:05",
+            "modifiedDate": "2016\/06\/22 08:44:05",
+            "filename": "PART-2016-3472V1.docx",
+            "title": " COMMISSION DELEGATED REGULATION (EU) No \u2026\/.. on [\u2026]",
+            "documentId": "090166e482cb76ea",
+            "language": "EN",
+            "size": 205609,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/22 08:44:05",
+            "modifiedDate": "2016\/06\/22 08:44:05",
+            "filename": "PART-2016-3473V1.doc",
+            "title": " ANNEXE  \u00e0 [mandatory element]  [mandatory element] ",
+            "documentId": "090166e482cb7a50",
+            "language": "FR",
+            "size": 41144,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 2,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2178"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2178{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2178"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2178"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2178\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:54:14",
+        "modifiedDate": "2016\/06\/17 17:54:14",
+        "id": 1939,
+        "reference": "Ares(2016)155129",
+        "referenceNumber": "ISC\/2016\/01298",
+        "shortTitle": "Commission Implementing Decision on the 4th modification of the EFF operational programme for Greece.",
+        "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+        "publishedDate": "2016\/06\/17 17:54:14",
+        "decideSendDate": "2016\/05\/13 09:43:20",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "MARE",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Katerina",
+        "authorSurname": "LAZARIDOU",
+        "authorMail": "lazarai@ec.europa.eu",
+        "authorPhoneNumber": "96830",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2503V1.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+            "documentId": "090166e482ae99be",
+            "language": "EN",
+            "size": 117005,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:14",
+            "modifiedDate": "2016\/06\/17 17:54:14",
+            "filename": "PART-2016-2502V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482ae99bd",
+            "language": "EN",
+            "size": 2762515,
+            "pages": 153,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2498V1.doc",
+            "title": "ANNEX-2",
+            "documentId": "090166e482ae99bc",
+            "language": "EN",
+            "size": 55409,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2501V1.doc",
+            "title": "ANNEX-3",
+            "documentId": "090166e482ae99bb",
+            "language": "EN",
+            "size": 890216,
+            "pages": 130,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "3-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1939"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1939{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1939"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1939"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1939\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:54:15",
+        "modifiedDate": "2016\/06\/17 17:54:15",
+        "id": 1944,
+        "reference": "Ares(2016)155131",
+        "referenceNumber": "ISC\/2016\/01308",
+        "shortTitle": "Commission Implementing Decision on the 4th modification of the EFF operational programme for Greece.",
+        "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+        "publishedDate": "2016\/06\/17 17:54:15",
+        "decideSendDate": "2016\/05\/13 09:43:47",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "MARE",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Katerina",
+        "authorSurname": "LAZARIDOU",
+        "authorMail": "lazarai@ec.europa.eu",
+        "authorPhoneNumber": "96830",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2509V1.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+            "documentId": "090166e482ae9986",
+            "language": "EN",
+            "size": 116972,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2511V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482ae9985",
+            "language": "EN",
+            "size": 2762515,
+            "pages": 153,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2508V1.doc",
+            "title": "ANNEX-2",
+            "documentId": "090166e482ae9983",
+            "language": "EN",
+            "size": 55408,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:15",
+            "modifiedDate": "2016\/06\/17 17:54:15",
+            "filename": "PART-2016-2510V1.doc",
+            "title": "ANNEX-3",
+            "documentId": "090166e482ae9984",
+            "language": "EN",
+            "size": 890213,
+            "pages": 130,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "3-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1944"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1944{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1944"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1944"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1944\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:54:16",
+        "modifiedDate": "2016\/06\/17 17:54:16",
+        "id": 1949,
+        "reference": "Ares(2016)155132",
+        "referenceNumber": "ISC\/2016\/01314",
+        "shortTitle": "C4 Generic Decision Alternators",
+        "title": " COMMISSION IMPLEMENTING DECISION on the approval of the technology used in 12 Volt efficient alternators as an innovative technology for reducing CO2 emissions from passenger cars pursuant to Regulation (EC) No 443\/2009 of the European Parliament and of the Council ",
+        "publishedDate": "2016\/06\/17 17:54:16",
+        "decideSendDate": "2016\/05\/13 09:44:34",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "CLIMA",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Willy",
+        "authorSurname": "BREDA",
+        "authorMail": "bredawi@ec.europa.eu",
+        "authorPhoneNumber": "95450",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:54:16",
+            "modifiedDate": "2016\/06\/17 17:54:16",
+            "filename": "PART-2016-2525V1.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION on the approval of the technology used in 12 Volt efficient alternators as an innovative technology for reducing CO2 emissions from passenger cars pursuant to Regulation (EC) No 443\/2009 of the European Parliament and of the Council ",
+            "documentId": "090166e482ae9480",
+            "language": "EN",
+            "size": 125846,
+            "pages": 5,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:16",
+            "modifiedDate": "2016\/06\/17 17:54:16",
+            "filename": "PART-2016-2526V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482ae9481",
+            "language": "EN",
+            "size": 340708,
+            "pages": 5,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1949"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1949{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1949"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1949"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1949\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:54:16",
+        "modifiedDate": "2016\/06\/17 17:54:16",
+        "id": 1952,
+        "reference": "Ares(2016)155133",
+        "referenceNumber": "ISC\/2016\/01322",
+        "shortTitle": "Impl Decision of the eIDAS Reg laying down standards for the security assessment of information technology products",
+        "title": " COMMISSION IMPLEMENTING DECISION (EU) \u2026\/\u2026 laying down standards for the security assessment of qualified signature and seal creation devices pursuant to Articles 30(3) and 39(2) of Regulation (EU) No 910\/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+        "publishedDate": "2016\/06\/17 17:54:16",
+        "decideSendDate": "2016\/05\/13 09:45:16",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "CNECT",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Marco",
+        "authorSurname": "FERNANDEZ GONZALEZ",
+        "authorMail": "fernmao@ec.europa.eu",
+        "authorPhoneNumber": "87027",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:54:16",
+            "modifiedDate": "2016\/06\/17 17:54:16",
+            "filename": "PART-2016-2545V1.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION (EU) \u2026\/\u2026 laying down standards for the security assessment of qualified signature and seal creation devices pursuant to Articles 30(3) and 39(2) of Regulation (EU) No 910\/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+            "documentId": "090166e482ae9987",
+            "language": "EN",
+            "size": 174545,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:16",
+            "modifiedDate": "2016\/06\/17 17:54:16",
+            "filename": "PART-2016-2546V1.docx",
+            "title": " ANNEX  to the  Commission Implementing Decision laying down standards for the security assessment of qualified signature and seal creation devices pursuant to Articles 30(3) and 39(2) of Regulation (EU) No 910\/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+            "documentId": "090166e482ae9988",
+            "language": "EN",
+            "size": 102017,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:16",
+            "modifiedDate": "2016\/06\/17 17:54:16",
+            "filename": "PART-2016-2544V1.docx",
+            "title": " ANNEX  to the Commission Implementing Decision laying down standards for the security assessment of information technology products pursuant to Articles 30(3) and 39(2) of Regulation (EU) No 910\/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market",
+            "documentId": "090166e482ae9989",
+            "language": "EN",
+            "size": 91899,
+            "pages": 2,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "2-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1952"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1952{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1952"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1952"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1952\/feedback"
+          }
+        }
+      },
+      {
+        "createdDate": "2016\/06\/17 17:54:17",
+        "modifiedDate": "2016\/06\/17 17:54:17",
+        "id": 1956,
+        "reference": "Ares(2016)155134",
+        "referenceNumber": "ISC\/2016\/01339",
+        "shortTitle": "2nd Amendment - 2015 annual work programme - grants and procurement forthe  EaSI Programme and Pilot Projects",
+        "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+        "publishedDate": "2016\/06\/17 17:54:17",
+        "decideSendDate": "2016\/05\/13 09:45:58",
+        "feedbackPeriod": 4,
+        "endDate": "2016\/07\/15 23:59:59",
+        "dg": "EMPL",
+        "unit": "SG.A.1.001",
+        "type": "RES_TYP",
+        "comment": null,
+        "institution": "COM",
+        "authorName": "Barbara",
+        "authorSurname": "GONZALEZ LOBO",
+        "authorMail": "gonzbar@ec.europa.eu",
+        "authorPhoneNumber": "98690",
+        "committee": null,
+        "expertGroup": null,
+        "attachments": [
+          {
+            "createdDate": "2016\/06\/17 17:54:17",
+            "modifiedDate": "2016\/06\/17 17:54:17",
+            "filename": "PART-2016-2624V1.docx",
+            "title": " COMMISSION IMPLEMENTING DECISION on [\u2026]",
+            "documentId": "090166e482ae9483",
+            "language": "EN",
+            "size": 124051,
+            "pages": 3,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "0-1",
+            "translations": []
+          },
+          {
+            "createdDate": "2016\/06\/17 17:54:17",
+            "modifiedDate": "2016\/06\/17 17:54:17",
+            "filename": "PART-2016-2623V1.docx",
+            "title": "ANNEX-1",
+            "documentId": "090166e482ae9482",
+            "language": "EN",
+            "size": 349097,
+            "pages": 4,
+            "attachmentDate": null,
+            "type": "RES_TYP",
+            "index": "1-1",
+            "translations": []
+          }
+        ],
+        "totalFeedback": 0,
+        "reportedFeedback": 0,
+        "reviewedFeedback": 0,
+        "toBeReviewedFeedback": 0,
+        "firstReportDate": null,
+        "initiativeStatus": "ACTIVE",
+        "daysElapsedSinceFirstReport": 0,
+        "receivingFeedbackStatus": "CLOSED",
+        "_links": {
+          "self": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1956"
+          },
+          "initiativeV1": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1956{?projection}",
+            "templated": true
+          },
+          "feedbackPaged": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=1956"
+          },
+          "feedbackSearch": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=1956"
+          },
+          "feedback": {
+            "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/1956\/feedback"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "first": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1?page=0\u0026size=20"
+    },
+    "prev": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1?page=0\u0026size=20"
+    },
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1"
+    },
+    "next": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1?page=2\u0026size=20"
+    },
+    "last": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1?page=3\u0026size=20"
+    },
+    "profile": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/profile\/initiativesV1"
+    },
+    "search": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/search"
+    }
+  },
+  "page": {
+    "size": 20,
+    "totalElements": 40,
+    "totalPages": 1,
+    "number": 1
+  },
+  "code": "200"
+}

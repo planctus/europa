@@ -91,6 +91,9 @@ projects[entityreference_view_widget][version] = "2.0-rc7"
 projects[views_tree][subdir] = "contrib"
 projects[views_tree][version] = "2.0"
 
+projects[hierarchical_select][subdir] = "contrib"
+projects[hierarchical_select][version] = "3.0-beta7"
+
 ; Required by custom_formatters.
 ; Originally these are done via custom_formatters.make but we switched off
 ; recursion, to avoid duplicate modules.
@@ -99,6 +102,13 @@ projects[form_builder][version] = "1.0"
 
 projects[options_element][subdir] = "contrib"
 projects[options_element][version] = "1.7"
+
+projects[wysiwyg_abbr][subdir] = "contrib"
+projects[wysiwyg_abbr][version] = "1.0"
+projects[wysiwyg_abbr][patch][] = "https://www.drupal.org/files/issues/2362309-2-wysiwyg_abbr_ckeditor_module.patch"
+
+projects[redirect][subdir] = "contrib"
+projects[redirect][version] = "1.0-rc3"
 
 ; End custom_formatters specific.
 
@@ -114,6 +124,9 @@ libraries[editarea][download][url] = "http://downloads.sourceforge.net/project/e
 
 libraries[areyousure][download][type] = "get"
 libraries[areyousure][download][url] = "https://raw.githubusercontent.com/codedance/jquery.AreYouSure/098b3d3a35a0bd09fd3bbab514dd7d2f4159e680/jquery.are-you-sure.js"
+
+libraries[hitme][download][type] = "get"
+libraries[hitme][download][url] = "https://raw.githubusercontent.com/roelvangils/jquery-hitMe/master/dist/jquery.hitMe-min.js"
 
 ; ======
 ; Themes

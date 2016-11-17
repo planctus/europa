@@ -1,0 +1,91 @@
+{
+  "createdDate": "2016\/06\/17 17:54:33",
+  "modifiedDate": "2016\/06\/17 17:54:33",
+  "id": ##REPLACEID##,
+  "reference": "Ares(2016)163603 MOCK{##REPLACEID##}",
+  "referenceNumber": "ISC\/2016\/00728",
+  "shortTitle": "Initiative MOCK{##REPLACEID##} short",
+  "title": "Initiative MOCK{##REPLACEID##}",
+  "publishedDate": "2016\/06\/17 17:54:33",
+  "decideSendDate": "2016\/05\/27 16:32:52",
+  "feedbackPeriod": 4,
+  "endDate": "2016\/07\/15 23:59:59",
+  "dg": "AGRI",
+  "unit": "DIGIT.B.2.002",
+  "type": "RES_TYP",
+  "comment": null,
+  "institution": "COM",
+  "authorName": "GERAUD",
+  "authorSurname": "BERTON",
+  "authorMail": "GERAUD.BERTON@ec.europa.eu",
+  "authorPhoneNumber": null,
+  "committee": "C11111",
+  "expertGroup": null,
+  "attachments": [{
+    "createdDate": "2016\/06\/17 17:54:33",
+    "modifiedDate": "2016\/06\/17 17:54:33",
+    "filename": "PART-2016-1834V1.docx",
+    "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 on [\u2026]",
+    "documentId": "090166e482b8c5de",
+    "language": "EN",
+    "size": 203706,
+    "pages": 3,
+    "attachmentDate": null,
+    "type": "RES_TYP",
+    "index": "0-1",
+    "translations": []
+  }, {
+    "createdDate": "2016\/06\/17 17:54:33",
+    "modifiedDate": "2016\/06\/17 17:54:33",
+    "filename": "PART-2016-1836V1.doc",
+    "title": "ANNEX   CP-038 ",
+    "documentId": "090166e482b8c5df",
+    "language": "EN",
+    "size": 154106,
+    "pages": 30,
+    "attachmentDate": null,
+    "type": "RES_TYP",
+    "index": "1-1",
+    "translations": []
+  }, {
+    "createdDate": "2016\/06\/17 17:54:33",
+    "modifiedDate": "2016\/06\/17 17:54:33",
+    "filename": "PART-2016-1835V1.docx",
+    "title": "PR\u00cdLOHA    ",
+    "documentId": "090166e482b8c5dd",
+    "language": "SK",
+    "size": 164221,
+    "pages": 2,
+    "attachmentDate": null,
+    "type": "RES_TYP",
+    "index": "2-1",
+    "translations": []
+  }],
+  "totalFeedback": 0,
+  "reportedFeedback": 0,
+  "reviewedFeedback": 0,
+  "toBeReviewedFeedback": 0,
+  "firstReportDate": null,
+  "initiativeStatus": "ACTIVE",
+  "daysElapsedSinceFirstReport": 0,
+  "receivingFeedbackStatus": "CLOSED",
+  "_links": {
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/##REPLACEID##"
+    },
+    "initiativeV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/##REPLACEID##{?projection}",
+      "templated": true
+    },
+    "feedbackPaged": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=##REPLACEID##"
+    },
+    "feedbackSearch": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=##REPLACEID##"
+    },
+    "feedback": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/##REPLACEID##\/feedback"
+    }
+  },
+  "code": "200"
+}

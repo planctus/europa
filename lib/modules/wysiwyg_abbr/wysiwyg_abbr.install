@@ -9,14 +9,14 @@
  * Implements hook_requirements().
  */
 function wysiwyg_abbr_requirements($phase) {
-  $requirements = array();
+  $requirements = [];
   $t = get_t();
 
   // Check if ckeditor module or wysiwyg module is enabled.
   if ($phase == 'runtime') {
-    $requirements['wysiwyg_abbr'] = array(
+    $requirements['wysiwyg_abbr'] = [
       'title' => $t('WYSIWYG Abbreviation'),
-    );
+    ];
 
     if (!module_exists('ckeditor') && !module_exists('wysiwyg')) {
       $requirements['wysiwyg_abbr']['severity'] = REQUIREMENT_ERROR;

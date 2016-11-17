@@ -25,22 +25,22 @@ function dt_law_uninstall() {
  */
 function dt_law_update_7101($sandbox) {
   // Ensure db settings match features files.
-  $features = array('dt_policy_implementation', 'dt_policy', 'dt_law');
+  $features = ['dt_policy_implementation', 'dt_policy', 'dt_law'];
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
   // Enable Node Convert module.
   if (!module_exists('node_convert')) {
-    module_enable(array('node_convert'));
+    module_enable(['node_convert']);
   }
 
   // Set up source, destination and query.
   $source_bundle = 'policy_implementation';
   // Automatically converted source fields.
-  $source_fields = array();
+  $source_fields = [];
   $destination_bundle = 'law';
   // Automatically converted destination fields.
-  $destination_fields = array();
+  $destination_fields = [];
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', $source_bundle)

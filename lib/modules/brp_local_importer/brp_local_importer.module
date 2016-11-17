@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Brp_local_importer.module.
+ *
+ * Provides a way to import local non NAL data into BRP Voc.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ */
+function brp_local_importer_migrate_api() {
+  return _brp_local_importer_migrations();
+}
+
+/**
+ * Helper function that returns all migrations.
+ *
+ * @return array
+ *    Contains all migration to be run.
+ */
+function _brp_local_importer_migrations() {
+  return [
+    'api' => 2,
+    'groups' => [
+      'Brp' => [
+        'title' => t('BRP Terms.'),
+      ],
+    ],
+    'migrations' => [
+      'BRPCompanySizeTerms' => [
+        'class_name' => 'BRPTermsMigration',
+        'group_name' => 'Brp',
+        'description' => t('Import Company size related terms.'),
+        'destination_voc' => 'brp_company_size',
+        'data_file' => 'company_size.csv',
+        'localized' => TRUE,
+      ],
+      'BRPScopeTerms' => [
+        'class_name' => 'BRPTermsMigration',
+        'group_name' => 'Brp',
+        'description' => t('Import Company scope related terms.'),
+        'destination_voc' => 'brp_scope',
+        'data_file' => 'scope.csv',
+        'localized' => TRUE,
+      ],
+      'BRPUserTypesTerms' => [
+        'class_name' => 'BRPTermsMigration',
+        'group_name' => 'Brp',
+        'description' => t('Import User Type related terms.'),
+        'destination_voc' => 'brp_user_type',
+        'data_file' => 'user_type.csv',
+        'localized' => TRUE,
+      ],
+      'BRPReportTerms' => [
+        'class_name' => 'BRPTermsMigration',
+        'group_name' => 'Brp',
+        'description' => t('Import Report feedback related terms.'),
+        'destination_voc' => 'brp_report',
+        'data_file' => 'report.csv',
+        'localized' => TRUE,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Helper function migrating dgs.
+ */
+function _brp_local_importer_data() {
+  // Migrate module is needed.
+  if (module_exists('migrate')) {
+    // Force registration of migration classes.
+    migrate_static_registration();
+    // Get all migrations.
+    $migrations = _brp_local_importer_migrations();
+    // Import these migrations.
+    foreach ($migrations['migrations'] as $migration => $migrations_values) {
+      Migration::getInstance($migration)->processImport();
+    }
+  }
+  else {
+    return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
+  }
+}
+
+/**
+ * Helper for the csv cols names and destination.
+ *
+ * @return array
+ *    Returns csv columns structure to be imported.
+ */
+function _brp_local_importer_csv_cols() {
+  return [
+    ['code', 'code'],
+    ['label', 'label'],
+    ['bg', 'label_bg'],
+    ['cs', 'label_cs'],
+    ['da', 'label_da'],
+    ['de', 'label_de'],
+    ['el', 'label_el'],
+    ['es', 'label_es'],
+    ['et', 'label_et'],
+    ['fi', 'label_fi'],
+    ['fr', 'label_fr'],
+    ['ga', 'label_ga'],
+    ['hr', 'label_hr'],
+    ['hu', 'label_hu'],
+    ['it', 'label_it'],
+    ['lt', 'label_lt'],
+    ['lv', 'label_lv'],
+    ['mt', 'label_mt'],
+    ['nl', 'label_nl'],
+    ['pl', 'label_pl'],
+    ['pt-pt', 'label_pt-pt'],
+    ['ro', 'label_ro'],
+    ['sk', 'label_sk'],
+    ['sl', 'label_sl'],
+    ['sv', 'label_sv'],
+  ];
+}
