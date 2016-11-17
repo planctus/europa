@@ -171,7 +171,7 @@ function nexteuropa_file_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'file';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_1col';
+  $ds_layout->layout = 'ne_1col_hitme';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
