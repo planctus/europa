@@ -46,3 +46,4 @@ Feature: Content type configuration
       | node/add/priority-policy-area  |
       | node/add/publication           |
       | node/add/topic                 |
+      | node/add/call-for-proposal     |

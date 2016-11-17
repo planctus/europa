@@ -1,9 +1,5 @@
 # Tests
 
-## Debugging
-
-As some context are not correctly debugging, you can configure your test runner with the following environment variable: `XDEBUG=1`.
-
 ## Uploading files
 
 We can utilize behat to work with file uploads.
@@ -108,3 +104,12 @@ Scenario: I can upload files using Media
     And I select "Published" from "Moderation state"
     And I press "Save"
 ```
+
+### Running tests locally
+
+To run tests locally you can use the behat.yml configuration file.
+
+For continuousphp we use all other config files, this to loadbalance tests.
+
+Ex:
+tests/behat.components.yml,tests/behat.content_types.yml,tests/behat.editorial_workflow.yml,tests/behat.multilanguage.yml,tests/behat.other.yml

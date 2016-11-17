@@ -28,10 +28,10 @@ function cwt_biography_init() {
         $translations = translation_node_get_translations($node->tnid);
         if (!empty($translations['en'])) {
           // Fetch the target alias in the target language.
-          $url_options = array(
+          $url_options = [
             'language' => i18n_language_load('en'),
             'absolute' => TRUE,
-          );
+          ];
           $url = url('node/' . $translations['en']->nid, $url_options);
           drupal_goto($url);
         }
@@ -50,12 +50,12 @@ function cwt_biography_init() {
  * Implements hook_permission().
  */
 function cwt_biography_permission() {
-  return array(
-    'access partially translated biographies' => array(
+  return [
+    'access partially translated biographies' => [
       'title' => t('Access partially translated biographies'),
       'description' => t('Biographies can be marked as partially translated. Roles that have this permission can access these biographies. Others will be redirected to the English version of the biography.'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -129,7 +129,7 @@ function cwt_biography_preprocess_item_list(&$variables) {
  * Implements hook_block_info().
  */
 function cwt_biography_block_info() {
-  $blocks = array();
+  $blocks = [];
   $blocks['biography_contact_form']['info'] = t('Biography Contact form');
 
   return $blocks;
@@ -139,7 +139,7 @@ function cwt_biography_block_info() {
  * Implements hook_block_view().
  */
 function cwt_biography_block_view($delta = '') {
-  $block = array();
+  $block = [];
 
   switch ($delta) {
     case 'biography_contact_form':
@@ -152,7 +152,7 @@ function cwt_biography_block_view($delta = '') {
         $src = variable_get('embedded_contact_form_src', 'https://webforms.edcc.eu/form/view/commissioner/')
           . $language->language . '/' . $wrapper->field_remote_id->value();
         $block['content'] = '<iframe class="iframe-contact-form" src="' . $src . '"></iframe>';
-        drupal_add_js(array('cwtBiography' => array('biographyName' => $node->title)), 'setting');
+        drupal_add_js(['cwtBiography' => ['biographyName' => $node->title]], 'setting');
       }
       break;
   }
@@ -217,19 +217,19 @@ function cwt_biography_get_commissioner_biography_by_editorial_section($editoria
   $query->join('field_data_field_biography_role', 'r', 'r.entity_id = n.nid');
   $query->join('taxonomy_term_data', 't', 'r.field_biography_role_tid = t.tid');
   $query
-    ->fields('n', array('nid'))
+    ->fields('n', ['nid'])
     ->condition('n.type', 'biography')
     ->condition('es.bundle', 'biography')
     ->condition('es.field_editorial_section_tid', $editorial_section->tid)
     ->condition('r.bundle', 'biography')
     // Commissioner, Vice President, President, First vice-pres, High-rep.
-    ->condition('t.uuid', array(
+    ->condition('t.uuid', [
       'fea4c060-eb2d-4686-9ccc-64997aad4930',
       'ffbcfcf3-2f50-4c70-a11c-936cc4385cde',
       'f7f7834a-3d60-4525-804b-439fd2d9f97a',
       'e0028e61-1cfa-4f6e-a036-4665b12ce86a',
       'd6304632-edda-4f20-871a-0e49513adfa5',
-    ), 'IN')
+    ], 'IN')
     ->range(0, 1);
 
   if ($nid = $query->execute()->fetchColumn()) {

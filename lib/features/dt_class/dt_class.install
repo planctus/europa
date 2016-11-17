@@ -43,9 +43,9 @@ function dt_class_uninstall() {
 function dt_class_update_7101() {
   features_revert_module('dt_class');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_class' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_class' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -68,9 +68,9 @@ function dt_class_update_7102() {
     field_delete_instance($instance);
   }
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_class_introduction',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
@@ -79,13 +79,13 @@ function dt_class_update_7102() {
 
   // Remove the fieldgroups.
   $type = 'class';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_class_profile_information',
     'group_class_metadata',
     'group_class_topics',
     'group_class_departments',
     'group_page_settings',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
@@ -94,9 +94,9 @@ function dt_class_update_7102() {
 
   // Remove the fieldgroups at the class link group.
   $type = 'class_link_group';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_page_settings',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
@@ -105,14 +105,14 @@ function dt_class_update_7102() {
 
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('class_link_group');
   features_revert_module('dt_class');
-  features_revert(array(
-    'dt_class' => array(
+  features_revert([
+    'dt_class' => [
       'field_base',
       'field_instance',
       'field_group',
       'variable',
-    ),
-  ));
+    ],
+  ]);
 }
 
 /**
@@ -120,9 +120,9 @@ function dt_class_update_7102() {
  */
 function dt_class_update_7103() {
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_class_notification',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);

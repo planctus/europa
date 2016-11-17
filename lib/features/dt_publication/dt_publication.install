@@ -9,7 +9,7 @@
  * Helper function for importing taxonomy terms.
  */
 function _dt_publication_import_taxonomy_terms() {
-  $terms = array(
+  $terms = [
     'No Source',
     'EUR-lex',
     'EC Annual reports',
@@ -17,7 +17,7 @@ function _dt_publication_import_taxonomy_terms() {
     'Eurofound',
     'EU Bookshop',
     'EU Publications Office',
-  );
+  ];
   foreach ($terms as $term) {
     _dt_core_create_taxonomy_term('publication_origin', $term);
   }
@@ -35,7 +35,7 @@ function dt_publication_install() {
   // Force registration of migration classes.
   migrate_static_registration();
   // Make sure that destination vocabularies exists.
-  features_revert(array('dt_publication' => array('taxonomy')));
+  features_revert(['dt_publication' => ['taxonomy']]);
   // Import publication_types vocabulary's terms.
   Migration::getInstance('DTPublicationPublicationTypes')->processImport();
 }
@@ -72,9 +72,9 @@ function dt_publication_update_7102() {
 function dt_publication_update_7103() {
   features_revert_module('dt_publication');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_class' => array('field_instance', 'field_base', 'variable'),
-  ));
+  features_revert([
+    'dt_class' => ['field_instance', 'field_base', 'variable'],
+  ]);
 }
 
 /**
@@ -131,11 +131,11 @@ function dt_publication_update_7108() {
   _dt_shared_field_value_copy('node', 'publication', 'field_publication_contact', 'field_core_contact');
 
   // Remove deprecated fields, which are already migrated.
-  $deprecated_instances = array(
+  $deprecated_instances = [
     'field_core_introduction',
     'field_publication_published_on',
     'field_publication_contact',
-  );
+  ];
 
   foreach ($deprecated_instances as $field_name) {
     if ($instance = field_info_instance('node', $field_name, 'publication')) {
@@ -163,7 +163,7 @@ function dt_publication_update_7109() {
 
     foreach ($nodes as $node) {
       if (!isset($node->field_core_date_published[LANGUAGE_NONE]['0'])) {
-        $node->field_core_date_published[LANGUAGE_NONE]['0'] = array(
+        $node->field_core_date_published[LANGUAGE_NONE]['0'] = [
           'value' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
           'timezone' => "Europe/Luxembourg",
           'offset' => 3600,
@@ -171,10 +171,34 @@ function dt_publication_update_7109() {
           'value2' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
           'timezone_db' => "UTC",
           'date_type' => 'datetime',
-        );
+        ];
         field_attach_update('node', $node);
-        entity_get_controller('node')->resetCache(array($node->nid));
+        entity_get_controller('node')->resetCache([$node->nid]);
       }
     }
+  }
+}
+
+/**
+ * DTTSB-1049: Update translation of collection at Publications.
+ */
+function dt_publication_update_7110() {
+  // Update fields in the publication content type.
+  features_revert_module('dt_publication');
+
+  $tables = [
+    'field_data_field_publication_collection',
+    'field_revision_field_publication_collection',
+  ];
+  foreach ($tables as $table) {
+    // Delete non English translations, and keep the 'und'.
+    db_delete($table)
+      ->condition('language', 'en', '!=')
+      ->execute();
+    // Update all English value to LANGUAGE_NONE.
+    db_update($table)
+      ->fields(['language' => LANGUAGE_NONE])
+      ->condition('language', 'en', '=')
+      ->execute();
   }
 }

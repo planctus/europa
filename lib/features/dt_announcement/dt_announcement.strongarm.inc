@@ -112,6 +112,24 @@ function dt_announcement_strongarm() {
       'title' => array(
         'custom_settings' => FALSE,
       ),
+      'highlight' => array(
+        'custom_settings' => TRUE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

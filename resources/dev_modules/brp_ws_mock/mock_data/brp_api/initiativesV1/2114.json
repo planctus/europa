@@ -1,0 +1,109 @@
+{
+  "createdDate": "2010\/06\/17 17:55:17",
+  "modifiedDate": "2010\/06\/20 12:57:30",
+  "id": 2114,
+  "reference": "Ares(2016)172745",
+  "referenceNumber": "ISC\/2016\/02046",
+  "shortTitle": "Clean air and water quality improvement",
+  "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+  "publishedDate": "2010\/06\/17 17:55:17",
+  "decideSendDate": "2010\/06\/15 10:27:39",
+  "feedbackPeriod": 4,
+  "endDate": "2016\/07\/15 23:59:59",
+  "dg": "SG",
+  "unit": "SG.R.3.001",
+  "type": "RES_TYP",
+  "comment": null,
+  "institution": "COM",
+  "authorName": "Tom",
+  "authorSurname": "CLEYMANS",
+  "authorMail": "Tom.CLEYMANS@ext.ec.europa.eu",
+  "authorPhoneNumber": "87499",
+  "committee": "C47800",
+  "expertGroup": null,
+  "attachments": [
+    {
+      "createdDate": "2016\/06\/17 17:55:17",
+      "modifiedDate": "2016\/06\/17 17:55:17",
+      "filename": "PART-2016-3399V1.docx",
+      "title": " COMMISSION REGULATION (EU) \u2026\/\u2026 This is the title of the main document as written in the word file.",
+      "documentId": "090166e482c645d1",
+      "language": "EN",
+      "size": 203373,
+      "pages": 3,
+      "attachmentDate": null,
+      "type": "RES_TYP",
+      "index": "0-1",
+      "translations": []
+    },
+    {
+      "createdDate": "2016\/06\/17 17:55:17",
+      "modifiedDate": "2016\/06\/17 17:55:17",
+      "filename": "PART-2016-3400V1.doc",
+      "title": "ANNEX   CP-038 ",
+      "documentId": "090166e482c645d2",
+      "language": "EN",
+      "size": 151995,
+      "pages": 30,
+      "attachmentDate": null,
+      "type": "RES_TYP",
+      "index": "1-1",
+      "translations": []
+    },
+    {
+      "createdDate": "2016\/06\/17 17:55:17",
+      "modifiedDate": "2016\/06\/17 17:55:17",
+      "filename": "PART-2016-3401V1.xlsx",
+      "title": "ANNEX-2-pt1\/2",
+      "documentId": "090166e482c645cf",
+      "language": "EN",
+      "size": 2523889,
+      "pages": 109,
+      "attachmentDate": null,
+      "type": "RES_TYP",
+      "index": "2-1",
+      "translations": []
+    },
+    {
+      "createdDate": "2016\/06\/17 17:55:17",
+      "modifiedDate": "2016\/06\/17 17:55:17",
+      "filename": "PART-2016-3402V1.xlsx",
+      "title": "ANNEX-2-pt2\/2",
+      "documentId": "090166e482c645d0",
+      "language": "EN",
+      "size": 139001,
+      "pages": 3,
+      "attachmentDate": null,
+      "type": "RES_TYP",
+      "index": "2-2",
+      "translations": []
+    }
+  ],
+  "totalFeedback": 2,
+  "reportedFeedback": 0,
+  "reviewedFeedback": 1,
+  "toBeReviewedFeedback": 0,
+  "firstReportDate": null,
+  "initiativeStatus": "ACTIVE",
+  "daysElapsedSinceFirstReport": 0,
+  "receivingFeedbackStatus": "CLOSED",
+  "_links": {
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2114"
+    },
+    "initiativeV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2114{?projection}",
+      "templated": true
+    },
+    "feedbackPaged": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2114"
+    },
+    "feedbackSearch": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/search\/feedbackV1\/?iid=2114"
+    },
+    "feedback": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/initiativesV1\/2114\/feedback"
+    }
+  },
+  "code": "200"
+}

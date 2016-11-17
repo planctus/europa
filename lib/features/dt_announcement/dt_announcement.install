@@ -40,9 +40,9 @@ function dt_announcement_update_7101() {
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
   features_revert_module('dt_announcement');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_announcement' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_announcement' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -50,11 +50,11 @@ function dt_announcement_update_7101() {
  */
 function dt_announcement_update_7102() {
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_core_subject',
     'field_announcemnt_img_prominence',
     'field_core_location',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
@@ -63,9 +63,9 @@ function dt_announcement_update_7102() {
 
   features_revert_module('dt_announcement');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_announcement' => array('field_instance', 'variable'),
-  ));
+  features_revert([
+    'dt_announcement' => ['field_instance', 'variable'],
+  ]);
 }
 
 /**
@@ -74,10 +74,10 @@ function dt_announcement_update_7102() {
 function dt_announcement_update_7103() {
   // Remove the fieldgroups.
   $type = 'announcement';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_announcement_metadata',
     'group_scheduler',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
@@ -86,9 +86,9 @@ function dt_announcement_update_7103() {
 
   features_revert_module('dt_announcement');
   // The fields need component-based way.
-  features_revert(array(
-    'dt_announcement' => array('field_group', 'variable'),
-  ));
+  features_revert([
+    'dt_announcement' => ['field_group', 'variable'],
+  ]);
 }
 
 /**
@@ -128,7 +128,7 @@ function dt_announcement_update_7107() {
 }
 
 /**
- * NEXTEUROPA-6003: update the page then the announcement feature.
+ * NEXTEUROPA-6003: Update the page then the announcement feature.
  */
 function dt_announcement_update_7108() {
   features_revert_module('dt_page');
@@ -154,7 +154,7 @@ function dt_announcement_update_7110() {
  */
 function dt_announcement_update_7111() {
   // Enable dt_pri_policy_area_default.
-  module_enable(array('dt_pri_policy_area_default'));
+  module_enable(['dt_pri_policy_area_default']);
   // Revert the feature.
   features_revert_module('dt_announcement');
 }
@@ -174,9 +174,9 @@ function dt_announcement_update_7112() {
 /**
  * NEXTEUROPA-7497: Announcement publishing date.
  */
-function dt_announcement_update_7113($sandbox) {
+function dt_announcement_update_7113(&$sandbox) {
   if (!isset($sandbox['max'])) {
-    // Reverting Announcement.
+    // Reverting the feature.
     features_revert_module('dt_announcement');
 
     // Query all nid of announcements.
@@ -190,7 +190,7 @@ function dt_announcement_update_7113($sandbox) {
   $limit = 100;
   $nids = db_select('node', 'n')
     ->condition('n.type', 'announcement')
-    ->fields('n', array('nid'))
+    ->fields('n', ['nid'])
     ->orderBy('n.nid')
     ->range($sandbox['position'], $limit)
     ->execute()
@@ -232,7 +232,7 @@ function dt_announcement_update_7114() {
 
     foreach ($nodes as $node) {
       if (!isset($node->field_core_date_published[LANGUAGE_NONE]['0'])) {
-        $node->field_core_date_published[LANGUAGE_NONE]['0'] = array(
+        $node->field_core_date_published[LANGUAGE_NONE]['0'] = [
           'value' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
           'timezone' => "Europe/Luxembourg",
           'offset' => 3600,
@@ -240,13 +240,12 @@ function dt_announcement_update_7114() {
           'value2' => format_date($node->created, 'custom', 'Y-m-d H:i:s', 'UTC'),
           'timezone_db' => "UTC",
           'date_type' => 'datetime',
-        );
+        ];
         field_attach_update('node', $node);
-        entity_get_controller('node')->resetCache(array($node->nid));
+        entity_get_controller('node')->resetCache([$node->nid]);
       }
     }
   }
-
 }
 
 /**
@@ -260,8 +259,9 @@ function dt_announcement_update_7115() {
 
   // Reverting creates the new field for the migration.
   features_revert_module('dt_announcement');
-  _dt_shared_field_value_copy('node', 'announcement', 'field_announcement_contact', 'field_core_press_contacts');
-
+  if ($instance = field_info_instance('node', 'field_announcement_contact', 'announcement')) {
+    _dt_shared_field_value_copy('node', 'announcement', 'field_announcement_contact', 'field_core_press_contacts');
+  }
   // Removing obsolete field group and field.
   if ($sidebar = field_group_load_field_group('group_announcement_rsb_content', 'node', 'announcement', 'form')) {
     field_group_group_export_delete($sidebar, FALSE);
@@ -276,5 +276,30 @@ function dt_announcement_update_7115() {
       field_delete_field($field);
     }
   }
+}
 
+/**
+ * DTTSB-1180: Changing the allowed values of the announcement type field.
+ */
+function dt_announcement_update_7116() {
+  // Get the field info.
+  $announcement_type_field_info = field_info_field('field_announcement_type');
+  // Get a reference to the values.
+  $values = &$announcement_type_field_info['settings']['allowed_values'];
+
+  $values = [
+    'press_release' => 'Press release',
+    'memo' => 'Factsheet',
+    'mex' => 'Daily news',
+    'speech' => 'Speech',
+    'cldr' => 'Commissioners\' weekly activity',
+    'agenda' => 'Upcoming events',
+    'statement' => 'Statement',
+    'news' => 'News',
+    'news_article' => 'News article',
+    'wm' => 'Weekly meeting',
+  ];
+
+  // Save the field.
+  field_update_field($announcement_type_field_info);
 }

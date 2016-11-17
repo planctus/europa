@@ -22,6 +22,8 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
@@ -47,6 +49,8 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
@@ -77,6 +81,8 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
@@ -100,6 +106,8 @@ Feature: File content type
     And I press "Next"
     # Media frame -->
     And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
@@ -110,3 +118,56 @@ Feature: File content type
     And I reload the page
     Then I should see the link "Downloaden"
     Then I get the file "test_nl.pdf" after clicking "Download"
+
+    When I am viewing a "Publication":
+      | title                           | Publication title |
+      | language                        | en                |
+      | status                          | 1                 |
+      | field_core_files                | My File Title     |
+      | field_core_date_updated:value   | 1400980800        |
+      | field_core_date_updated:value2  | 1400980800        |
+      | field_core_date_published:value | 1400980800        |
+      | field_core_date_published:value | 1400980800        |
+    And I click "Available languages (1)"
+    Then I should see "version" in the ".file__translations-item .file__title" element
+
+  Scenario: I can add external links to a file
+    Given "File" content:
+      | title      | status | field_core_legacy_link  |
+      | File title | 1      | Link - http://google.be |
+    And I am viewing a "Page":
+      | title            | Page external file |
+      | status           | 1                  |
+      | field_core_files | File title         |
+    Then I should see "File title" in the ".file" element
+    Then I should see "English" in the ".file" element
+    Then I should see the link "Download" linking to "http://google.be"
+
+  @javascript @information
+  Scenario: ZIP Files can be uploaded and downloaded by anonymous
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "file" content:
+      | title  | File Title |
+      | status | 1          |
+      | nid    | 99999      |
+      | is_new | 1          |
+
+    And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
+    And I click "Browse"
+    And I switch to the frame "mediaBrowser"
+      # <-- Media frame
+    And I attach the file "test_en.zip" to "files[upload]"
+    And I press "Next"
+    And I press "Next"
+      # Media frame -->
+    And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
+    And I press "Save"
+    And I click "Logout"
+    And I am on "node/99999"
+    Then I should see the link "Download"
+    Then I get the file "test_en.zip" after clicking "Download"

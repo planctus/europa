@@ -42,14 +42,14 @@ function commissioner_preprocess_page(&$variables) {
  */
 function _commissioner_bundle_forms($bundle) {
   // Forming plurals for existing content types.
-  $plurals = array(
+  $plurals = [
     'activities' => t("calendar items"),
     'aggregated_news' => t("announcements"),
     'biography' => t("commissioners"),
     'commisioner_blog_post' => t("blog posts"),
     'highlight' => t("highlights"),
     'page' => t("pages"),
-  );
+  ];
 
   $singular = node_type_get_name($bundle);
   // If user preference for plural form - use it, otherwise use the label.
@@ -57,13 +57,13 @@ function _commissioner_bundle_forms($bundle) {
     $plural = $plurals[$bundle];
   }
   else {
-    $plural = drupal_strtolower(t("@bundles", array('@bundle' => $singular)));
+    $plural = drupal_strtolower(t("@bundles", ['@bundle' => $singular]));
   }
 
-  $forms = array(
-    'singular' => ucfirst(drupal_strtolower($singular)),
+  $forms = [
+    'singular' => drupal_ucfirst(drupal_strtolower($singular)),
     'plural' => $plural,
-  );
+  ];
 
   return $forms;
 }
@@ -92,7 +92,7 @@ function commissioner_preprocess_views_view(&$variables) {
       $content_type_forms = _commissioner_bundle_forms($content_type);
 
       if ($total_rows == 0) {
-        $items_count = t("No @items", array('@items' => $content_type_forms['plural']));
+        $items_count = t("No @items", ['@items' => $content_type_forms['plural']]);
       }
       else {
         $items_count = $total_rows . ' ' .
@@ -168,7 +168,7 @@ function commissioner_preprocess_comment_wrapper(&$variables) {
 function commissioner_preprocess_comment(&$variables) {
   $comment = $variables['elements']['#comment'];
   $variables['created'] = format_date($comment->created, 'ec_date');
-  $variables['submitted'] = t('!username', array('!username' => $variables['author'])) . '<span class="submitted-date">' . $variables['created'] . '</span>';
+  $variables['submitted'] = t('!username', ['!username' => $variables['author']]) . '<span class="submitted-date">' . $variables['created'] . '</span>';
   $variables['title']     = check_plain($comment->subject);
   $variables['permalink'] = t('Permalink');
   $variables['title_attributes_array']['class'] = 'comment__title';
@@ -184,19 +184,19 @@ function commissioner_preprocess_comment(&$variables) {
  * @see theme_qt_quicktabs_tabset()
  */
 function commissioner_qt_quicktabs_tabset($variables) {
-  $variables = array(
-    'attributes' => array(
+  $variables = [
+    'attributes' => [
       'class' => 'nav nav-tabs quicktabs-tabs quicktabs-style-' . $variables['tabset']['#options']['style'],
       'role' => 'tablist',
-    ),
-    'items' => array(),
-  );
+    ],
+    'items' => [],
+  ];
   foreach (element_children($variables['tabset']['tablinks']) as $key) {
-    $item = array();
+    $item = [];
     if (is_array($variables['tabset']['tablinks'][$key])) {
       $tab = $variables['tabset']['tablinks'][$key];
       if ($key == $variables['tabset']['#options']['active']) {
-        $item['class'] = array('active');
+        $item['class'] = ['active'];
       }
       $item['data'] = drupal_render($tab);
       $variables['items'][] = $item;
@@ -219,9 +219,9 @@ function commissioner_pager_link($variables) {
     $parameters['page'] = $new_page;
   }
 
-  $query = array();
+  $query = [];
   if (count($parameters)) {
-    $query = drupal_get_query_parameters($parameters, array());
+    $query = drupal_get_query_parameters($parameters, []);
   }
   if ($query_pager = pager_get_query_parameters()) {
     $query = array_merge($query, $query_pager);
@@ -231,18 +231,18 @@ function commissioner_pager_link($variables) {
   if (!isset($attributes['title'])) {
     static $titles = NULL;
     if (!isset($titles)) {
-      $titles = array(
+      $titles = [
         t('« first') => t('Go to first page'),
         t('‹ previous') => t('Go to previous page'),
         t('next ›') => t('Go to next page'),
         t('last »') => t('Go to last page'),
-      );
+      ];
     }
     if (isset($titles[$text])) {
       $attributes['title'] = $titles[$text];
     }
     elseif (is_numeric($text)) {
-      $attributes['title'] = t('Go to page @number', array('@number' => $text));
+      $attributes['title'] = t('Go to page @number', ['@number' => $text]);
     }
   }
 
@@ -255,7 +255,7 @@ function commissioner_pager_link($variables) {
   // @see commissioners_url_inbound_alter().
   $original_path_cached = &drupal_static('cwt_core_orignal_path');
   $path = isset($original_path_cached['original_path']) ? $original_path_cached['original_path'] : $_GET['q'];
-  $attributes['href'] = url($path, array('query' => $query));
+  $attributes['href'] = url($path, ['query' => $query]);
   return '<a' . drupal_attributes($attributes) . '>' . $text . '</a>';
 }
 
@@ -267,12 +267,12 @@ function commissioner_pager_link($variables) {
 function commissioner_textarea($variables) {
   $element = $variables['element'];
   $element['#value'] = isset($element['#value']) ? $element['#value'] : '';
-  element_set_attributes($element, array('id', 'name', 'cols', 'rows'));
-  _form_set_class($element, array('form-textarea'));
+  element_set_attributes($element, ['id', 'name', 'cols', 'rows']);
+  _form_set_class($element, ['form-textarea']);
 
-  $wrapper_attributes = array(
-    'class' => array('form-textarea-wrapper'),
-  );
+  $wrapper_attributes = [
+    'class' => ['form-textarea-wrapper'],
+  ];
 
   // Add resizable behavior.
   if (!empty($element['#resizable'])) {
@@ -294,7 +294,7 @@ function commissioner_preprocess_block(&$variables) {
     $variables['classes_array'][] = 'affix-top';
   }
 
-  $exposed_blocks_delta = array('-exp-agenda-list', '-exp-biography_news-list');
+  $exposed_blocks_delta = ['-exp-agenda-list', '-exp-biography_news-list'];
 
   if (in_array($variables['block']->delta, $exposed_blocks_delta)) {
     $variables['classes_array'][] = 'block-filters';
@@ -355,7 +355,7 @@ function commissioner_preprocess_file_entity(&$variables) {
 function commissioner_file_link($variables) {
   $file = $variables['file'];
   $url['path'] = file_create_url($file->uri);
-  $url['options'] = array();
+  $url['options'] = [];
 
   // Apply the modifier if needed. Currently it's only on the front page. If on
   // a later stage, we need this everywhere, we should make this modifier the

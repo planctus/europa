@@ -15,48 +15,33 @@ use Drupal\dt_date_format\DtDateRangeFormat;
 function dt_event_ds_fields_info($entity_type) {
   $fields = [];
 
-  // As we need to render them twice, we can recreate them here. We set our
-  // defaults, and add just the title to define them. If we need to make changes
-  // we only have to do it once.
-  $book_your_seat_defaults = [
-    'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'ui_limit' => ['event|*'],
-    'function' => '_dt_event_ds_fields_book_your_seat',
-  ];
-  $livestreaming_defaults = [
-    'field_type' => DS_FIELD_TYPE_FUNCTION,
-    'ui_limit' => ['event|*'],
-    'function' => '_dt_event_ds_fields_livestreaming',
-    'properties' => [
-      'settings' => [
-        'no_padding' => [
-          'title' => t('Remove left padding'),
-          'type' => 'checkbox',
-          'description' => t('Removes the left padding for different view mode usage'),
+  if ($entity_type == 'node') {
+    $fields[$entity_type]['book_your_seat'] = [
+      'title' => t('Event: Book your seat button'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'function' => '_dt_event_ds_fields_book_your_seat',
+    ];
+
+    $fields[$entity_type]['livestreaming'] = [
+      'title' => t('Event: Livestreaming'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'function' => '_dt_event_ds_fields_livestreaming',
+      'properties' => [
+        'settings' => [
+          'no_padding' => [
+            'title' => t('Remove left padding'),
+            'type' => 'checkbox',
+            'description' => t('Removes the left padding for different view mode usage'),
+          ],
+        ],
+        'default' => [
+          'no_padding' => FALSE,
         ],
       ],
-      'default' => [
-        'no_padding' => FALSE,
-      ],
-    ],
-  ];
+    ];
 
-  // The actual DS definition.
-  if ($entity_type == 'node') {
-    // Book your seat.
-    $fields[$entity_type]['book_your_seat'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button'),
-    ];
-    $fields[$entity_type]['book_your_seat_bottom'] = $book_your_seat_defaults + [
-      'title' => t('Event: Book your seat button bottom'),
-    ];
-    // Livestreaming.
-    $fields[$entity_type]['livestreaming'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming'),
-    ];
-    $fields[$entity_type]['livestreaming_bottom'] = $livestreaming_defaults + [
-      'title' => t('Event: Livestreaming bottom'),
-    ];
     $fields[$entity_type]['attend'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -75,6 +60,7 @@ function dt_event_ds_fields_info($entity_type) {
         ],
       ],
     ];
+
     $fields[$entity_type]['dt_event_header'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -93,6 +79,7 @@ function dt_event_ds_fields_info($entity_type) {
         ],
       ],
     ];
+
     $fields[$entity_type]['dt_event_address_oneline'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -112,6 +99,7 @@ function dt_event_ds_fields_info($entity_type) {
         ],
       ],
     ];
+
     $fields[$entity_type]['dt_event_status_label'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -119,6 +107,7 @@ function dt_event_ds_fields_info($entity_type) {
       'function' => '_dt_event_ds_fields_status_label',
       'use_token' => TRUE,
     ];
+
     // We need two status field.
     $amount_of_lines = 2;
     for ($i = 1; $i <= $amount_of_lines; $i++) {
@@ -138,13 +127,14 @@ function dt_event_ds_fields_info($entity_type) {
         ],
       ];
     }
-    // Custom date at practical information block.
+
     $fields[$entity_type]['dt_event_date_and_time'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
       'title' => t('Event: when, custom date and time'),
       'function' => '_dt_event_ds_fields_date_and_time',
     ];
+
     $fields[$entity_type]['dt_event_scribble_embed'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -163,12 +153,14 @@ function dt_event_ds_fields_info($entity_type) {
         ],
       ],
     ];
+
     $fields[$entity_type]['dt_event_stream_embed'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
       'title' => t('Event: Stream embed'),
       'function' => '_dt_event_ds_fields_stream_embed',
     ];
+
     $fields[$entity_type]['dt_event_stream_embed_intro'] = [
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'ui_limit' => ['event|*'],
@@ -212,11 +204,14 @@ function _dt_event_ds_fields_scribble_embed($field) {
     $markup = [
       '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
     ];
+
     if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
       $markup['#prefix'] = '<p>' . t("What's happening in different social media channels") . '</p>';
     }
+
     return drupal_render($markup);
   }
+
   return NULL;
 }
 
@@ -237,9 +232,11 @@ function _dt_event_ds_fields_stream_embed($field) {
       $markup = [
         '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
       ];
+
       return drupal_render($markup);
     }
   }
+
   return NULL;
 }
 
@@ -263,12 +260,12 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
       $display = [
         'label' => 'hidden',
         'module' => 'dt_date_format',
-        'settings' => array(
-          'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+        'settings' => [
+          'fallback' => 'sd_l sd_j sd_F, sd_G.sd_i - ed_l ed_j ed_F, ed_G.ed_i (sd_T)',
           'render_box' => 0,
           'same_date_format' => 'sd_l sd_j sd_F',
-          'same_day_format' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
-        ),
+          'same_day_format' => 'sd_l sd_j sd_F, sd_G.sd_i - ed_G.ed_i (sd_T)',
+        ],
         'type' => 'date_event_date',
       ];
 
@@ -281,9 +278,11 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
         '#markup' => '<div class="col-md-6">' . drupal_render($date) . '</div><div class="col-md-6 text-right"><p>' . l(t('Event details'), 'node/' . $entity->getIdentifier()) . '</p></div>',
         '#suffix' => '</div>',
       ];
+
       return drupal_render($markup);
     }
   }
+
   return NULL;
 }
 
@@ -312,6 +311,7 @@ function _dt_event_ds_fields_status_message($field) {
   if (!isset($field['entity']->event_status)) {
     return NULL;
   }
+
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
       $render_config['#message_title'] = t('This event has started.');
@@ -380,6 +380,7 @@ function _dt_event_ds_fields_status_label($field) {
   if (isset($label)) {
     return '<span class="label label--upper label--meta-medium label--status">' . $label . '</span>';
   }
+
   return NULL;
 }
 
@@ -415,6 +416,7 @@ function _dt_event_ds_fields_address_oneline($field) {
     if (isset($field['formatter_settings']['show_link']) && $field['formatter_settings']['show_link']) {
       return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
     }
+
     return $address;
   }
 }
@@ -449,6 +451,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
   $emw = entity_metadata_wrapper('node', $field['entity']);
 
   // List of states, in which one could register for an event.
+  // List of states, in which one could register for an event.
   $allowed_states = [
     DT_EVENT_STATE_FUTURE,
     DT_EVENT_STATE_ONGOING,
@@ -462,36 +465,43 @@ function _dt_event_ds_fields_book_your_seat($field) {
   ) {
     // If registration is still open we can show the button.
     if (
-      $emw->field_event_registration_end->value() > time()
+      $field['view_mode'] !== 'teaser'
+      && $emw->field_event_registration_end->value() > time()
       && $emw->field_event_registration->value()
     ) {
-      $registration = $emw->field_event_registration->value();
+      // The desired language.
+      $langcode = $GLOBALS['language_content']->language;
+      // Get the field data.
+      $registration = $emw->language($langcode)->field_event_registration->value();
       // Our button text will default if not filled in.
-      $button_link = $registration['display_url'];
+      $button_link = $registration['url'];
       $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
     }
     // Special case if ongoing and live stream is available.
-    if (
+    elseif (
       $field['entity']->event_livestream_status == DT_EVENT_LIVE_STREAM_ONGOING &&
       $emw->field_event_live_streaming_link->value()
     ) {
-      $button_text = t('Watch live');
       $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
+      $button_text = t('Watch live streaming');
     }
 
-    if (isset($button_text)) {
+    if (isset($button_text) && isset($button_link)) {
       // Default attributes for the link.
       $attributes = [
         'attributes' => [
           'class' => [
             'btn',
             'btn-ctn',
-            'pull-left',
             'btn--no-margin-bottom',
           ],
         ],
         'html' => TRUE,
       ];
+
+      if ($field['view_mode'] === 'teaser') {
+        $attributes['attributes']['class'][] = 'listing__btn';
+      }
 
       // Return the link.
       return l($button_text, $button_link, $attributes);
@@ -541,7 +551,7 @@ function _dt_event_ds_fields_livestreaming($field) {
       case DT_EVENT_LIVE_STREAM_FUTURE:
         $timezone = $field['entity']->field_event_live_streaming_date[LANGUAGE_NONE][0]['timezone'];
         $replacement = [
-          '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'h:i (T)', $timezone),
+          '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'H:i (T)', $timezone),
         ];
         $streaming_text = t('<strong>Watch live</strong> at @time', $replacement);
         break;
@@ -569,11 +579,13 @@ function _dt_event_ds_fields_livestreaming($field) {
  *   DS field.
  * @param object $entity
  *   Loaded entity.
+ * @param bool $short
+ *   Defines if the short format should be used.
  *
  * @return string
  *   Formatted date.
  */
-function _dt_event_date_display($field, $entity) {
+function _dt_event_date_display(array $field, $entity, $short = FALSE) {
   // Initialize a dateRange object.
   $date = $entity->field_event_date->value();
   $date_object = new DtDateRangeFormat(
@@ -584,63 +596,71 @@ function _dt_event_date_display($field, $entity) {
     entity_translation_get_existing_language('node', $field['entity'])
   );
 
-  // Using status field for displaying date.
-  $status = $field['entity']->event_status;
-  switch ($status) {
-    // Ongoing, apply the right date format.
-    case DT_EVENT_STATE_ONGOING:
-      // Same date||day||hour (Tuesday 17 March).
-      if ($date_object->isSameDate(TRUE)) {
-        // If it is ongoing, we use the current date.
-        $date_object->setStartDate(time());
-        $date_object->setFormat('sd_l sd_j sd_F');
-      }
-      // Not the same day, but the same month.
-      elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-        $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
-      }
-      // Not the same day or month. (fallback).
-      else {
-        $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
-      }
-      break;
+  // Date formats will be put into an array to keep them maintainable.
+  $formats = [
+    'future_ongoing' => [
+      'short' => [
+        'single_date' => 'sd_l sd_j sd_F',
+        'single_date_different_hour' => 'sd_l sd_j sd_F',
+        'different_day_same_month' => 'sd_l sd_j - ed_l ed_j ed_F',
+        'different_month' => 'sd_l sd_j sd_F - ed_l ed_j ed_F',
+        'different_year' => 'sd_l sd_j sd_F sd_Y - ed_l ed_j ed_F ed_Y',
+      ],
+      'extended' => [
+        'single_date' => 'sd_l sd_j sd_F sd_Y, sd_G.sd_i (sd_T)',
+        'single_date_different_hour' => 'sd_l sd_j sd_F sd_Y, sd_G.sd_i - ed_G.ed_i (sd_T)',
+        'different_day_same_month' => 'sd_l sd_j sd_F sd_Y, sd_G.sd_i - ed_l ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+        'different_month' => 'sd_l sd_j sd_F sd_Y, sd_G.sd_i - ed_l ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+        'different_year' => 'sd_l sd_j sd_F sd_Y, sd_G.sd_i - ed_l ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+      ],
+    ],
+    'other' => [
+      'short' => [
+        'single_date' => 'sd_j sd_F sd_Y',
+        'single_date_different_hour' => 'sd_j sd_F sd_Y',
+        'different_day_same_month' => 'sd_j - ed_j ed_F ed_Y',
+        'different_month' => 'sd_j sd_F - ed_j ed_F ed_Y',
+        'different_year' => 'sd_j sd_F sd_Y - ed_j ed_F ed_Y',
+      ],
+      'extended' => [
+        'single_date' => 'sd_j sd_F sd_Y, sd_G.sd_i (sd_T)',
+        'single_date_different_hour' => 'sd_j sd_F sd_Y, sd_G.sd_i - ed_G.ed_i (sd_T)',
+        'different_day_same_month' => 'sd_j sd_F sd_Y, sd_G.sd_i - ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+        'different_month' => 'sd_j sd_F sd_Y, sd_G.sd_i - ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+        'different_year' => 'sd_j sd_F sd_Y, sd_G.sd_i - ed_j ed_F ed_Y, ed_G.ed_i (sd_T)',
+      ],
+    ],
+  ];
 
-    // Past event, it shows also the year.
-    case DT_EVENT_STATE_PAST:
-      // Same date||day||hour (Tuesday 17 March).
-      if ($date_object->isSameDate(TRUE) || $date_object->isSameDate(FALSE, 'Ymd') || $date_object->isSameDate(FALSE, 'YmdHi')) {
-        $date_object->setFormat('sd_j sd_F sd_Y');
-      }
-      // Not the same day, but the same month.
-      elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-        $date_object->setFormat('sd_j – ed_j sd_F sd_Y');
-      }
-      // Not the same day or month. (fallback).
-      else {
-        $date_object->setFormat('sd_j sd_F – ed_j ed_F sd_Y');
-      }
-      break;
+  // Set the length format to use.
+  $format_to_use = ($short) ? 'short' : 'extended';
 
-    // Cancelled, apply the right date format.
-    case DT_EVENT_STATE_CANCELLED:
-      $end_date = !empty($date['value2']) ? $date['value2'] : $date['value'];
-      time() > $end_date ? $date_object->setFormat('sd_j sd_F sd_Y') : $date_object->setFormat('sd_l sd_j sd_F');
-      break;
+  // The list of states that use the 'other' format.
+  $other_states = [DT_EVENT_STATE_PAST, DT_EVENT_STATE_CANCELLED];
 
-    // Default is showing the start date of the event.
-    default:
-      // Same date||day||hour (Tuesday 17 March).
-      if ($date_object->isSameDate(TRUE) || $date_object->isSameDate(FALSE, 'Ymd') || $date_object->isSameDate(FALSE, 'YmdHi')) {
-        $date_object->setFormat('sd_l sd_j sd_F');
-      }
-      // Not the same day, but the same month.
-      elseif ($date_object->isSameDate(FALSE, 'Ym')) {
-        $date_object->setFormat('sd_l sd_j – ed_l ed_j sd_F');
-      }
-      // Not the same day or month. (fallback).
-      else {
-        $date_object->setFormat('sd_l sd_j sd_F – ed_l ed_j ed_F');
-      }
+  // Assign the format.
+  $format = in_array($field['entity']->event_status, $other_states) ? $formats['other'][$format_to_use] : $formats['future_ongoing'][$format_to_use];
+
+  // Single day event.
+  if ($date_object->isSameDate(TRUE)) {
+    $date_object->setFormat($format['single_date']);
+  }
+  // Single day event, but different hours.
+  elseif ($date_object->isSameDate(FALSE, 'Ymd')) {
+    $date_object->setFormat($format['single_date_different_hour']);
+  }
+  // Multiple day event (days following each other) in one month.
+  elseif ($date_object->isSameDate(FALSE, 'Ym')) {
+    $date_object->setFormat($format['different_day_same_month']);
+  }
+  // Multiple day event (days following each other) in multiple months.
+  elseif ($date_object->isSameDate(FALSE, 'Y')) {
+    $date_object->setFormat($format['different_month']);
+  }
+  // Multiple day event (days following each other) in multiple months and
+  // multiple years.
+  else {
+    $date_object->setFormat($format['different_year']);
   }
 
   return $date_object->getformattedDateRange();
@@ -682,9 +702,8 @@ function _dt_event_ds_fields_header_event($field) {
 
     // Cancelled, it shows the date with a modifier.
     $modifier = $field['entity']->event_status == DT_EVENT_STATE_CANCELLED ? 'page-header__date--cancelled ' : '';
-
     // Add the date markup.
-    $formatted_date = _dt_event_date_display($field, $entity);
+    $formatted_date = _dt_event_date_display($field, $entity, TRUE);
     $markup .= '<div class="' . $modifier . 'page-header__date icon icon--calendar">' . $formatted_date . '</div>';
   }
 
@@ -716,17 +735,20 @@ function _dt_event_ds_fields_header_event($field) {
   ];
 
   if ($is_streaming && (!in_array($field['entity']->event_status, $unavailable_states))) {
+    $is_streaming_modifier_class = ' listing__status-container--inline';
     $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
   }
 
   // Start building the render array.
-  $output = array(
-    '#markup' => $markup,
-  );
+  $output = ['#markup' => $markup];
 
   // Depending on the date placement we add our prefix and suffix.
   if (!$teaser_mode) {
     $output['#prefix'] = '<div class="page-header__eventinfo">';
+    $output['#suffix'] = '</div>';
+  }
+  else {
+    $output['#prefix'] = '<div class="listing__status-container' . (isset($is_streaming_modifier_class) ? $is_streaming_modifier_class : '') . '">';
     $output['#suffix'] = '</div>';
   }
 
@@ -751,9 +773,7 @@ function _dt_event_ds_fields_date_and_time($field) {
     // Add the date markup.
     $markup = ($field['entity']->event_status == DT_EVENT_STATE_CANCELLED) ? '<del>' . $formatted_date . '</del>' : $formatted_date;
     // Start building the render array.
-    $output = [
-      '#markup' => $markup,
-    ];
+    $output = ['#markup' => $markup];
   };
 
   return drupal_render($output);

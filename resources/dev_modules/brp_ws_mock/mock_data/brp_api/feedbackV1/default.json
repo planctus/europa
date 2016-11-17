@@ -1,0 +1,47 @@
+{
+  "createdDate": "2016\/06\/21 16:50:18",
+  "modifiedDate": "2016\/06\/21 16:50:18",
+  "id": 18,
+  "feedback": "test MOCK{##REPLACEID##}",
+  "dateFeedback": "2016\/06\/21 16:50:18",
+  "language": "EN",
+  "userType": "EU_CITIZEN",
+  "firstName": "John MOCK{##REPLACEID##}",
+  "surname": "Doe",
+  "email": "",
+  "country": "AUT",
+  "organization": null,
+  "tr_number": null,
+  "companySize": null,
+  "scope": null,
+  "publication": "WITHINFO",
+  "status": "PUBLISHED",
+  "reviewed": false,
+  "hasToBeReviewed": false,
+  "reportsNumber": 0,
+  "englishfeedback": null,
+  "firstReportDate": null,
+  "referenceInitiative": "Ares(2016)176533",
+  "statusChanged": false,
+  "historyEventOccurs": false,
+  "historyType": null,
+  "userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.103 Safari\/537.36",
+  "login": "user_contributor",
+  "daysElapsedSinceFirstReport": 0,
+  "_links": {
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18"
+    },
+    "feedbackV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18{?projection}",
+      "templated": true
+    },
+    "initiative": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18\/initiative"
+    },
+    "reports": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/18\/reports"
+    }
+  },
+  "code": "200"
+}

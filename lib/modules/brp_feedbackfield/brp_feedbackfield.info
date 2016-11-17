@@ -1,0 +1,9 @@
+name = BRP feedback field
+description = Custom field formatter for BRP feedback.
+core = 7.x
+php = 5.5
+multisite_version = 2.2
+package = NextEuropa Digital Transformation BRP Site
+dependencies[] = ds
+dependencies[] = registry_autoload
+registry_autoload[] = PSR-4

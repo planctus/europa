@@ -19,7 +19,10 @@ function dt_core_metatag_export_default() {
         'value' => '[node:title] | [site:name]',
       ),
       'description' => array(
-        'value' => '[node:field-core-description]',
+        'value' => '[node:field_core_description]',
+      ),
+      'last-modified' => array(
+        'value' => '[node:changed:custom:d/m/Y]',
       ),
       'last-modified' => array(
         'value' => '[node:changed:custom:d/m/Y]',
@@ -28,7 +31,7 @@ function dt_core_metatag_export_default() {
         'value' => '[node:title]',
       ),
       'og:description' => array(
-        'value' => '[node:field-core-description]',
+        'value' => '[node:field_core_description]',
       ),
       'og:updated_time' => array(
         'value' => '[node:changed:custom:c]',

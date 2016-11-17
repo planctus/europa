@@ -20,11 +20,11 @@ function dt_featured_item_update_7101() {
   features_revert_module('Dt_featured_item');
 
   // List of fields to delete.
-  $fields_to_delete = array(
+  $fields_to_delete = [
     'field_feat_item_button_label',
     'field_feat_item_ref_or_url',
     'field_feat_item_description',
-  );
+  ];
 
   // Handle the fields to delete.
   foreach ($fields_to_delete as $field_name) {

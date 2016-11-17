@@ -29,24 +29,24 @@ function nexteuropa_page_enable() {
   }
   // Remove the fieldgroups.
   $type = 'page';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_page_metadata',
     'group_page_content',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
     field_group_group_export_delete($group, FALSE);
   }
   features_revert_module('nexteuropa_page');
-  features_revert(array(
-    'nexteuropa_page' => array(
+  features_revert([
+    'nexteuropa_page' => [
       'field_base',
       'field_instance',
       'field_group',
       'variable',
-    ),
-  ));
+    ],
+  ]);
 }
 
 /**
@@ -64,24 +64,24 @@ function nexteuropa_page_update_7101() {
   }
   // Remove the fieldgroups.
   $type = 'page';
-  $fieldgroups_to_remove = array(
+  $fieldgroups_to_remove = [
     'group_page_metadata',
     'group_page_content',
-  );
+  ];
 
   foreach ($fieldgroups_to_remove as $group_name) {
     $group = field_group_load_field_group($group_name, 'node', $type, 'form');
     field_group_group_export_delete($group, FALSE);
   }
   features_revert_module('nexteuropa_page');
-  features_revert(array(
-    'nexteuropa_page' => array(
+  features_revert([
+    'nexteuropa_page' => [
       'field_base',
       'field_instance',
       'field_group',
       'variable',
-    ),
-  ));
+    ],
+  ]);
 }
 
 /**

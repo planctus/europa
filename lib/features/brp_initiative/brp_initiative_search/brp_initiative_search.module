@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Holds all configuration for Brp search.
+ */
+
+include_once 'brp_initiative_search.features.inc';
+
+/**
+ * Implements hook_post_features_enable_feature().
+ *
+ * This will make sure all the tables are created upon install.
+ */
+function brp_initiative_search_post_features_enable_feature($component) {
+  if ($server = search_api_server_load('brp_search_server')) {
+    if ($index = search_api_index_load('brp_initiatives_index')) {
+      $index->save();
+      $server->addIndex($index);
+    }
+  }
+}

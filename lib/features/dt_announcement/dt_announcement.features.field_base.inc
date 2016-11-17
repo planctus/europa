@@ -27,7 +27,7 @@ function dt_announcement_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
@@ -152,16 +152,16 @@ function dt_announcement_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'press_release' => 'press release',
-        'speech' => 'speech',
-        'news_article' => 'news article',
-        'announcement' => 'announcement',
-        'blog_post' => 'blog post',
-        'statement' => 'statement',
-        'factsheet' => 'factsheet',
-        'infographic' => 'infographic',
-        'legal_document' => 'legal document',
-        'document' => 'document',
+        'press_release' => 'Press release',
+        'memo' => 'Factsheet',
+        'mex' => 'Daily news',
+        'speech' => 'Speech',
+        'cldr' => 'Commissioners\' weekly activity',
+        'agenda' => 'Upcoming events',
+        'statement' => 'Statement',
+        'news' => 'News',
+        'news_article' => 'News article',
+        'wm' => 'Weekly meeting',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
@@ -186,7 +186,7 @@ function dt_announcement_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(

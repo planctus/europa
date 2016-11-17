@@ -6,6 +6,7 @@ dependencies[] = date
 dependencies[] = dt_core
 dependencies[] = i18n_taxonomy
 dependencies[] = link
+dependencies[] = nexteuropa_formatters
 dependencies[] = nexteuropa_multilingual
 dependencies[] = taxonomy
 dependencies[] = text

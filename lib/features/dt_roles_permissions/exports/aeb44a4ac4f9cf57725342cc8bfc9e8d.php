@@ -5,7 +5,7 @@
  * Contains permissions export for role authenticated user.
  */
 
-$permissions['authenticated user'] = array(
+$permissions['authenticated user'] = [
   'access ckeditor link',
   'access comments',
   'access content',
@@ -15,7 +15,6 @@ $permissions['authenticated user'] = array(
   'access send by email',
   'access site-wide contact form',
   'access user contact forms',
-  'access user profiles',
   'access workbench',
   'post comments',
   'search content',
@@ -32,4 +31,4 @@ $permissions['authenticated user'] = array(
   'view moderation messages',
   'view own unpublished content',
   'view revisions',
-);
+];

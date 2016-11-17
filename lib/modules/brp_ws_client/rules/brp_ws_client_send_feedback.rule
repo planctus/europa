@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains BRP WS Client Custom Rule: Send feedback.
+ */
+
+$rule = '
+  { "brp_ws_client_brp_ws_client_send_feedback" : {
+      "LABEL" : "BRP Client | Send feedback",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "TAGS" : [ "BRP Client" ],
+      "REQUIRES" : [ "rules", "brp_ws_client", "entityform" ],
+      "ON" : { "entityform_presave" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "entityform" ],
+            "type" : "entityform",
+            "bundle" : { "value" : { "brp_initiatives_feedback" : "brp_initiatives_feedback" } }
+          }
+        },
+        { "brp_ws_client_check_status" : { "connection_name" : "brp" } }
+      ],
+      "DO" : [
+        { "brp_ws_client_send_feedback" : {
+            "USING" : { "ef_submission" : [ "entityform" ] },
+            "PROVIDE" : { "response" : { "response" : "Remote feedback object." } }
+          }
+        }
+      ]
+    }
+  }
+';

@@ -18,23 +18,6 @@ function dt_publication_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'publication';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'collection_label' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
     'title' => array(
       'weight' => '1',
       'label' => 'hidden',
@@ -78,6 +61,23 @@ function dt_publication_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'ft' => array(),
+      ),
+    ),
+    'collection_label' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'span',
+          'fi-cl' => 'meta__item meta__item--type',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
       ),
     ),
     'field_publication_type' => array(
@@ -207,21 +207,18 @@ function dt_publication_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'collection_label';
-  $ds_field->label = 'Collection label';
-  $ds_field->field_type = 5;
+  $ds_field->field = 'publications_list';
+  $ds_field->label = 'Publications List';
+  $ds_field->field_type = 6;
   $ds_field->entities = array(
     'node' => 'node',
   );
-  $ds_field->ui_limit = 'publication|*';
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
-    'code' => array(
-      'value' => 'Collection',
-      'format' => 'plain_text',
-    ),
-    'use_token' => 0,
+    'block' => 'views|publication_list-block',
+    'block_render' => '3',
   );
-  $export['collection_label'] = $ds_field;
+  $export['publications_list'] = $ds_field;
 
   return $export;
 }
@@ -273,58 +270,62 @@ function dt_publication_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left_header' => array(
-        0 => 'collection_label',
-        1 => 'group_publication_meta',
+        0 => 'group_publication_meta',
+        1 => 'collection_label',
         3 => 'title',
         4 => 'field_publication_type',
         5 => 'field_core_legacy_link',
       ),
       'central' => array(
         2 => 'field_core_contact',
-        8 => 'group_publication_body',
-        11 => 'group_publication_file',
-        12 => 'group_publication_related',
+        9 => 'group_publication_body',
+        10 => 'group_publication_file',
         13 => 'body',
+        14 => 'group_publication_related',
         16 => 'group_publication_contact',
         17 => 'field_core_files',
         18 => 'field_core_departments',
         19 => 'social_bookmark_webtools',
-        20 => 'field_publication_rel_content',
-        21 => 'collection_documents',
-        22 => 'field_core_policies',
+        21 => 'field_publication_rel_content',
+        22 => 'collection_documents',
+        24 => 'field_core_policies',
       ),
       'top' => array(
-        6 => 'publication_collections',
-        7 => 'group_publication_contextual',
-        9 => 'field_core_date_published',
-        10 => 'field_publication_authors',
-        14 => 'field_publication_referenceno',
+        6 => 'group_publication_contextual',
+        7 => 'publication_collections',
+        8 => 'field_core_date_published',
+        11 => 'field_publication_authors',
+        12 => 'field_publication_referenceno',
         15 => 'field_core_topics',
+        20 => 'field_core_nal_countries',
+        23 => 'field_core_tags',
       ),
     ),
     'fields' => array(
-      'collection_label' => 'left_header',
       'group_publication_meta' => 'left_header',
+      'collection_label' => 'left_header',
       'field_core_contact' => 'central',
       'title' => 'left_header',
       'field_publication_type' => 'left_header',
       'field_core_legacy_link' => 'left_header',
-      'publication_collections' => 'top',
       'group_publication_contextual' => 'top',
-      'group_publication_body' => 'central',
+      'publication_collections' => 'top',
       'field_core_date_published' => 'top',
-      'field_publication_authors' => 'top',
+      'group_publication_body' => 'central',
       'group_publication_file' => 'central',
-      'group_publication_related' => 'central',
-      'body' => 'central',
+      'field_publication_authors' => 'top',
       'field_publication_referenceno' => 'top',
+      'body' => 'central',
+      'group_publication_related' => 'central',
       'field_core_topics' => 'top',
       'group_publication_contact' => 'central',
       'field_core_files' => 'central',
       'field_core_departments' => 'central',
       'social_bookmark_webtools' => 'central',
+      'field_core_nal_countries' => 'top',
       'field_publication_rel_content' => 'central',
       'collection_documents' => 'central',
+      'field_core_tags' => 'top',
       'field_core_policies' => 'central',
     ),
     'classes' => array(),
@@ -376,6 +377,34 @@ function dt_publication_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|publication|teaser'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|publication|title';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'publication';
+  $ds_layout->view_mode = 'title';
+  $ds_layout->layout = 'ne_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'main' => array(
+        0 => 'title_field',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'main',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|publication|title'] = $ds_layout;
 
   return $export;
 }

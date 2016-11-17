@@ -9,17 +9,17 @@
  * Implements hook_menu().
  */
 function dt_roles_permissions_import_menu() {
-  $items = array();
+  $items = [];
 
-  $items['admin/people/permissions/dt_roles_permissions_import'] = array(
-    'access arguments' => array('administer site configuration'),
+  $items['admin/people/permissions/dt_roles_permissions_import'] = [
+    'access arguments' => ['administer site configuration'],
     'description' => 'Import permissions',
     'file' => 'dt_roles_permissions_import.admin.inc',
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('dt_roles_permissions_import_page'),
+    'page arguments' => ['dt_roles_permissions_import_page'],
     'title' => 'Permission import',
     'type' => MENU_LOCAL_TASK,
-  );
+  ];
 
   return $items;
 }
@@ -37,7 +37,7 @@ function dt_roles_permissions_import_menu() {
  */
 function _dt_roles_permissions_import_import($role, $force = FALSE) {
   // If the role is a string, we can check here if we can match it.
-  if (!in_array($role, array('all', 'clear')) && !is_object($role)) {
+  if (!in_array($role, ['all', 'clear']) && !is_object($role)) {
     if ($role_id = array_search($role, user_roles())) {
       // If we have a matching role, we can assign it.
       $role = user_role_load($role_id);
@@ -46,7 +46,7 @@ function _dt_roles_permissions_import_import($role, $force = FALSE) {
   // List of available permissions.
   $modules_permissions = array_keys(user_permission_get_modules());
   // Initialize our permissions array.
-  $permissions = array();
+  $permissions = [];
   // If our role is an object, then its singular.
   if (is_object($role)) {
     // Include the file containing the array.
@@ -81,11 +81,11 @@ function _dt_roles_permissions_import_import($role, $force = FALSE) {
         $permissions_to_grant = array_intersect($permissions[$role_object->name], $modules_permissions);
         // Grant the new permissions.
         user_role_grant_permissions($role_object->rid, $permissions_to_grant);
-        drupal_set_message(t('Permissions for %role have been reconfigured', array('%role' => $role_object->name)));
+        drupal_set_message(t('Permissions for %role have been reconfigured', ['%role' => $role_object->name]));
       }
       else {
         // Somehow the table was empty.
-        drupal_set_message(t('Permissions for %role have not been reconfigured as the import file was empty.', array('%role' => $role_object->name)), 'warning');
+        drupal_set_message(t('Permissions for %role have not been reconfigured as the import file was empty.', ['%role' => $role_object->name]), 'warning');
       }
     }
     return TRUE;
@@ -114,7 +114,7 @@ function _dt_roles_permissions_import_get_diff($role) {
 
   if (is_object($role)) {
     // Get the current permissions.
-    $current_permissions = user_role_permissions(array($role->rid => $role->name));
+    $current_permissions = user_role_permissions([$role->rid => $role->name]);
     // Load the new ones.
     include_once _dt_roles_permissions_get_file_dir($role->name);
     // See which ones are available.
@@ -134,7 +134,7 @@ function _dt_roles_permissions_import_get_diff($role) {
   elseif ($role == 'all') {
     foreach (_dt_roles_permissions_import_get_importable() as $key => $name) {
       // Get the current permissions.
-      $current_permissions = user_role_permissions(array($key => $name));
+      $current_permissions = user_role_permissions([$key => $name]);
       // Load the new ones.
       include_once _dt_roles_permissions_get_file_dir($name);
       // See which ones are available.
@@ -164,7 +164,7 @@ function _dt_roles_permissions_import_get_diff($role) {
  * @param array $to_be_revoked
  *   List of permissions that will be revoked.
  */
-function _dt_roles_permissions_import_show_diff($name, $to_be_granted = array(), $to_be_revoked = array()) {
+function _dt_roles_permissions_import_show_diff($name, $to_be_granted = [], $to_be_revoked = []) {
   // Init our message.
   $message = 'The following actions will be taken upon importing <strong>' . $name . '</strong>: <br />';
   // New permissions.

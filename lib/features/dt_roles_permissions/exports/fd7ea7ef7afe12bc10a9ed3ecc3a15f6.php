@@ -5,7 +5,7 @@
  * Contains permissions export for role editorial team member.
  */
 
-$permissions['editorial team member'] = array(
+$permissions['editorial team member'] = [
   'access administration menu',
   'access administration pages',
   'access bean overview',
@@ -33,4 +33,4 @@ $permissions['editorial team member'] = array(
   'view own unpublished content',
   'view revisions',
   'view the administration theme',
-);
+];

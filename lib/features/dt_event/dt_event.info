@@ -53,6 +53,7 @@ features[field_base][] = field_event_registration
 features[field_base][] = field_event_registration_end
 features[field_base][] = field_event_schedule
 features[field_base][] = field_event_scribble_id
+features[field_base][] = field_event_speakers
 features[field_base][] = field_event_status
 features[field_base][] = field_event_status_description
 features[field_base][] = field_event_target_audience

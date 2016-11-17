@@ -25,25 +25,25 @@ function dt_policy_uninstall() {
  */
 function dt_policy_update_7101() {
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_policy_priority',
     'field_policy_area',
     'field_strategy_priority',
     'field_strategy_policy_area',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
     }
   }
 
-  module_enable(array('dt_policy_next_step'));
-  $features = array(
+  module_enable(['dt_policy_next_step']);
+  $features = [
     'dt_policy',
     'dt_policy_implementation',
     'dt_policy_input',
     'dt_policy_keyfile',
-  );
+  ];
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
@@ -58,10 +58,10 @@ function dt_policy_update_7102() {
   field_group_group_export_delete($group, FALSE);
 
   // Removing fields.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_policy_detail_add_header',
     'field_policy_detail_add_body',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);

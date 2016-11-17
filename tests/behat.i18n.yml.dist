@@ -1,0 +1,51 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\BatchContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MarkupContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\nexteuropa\Context\DrupalContext
+        - Drupal\nexteuropa\Context\MinkContext
+        - Drupal\nexteuropa\Context\EditorialWorkflowContext
+        - Drupal\nexteuropa\Context\BetterRegulationContext
+        - Drupal\nexteuropa\Context\TranslationContext
+        - Drupal\nexteuropa\Context\FeedsContext
+      filters:
+        tags: "~@wip&&${behat.test_tags}"
+      paths:
+        features: features/multilanguage
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      javascript_session: 'selenium2'
+      browser_name: ${behat.browser}
+      selenium2:
+        wd_host: '${behat.seleniumuri}'
+      base-url: '${behat.base_url}'
+      show_cmd:  open %s
+      files_path: %paths.base%/dummy_files
+    Drupal\DrupalExtension:
+      api_driver: 'drupal'
+      blackbox: ~
+      drupal:
+        drupal_root: '${platform.build.dir}'
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.error'
+        success_message_selector: '.messages.status'
+      subcontexts:
+        paths:
+          - '${behat.subcontexts.path}'
+      region_map:
+        main_content: '.main-content'
+        tabs: '.tabs--primary'
+        error_list: '.alert-block'
+        secondary_language_selector: '.lang-selector-page'
+        pager: '.pager'
+        speakers: '#speakers'
+        sidebar: '.region-sidebar-first'
+  formatters:
+    ${behat.formatter.name}: ~

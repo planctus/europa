@@ -11,24 +11,24 @@ include_once 'nexteuropa_file.features.inc';
  * Implements hook_migrate_api().
  */
 function nexteuropa_file_migrate_api() {
-  return array(
+  return [
     'api' => 2,
-    'groups' => array(
-      'NextEuropa Digital Transformation' => array(
+    'groups' => [
+      'NextEuropa Digital Transformation' => [
         'title' => t('Stage initial content, file types.'),
-      ),
-    ),
-    'migrations' => array(
-      'NextEuropaFileTypes' => array(
+      ],
+    ],
+    'migrations' => [
+      'NextEuropaFileTypes' => [
         'class_name' => 'NextEuropaFileTypesMigration',
         'group_name' => 'NextEuropa Digital Transformation',
-      ),
-      'NextEuropaFileOrigins' => array(
+      ],
+      'NextEuropaFileOrigins' => [
         'class_name' => 'NextEuropaFileOriginsMigration',
         'group_name' => 'NextEuropa Digital Transformation',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -46,4 +46,11 @@ function _nexteuropa_file_migrate_file_types() {
   else {
     return drupal_set_message(t('Module migrate is needed, please enable it.'), 'warning');
   }
+}
+
+/**
+ * Implements hook_file_default_types_alter().
+ */
+function nexteuropa_file_file_default_types_alter(&$types) {
+  $types['document']->mimetypes[] = 'application/zip';
 }

@@ -71,7 +71,7 @@ function nexteuropa_eurovoc_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'sort' => array(
           'type' => 'none',
@@ -103,7 +103,7 @@ function nexteuropa_eurovoc_field_default_field_bases() {
     'settings' => array(
       'behaviors' => array(),
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'titleoverwrite_field_behavior' => array(
@@ -145,7 +145,7 @@ function nexteuropa_eurovoc_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'sort' => array(
           'type' => 'none',

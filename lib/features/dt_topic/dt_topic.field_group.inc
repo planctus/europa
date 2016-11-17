@@ -24,8 +24,8 @@ function dt_topic_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_taxonomy',
-      1 => 'group_editorial_settings',
+      0 => 'group_editorial_settings',
+      1 => 'group_taxonomy',
       2 => 'group_topic_contact',
       3 => 'group_topic_content',
       4 => 'group_topic_details',
@@ -59,6 +59,7 @@ function dt_topic_field_group_info() {
       1 => 'group_content_access',
       2 => 'scheduler_settings',
       3 => 'language',
+      4 => 'field_core_latest_visibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

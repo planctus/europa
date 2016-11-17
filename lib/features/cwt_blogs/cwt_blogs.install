@@ -42,7 +42,7 @@ function cwt_blogs_update_7102() {
  * Enable multisite_notifications_core.
  */
 function cwt_blogs_update_7103() {
-  module_enable(array('multisite_notifications_core', 'subscriptions_ui'));
+  module_enable(['multisite_notifications_core', 'subscriptions_ui']);
 }
 
 /**

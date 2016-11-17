@@ -9,10 +9,10 @@
  * Implements hook_install().
  */
 function dt_banner_install() {
-  $banner_types = array(
+  $banner_types = [
     'dt_banner_video',
     'dt_banner_quote',
-  );
+  ];
   module_enable($banner_types);
 }
 

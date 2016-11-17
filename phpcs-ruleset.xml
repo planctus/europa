@@ -6,6 +6,8 @@
 
     <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal" />
     <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice" />
+    <rule ref="./vendor/ec-europa/qa-automation/DrupalSecure" />
+    <rule ref="./vendor/ec-europa/qa-automation/QualityAssurance" />
 
     <!-- Minified files don't have to comply with coding standards. -->
     <exclude-pattern>*\.min\.css</exclude-pattern>
@@ -28,9 +30,6 @@
     <!-- Exclude settings.php -->
     <exclude-pattern>*/settings.php</exclude-pattern>
 
-    <!-- Exclude old theme -->
-    <exclude-pattern>commissioner_OLD</exclude-pattern>
-
     <!-- Exclude files that do not contain PHP, Javascript or CSS code. -->
     <exclude-pattern>*\.json</exclude-pattern>
     <exclude-pattern>*\.sh</exclude-pattern>
@@ -41,9 +40,20 @@
     <!-- Exclude third party code. -->
     <exclude-pattern>resources/cloudformation</exclude-pattern>
     <exclude-pattern>resources/codedeploy</exclude-pattern>
+    <exclude-pattern>resources/vendor</exclude-pattern>
 
     <!-- Exclude entityreference handlers -->
     <exclude-pattern>*/behavior/*.class.php</exclude-pattern>
+
+    <!-- Exclude non drupal folders. -->
+    <exclude-pattern>/vendor</exclude-pattern>
+    <exclude-pattern>/src</exclude-pattern>
+    <exclude-pattern>/resources</exclude-pattern>
+
+    <!-- Exclude folders of example modules. -->
+    <exclude-pattern>**/example_module</exclude-pattern>
+    <exclude-pattern>**/myproject_core</exclude-pattern>
+    <exclude-pattern>**/example_theme</exclude-pattern>
 
     <!-- Views handlers not strictly follow Drupal class name conventions. -->
     <rule ref="Drupal.NamingConventions.ValidClassName">
@@ -67,9 +77,9 @@
 
     <!-- Features creates violations for fields. -->
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
-      <exclude-pattern>*.features.field.inc</exclude-pattern>
-      <exclude-pattern>*.features.field_*.inc</exclude-pattern>
-      <exclude-pattern>*.features.wysiwyg.inc</exclude-pattern>
+        <exclude-pattern>*.features.field.inc</exclude-pattern>
+        <exclude-pattern>*.features.field_*.inc</exclude-pattern>
+        <exclude-pattern>*.features.wysiwyg.inc</exclude-pattern>
     </rule>
 
     <!-- Features creates violations for fields. -->
@@ -99,5 +109,23 @@
     <!-- Remove this once https://www.drupal.org/node/2724173 is in. -->
     <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
         <exclude-pattern>*.features.wysiwyg.inc</exclude-pattern>
+    </rule>
+
+    <!-- Disallow short array -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax">
+        <severity>0</severity>
+        <!-- Exclude features generated files from this rule -->
+        <exclude-pattern>*.ds.*.inc</exclude-pattern>
+        <exclude-pattern>*.default_*.inc</exclude-pattern>
+        <exclude-pattern>*.file_default_displays.*.inc</exclude-pattern>
+        <exclude-pattern>*.views_default.*.inc</exclude-pattern>
+        <exclude-pattern>*.facetapi_defaults.*.inc</exclude-pattern>
+        <exclude-pattern>*.custom_formatters.*.inc</exclude-pattern>
+        <exclude-pattern>*.context.*.inc</exclude-pattern>
+        <exclude-pattern>*.strongarm.*.inc</exclude-pattern>
+        <exclude-pattern>*.variable.*.inc</exclude-pattern>
+        <exclude-pattern>*.features.*.inc</exclude-pattern>
+        <exclude-pattern>*.field_group.inc</exclude-pattern>
+        <exclude-pattern>src/Phing</exclude-pattern>
     </rule>
 </ruleset>

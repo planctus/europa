@@ -11,9 +11,9 @@
 function nexteuropa_views_views_plugins() {
   $path = drupal_get_path('module', 'nexteuropa_views');
 
-  $plugins = array(
-    'style' => array(
-      'nexteuropa_bem_listing' => array(
+  $plugins = [
+    'style' => [
+      'nexteuropa_bem_listing' => [
         'title' => t('Nexteuropa BEM listing'),
         'help' => t('Display items using BEM Listing component.'),
         'path' => $path,
@@ -23,8 +23,8 @@ function nexteuropa_views_views_plugins() {
         'uses options' => TRUE,
         'uses grouping' => TRUE,
         'type' => 'normal',
-      ),
-      'nexteuropa_context_nav' => array(
+      ],
+      'nexteuropa_context_nav' => [
         'title' => t('Nexteuropa BEM context nav listing'),
         'help' => t('Display items using BEM Contextual navigation component.'),
         'path' => $path,
@@ -34,9 +34,26 @@ function nexteuropa_views_views_plugins() {
         'uses options' => TRUE,
         'uses grouping' => FALSE,
         'type' => 'normal',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 
   return $plugins;
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function nexteuropa_views_views_data() {
+  $data = [];
+
+  $data['views']['result_nexteuropa'] = [
+    'title' => t('Nexteuropa result summary'),
+    'help' => t('Shows result summary, for example the items per page.'),
+    'area' => [
+      'handler' => 'views_handler_nexteuropa_views_area_result',
+    ],
+  ];
+
+  return $data;
 }

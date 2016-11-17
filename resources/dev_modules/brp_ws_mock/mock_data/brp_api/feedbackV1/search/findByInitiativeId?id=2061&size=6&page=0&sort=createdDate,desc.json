@@ -1,0 +1,17 @@
+{
+  "_embedded": {
+    "feedbackV1": []
+  },
+  "_links": {
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/search\/findByInitiativeId?id=2061\u0026size=6\u0026page=0\u0026sort=createdDate,desc"
+    }
+  },
+  "page": {
+    "size": 6,
+    "totalElements": 0,
+    "totalPages": 0,
+    "number": 0
+  },
+  "code": "200"
+}

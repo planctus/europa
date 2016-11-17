@@ -1,0 +1,1170 @@
+<?php
+
+/**
+ * @file
+ * Feedback field module.
+ */
+
+use Drupal\brp_feedbackfield\BrpFeedbackFieldService;
+use Drupal\dt_core_brp\BrpTools;
+use Drupal\dt_core_brp\BrpProps;
+
+/**
+ * Implements hook_theme().
+ */
+function brp_feedbackfield_theme() {
+  return [
+    'brp_feedbackfield_viewfeedbackitemlist' => [
+      'template' => 'brp_feedbackfield_viewfeedbackitemlist',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'title' => '',
+        'country' => '',
+        'organisation' => '',
+        'feedback' => '',
+        'user_type' => '',
+        'created_date' => '',
+        'link' => '',
+        'feedback_language' => '',
+      ],
+    ],
+    'brp_feedbackfield_viewfeedbacklist' => [
+      'template' => 'brp_feedbackfield_viewfeedbacklist',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'title' => '',
+        'feedback_list' => '',
+        'button' => '',
+        'nr_results' => '',
+      ],
+    ],
+    // Brp view field template.
+    'brp_feedbackfield_viewfield' => [
+      'template' => 'brp_feedbackfield_viewfield',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'label' => '',
+        'value' => '',
+      ],
+    ],
+    // Brp fb multiple header template.
+    'brp_feedbackfield_multiple_header' => [
+      'template' => 'brp_feedbackfield_multiple_header',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'main_title' => '',
+        'subtitle' => '',
+      ],
+    ],
+    // Brp fb feedback template.
+    'brp_feedbackfield_feedback' => [
+      'template' => 'brp_feedbackfield_feedback',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'feedback' => '',
+        'feedback_language' => '',
+        'rejected' => '',
+        'button_back' => '',
+        'report_link' => '',
+        'legal_disclaimer' => '',
+      ],
+    ],
+    // Submit your Feedback button.
+    'brp_feedbackfield_feedbackbutton' => [
+      'template' => 'brp_feedbackfield_feedbackbutton',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'button' => '',
+      ],
+    ],
+    // Brp fb report form header template.
+    'brp_feedbackfield_reportform_header' => [
+      'template' => 'brp_feedbackfield_reportform_header',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'title' => '',
+      ],
+    ],
+    // Anonymous form.
+    'brp_feedbackfield_anonymous_login' => [
+      'template' => 'brp_feedbackfield_anonymous_login',
+      'path' => drupal_get_path('module', 'brp_feedbackfield') . '/templates',
+      'variables' => [
+        'title_text' => '',
+        'account_text' => '',
+        'register_text' => '',
+        'button_login' => '',
+        'button_register' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_ds_fields_info().
+ *
+ * Declare my custom field.
+ */
+function brp_feedbackfield_ds_fields_info($entity_type) {
+  $fields = [];
+  if ($entity_type == 'node') {
+    $fields['brp_feedbackfieldfield_simple'] = [
+      'title' => t('BRP feedback display'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_viewlist',
+      'properties' => [
+        'settings' => [
+          'rows' => [
+            'type' => 'textfield',
+            'description' => t('How many items to display.'),
+          ],
+          'trim' => [
+            'type' => 'textfield',
+            'title' => t('Trim this field to a maximum length'),
+            'description' => t('Trim the field to a maximum length of characters.'),
+          ],
+        ],
+        'default' => [
+          'rows' => BrpProps::BRP_FEEDBACKFIELD_ROW,
+          'trim' => BrpProps::BRP_FEEDBACKFIELD_TRIM,
+        ],
+      ],
+    ];
+    $fields['brp_feedbackfieldfeedbackform'] = [
+      'title' => t('BRP feedback form'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_feedbackform_view',
+    ];
+
+    $fields['brp_feedbackfieldreportfeedbackform'] = [
+      'title' => t('BRP report feedback form'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_reportfeedbackform_view',
+    ];
+
+    // For fb details fields.
+    // brp_feed backfield _webservice is called for
+    // fields coming from the web service.
+    $fields['brp_feedbackfield_organisation'] = [
+      'title' => t('BRP fb Organisation field'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Organisation'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'organization',
+          'label' => t('Organisation'),
+          'dependent' => 'userType|COMPANY|ACADEMIC_RESEARCH_INSTITTUTION|NGO|PUBLIC_AUTHORITY|OTHER|BUSINESS_ASSOCIATION|TRADE_UNION|CONSUMER_ORGANISATION|ENVIRONMENTAL_ORGANISATION|ACADEMIC_RESEARCH_INSTITTUTION',
+        ],
+      ],
+    ];
+
+    $fields['brp_feedbackfield_tr_number'] = [
+      'title' => t('BRP fb register number field'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Transparency register number'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'tr_number',
+          'label' => t('Transparency register number'),
+          'dependent' => 'userType|COMPANY|ACADEMIC_RESEARCH_INSTITTUTION|NGO|PUBLIC_AUTHORITY|OTHER|BUSINESS_ASSOCIATION|TRADE_UNION|CONSUMER_ORGANISATION|ENVIRONMENTAL_ORGANISATION|ACADEMIC_RESEARCH_INSTITTUTION',
+        ],
+      ],
+    ];
+
+    $fields['brp_feedbackfield_author'] = [
+      'title' => t('BRP fb author field'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice_author',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Submitted by'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'firstName|surname',
+          'label' => t('Submitted by'),
+        ],
+      ],
+    ];
+
+    $fields['brp_feedbackfield_user_type'] = [
+      'title' => t('BRP fb user type'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Type of the user'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'userType',
+          'label' => t('User type'),
+        ],
+      ],
+    ];
+
+    $fields['brp_feedbackfield_org_size'] = [
+      'title' => t('BRP fb organisation size field'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Organisation size'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'companySize',
+          'label' => t('Organisation size'),
+          'dependent' => 'userType|COMPANY|ACADEMIC_RESEARCH_INSTITTUTION|NGO|PUBLIC_AUTHORITY|OTHER|BUSINESS_ASSOCIATION|TRADE_UNION|CONSUMER_ORGANISATION|ENVIRONMENTAL_ORGANISATION|ACADEMIC_RESEARCH_INSTITTUTION',
+          'voc_value' => 'brp_company_size|field_taxonomy_ws_key',
+        ],
+      ],
+    ];
+
+    // Fields coming from the web service.
+    $fields['brp_feedbackfield_header'] = [
+      'title' => t('BRP fb detail header'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_header',
+      'properties' => [
+        'settings' => [
+          'page_type' => [
+            'type' => 'select',
+            'options' => [
+              'Multiple Feedback',
+              'Detailed Feedback',
+              'Report feedback',
+            ],
+            'description' => t('Feedback page where you need to display.'),
+          ],
+        ],
+        'default' => [
+          'page_type' => 'Detailed Feedback',
+        ],
+      ],
+    ];
+
+    // Submit feedback button.
+    $fields['brp_feedbackfield_button'] = [
+      'title' => t('BRP fb give your feedback button.'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_submitbutton',
+    ];
+
+    // Country.
+    $fields['brp_feedbackfield_country'] = [
+      'title' => t('BRP Fb Country field'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Country of origin'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'country',
+          'label' => t('Country of origin'),
+          'voc_value' => 'nal_countries|field_iso3',
+        ],
+      ],
+    ];
+
+    // dateFeedback.
+    $fields['brp_feedbackfield_submittedon'] = [
+      'title' => t('BRP Fb submitted datefield'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_webservice',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Submitted on'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'dateFeedback',
+          'label' => t('Submitted on'),
+        ],
+      ],
+    ];
+
+    // Initiative title display in feedback form pages.
+    $fields['brp_feedbackfield_initiative_tile'] = [
+      'title' => t('BRP Fb Initiative Title'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_formtitle',
+    ];
+
+    // Initiative doesn't come from wb.
+    $fields['brp_feedbackfield_initiativeid'] = [
+      'title' => t('BRP Fb Initiative Id'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_initiative_view',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Initiative'),
+          ],
+        ],
+        'default' => [
+          'label' => t('Initiative'),
+        ],
+      ],
+    ];
+
+    // Feedback text.
+    $fields['brp_feedbackfield_feedback'] = [
+      'title' => t('BRP Fb feedback'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => 'brp_feedbackfield_feedback_view',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Feedback'),
+          ],
+        ],
+        'default' => [
+          'ws_mapping' => 'feedback',
+        ],
+      ],
+    ];
+
+    // Feedback doesn't come from wb.
+    $fields['brp_fb_id'] = [
+      'title' => t('BRP Fb feedback Id'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['brp_initiative|*'],
+      'function' => '_brp_feedbackfield_feedbackid_view',
+      'properties' => [
+        'settings' => [
+          'label' => [
+            'type' => 'textfield',
+            'description' => t('Feedback number'),
+          ],
+        ],
+        'default' => [
+          'label' => t('Feedback reference'),
+        ],
+      ],
+    ];
+
+    return [$entity_type => $fields];
+  }
+}
+
+/**
+ * Implements hook_ds_field_settings_form().
+ */
+function brp_feedbackfield_ds_field_settings_form($field) {
+  return ds_ds_field_settings_form($field);
+}
+
+/**
+ * Visualize the feedback for initiative.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization array.
+ */
+function brp_feedbackfield_viewlist($field) {
+  global $language;
+  // Get trim value.
+  $trim = (isset($field['formatter_settings']['trim']) && $field['formatter_settings']['trim'])
+    ? $field['formatter_settings']['trim'] : BrpProps::BRP_FEEDBACKFIELD_TRIM;
+  // How many rows to display.
+  $rows = (isset($field['formatter_settings']['rows']))
+    ? $field['formatter_settings']['rows'] : BrpProps::BRP_FEEDBACKFIELD_ROW;
+  // Get current page.
+  $page = pager_find_page();
+  // Page arguments for querying the web service.
+  $page_args = '&size=' . $rows . '&page=' . $page . '&sort=createdDate,desc';
+  $current = _brp_initiative_is_feedback_path();
+  $feedback_list = '';
+  // Create Object.
+  $fb = _brp_feedbackfield_conn(_brp_feedbackfield_getinitiativeid($field), $current);
+  $node = (object) $field['entity'];
+  if (is_numeric($current)) {
+    // This is a single Feedback.
+    $feedback_data = $fb->loadSingleFeedbackInitiative($current);
+    // Generate feedback title based.
+    $pre_title = [
+      check_plain($feedback_data['firstName']),
+      check_plain($feedback_data['surname']),
+      '(' . check_plain($feedback_data['country']) . ')',
+    ];
+    $title = implode(' ', $pre_title);
+
+    // Transform user type into a human readable label.
+    $user_type = BrpTools::convertValueVocabulary('brp_user_type',
+      'field_taxonomy_ws_key', $feedback_data['userType']);
+    $render_config = [
+      '#theme' => 'brp_feedbackfield_viewfeedbackitemlist',
+      '#title' => $title,
+      '#link' => _brp_initiative_get_feedback_link($node, "F" . $feedback_data['id']),
+      '#organisation' => check_plain($feedback_data['organization']),
+      '#feedback' => check_plain($feedback_data['feedback']),
+      '#user_type' => $user_type,
+      '#created_date' => _brp_feedbackfield_convertbrpdate($feedback_data['dateFeedback']),
+    ];
+    $feedback_list = drupal_render($render_config);
+    // Render feedback page.
+    $render_mainlist = [
+      '#theme' => 'brp_feedbackfield_viewfeedbacklist',
+      '#title' => _brp_feedbackfield_getinitiativeid($field),
+      '#feedback_list' => $feedback_list,
+    ];
+  }
+  else {
+    // Multiple feedback, fetch from web service all of them.
+    $feedback_data = $fb->loadFeedbacksInitiative($page_args);
+    if (!$feedback_data) {
+      return FALSE;
+    }
+    else {
+      // Loop to generate feedback list.
+      foreach ($feedback_data as $feedback_item) {
+        // Front end logic to display a specific feedback item.
+        // Check if feedback needs to be displayed as ANONYMOUS.
+        if ($feedback_item['publication'] != 'ANONYMOUS') {
+          // Generate feedback title based.
+          $pre_title = [
+            _brp_feedbackfield_sanitize($feedback_item['firstName']),
+            _brp_feedbackfield_sanitize($feedback_item['surname']),
+            '(' . BrpTools::convertValueVocabulary('nal_countries', 'field_iso3', $feedback_item['country']) . ')',
+          ];
+          $title = implode(' ', $pre_title);
+          $citizen = ['EU_CITIZEN', 'NON_EU_CITIZEN'];
+          $organisation = _brp_feedbackfield_sanitize($feedback_item['organization']);
+          // Display organisation name if user is an organisation.
+          // display normal name if a normal citizen.
+          if (!in_array($feedback_item['userType'], $citizen)) {
+            $title = implode(' ', [
+              $organisation,
+              '(' . BrpTools::convertValueVocabulary('nal_countries', 'field_iso3', $feedback_item['country']) . ')',
+            ]);
+          }
+        }
+        else {
+          $title = implode(' ', [
+            t('Anonymous'),
+            '(' . BrpTools::convertValueVocabulary('nal_countries', 'field_iso3', $feedback_item['country']) . ')',
+          ]);
+          $organisation = FALSE;
+        }
+        if ($feedback_item['status'] === 'REJECTED') {
+          $feedback = t('This feedback was removed because it broke the rules.');
+        }
+        else {
+          // Sanitize feedback in listing.
+          $feedback = _brp_feedbackfield_sanitize($feedback_item['feedback']);
+        }
+        if ($trim < (drupal_strlen($feedback))) {
+          $feedback_body_item = views_trim_text([
+            'max_length' => $trim,
+            'word_boundary' => TRUE,
+            'ellipsis' => TRUE,
+            'html' => FALSE,
+          ], $feedback);
+        }
+        else {
+          $feedback_body_item = $feedback;
+        }
+        // Checking feedback language and page language are same.
+        // Should use lowercase letter, because the form item values are
+        // uppercase.
+        $get_language = drupal_strtolower($feedback_item['language']);
+        $feedback_language = ($get_language !== $language->language) ? $get_language : NULL;
+
+        // Initialize our render array.
+        $render_config = [
+          '#theme' => 'brp_feedbackfield_viewfeedbackitemlist',
+          '#title' => $title,
+          '#link' => _brp_initiative_get_feedback_link($node, "F" . $feedback_item['id']),
+          '#organisation' => $organisation,
+          '#feedback' => $feedback_body_item,
+          '#user_type' => BrpTools::convertValueVocabulary('brp_user_type', 'field_taxonomy_ws_key', $feedback_item['userType']),
+          '#created_date' => _brp_feedbackfield_convertbrpdate($feedback_item['dateFeedback']),
+          '#feedback_language' => $feedback_language,
+        ];
+        $feedback_list .= drupal_render($render_config);
+      }
+      // Feedback link.
+      $button_attributes = [
+        'attributes' => [
+          'class' => [
+            'btn',
+            'pull-right',
+            'text-uppercase',
+          ],
+        ],
+      ];
+
+      if (_brp_initiative_is_feedback_path() == 'feedback') {
+        // Call helper function for pager creation.
+        _brp_pager_array_splice($fb->totalelements, $rows);
+        $pager = theme('pager', [
+          'parameters' => ['size' => $rows],
+          ['quantity' => $rows],
+        ]);
+
+        $pager = theme('pager');
+        // Don't show the feedback link on multiple feedback page.
+        $all_feedback_links = FALSE;
+      }
+      else {
+        $all_feedback_links = l(t('All feedback (@counter) >',
+          ['@counter' => $fb->totalelements]),
+          _brp_initiative_get_feedback_link($node), $button_attributes);
+      }
+    }
+
+    $title = '';
+    $nr_results = FALSE;
+
+    if (_brp_initiative_is_feedback_path() == 'feedback') {
+      // Show number of results.
+      $results_start = ($page == 0) ? 1 : ($rows * $page) + 1;
+      $results_end = (($rows * ($page + 1)) > $fb->totalelements) ? $fb->totalelements : $rows * ($page + 1);
+      $nr_results = t('Showing results @current_number to @current_rows', [
+        '@current_number' => $results_start,
+        '@current_rows' => $results_end,
+      ]);
+      $title = t('Feedback (@total_feedback)', ['@total_feedback' => $fb->totalelements]);
+    }
+    // Render feedback page.
+    $render_mainlist = [
+      '#theme' => 'brp_feedbackfield_viewfeedbacklist',
+      '#title' => $title,
+      '#nr_results' => $nr_results,
+      '#feedback_list' => $feedback_list,
+      '#button' => $all_feedback_links,
+    ];
+  }
+
+  // Return it to the front end.
+  $output = drupal_render($render_mainlist);
+  // Adding pager.
+  $output .= isset($pager) ? $pager : '';
+  return $output;
+}
+
+/**
+ * Wrapper function to instantiate Web service connection.
+ *
+ * Based  on factory function with static cache.
+ *
+ * @param string $initiative_id
+ *    String with initiative id.
+ * @param string $feedback_id
+ *    Current feedback id.
+ *
+ * @return \Drupal\brp_feedbackfield\BrpFeedbackFieldService
+ *   Connection obejct
+ */
+function _brp_feedbackfield_conn($initiative_id, $feedback_id) {
+  static $fb;
+  if (!isset($fb)) {
+    $fb = new BrpFeedbackFieldService($initiative_id, $feedback_id);
+  }
+  return $fb;
+}
+
+/**
+ * Visualize the feed back form for initiative.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization array.
+ */
+function brp_feedbackfield_feedbackform_view($field) {
+  global $user;
+  // Check if user is logged in user.
+  if ($user->uid != 0) {
+    module_load_include('inc', 'entityform', 'entityform.admin');
+    $entity_form_name = 'brp_initiatives_feedback';
+    $render_estimate_form = entityform_form_wrapper(entityform_empty_load($entity_form_name), 'submit', 'embedded');
+    return drupal_render($render_estimate_form);
+  }
+  else {
+    // Send anonymous user to ECAS service.
+    $render_config = [
+      '#theme' => 'brp_feedbackfield_anonymous_login',
+    ];
+    $render_config['#title_text'] = t('How to add your feedback');
+    $render_config['#account_text'] = t('If you already have an account please log in.');
+    $render_config['#register_text'] = t('Otherwise create an account using the <strong>Register</strong> button below.');
+    $button_attributes = [
+      'attributes' => [
+        'class' => [
+          'btn',
+          'btn-default',
+        ],
+      ],
+    ];
+    $render_config['#button_login'] = l(t('Log in'), 'ecas', $button_attributes);
+    $render_config['#button_register'] = l(t('Register'), 'account_request', $button_attributes);
+    return drupal_render($render_config);
+  }
+}
+
+/**
+ * Creates feedback form title.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization array.
+ */
+function brp_feedbackfield_formtitle($field) {
+  $render_config = [
+    '#theme' => 'brp_feedbackfield_multiple_header',
+    '#main_title' => t('Give your feedback on:'),
+    '#subtitle' => $field['entity']->title,
+  ];
+
+  return drupal_render($render_config);
+}
+
+/**
+ * Visualize the report form.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization array.
+ */
+function brp_feedbackfield_reportfeedbackform_view($field) {
+  module_load_include('inc', 'entityform', 'entityform.admin');
+  $entity_form_name = 'brp_initiatives_feedback_report';
+  $render_estimate_form = entityform_form_wrapper(entityform_empty_load($entity_form_name), 'submit', 'embedded');
+
+  return drupal_render($render_estimate_form);
+}
+
+/**
+ * Visualize fields from web service.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization.
+ */
+function brp_feedbackfield_webservice($field) {
+  $fb_id = _brp_initiative_get_feedback_id_from_path();
+  // Get our connection object.
+  $fb = _brp_feedbackfield_conn(_brp_feedbackfield_getinitiativeid($field), $fb_id);
+  // Redirect the user to feedback page if the feedback doesn't exist.
+  if (!($fb->getSingleFeedbackFieldValue('id'))) {
+    drupal_set_message(t("The feedback F@feedback_id was not found or doesn't exist.", ['@feedback_id' => $fb_id]), 'warning');
+    drupal_goto(drupal_get_path_alias() . '/feedback');
+  }
+  $mapping = $field['properties']['default']['ws_mapping'];
+  $label = $field['properties']['default']['label'];
+
+  // Check if we can display the field.
+  if (isset($field['properties']['default']['dependent'])) {
+    // Check if field is dependent.
+    $dependencies = explode('|', $field['properties']['default']['dependent']);
+    $dependet_value = $dependencies[0];
+    // Remove first entry for type.
+    unset($dependencies[0]);
+    if (!(in_array($fb->getSingleFeedbackFieldValue($dependet_value), $dependencies))) {
+      return '';
+    }
+  }
+
+  if ($fb) {
+    $value = $fb->getSingleFeedbackFieldValue($mapping);
+    // Override $value with term name in case of correct prerequisites.
+    if (isset($field['properties']['default']['voc_value'])) {
+      // User settings.
+      $voc_settings = explode('|', $field['properties']['default']['voc_value']);
+      // Ensure there are at least 2 settings.
+      if (is_array($voc_settings) && count($voc_settings) > 1) {
+        $vocabulary = $voc_settings[0];
+        $field_key_search = $voc_settings[1];
+        $value = BrpTools::convertValueVocabulary($vocabulary, $field_key_search, $value);
+      }
+    }
+
+    switch ($mapping) {
+      case 'dateFeedback':
+        $value = _brp_feedbackfield_convertbrpdate($value);
+        break;
+
+      case 'userType':
+        $value = BrpTools::convertValueVocabulary('brp_user_type', 'field_taxonomy_ws_key', $value);
+        break;
+
+      // Don't display information if user is anonymous.
+      case 'organization':
+      case 'companySize':
+      case 'tr_number':
+        if ($fb->getSingleFeedbackFieldValue('publication') == 'ANONYMOUS') {
+          $label = FALSE;
+          $value = FALSE;
+        }
+        else {
+          if ($mapping == 'tr_number') {
+            // Link the TR number.
+            if ($value) {
+              global $language;
+              $query = [
+                'id' => $value,
+                'locale' => $language->language,
+              ];
+              $value = l($value, BrpProps::FEEDBACK_TR_PATH, ['absolute' => TRUE, 'query' => $query]);
+            }
+          }
+          else {
+            $value = _brp_feedbackfield_sanitize($value);
+          }
+        }
+        break;
+    }
+
+    if ($value) {
+      // Template render array.
+      $render_config = [
+        '#theme' => 'brp_feedbackfield_viewfield',
+        '#label' => $label,
+        '#value' => $value,
+      ];
+      return drupal_render($render_config);
+    }
+  }
+}
+
+/**
+ * Visualize author information.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization.
+ */
+function brp_feedbackfield_webservice_author($field) {
+  $fb_id = _brp_initiative_is_feedback_path();
+  // Connection object class.
+  $fb = _brp_feedbackfield_conn(_brp_feedbackfield_getinitiativeid($field), $fb_id);
+
+  if ($fb->getSingleFeedbackFieldValue('publication') != 'ANONYMOUS') {
+    $mappings = explode('|', $field['properties']['default']['ws_mapping']);
+    $label = $field['properties']['default']['label'];
+    foreach ($mappings as $mapping) {
+      $author_names[] = $fb->getSingleFeedbackFieldValue($mapping);
+    }
+    $value = _brp_feedbackfield_sanitize(implode(' ', $author_names));
+    $render_config = [
+      '#theme' => 'brp_feedbackfield_viewfield',
+      '#label' => $label,
+      '#value' => $value,
+    ];
+    return drupal_render($render_config);
+  }
+}
+
+/**
+ * Visualize the feedback header.
+ *
+ * @param object|array $field
+ *    An array containing fields information.
+ *
+ * @return array|bool
+ *    Returns visualization.
+ */
+function brp_feedbackfield_header($field) {
+  if ($fb_id = _brp_initiative_is_feedback_path()) {
+    $fb = _brp_feedbackfield_conn(_brp_feedbackfield_getinitiativeid($field), $fb_id);
+    switch ($field['formatter_settings']['page_type']) {
+      case 0:
+        // Multiple feed back screen.
+        $render_config = [
+          '#theme' => 'brp_feedbackfield_multiple_header',
+          '#main_title' => t('Feedback received on:'),
+          '#subtitle' => $field['entity']->title,
+        ];
+        break;
+
+      // Detailed feed back header.
+      case 1:
+        if ($fb->getSingleFeedbackFieldValue('publication') == 'ANONYMOUS') {
+          $title = t('Anonymous');
+        }
+        else {
+          switch ($fb->getSingleFeedbackFieldValue('userType')) {
+            // Overwrite the header title.
+            case 'COMPANY':
+            case 'PUBLIC_AUTHORITY':
+            case 'NGO':
+            case 'OTHER':
+            case 'BUSINESS_ASSOCIATION':
+            case 'TRADE_UNION':
+            case 'CONSUMER_ORGANISATION':
+            case 'ACADEMIC_RESEARCH_INSTITTUTION':
+            case 'ENVIRONMENTAL_ORGANISATION':
+              $title = _brp_feedbackfield_sanitize($fb->getSingleFeedbackFieldValue('organization'));
+              break;
+
+            default:
+              $first_name = _brp_feedbackfield_sanitize($fb->getSingleFeedbackFieldValue('firstName'));
+              $sur_name = _brp_feedbackfield_sanitize($fb->getSingleFeedbackFieldValue('surname'));
+              $title = $first_name . ' ' . $sur_name;
+          }
+        }
+        $render_config = [
+          '#theme' => 'brp_feedbackfield_multiple_header',
+          '#main_title' => t('Feedback from:'),
+          '#subtitle' => $title,
+        ];
+
+        if ($fb->getSingleFeedbackFieldValue('publication') == 'ANONYMOUS') {
+          $render_config['#title'] = t('@author feedback', ['@author' => $title]);
+        }
+        break;
+
+      // Report feedback header.
+      case 2:
+        $render_config = [
+          '#theme' => 'brp_feedbackfield_reportform_header',
+          '#title' => t('Report an issue with feedback: F@fb_id', [
+            '@fb_id' => _brp_initiative_get_feedback_id_from_path(),
+            '@initiative' => $field['entity']->title,
+          ]),
+        ];
+        break;
+    }
+    return drupal_render($render_config);
+  }
+  return FALSE;
+}
+
+/**
+ * Displays the submit feedback button.
+ *
+ * Based on brp_initiative:_build_brp_initiative_feedback_section function.
+ *
+ * @param array|object $field
+ *    Field from ds.
+ *
+ * @return string
+ *    Template field.
+ */
+function brp_feedbackfield_submitbutton($field) {
+  // Get the feedback status.
+  $feedback_status = _brp_initiative_get_status($field['entity']);
+  // This should be a temporary check. But currently there are no visualizations
+  // for upcoming.
+  if (in_array($feedback_status['status'], [
+    BrpProps::BRP_INITIATIVE_CLOSED,
+    BrpProps::BRP_INITIATIVE_OPEN,
+  ])
+    && ($feedback_status['status'] == BrpProps::BRP_INITIATIVE_OPEN)
+  ) {
+    // Initialize our render array.
+    $render_config['#theme'] = 'brp_feedbackfield_feedbackbutton';
+    // Button attributes.
+    $button_attributes = [
+      'attributes' => [
+        'class' => [
+          'btn',
+          'btn-ctn',
+        ],
+      ],
+    ];
+    $render_config['#button'] = l(t('Give feedback'), _brp_initiative_get_feedback_link($field['entity'], 'add'), $button_attributes);
+    // Return it to the front end.
+    return drupal_render($render_config);
+  }
+}
+
+/**
+ * Displays the field initiative id as a link.
+ *
+ * @param array|object $field
+ *    Field from ds.
+ *
+ * @return string
+ *    Template field.
+ */
+function brp_feedbackfield_initiative_view($field) {
+  $value = l($field['entity']->title, 'node/' . $field['entity']->nid);
+  $label = $field['properties']['default']['label'];
+  // Initialize our render array.
+  $render_config = [
+    '#theme' => 'brp_feedbackfield_viewfield',
+    '#label' => $label,
+    '#value' => $value,
+  ];
+  return drupal_render($render_config);
+}
+
+/**
+ * Displays the field feedback id as a link.
+ *
+ * @param array|object $field
+ *    Field from ds.
+ *
+ * @return string
+ *    Template field.
+ */
+function _brp_feedbackfield_feedbackid_view($field) {
+  $fb_id = _brp_initiative_get_feedback_id_from_path();
+  $fb_str = "F" . $fb_id;
+  $value = $fb_str;
+  $label = $field['properties']['default']['label'];
+  // Initialize our render array.
+  $render_config = [
+    '#theme' => 'brp_feedbackfield_viewfield',
+    '#label' => $label,
+    '#value' => $value,
+  ];
+  return drupal_render($render_config);
+}
+
+/**
+ * Displays the field feedback.
+ *
+ * @param array|object $field
+ *    Field from ds.
+ *
+ * @return string
+ *    Template field.
+ */
+function brp_feedbackfield_feedback_view($field) {
+  global $language;
+  $mapping = $field['properties']['default']['ws_mapping'];
+  $feedback = FALSE;
+  $rejected = FALSE;
+  if ($fb_id = _brp_initiative_is_feedback_path()) {
+    // Get our connection object.
+    $fb = _brp_feedbackfield_conn(_brp_feedbackfield_getinitiativeid($field), $fb_id);
+    if ($fb) {
+      // Check if status is rejected.
+      $feedback_status = (string) drupal_strtoupper($fb->getSingleFeedbackFieldValue('status'));
+      if ($feedback_status === 'REJECTED') {
+        $rejected_link = variable_get('brp_feedbackfield_rules_url', '');
+        $rejected = t(
+          'We removed this feedback because it violated the feedback rules. Any feedback item users report to us as inappropriate will be examined and removed if necessary.
+Please take a look at the <a href="@url">feedback rules</a> to learn more about the content guidelines for this website.',
+          ['@url' => url($rejected_link)]
+        );
+      }
+      else {
+        $allowed_tags = "<p><br><i><ul><li><strong><em><blockquotes>";
+        // We must sanitize the feedback text data
+        // from WS as this one is not safe.
+        $feedback = check_markup(_brp_feedbackfield_sanitize(
+          $fb->getSingleFeedbackFieldValue($mapping), $allowed_tags), 'filtered_html');
+      }
+      // Checking feedback language and page language are same.
+      // Should use lowercase letter, because the form item values are
+      // uppercase.
+      $get_language = drupal_strtolower($fb->getSingleFeedbackFieldValue('language'));
+      $feedback_language = ($get_language !== $language->language) ? $get_language : NULL;
+      $button_attributes = [
+        'attributes' => [
+          'class' => [
+            'btn btn-default',
+          ],
+        ],
+      ];
+      $render_config = [
+        '#theme' => 'brp_feedbackfield_feedback',
+        '#feedback' => $feedback,
+        '#feedback_language' => $feedback_language,
+        '#rejected' => $rejected,
+        '#button_back' => l(t('All feedback'), _brp_initiative_get_feedback_link($field['entity']), $button_attributes),
+        '#report_link' => ($rejected === FALSE ? l(t('Report an issue with this feedback'), _brp_initiative_get_feedback_link($field['entity'], "F" . $fb_id . '/' . BrpProps::BRP_INITIATIVE_REPORT_FEEDBACK_PATH)) : ""),
+        '#legal_disclaimer' => t('The views and opinions expressed here are entirely those of the author(s) and do not reflect the official opinion of the European Commission. The Commission cannot guarantee the accuracy of the information contained in them. Neither the Commission, nor any person acting on the Commission’s behalf, may be held responsible for the content or the information posted here. Views and opinions that violate the Commission’s feedback rules will be removed from the site.'),
+      ];
+      return drupal_render($render_config);
+    }
+  }
+}
+
+/**
+ * Helper function for creation of pager.
+ *
+ * Default limit for Drupal 7 it is 9.
+ *
+ * @param array $data
+ *   Array containing all the items.
+ * @param int $limit
+ *   Limit number for the item.
+ * @param int $element
+ *   Current element.
+ */
+function _brp_pager_array_splice($data, $limit = 9, $element = 0) {
+  global $pager_page_array, $pager_total, $pager_total_items;
+  $page = pager_find_page();
+  $pager_page_array = explode(',', $page);
+  $pager_total_items[$element] = $data;
+  $pager_total[$element] = ceil($pager_total_items[$element] / $limit);
+  $pager_page_array[$element] = max(0, min((int) $pager_page_array[$element], ((int) $pager_total[$element]) - 1));
+}
+
+/**
+ * Helper function to convert dates to BRP format.
+ *
+ * @param string $datevalue
+ *   String with date.
+ *
+ * @return bool|string
+ *   Returns date in required format.
+ */
+function _brp_feedbackfield_convertbrpdate($datevalue) {
+  return format_date(strtotime($datevalue), 'custom', 'j F Y');
+}
+
+/**
+ * Helper function that returns the current entity id.
+ *
+ * This function when the importer will be available
+ * this should be replaced by $field['entity']->nid;.
+ *
+ * @param object $field
+ *   Expects field object.
+ *
+ * @return int
+ *    Returns the nid for the initiative.
+ */
+function _brp_feedbackfield_getinitiativeid($field) {
+  if (isset($field['entity']->field_brp_inve_id) && is_array($field['entity']->field_brp_inve_id)) {
+    return $field['entity']->field_brp_inve_id[LANGUAGE_NONE][0]['value'];
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function brp_feedbackfield_form_system_site_information_settings_alter(&$form, &$form_state) {
+  $form['brp_feedback_rules'] = [
+    '#type' => 'fieldset',
+    '#title' => t('BRP Feedback'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  ];
+  $form['brp_feedback_rules']['brp_feedbackfield_rules_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('BRP feedback rules url'),
+    '#default_value' => variable_get('brp_feedbackfield_rules_url', ''),
+    '#size' => 40,
+    '#maxlength' => 128,
+    '#field_prefix' => url(NULL, ['absolute' => TRUE]) . (variable_get('clean_url', 0) ? '' : '?q='),
+    '#description' => t('This page is displayed when should give back the BRP feedback rules.'),
+  ];
+  $form['brp_feedback_personal_data'] = [
+    '#type' => 'fieldset',
+    '#title' => t('BRP Personal Data'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  ];
+  $form['brp_feedback_personal_data']['brp_feedbackfield_personal_data'] = [
+    '#type' => 'textfield',
+    '#title' => t('BRP feedback personal data'),
+    '#default_value' => variable_get('brp_feedbackfield_personal_data', ''),
+    '#description' => t('This will link to the personal data page, from the feedback form.'),
+    '#size' => 40,
+    '#maxlength' => 128,
+    '#field_prefix' => url(NULL, ['absolute' => TRUE]) . (variable_get('clean_url', 0) ? '' : '?q='),
+  ];
+
+  // Process of form submit and validate.
+  $form['#validate'][] = 'brp_feedbackfield_site_information_form_validate';
+  // Process of form submit and submit.
+  $form['#submit'][] = 'brp_feedbackfield_site_information_form_submit';
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function brp_feedbackfield_site_information_form_validate($form, &$form_state) {
+  // Validate BRP feedback path.
+  if (!empty($form_state['values']['brp_feedbackfield_rules_url']) && !drupal_valid_path($form_state['values']['brp_feedbackfield_rules_url'])) {
+    form_set_error('brp_feedbackfield_rules_url', t("The path '%path' is either invalid or you do not have access to it.", ['%path' => $form_state['values']['brp_feedbackfield_rules_url']]));
+  }
+  // Validaete BRP personal data path.
+  if (!empty($form_state['values']['brp_feedbackfield_personal_data']) && !drupal_valid_path($form_state['values']['brp_feedbackfield_personal_data'])) {
+    form_set_error('brp_feedbackfield_personal_data', t("The path '%path' is either invalid or you do not have access to it.", ['%path' => $form_state['values']['brp_feedbackfield_personal_data']]));
+  }
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function brp_feedbackfield_site_information_form_submit($form, &$form_state) {
+  // Validate BRP feedback path.
+  if (!empty($form_state['values']['brp_feedbackfield_rules_url'])) {
+    variable_set('brp_feedbackfield_rules_url', $form_state['values']['brp_feedbackfield_rules_url']);
+  }
+  // Store BRP personal data path.
+  if (!empty($form_state['values']['brp_feedbackfield_personal_data'])) {
+    variable_set('brp_feedbackfield_personal_data', $form_state['values']['brp_feedbackfield_personal_data']);
+  }
+
+}
+
+/**
+ * Helper function to sanitize feedback output.
+ *
+ * @param string $text
+ *   String to sanitize.
+ * @param string $allowed_tags
+ *   Allowed tags comma spereated.
+ *
+ * @return string
+ *   Returns the string sanitized.
+ */
+function _brp_feedbackfield_sanitize($text, $allowed_tags = '') {
+  // Sanitize feedback in listing.
+  $feedback = preg_replace("/<script.*?\/script>/s", "", $text);
+  $feedback = strip_tags($feedback, $allowed_tags);
+  return $feedback;
+}

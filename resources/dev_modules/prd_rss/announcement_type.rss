@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>PRD</title>
+        <link>http://europa.eu/rapid/search-result.htm?format=RSS</link>
+        <description>PRD test RSS</description>
+        <language>EN</language>
+        <copyright>Copyright Test PRD</copyright>
+        <item>
+            <title>Press release IP</title>
+            <link>http://test.prd/press-release_IP-000000_en.htm</link>
+            <description>Press release IP test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_IP-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Press release STAT</title>
+            <link>http://test.prd/press-release_STAT-000000_en.htm</link>
+            <description>Press release STAT test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_STAT-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Press release OLAF</title>
+            <link>http://test.prd/press-release_OLAF-000000_en.htm</link>
+            <description>Press release OLAF test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_OLAF-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Press release EPSO</title>
+            <link>http://test.prd/press-release_EPSO-000000_en.htm</link>
+            <description>Press release EPSO test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_EPSO-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Press release AC</title>
+            <link>http://test.prd/press-release_AC-000000_en.htm</link>
+            <description>Press release AC test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_AC-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Factsheet</title>
+            <link>http://test.prd/press-release_MEMO-000000_en.htm</link>
+            <description>Factsheet test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_MEMO-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Daily news</title>
+            <link>http://test.prd/press-release_MEX-000000_en.htm</link>
+            <description>Daily news test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_MEX-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Speech</title>
+            <link>http://test.prd/press-release_SPEECH-000000_en.htm</link>
+            <description>Speech test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_SPEECH-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Commissioners' weekly activities</title>
+            <link>http://test.prd/press-release_CLDR-000000_en.htm</link>
+            <description>Commissioners' weekly activities test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_CLDR-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Upcoming events</title>
+            <link>http://test.prd/press-release_AGENDA-000000_en.htm</link>
+            <description>Upcoming events test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_AGENDA-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Statement</title>
+            <link>http://test.prd/press-release_STATEMENT-000000_en.htm</link>
+            <description>Statement test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_STATEMENT-000000_en.htm</guid>
+        </item>
+        <item>
+            <title>Weekly meeting</title>
+            <link>http://test.prd/press-release_WM-000000_en.htm</link>
+            <description>Weekly meeting test description</description>
+            <pubDate>Mon, 24 Oct 2016 08:51:00 GMT</pubDate>
+            <guid>http://test.prd/press-release_WM-000000_en.htm</guid>
+        </item>
+    </channel>
+</rss>
+

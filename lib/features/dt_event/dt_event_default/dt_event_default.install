@@ -37,3 +37,27 @@ function dt_event_default_update_7101() {
 function dt_event_default_update_7102() {
   module_enable(['dt_event_search']);
 }
+
+/**
+ * DTTSB-1086: Translate speakers title in events.
+ */
+function dt_event_default_update_7103() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_event');
+  features_revert_module('dt_event_default');
+
+  // Copy field contents.
+  _dt_shared_field_value_copy('node', 'event', 'field_core_persons', 'field_event_speakers');
+  drupal_set_message(t("Copied content from 'field_core_persons' to 'field_event_speakers' in the event content type."));
+
+  // Update all LANGUAGE_NONE value to English.
+  db_update('field_data_field_event_speakers')
+    ->fields(['language' => 'en'])
+    ->condition('language', LANGUAGE_NONE, '=')
+    ->execute();
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_core_persons', 'event')) {
+    field_delete_instance($instance);
+  }
+}

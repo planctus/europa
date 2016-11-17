@@ -81,15 +81,15 @@ function dt_page_extended_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_taxonomy',
+      0 => 'group_page_publications',
       1 => 'group_background',
       2 => 'group_banner',
-      3 => 'group_documents',
-      4 => 'group_editorial_settings',
-      5 => 'group_featured_item',
-      6 => 'group_page_architecture',
-      7 => 'group_page_main',
-      8 => 'group_related',
+      3 => 'group_editorial_settings',
+      4 => 'group_featured_item',
+      5 => 'group_page_architecture',
+      6 => 'group_page_main',
+      7 => 'group_related',
+      8 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -175,8 +175,8 @@ function dt_page_extended_field_group_info() {
     'children' => array(
       0 => 'field_core_children',
       1 => 'field_core_parents',
-      2 => 'field_core_parent',
-      3 => 'field_core_quick_nav_links',
+      2 => 'field_core_quick_nav_links',
+      3 => 'field_core_parent',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -403,6 +403,36 @@ function dt_page_extended_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_publications|node|basic_page|form';
+  $field_group->group_name = 'group_page_publications';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Publications',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_publications_visibility',
+      1 => 'group_publications_year',
+      2 => 'group_publications_country',
+      3 => 'group_publications_type',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-page-publications field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_page_publications|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_related_links|node|basic_page|full';
   $field_group->group_name = 'group_page_related_links';
   $field_group->entity_type = 'node';
@@ -428,6 +458,93 @@ function dt_page_extended_field_group_info() {
     ),
   );
   $field_groups['group_page_related_links|node|basic_page|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_publications_country|node|basic_page|form';
+  $field_group->group_name = 'group_publications_country';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_page_publications';
+  $field_group->data = array(
+    'label' => 'Publications Country',
+    'weight' => '38',
+    'children' => array(
+      0 => 'field_publications_country',
+      1 => 'field_publications_country_on',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-publications-country field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_publications_country|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_publications_type|node|basic_page|form';
+  $field_group->group_name = 'group_publications_type';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_page_publications';
+  $field_group->data = array(
+    'label' => 'Publications Type',
+    'weight' => '40',
+    'children' => array(
+      0 => 'field_publications_type',
+      1 => 'field_publications_type_on',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-publications-type field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_publications_type|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_publications_year|node|basic_page|form';
+  $field_group->group_name = 'group_publications_year';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_page_publications';
+  $field_group->data = array(
+    'label' => 'Publications Year',
+    'weight' => '39',
+    'children' => array(
+      0 => 'field_publications_year',
+      1 => 'field_publications_year_on',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-publications-year field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_publications_year|node|basic_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -501,6 +618,10 @@ function dt_page_extended_field_group_info() {
   t('Free field');
   t('Meta');
   t('Page Architecture');
+  t('Publications');
+  t('Publications Country');
+  t('Publications Type');
+  t('Publications Year');
   t('Related');
   t('Related links');
   t('Taxonomy');

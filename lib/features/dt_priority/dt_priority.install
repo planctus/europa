@@ -29,11 +29,11 @@ function dt_priority_uninstall() {
  */
 function dt_priority_update_7101() {
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_priority_intro',
     'field_priority_keyword',
     'field_priority_description',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
@@ -44,9 +44,9 @@ function dt_priority_update_7101() {
   field_group_group_export_delete($group_priority_other, FALSE);
   field_group_group_export_delete($group_priority_meta, FALSE);
   // Remove the field.
-  $fields_to_remove = array(
+  $fields_to_remove = [
     'field_priority_type',
-  );
+  ];
   foreach ($fields_to_remove as $field_name) {
     if (field_info_field($field_name) !== NULL) {
       field_delete_field($field_name);
@@ -54,14 +54,14 @@ function dt_priority_update_7101() {
   }
   // Revert.
   features_revert_module('dt_priority');
-  features_revert(array(
-    'dt_priority' => array(
+  features_revert([
+    'dt_priority' => [
       'field_base',
       'field_instance',
       'field_group',
       'variable',
-    ),
-  ));
+    ],
+  ]);
 }
 
 /**
@@ -69,21 +69,21 @@ function dt_priority_update_7101() {
  */
 function dt_priority_update_7102() {
   // Enable the default and new modules.
-  $modules_to_enable = array(
+  $modules_to_enable = [
     'weight',
     'dt_priority_default',
-  );
+  ];
   module_enable($modules_to_enable);
 
   // List of features we have to revert. In the correct order.
-  $features_to_revert = array(
+  $features_to_revert = [
     'dt_core',
     'dt_banner',
     'dt_featured_item',
     'dt_priority',
     'dt_priority_default',
     'dt_roles_permissions',
-  );
+  ];
   // Revert the feature.
   foreach ($features_to_revert as $feature) {
     features_revert_module($feature);
@@ -107,7 +107,7 @@ function dt_priority_update_7102() {
   _dt_shared_field_value_copy('node', 'priority', 'field_core_policy', 'field_core_child_policies');
 
   // Delete unneeded and depricated field instances.
-  $field_instance_to_remove = array(
+  $field_instance_to_remove = [
     'field_priority_excerpt',
     'field_priority_issue',
     'field_priority_objective',
@@ -117,7 +117,7 @@ function dt_priority_update_7102() {
     'field_core_priorities',
     'field_core_topics',
     'field_core_legacy_link',
-  );
+  ];
 
   foreach ($field_instance_to_remove as $field_name) {
     $instance = field_info_instance('node', $field_name, 'priority');
@@ -127,11 +127,11 @@ function dt_priority_update_7102() {
   }
 
   // Field bases to remove.
-  $field_bases_to_remove = array(
+  $field_bases_to_remove = [
     'field_priority_excerpt',
     'field_priority_issue',
     'field_priority_objective',
-  );
+  ];
 
   // Loop and process.
   foreach ($field_bases_to_remove as $field_name) {
@@ -147,13 +147,13 @@ function dt_priority_update_7102() {
  * NEXTEUROPA-5800 revert related features.
  */
 function dt_priority_update_7103() {
-  module_enable(array('dt_page'));
+  module_enable(['dt_page']);
   // List of features we have to revert. In the correct order.
-  $features_to_revert = array(
+  $features_to_revert = [
     'dt_page',
     'dt_priority',
     'dt_priority_default',
-  );
+  ];
   // Revert the feature.
   foreach ($features_to_revert as $feature) {
     if (module_exists($feature)) {

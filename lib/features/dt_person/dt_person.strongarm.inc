@@ -157,6 +157,9 @@ function dt_person_strongarm() {
       'event_past' => array(
         'custom_settings' => FALSE,
       ),
+      'job' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

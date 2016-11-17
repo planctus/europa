@@ -5,7 +5,7 @@
  * Contains permissions export for role editor.
  */
 
-$permissions['editor'] = array(
+$permissions['editor'] = [
   'dt editorial mark linguistic review',
   'dt editorial mark content review',
   'access administration menu',
@@ -234,4 +234,4 @@ $permissions['editor'] = array(
   'view own unpublished content',
   'view private files',
   'view the administration theme',
-);
+];

@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @file
+ * Contains all install and update hooks for the BRP initiative content type.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function brp_initiative_install() {
+  // Apply default dt configuration to "BRP initiative" content type.
+  multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('brp_initiative');
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Enable several modules that are dependencies for brp_initiative.
+ */
+function brp_initiative_enable() {
+  $modules_to_enable = [
+    'dt_list_view_content',
+  ];
+  module_enable($modules_to_enable);
+}
+
+/**
+ * DTTSB-179 - Replace "Initiative Title" field with field_core_description.
+ */
+function brp_initiative_update_7101() {
+  // Delete the remaining field_brp_inve_initiative_title.
+  field_delete_field('field_brp_inve_initiative_title');
+}
+
+/**
+ * Implements hook_update().
+ *
+ * Force remove of fields.
+ */
+function brp_initiative_update_7102() {
+  $fields = [
+    'field_brp_inve_leading_service',
+    'field_brp_inve_initiative_type',
+  ];
+  foreach ($fields as $field_name) {
+    if (field_info_field($field_name)) {
+      field_delete_field($field_name);
+    }
+  }
+  // Revert feature.
+  features_revert_module('brp_initiative');
+
+  // Enable several modules that are dependencies for brp_initiative.
+  $modules_to_enable = [
+    'search_api',
+    'search_api_db',
+    'search_api_views',
+  ];
+  module_enable($modules_to_enable);
+}
+
+/**
+ * Deletes the old date fields so they get recreated with new format.
+ */
+function brp_initiative_update_7103() {
+  $fields_to_delete = [
+    'field_brp_inve_fb_start_date',
+    'field_brp_inve_fb_end_date',
+  ];
+
+  foreach ($fields_to_delete as $field) {
+    field_delete_field($field);
+  }
+}
+
+/**
+ * DTTSB-366 - rollback and reimport report terms.
+ */
+function brp_initiative_update_7104() {
+  $migration = Migration::getInstance('BRPReportTerms');
+  $migration->processRollback();
+  $migration->processImport();
+}
+
+/**
+ * DTTSB-468: Enable dt_list_view_content.
+ */
+function brp_initiative_update_7105() {
+  module_enable(['dt_list_view_content']);
+}
+
+/**
+ * DTTSB-474: Revert Search API server settings.
+ */
+function brp_initiative_update_7106() {
+  _brp_initiative_revert_seach_api();
+}
+
+/**
+ * DTTSB-303: Removing deprecated vocabulary and a field instance.
+ */
+function brp_initiative_update_7107() {
+  if ($voc = taxonomy_vocabulary_machine_name_load('brp_dgs')) {
+    taxonomy_vocabulary_delete($voc->vid);
+  }
+  // Delete field_taxonomy_ws_key.
+  if ($field_instance = field_info_instance('taxonomy_term', 'field_taxonomy_ws_key', 'brp_dgs')) {
+    field_delete_instance($field_instance);
+  }
+}
+
+/**
+ * Decouple search api from Brp_initiative module.
+ */
+function brp_initiative_update_7108() {
+  // Reverting the features.
+  features_revert_module(['brp_initiative']);
+  module_enable(['brp_initiative_search']);
+}

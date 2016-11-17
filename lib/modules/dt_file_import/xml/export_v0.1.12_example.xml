@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<import>
+	<file_translations>
+		<file_translation>
+			<source_file_url>http://euro.eesti.ee/EU/Prod/Euroveeb/Main_Page/download/eplaan9_ENG.pdf</source_file_url>
+			<title>Estonia's National Changeover Plan</title>
+			<target_filename>report_en.pdf</target_filename>
+			<language>en</language>
+			<fid>1</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://euro.eesti.ee/EU/Prod/Euroveeb/Avaleht/download/europlaan9.pdf</source_file_url>
+			<title>Eesti eurole ülemineku plaan</title>
+			<target_filename>report_et.pdf</target_filename>
+			<language>et</language>
+			<fid>1</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/transport/doc/organisation-chart/move_en.pdf</source_file_url>
+			<title>Mobility and transport - Organisation chart</title>
+			<target_filename>organisation-chart-DG-MOVE_en.pdf</target_filename>
+			<language>en</language>
+			<fid>2</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/transport/doc/organisation-chart/move_de.pdf</source_file_url>
+			<title>Mobility and transport - Organisation chart</title>
+			<target_filename>organisation-chart-DG-MOVE_de.pdf</target_filename>
+			<language>de</language>
+			<fid>2</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/transport/doc/organisation-chart/move_fr.pdf</source_file_url>
+			<title>Mobility and transport - Organisation chart</title>
+			<target_filename>organisation-chart-DG-MOVE_fr.pdf</target_filename>
+			<language>fr</language>
+			<fid>2</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/atwork/synthesis/aar/doc/trade_aar_2014.pdf</source_file_url>
+			<title>Activity report 2014</title>
+			<target_filename>dg-trade-activity-report_2014_en.pdf</target_filename>
+			<language>en</language>
+			<fid>4</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/atwork/synthesis/aar/doc/trade_aar_2014_annex_part_1.pdf</source_file_url>
+			<title>Annex 1</title>
+			<target_filename>dg-trade-activity-report_2014_annex1_en.pdf</target_filename>
+			<language>een</language>
+			<fid>5</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/atwork/synthesis/aar/doc/trade_aar_2014_annex_part_2.pdf</source_file_url>
+			<title>Annex 2</title>
+			<target_filename>dg-trade-activity-report_2014_annex2_en.pdf</target_filename>
+			<language>een</language>
+			<fid>5</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-amended-work-programme2016_en.pdf</source_file_url>
+			<title>Communication - Amended 2016 work programme</title>
+			<target_filename>Amended-2016-work-programme-communication_March2016_en.pdf</target_filename>
+			<language>en</language>
+			<fid>6</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-amended-work-programme2016-annex_en.pdf</source_file_url>
+			<title>Communication - Amended 2016 work programme - Annex</title>
+			<target_filename>Amended-2016-work-programme-communication-annex_March2016_en.pdf</target_filename>
+			<language>en</language>
+			<fid>8</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016_en.pdf</source_file_url>
+			<title>Communication - 2016 work programme</title>
+			<target_filename>2017-work-programme-communication_December2015_en.pdf</target_filename>
+			<language>en</language>
+			<fid>3</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016_de.pdf</source_file_url>
+			<title>Communication - 2016 work programme</title>
+			<target_filename>2017-work-programme-communication_December2015_de.pdf</target_filename>
+			<language>de</language>
+			<fid>3</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016_fr.pdf</source_file_url>
+			<title>Communication - 2016 work programme</title>
+			<target_filename>2017-work-programme-communication_December2015_fr.pdf</target_filename>
+			<language>fr</language>
+			<fid>3</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016-annex_en.pdf</source_file_url>
+			<title>Communication - 2016 work programme - Annex</title>
+			<target_filename>2017-work-programme-communication-annex_December2015_en.pdf</target_filename>
+			<language>en</language>
+			<fid>7</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016-annex_de.pdf</source_file_url>
+			<title>Communication - 2016 work programme - Annex</title>
+			<target_filename>2017-work-programme-communication-annex_December2015_de.pdf</target_filename>
+			<language>de</language>
+			<fid>7</fid>
+		</file_translation>
+		<file_translation>
+			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016-annex_fr.pdf</source_file_url>
+			<title>Communication - 2016 work programme - Annex</title>
+			<target_filename>2017-work-programme-communication-annex_December2015_fr.pdf</target_filename>
+			<language>fr</language>
+			<fid>7</fid>
+		</file_translation>
+	</file_translations>
+	<files>
+		<file>
+			<fid>1</fid>
+			<pid>1</pid>
+			<type_of_file>Document</type_of_file>
+			<date_of_publication>2014-01-15T00:00:00.000</date_of_publication>
+			<file_location>EUR-lex</file_location>
+			<file_link_upload>Upload the file</file_link_upload>
+			<file_unique_identifier>AAB 123,X,L</file_unique_identifier>
+		</file>
+		<file>
+			<fid>2</fid>
+			<pid>2</pid>
+			<type_of_file>Presentation</type_of_file>
+			<date_of_publication>2015-11-11T00:00:00.000</date_of_publication>
+			<file_location>Open data portal</file_location>
+			<file_link_upload>Upload the file</file_link_upload>
+			<file_unique_identifier>BBC 234</file_unique_identifier>
+		</file>
+		<file>
+			<fid>3</fid>
+			<pid>3</pid>
+			<type_of_file>Document</type_of_file>
+			<date_of_publication>2016-02-16T00:00:00.000</date_of_publication>
+			<file_location>No Source</file_location>
+			<file_link_upload>Link to file</file_link_upload>
+			<file_unique_identifier>CCD 345</file_unique_identifier>
+		</file>
+		<file>
+			<fid>4</fid>
+			<pid>2</pid>
+			<type_of_file>Data</type_of_file>
+			<date_of_publication>2016-02-16T00:00:00.000</date_of_publication>
+			<file_link_upload>Upload the file</file_link_upload>
+			<file_unique_identifier>XXL,L</file_unique_identifier>
+		</file>
+		<file>
+			<fid>5</fid>
+			<pid>1</pid>
+			<type_of_file>Form</type_of_file>
+			<date_of_publication>2016-02-16T00:00:00.000</date_of_publication>
+			<file_link_upload>Link to file</file_link_upload>
+			<file_unique_identifier>S,M</file_unique_identifier>
+		</file>
+		<file>
+			<fid>6</fid>
+			<pid>3</pid>
+			<date_of_publication>2016-02-16T00:00:00.000</date_of_publication>
+			<file_link_upload>Upload the file</file_link_upload>
+		</file>
+		<file>
+			<fid>7</fid>
+			<pid>1</pid>
+			<file_link_upload>Upload the file</file_link_upload>
+		</file>
+		<file>
+			<fid>8</fid>
+			<pid>1</pid>
+			<file_link_upload>Upload the file</file_link_upload>
+		</file>
+	</files>
+	<publication_translations>
+		<publication_translation>
+			<language>en</language>
+			<pid>1</pid>
+			<title>Test publication 1.</title>
+			<description>En desc.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>fr</language>
+			<pid>1</pid>
+			<title>Publication d'essa 1.</title>
+			<description>Fr desc.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135.3144</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>hu</language>
+			<pid>1</pid>
+			<title>Teszt publikáció 1.</title>
+			<description>Hu desc.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>en</language>
+			<pid>2</pid>
+			<title>Test publication 2.</title>
+			<description>En desc.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>fr</language>
+			<pid>2</pid>
+			<title>Publication d'essa 2.</title>
+			<description>Fr desc.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135.3144</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>hu</language>
+			<pid>2</pid>
+			<title>Teszt publikáció 2.</title>
+			<description>Hu desc.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>en</language>
+			<pid>3</pid>
+			<title>Test publication 3.</title>
+			<description>En desc.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>fr</language>
+			<pid>3</pid>
+			<title>Publication d'essa 3.</title>
+			<description>Fr desc.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135.3144</core_contact>
+		</publication_translation>
+		<publication_translation>
+			<language>hu</language>
+			<pid>3</pid>
+			<title>Teszt publikáció 3.</title>
+			<description>Hu desc.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</publication_translation>
+	</publication_translations>
+	<publications>
+		<publication>
+			<pid>1</pid>
+			<publication_type>Progress Report</publication_type>
+			<date_published>2015-08-12T00:00:00.000</date_published>
+			<date_updated>2015-08-12T00:00:00.000</date_updated>
+			<publication_authors>3135</publication_authors>
+			<publication_origin>EU Bookshop</publication_origin>
+			<core_nal_countries>Belgium,Brunei</core_nal_countries>
+			<core_tags>a,b,c</core_tags>
+			<publication_referenceno>casdasd</publication_referenceno>
+			<core_topics>387,379</core_topics>
+			<publication_rel_content>2010,2857</publication_rel_content>
+			<core_departments>880,932,2828</core_departments>
+			<core_policies>1631</core_policies>
+			<eurovoc_taxonomy>5,10</eurovoc_taxonomy>
+		</publication>
+		<publication>
+			<pid>2</pid>
+			<publication_type>Report</publication_type>
+			<date_published>2013-02-14T00:00:00.000</date_published>
+			<date_updated>2013-02-15T00:00:00.000</date_updated>
+			<publication_authors>3135</publication_authors>
+			<publication_origin>EU Publications Office</publication_origin>
+			<core_nal_countries>Andorra,Albania</core_nal_countries>
+			<core_tags>bla,blo,bul</core_tags>
+			<publication_referenceno>DEF 456,S,M</publication_referenceno>
+			<core_topics>356</core_topics>
+			<publication_rel_content>2010</publication_rel_content>
+			<core_departments>880</core_departments>
+			<core_policies>1631.1705</core_policies>
+			<eurovoc_taxonomy>5</eurovoc_taxonomy>
+		</publication>
+		<publication>
+			<pid>3</pid>
+			<publication_type>Communication</publication_type>
+			<date_published>2016-01-17T00:00:00.000</date_published>
+			<date_updated>2016-01-20T00:00:00.000</date_updated>
+			<publication_authors>3135.3144</publication_authors>
+			<publication_origin>EC Annual reports</publication_origin>
+			<core_nal_countries>Cuba,Croatia</core_nal_countries>
+			<core_tags>ablak</core_tags>
+			<publication_referenceno>GHI 789,XXL,XL,L</publication_referenceno>
+			<core_topics>356,379,387</core_topics>
+			<publication_rel_content>2857</publication_rel_content>
+			<core_departments>2828.932</core_departments>
+			<core_policies>1705</core_policies>
+			<eurovoc_taxonomy>10</eurovoc_taxonomy>
+		</publication>
+	</publications>
+</import>

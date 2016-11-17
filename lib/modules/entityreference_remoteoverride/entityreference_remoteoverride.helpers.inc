@@ -63,9 +63,9 @@ function _entityreference_remoteoverride_add_table_field($field_name, array $rem
           $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'][$field] = $field;
           // Store back the data.
           db_update('field_config')
-            ->fields(array(
+            ->fields([
               'data' => serialize($unserialized_data),
-            ))
+            ])
             ->condition('field_name', $field_name, '=')
             ->execute();
         }
