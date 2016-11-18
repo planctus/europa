@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_contact.strongarm.inc
@@ -110,7 +109,7 @@ function dt_contact_strongarm() {
         'custom_settings' => FALSE,
       ),
       'title' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'revision' => array(
         'custom_settings' => FALSE,
@@ -137,6 +136,18 @@ function dt_contact_strongarm() {
         'custom_settings' => FALSE,
       ),
       'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
         'custom_settings' => FALSE,
       ),
     ),
