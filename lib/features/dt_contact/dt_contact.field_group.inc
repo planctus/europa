@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_contact.field_group.inc

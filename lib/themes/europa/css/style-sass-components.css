@@ -578,8 +578,8 @@ a.label:hover, a.label:focus {
   .label-danger[href]:hover, [href].label--danger:hover, .label-danger[href]:focus, [href].label--danger:focus {
     background-color: #c9302c; }
 
-.icon--after, .is-external::after, a[href^="http"]:not([href*="ec.europa.eu"]):not(.is-internal)::after, .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title::after,
-.listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3::after, .btn.btn-ctn::after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle::after, .btn.btn-time-line::after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle::after, .btn.btn-menu::after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle::after, .breadcrumb__link-arrow, a.breadcrumb__link::after, .no-js .breadcrumb__segment--first::before, .breadcrumb--collapsible .breadcrumb__btn-separator::after, .file__btn::after, .file__translations .file__translations-control::after, .lang-select-page--transparent select.lang-select-page__list::after, .listing__title--arrow::after, .listing--cta .listing__title::after, .site-menu .field--field-site-menu-links .listing__item .listing__title::after, .listing__read-more::after, .notification__content .notification__btn::after, .facet-tag--close .facet-tag__value::after, .facet-tag--close .facet-tag__value:hover::after {
+.icon--after, .btn.btn-ctn::after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle::after, .btn.btn-time-line::after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle::after, .btn.btn-menu::after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle::after, .is-external::after, a[href^="http"]:not([href*="ec.europa.eu"]):not(.is-internal)::after, .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title::after,
+.listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3::after, .breadcrumb__link-arrow, a.breadcrumb__link::after, .no-js .breadcrumb__segment--first::before, .breadcrumb--collapsible .breadcrumb__btn-separator::after, .file__btn::after, .file__translations .file__translations-control::after, .lang-select-page--transparent select.lang-select-page__list::after, .listing__title--arrow::after, .listing--cta .listing__title::after, .site-menu .field--field-site-menu-links .listing__item .listing__title::after, .listing__read-more::after, .notification__content .notification__btn::after, .facet-tag--close .facet-tag__value::after, .facet-tag--close .facet-tag__value:hover::after {
   text-decoration: none;
   font-family: 'EuropaIcons';
   speak: none;
@@ -594,150 +594,9 @@ a.label:hover, a.label:focus {
   -moz-osx-font-smoothing: grayscale; }
 
 @media print {
-  .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .breadcrumb, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .icon.lang-select-page__icon, .date-picker .lang-select-page__icon.date-picker--icon, .lang-select-page__icon.search-form__btn, select.lang-select-page__list, .notification, .site-switcher, .search-form, .site-menu, .site-menu__toggle, .skip-link,
+  .hidden-print, .btn, .inpage-nav__navbar .inpage-nav__toggle, .breadcrumb, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select, .feedback-message, .feedback-form__wrapper, .file, .footer, .help-block, .inpage-nav__wrapper, .lang-select-site, .lang-select-page, .icon.lang-select-page__icon, .date-picker .lang-select-page__icon.date-picker--icon, .lang-select-page__icon.search-form__btn, select.lang-select-page__list, .notification, .site-switcher, .search-form, .site-menu, .site-menu__toggle, .skip-link,
   #skip-link, .social-media-links, .social-media-links--field {
     display: none !important; } }
-
-/*
-Other typography
-
-Markup: html/typography.html
-
-Style guide text.typography
-*/
-.text-small, .icon--text-small {
-  font-size: 0.778em; }
-
-/*
-Headings
-
-Site headings. They also can be applied by adding a class with the name of
-the heading tag.
-
-Markup: html/headings.html
-
-.h1 - Heading 1
-.h2 - Heading 2
-.h3 - Heading 3
-.h4 - Heading 4
-.h5 - Heading 5
-.h6 - Heading 6
-
-Style guide text.headings
-*/
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .field .label-above, .listing__title, .h4, .h5, .h6 {
-  margin: 0;
-  padding: 0.5em 0; }
-
-h1, .h1 {
-  font-size: 2.222em;
-  font-weight: 600;
-  color: #000; }
-
-h2, .h2 {
-  font-size: 1.667em;
-  font-weight: 600;
-  color: #000; }
-
-h3, .h3, .field .label-above, .listing__title {
-  font-size: 1.222em;
-  font-weight: 600;
-  color: #404040; }
-
-h4, .h4 {
-  font-size: 1em;
-  font-weight: 600;
-  color: #404040; }
-
-h5, .h5 {
-  font-size: 0.778em;
-  color: #404040;
-  text-transform: uppercase; }
-
-h6, .h6 {
-  font-size: 0.778em;
-  text-transform: uppercase;
-  color: #404040; }
-
-/*
-Link
-
-Markup: html/link.html
-
-Style guide text.link
-*/
-a:focus {
-  outline: 3px solid #ffd617;
-  outline-offset: 2px;
-  text-decoration: underline; }
-
-a:link {
-  text-decoration: underline; }
-
-a:hover, a:active, a:focus {
-  text-decoration: underline;
-  color: #404040; }
-
-.site-switcher a,
-.feedback-form a {
-  z-index: 999;
-  text-decoration: none; }
-  .site-switcher a:focus,
-  .feedback-form a:focus {
-    outline: 3px solid #ffd617;
-    outline-offset: 10px;
-    text-decoration: underline; }
-
-.listing a {
-  text-decoration: none; }
-
-a .feedback-form {
-  outline-offset: 0; }
-
-.listing--cta a:focus,
-.site-switcher a:focus,
-.node-featured-item a:focus {
-  outline-offset: 0; }
-
-.listing--frontpage a:focus {
-  outline-offset: 10px; }
-  .listing--frontpage a:focus .listing__title {
-    text-decoration: underline;
-    color: #404040; }
-
-a.listing__item-link:focus .highlighted-item .highlighted-item__content {
-  text-decoration: underline; }
-
-.listing--cta a:focus {
-  color: #ffffff; }
-
-a.smaller,
-.smaller a {
-  font-size: 0.8em; }
-
-a[href^="mailto"] {
-  text-transform: lowercase; }
-
-@media print {
-  a::after {
-    content: none !important; } }
-
-.is-external, a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]), .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title,
-.listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3 {
-  position: relative; }
-  .is-external::after, a[href^="http"]:not([href*="ec.europa.eu"]):not(.is-internal)::after, .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title::after,
-  .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3::after {
-    font-size: 75%;
-    margin-left: 0.4em;
-    margin-right: 0.2em;
-    text-decoration: underline; }
-
-.page-content ul a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]).btn, .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]), .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]),
-.page-content p a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]).btn,
-.page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]), .inpage-nav__navbar
-.page-content p a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]) {
-  padding-right: 2.1em; }
 
 /*
 Buttons
@@ -964,72 +823,136 @@ a.btn[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]), .inpage-nav__
     line-height: 3.5 !important; }
 
 /*
-Paragraphs
+Headings
 
-Markup: html/paragraphs.html
+Site headings. They also can be applied by adding a class with the name of
+the heading tag.
 
-.paragraph--intro - Intro
-.paragraph--small - Small body text
+Markup: html/headings.html
 
-Style guide text.paragraphs
+.h1 - Heading 1
+.h2 - Heading 2
+.h3 - Heading 3
+.h4 - Heading 4
+.h5 - Heading 5
+.h6 - Heading 6
+
+Style guide text.headings
 */
-.paragraph, p {
-  display: block;
-  max-width: 32em;
-  margin-bottom: 0.8em; }
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .field .label-above, .listing__title, .h4, .h5, .h6 {
+  margin: 0;
+  padding: 0.5em 0; }
 
-p.dashed {
-  position: relative;
-  padding-left: 0.8em; }
-  p.dashed::before {
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    content: '-'; }
+h1, .h1 {
+  font-size: 2.222em;
+  font-weight: 600;
+  color: #000; }
 
-.paragraph--width-auto {
-  width: auto; }
+h2, .h2 {
+  font-size: 1.667em;
+  font-weight: 600;
+  color: #000; }
 
-.paragraph--intro {
-  font-size: 1.222em; }
+h3, .h3, .field .label-above, .listing__title {
+  font-size: 1.222em;
+  font-weight: 600;
+  color: #404040; }
 
-.paragraph--small {
-  font-size: 0.889em; }
+h4, .h4 {
+  font-size: 1em;
+  font-weight: 600;
+  color: #404040; }
+
+h5, .h5 {
+  font-size: 0.778em;
+  color: #404040;
+  text-transform: uppercase; }
+
+h6, .h6 {
+  font-size: 0.778em;
+  text-transform: uppercase;
+  color: #404040; }
 
 /*
-Form
+Link
 
-Style guide form
+Markup: html/link.html
+
+Style guide text.link
 */
-.form-control, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
-  color: #404040;
-  background-color: #fff;
-  border: 1px solid #404040;
-  border-radius: 0;
-  margin-bottom: 1.1em;
-  min-height: 2.75em;
-  font-size: 0.889em;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-  .form-control.has-error, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.has-error {
-    border-width: 2px;
-    padding: 5px 11px; }
-  .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .form-control.is-focused, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-focused,
-  .has-error .form-control:focus,
-  .has-error .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title
-  .has-error select:focus {
-    color: #000;
-    -webkit-box-shadow: none;
-    box-shadow: none; }
-  .form-control:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
+a:focus {
+  outline: 3px solid #ffd617;
+  outline-offset: 2px;
+  text-decoration: underline; }
+
+a:link {
+  text-decoration: underline; }
+
+a:hover, a:active, a:focus {
+  text-decoration: underline;
+  color: #404040; }
+
+.site-switcher a,
+.feedback-form a {
+  z-index: 999;
+  text-decoration: none; }
+  .site-switcher a:focus,
+  .feedback-form a:focus {
     outline: 3px solid #ffd617;
-    outline-offset: 0px;
-    text-decoration: none; }
-  .form-control.is-disabled, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
-    color: #b3b4b5;
-    background-color: #e2e2e2; }
-  .form-control.select, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.select {
-    border-width: 1px; }
+    outline-offset: 10px;
+    text-decoration: underline; }
+
+.listing a {
+  text-decoration: none; }
+
+a .feedback-form {
+  outline-offset: 0; }
+
+.listing--cta a:focus,
+.site-switcher a:focus,
+.node-featured-item a:focus {
+  outline-offset: 0; }
+
+.listing--frontpage a:focus {
+  outline-offset: 10px; }
+  .listing--frontpage a:focus .listing__title {
+    text-decoration: underline;
+    color: #404040; }
+
+a.listing__item-link:focus .highlighted-item .highlighted-item__content {
+  text-decoration: underline; }
+
+.listing--cta a:focus {
+  color: #ffffff; }
+
+a.smaller,
+.smaller a {
+  font-size: 0.8em; }
+
+a[href^="mailto"] {
+  text-transform: lowercase; }
+
+@media print {
+  a::after {
+    content: none !important; } }
+
+.is-external, a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]), .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title,
+.listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3 {
+  position: relative; }
+  .is-external::after, a[href^="http"]:not([href*="ec.europa.eu"]):not(.is-internal)::after, .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title::after,
+  .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3::after {
+    content: '\e825';
+    font-size: 75%;
+    margin-left: 0.4em;
+    margin-right: 0.2em;
+    text-decoration: underline; }
+
+.page-content ul a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]).btn, .page-content ul .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]), .inpage-nav__navbar .page-content ul a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]),
+.page-content p a[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]).btn,
+.page-content p .inpage-nav__navbar a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]), .inpage-nav__navbar
+.page-content p a[href^="http"].inpage-nav__toggle:not(.is-internal):not([href*="ec.europa.eu"]) {
+  padding-right: 2.1em; }
 
 /*
 Icon
@@ -1106,12 +1029,8 @@ Style guide: icon
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon--external, .is-external::after, a[href^="http"]:not([href*="ec.europa.eu"]):not(.is-internal)::after, .listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .listing__title::after,
-.listing__item-link[href^="http"]:not(.is-internal):not([href*="ec.europa.eu"]) .highlighted-item h3::after, .icon--external::before {
-  content: '\e825' !important; }
-
-.icon--blue-dark, .file__translations .file__translations-control::after {
-  color: #004494; }
+.icon--external, .icon--external::before {
+  content: '\e825'; }
 
 .icon--arrow-up, .icon--arrow-up::before {
   content: '\e821'; }
@@ -1119,120 +1038,118 @@ Style guide: icon
 .icon--arrow-down, .btn.btn-menu::after, .inpage-nav__navbar .btn-menu.inpage-nav__toggle::after, .icon--arrow-down::before, .lang-select-page--transparent select.lang-select-page__list::after {
   content: '\e822'; }
 
-.icon--spinner::before {
+.icon--spinner, .icon--spinner::before {
   content: '\e805'; }
 
-.icon--facebook::before {
+.icon--facebook, .icon--facebook::before {
   content: '\e809'; }
 
-.icon--livestreaming::before {
-  content: "\e81c"; }
+.icon--livestreaming, .icon--livestreaming::before {
+  content: '\e81c'; }
 
-.icon--location::before {
-  content: "\e81b"; }
+.icon--location, .icon--location::before {
+  content: '\e81b'; }
 
-.icon--twitter::before {
+.icon--twitter, .icon--twitter::before {
   content: '\e817'; }
 
-.icon--googleplus::before {
+.icon--googleplus, .icon--googleplus::before {
   content: '\e80c'; }
 
-.icon--linkedin::before {
+.icon--linkedin, .icon--linkedin::before {
   content: '\e810'; }
 
-.icon--rss::before {
+.icon--rss, .icon--rss::before {
   content: '\e813'; }
 
-.icon--language::before {
+.icon--language, .icon--language::before {
   content: '\e824'; }
 
-.icon--search::before, .search-form__btn::before {
+.icon--search, .icon--search::before, .search-form__btn {
   content: '\e823'; }
 
-.icon--up::before {
+.icon--up, .icon--up::before {
   content: '\e827'; }
 
 .icon--right, .btn.btn-ctn::after, .inpage-nav__navbar .btn-ctn.inpage-nav__toggle::after, .btn.btn-time-line::after, .inpage-nav__navbar .btn-time-line.inpage-nav__toggle::after, .icon--right::before, .listing__title--arrow::after, .listing--cta .listing__title::after, .site-menu .field--field-site-menu-links .listing__item .listing__title::after, .listing__read-more::after, .notification__content .notification__btn::after {
   content: '\e828'; }
 
-.icon--breadcrumb, .breadcrumb__link-arrow, a.breadcrumb__link::after, .no-js .breadcrumb__segment--first::before, .breadcrumb--collapsible .breadcrumb__btn-separator::after {
-  content: '\e828' !important; }
+.icon--breadcrumb, .icon--breadcrumb::before, .breadcrumb__link-arrow::before, .no-js .breadcrumb__segment--first::before {
+  content: '\e828'; }
 
-.icon--down, .file__translations .file__translations-control::after {
+.icon--down, .icon--down::before, .file__translations .file__translations-control::after {
   content: '\e81F'; }
-  .icon--down::before {
-    content: '\e81F'; }
 
-.icon--left::before {
+.icon--left, .icon--left::before {
   content: '\e826'; }
 
-.icon--file::before {
+.icon--file, .icon--file::before {
   content: '\e80a'; }
 
-.icon--audio::before {
+.icon--audio, .icon--audio::before {
   content: '\e801'; }
 
-.icon--brochure::before {
+.icon--brochure, .icon--brochure::before {
   content: '\e802'; }
 
-.icon--edit::before {
+.icon--edit, .icon--edit::before {
   content: '\e807'; }
 
-.icon--image::before {
+.icon--image, .icon--image::before {
   content: '\e80d'; }
 
 .icon--download, .icon--download::before, .file__btn::after {
-  content: '\e806' !important; }
+  content: '\e806'; }
 
-.icon--infographic::before {
+.icon--infographic, .icon--infographic::before {
   content: '\e80f'; }
 
-.icon--multiple-files::before {
+.icon--multiple-files, .icon--multiple-files::before {
   content: '\e820'; }
 
-.icon--organigram::before {
+.icon--organigram, .icon--organigram::before {
   content: '\e811'; }
 
-.icon--package::before {
+.icon--package, .icon--package::before {
   content: '\e812'; }
 
-.icon--slides::before {
+.icon--slides, .icon--slides::before {
   content: '\e814'; }
 
-.icon--video::before {
+.icon--video, .icon--video::before {
   content: '\e800'; }
 
-.icon--error::before {
+.icon--error, .icon--error::before {
   content: '\e82F'; }
 
-.icon--success::before {
+.icon--success, .icon--success::before {
   content: '\e816'; }
 
-.icon--warning::before {
+.icon--warning, .icon--warning::before {
   content: '\e804'; }
 
-.icon--budget::before {
+.icon--budget, .icon--budget::before {
   content: '\e81a'; }
 
-.icon--digital::before {
+.icon--digital, .icon--digital::before {
   content: '\e80b'; }
 
-.icon--energy::before {
+.icon--energy, .icon--energy::before {
   content: '\e818'; }
 
-.icon--euro::before {
+.icon--euro, .icon--euro::before {
   content: '\e803'; }
 
-.icon--global::before {
+.icon--global, .icon--global::before {
   content: '\e829'; }
 
-.icon--growth::before {
+.icon--growth, .icon--growth::before {
   content: '\e82a'; }
 
-.icon--regulation::before {
+.icon--regulation, .icon--regulation::before {
   content: '\e82b'; }
 
-.icon--feedback::before {
+.icon--feedback, .icon--feedback::before {
   content: '\e82e'; }
 
 .icon--check, .icon--check::before {
@@ -1244,14 +1161,17 @@ Style guide: icon
 .icon--tag-close, .icon--tag-close::before, .facet-tag--close .facet-tag__value::after {
   content: '\e82c'; }
 
-.icon--tag-close-hover, .icon--tag-close-hover::before, .facet-tag--close .facet-tag__value:hover::after {
-  content: '\e82d'; }
-
-.icon--calendar::before {
+.icon--calendar, .icon--calendar::before {
   content: '\e81d'; }
 
-.icon--camera::before {
+.icon--camera, .icon--camera::before {
   content: '\e900'; }
+
+.icon--blue-dark, .file__translations .file__translations-control::after {
+  color: #004494; }
+
+.icon--tag-close-hover, .icon--tag-close-hover::before, .facet-tag--close .facet-tag__value:hover::after {
+  content: '\e82d'; }
 
 .icon--yellowbg {
   background-color: #ffd617;
@@ -1265,6 +1185,9 @@ Style guide: icon
   .icon--yellowbg::before {
     margin-right: 0;
     line-height: inherit; }
+
+.icon--text-small {
+  font-size: 0.778em; }
 
 .icon--margin-right {
   margin-right: 1.5em; }
@@ -1438,6 +1361,7 @@ a.breadcrumb__link {
       text-decoration: underline; }
 
 .breadcrumb__link-arrow, a.breadcrumb__link::after, .no-js .breadcrumb__segment--first::before, .breadcrumb--collapsible .breadcrumb__btn-separator::after {
+  content: '\e828';
   color: #fff;
   line-height: inherit !important;
   margin-left: 8px !important;
@@ -1911,6 +1835,15 @@ Style guide datepicker
         font-weight: normal;
         font-size: 0.8em; }
       .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
+        color: #404040;
+        background-color: #fff;
+        border: 1px solid #404040;
+        border-radius: 0;
+        margin-bottom: 1.1em;
+        min-height: 2.75em;
+        font-size: 0.889em;
+        -webkit-box-shadow: none;
+        box-shadow: none;
         background: #4f4f4f;
         color: #fff;
         border: none;
@@ -1922,6 +1855,23 @@ Style guide datepicker
         padding-right: 0;
         padding-left: 0.750em;
         position: relative; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.has-error {
+          border-width: 2px;
+          padding: 5px 11px; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus, .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-focused,
+        .has-error .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
+          color: #000;
+          -webkit-box-shadow: none;
+          box-shadow: none; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
+          outline: 3px solid #ffd617;
+          outline-offset: 0px;
+          text-decoration: none; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.is-disabled {
+          color: #b3b4b5;
+          background-color: #e2e2e2; }
+        .ui-datepicker .ui-datepicker-header .ui-datepicker-title select.select {
+          border-width: 1px; }
         .ui-datepicker .ui-datepicker-header .ui-datepicker-title select:focus {
           outline: 3px solid #ffd617;
           outline-offset: -3px;
@@ -2768,7 +2718,7 @@ Style guide gallery
     font-size: 1em; }
     .mediagallery__item.has-icon .mediagallery__icon .icon::before, .mediagallery__item.has-icon .mediagallery__icon .date-picker .date-picker--icon::before, .date-picker .mediagallery__item.has-icon .mediagallery__icon .date-picker--icon::before, .mediagallery__item.has-icon .mediagallery__icon .search-form__btn::before {
       margin-right: 0; }
-  .mediagallery__item.has-icon .mediagallery__icon .icon--camera {
+  .mediagallery__item.has-icon .mediagallery__icon .icon--camera, .mediagallery__item.has-icon .mediagallery__icon .icon--camera::before {
     line-height: 4.000em;
     font-size: 0.667em; }
 
@@ -5448,7 +5398,7 @@ Style guide page-header.informational-home
       font-size: 0.750em;
       font-weight: 400;
       line-height: 1.34; }
-    .page-header h1 .paragraph, .page-header h1 p {
+    .page-header h1 .paragraph {
       margin-bottom: 0; }
   .page-header p {
     margin: 0;

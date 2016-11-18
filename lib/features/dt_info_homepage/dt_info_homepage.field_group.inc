@@ -25,6 +25,8 @@ function dt_info_homepage_field_group_info() {
     'children' => array(
       0 => 'group_content',
       1 => 'group_editorial_settings',
+      2 => 'group_info_homepage_info',
+      3 => 'group_info_homepage_political',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -50,14 +52,9 @@ function dt_info_homepage_field_group_info() {
     'weight' => '11',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_introduction',
-      2 => 'field_info_homepage_topic_intro',
-      3 => 'field_info_homepage_topic_link',
-      4 => 'field_core_header_image',
-      5 => 'field_info_highlights',
-      6 => 'field_info_classes',
-      7 => 'field_info_secondary_links',
-      8 => 'field_info_homepage_hero_links',
+      1 => 'field_core_header_image',
+      2 => 'field_core_introduction',
+      3 => 'field_info_highlights',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -82,7 +79,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -176,7 +173,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '2',
+    'weight' => '5',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -196,6 +193,127 @@ function dt_info_homepage_field_group_info() {
     ),
   );
   $field_groups['group_info_highlights|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_about|node|info_homepage|homepage_political';
+  $field_group->group_name = 'group_info_homepage_about';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'homepage_political';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'About the European Commission',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_core_links',
+      1 => 'field_info_homepage_about_button',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'About the European Commission',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_about|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_contacts|node|info_homepage|homepage_political';
+  $field_group->group_name = 'group_info_homepage_contacts';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'homepage_political';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contact',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_core_contacts',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Contact',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'attributes' => 'id="contact"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_contacts|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_info|node|info_homepage|form';
+  $field_group->group_name = 'group_info_homepage_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Informational site related',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_info_classes',
+      1 => 'field_info_homepage_topic_intro',
+      2 => 'field_info_homepage_topic_link',
+      3 => 'field_info_secondary_links',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-info-homepage-info field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_info|node|info_homepage|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_political|node|info_homepage|form';
+  $field_group->group_name = 'group_info_homepage_political';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_content_tabgroup';
+  $field_group->data = array(
+    'label' => 'Political site related',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_info_homepage_hero_links',
+      1 => 'field_core_contacts',
+      2 => 'field_core_links',
+      3 => 'field_info_homepage_about_button',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-info-homepage-political field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_political|node|info_homepage|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -687,11 +805,15 @@ function dt_info_homepage_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('About the European Commission');
+  t('Contact');
   t('Content');
   t('Editorial settings');
   t('Featured');
+  t('Informational site related');
   t('Latest');
   t('Main');
+  t('Political site related');
   t('Section bottom');
   t('Section top');
   t('Sidebar');

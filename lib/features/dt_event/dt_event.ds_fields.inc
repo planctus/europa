@@ -234,8 +234,9 @@ function _dt_event_ds_fields_scribble_embed($field) {
  */
 function _dt_event_ds_fields_stream_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+  if ($entity->__isset('field_event_live_streaming_link') && $entity->field_event_live_streaming_link->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
+    $stream_url = $entity->language($content_language)->field_event_live_streaming_link->value();
     if (isset($stream_url['url'])) {
       $markup = [
         '#markup' => '<iframe width="100%" height="315" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '" allowfullscreen="allowfullscreen"></iframe>',
