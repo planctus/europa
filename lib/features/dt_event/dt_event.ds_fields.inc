@@ -802,7 +802,7 @@ function _dt_event_ds_fields_livestream_header($field) {
   $markup = '';
 
   if ($location) {
-    $markup = '<h2>' . t('Live from @location', ['@location' => $location['locality']]) . '</h2>';
+    $markup = '<h2>' . t('Live from') . ' ' . $location['locality'] . '</h2>';
   }
 
   return $markup;
