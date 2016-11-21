@@ -1,4 +1,4 @@
-@api @shared
+@api @shared @dt_core
 Feature: Europa Search
   In use the Europa Search index results
   As a normal user

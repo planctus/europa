@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_core @dt_announcement
 Feature: Display pager region and show/hide pager elements
 
   Scenario: Pager doesn't have first, ellipsis and last links, but shows

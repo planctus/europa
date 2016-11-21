@@ -1,4 +1,4 @@
-@api @information @political
+@api @information @political @dt_announcement
 Feature: Announcements block
   In order to display announcements on the website
   I want to see the announcements in the announcements block
@@ -6,7 +6,7 @@ Feature: Announcements block
   Background:
     Given I set the variable "dt_shared_functions_dt_latest_visibility" to "0"
 
-  @information @political
+  @dt_department @dt_page @dt_policy @dt_topic @dt_priority
   Scenario Outline: Default settings of "Latest visibility" are respected
     Given I am logged in as a user with the "administrator" role
     Given "<content_name>" content:
@@ -28,7 +28,7 @@ Feature: Announcements block
       | Priority     | field_core_priorities | should not    | should not   |
       | Page         | field_core_pages      | should not    | should not   |
 
-  @information @political
+  @dt_department @dt_page @dt_policy @dt_topic @dt_priority
   Scenario Outline: "Latest visibility" value is respected
     Given I am viewing a "<content_name>":
       | title                        | <content_name> with announcements |
@@ -54,7 +54,7 @@ Feature: Announcements block
       | Priority     | field_core_priorities | should        | should       | All news on this priority             | /announcements_en?priorities=999999 |
       | Page         | field_core_pages      | should        | should       | All latest on Page with announcements | /announcements_en?pages=999999      |
 
-  @information @political
+
   Scenario: Visitors should see sticky and promoted highlights above announcements list
     Given "Announcement" content:
       | title                   | status | sticky | promote |
@@ -64,7 +64,7 @@ Feature: Announcements block
     Then the ".node-announcement.node-sticky .featured-item" element should contain "Sticky Announcement"
     Then the ".node-announcement.node-promoted .featured-item" element should contain "Promoted Announcement 1"
 
-  @information @political
+  @dt_page @dt_social_network_links
   Scenario: Announcement block can display social media links
     Given I am logged in as a user with the "administrator" role
     Given "Social Networks" terms:
@@ -93,7 +93,7 @@ Feature: Announcements block
     Then I should see "Other social networks" in the ".social-media-links" element
     Then I should see "Facebook" in the ".social-media-links" element
 
-  @information @political
+  @dt_page @dt_featured_item
   Scenario: Announcement block can display a featured item
     Given I am logged in as a user with the "administrator" role
     Given "Featured item" content:

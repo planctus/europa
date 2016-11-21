@@ -1,4 +1,4 @@
-@information @political
+@information @political @dt_department @dt_announcement @dt_policy @dt_topic
 Feature: Display item count on listing pages
   In order to have a better overview on the amount of items on a listing page
   As an anonymous user

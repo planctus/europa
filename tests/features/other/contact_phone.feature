@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_contact @nexteuropa_formatters
 Feature: Contact phone should be converted to HTML links.
 When I log into the website
 As an editor
@@ -59,6 +59,7 @@ I should be able to create contact content
       | +31 7053 00        | Miss ()                            | Phone - European Commission BE   | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
       | +31 7053 00        | Miss close (                       | (Phone - European Commission BE  | Phone number is missing or with wrong format (+cc r xxx xx xx (description)) |
 
+  @dt_page
   Scenario: Phone number validation should not occur on content types that have no phone fields
     Given I am logged in as a user with the "editor" role
     When I go to "node/add/basic-page"
