@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_page @dt_core
 Feature: Display translated content
   As a user
   I want to see content in my preferred language

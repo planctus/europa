@@ -1,4 +1,4 @@
-@api @information @political
+@api @information @political @dt_editorial
 Feature: Content editing within the editorial workflow require advanced configuration and alteration.
 
   @javascript

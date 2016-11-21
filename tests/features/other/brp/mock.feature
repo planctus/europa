@@ -1,4 +1,4 @@
-@api @brp @brpMock
+@api @brp @brpMock @dt_nal_services @brp_initiative
 Feature: Tests initiatives and feedback using the brp webservice mock
   In order to test the webservice behaviour on the site
   We need to be able to use the mock

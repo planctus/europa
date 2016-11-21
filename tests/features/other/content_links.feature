@@ -1,10 +1,10 @@
 @api
 Feature: Content linking
-  In order to provide helpfull links
+  In order to provide helpful links
   As an editor
   I want to be able to link to anything in wysiwyg fields
 
-  @cwt
+  @cwt @cwt_news @dt_wysiwyg
   Scenario: Links on images using a wysiwyg field should work
     Given I am logged in as a user with the "administrator" role
     When I go to "node/add/aggregated-news"

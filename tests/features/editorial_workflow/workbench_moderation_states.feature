@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_editorial
 Feature: In order to guarantee that content can be moderated
   As a product owner
   I want to have specific editorial workflow states

@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_page @dt_publication
 Feature: Publication List shows on page bottom with filters that have or not default values.
   As an anonymous user
   I should be able to filter publications.

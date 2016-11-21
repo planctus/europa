@@ -1,4 +1,4 @@
-@api @brp
+@api @brp @dt_page @dt_nal_services @brp_initiative
 Feature: As an anonymous user
   I want to be able to see the latest initiatives on the front page.
 

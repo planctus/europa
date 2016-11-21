@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_event @dt_topic @dt_department
 Feature: Checking different state of events
   In order to fill in an event
   I should be able to see different buttons or messages
@@ -83,7 +83,7 @@ Feature: Checking different state of events
 
 
       # "Book your seat" should appear.
-  Scenario: "Book your seat" can link to an e-mail adress
+  Scenario: "Book your seat" can link to an e-mail address
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
       | field_event_status                    | no                                                         |

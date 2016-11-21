@@ -1,4 +1,4 @@
- @api @shared
+@api @shared @dt_roles_permissions
 Feature: User authentication
   In order to protect the integrity of the website
   As a product owner

@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_person @dt_event @dt_department
 Feature: Event person photo default
   As a user
   I want to be able to see an event with person photo default if the person doesn't have one defined.

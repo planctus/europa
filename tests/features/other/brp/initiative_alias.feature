@@ -1,4 +1,4 @@
-@api @brp
+@api @brp @brp_initiative @dt_nal_services @brp_feedback_form
 Feature: As a product owner
   I want aliases for Initiatives to follow a defined pattern.
 

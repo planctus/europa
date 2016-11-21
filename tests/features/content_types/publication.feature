@@ -1,8 +1,9 @@
-@api @information @political
+@api @information @political @dt_publication
 Feature: Publication content type should have 2 types of visualization.
   As an editor
   I should be able to create single or collection publications.
 
+  @nexteuropa_file
   Scenario: One publication containing files (document)
     Given "file" content:
       | title         | status | language |

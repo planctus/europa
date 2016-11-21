@@ -1,4 +1,4 @@
-@api @brp
+@api @brp @dt_nal_services @brp_initiative @dt_page
 Feature: As a product owner
   I want the resource type descriptions displayed with links.
 
