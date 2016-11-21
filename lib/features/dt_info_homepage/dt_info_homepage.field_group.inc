@@ -173,7 +173,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -205,7 +205,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'About the European Commission',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_core_links',
       1 => 'field_info_homepage_about_button',
@@ -236,7 +236,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_contacts',
     ),
@@ -302,6 +302,7 @@ function dt_info_homepage_field_group_info() {
       1 => 'field_core_contacts',
       2 => 'field_core_links',
       3 => 'field_info_homepage_about_button',
+      4 => 'field_info_homepage_prior_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -394,7 +395,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '2',
+    'weight' => '27',
     'children' => array(
       0 => 'field_info_secondary_links',
     ),
@@ -498,7 +499,8 @@ function dt_info_homepage_field_group_info() {
     'label' => 'Section top',
     'weight' => '1',
     'children' => array(
-      0 => 'field_info_classes',
+      0 => 'field_info_homepage_prior_link',
+      1 => 'priorities_listing',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -677,7 +679,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '28',
+    'weight' => '29',
     'children' => array(
       0 => 'group_latest_main',
       1 => 'group_latest_sidebar',
@@ -782,7 +784,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Topics',
-    'weight' => '24',
+    'weight' => '28',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
