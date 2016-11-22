@@ -144,7 +144,8 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
   // The pattern "prefix/[parent:url]/[title]" might result in an alias like
   // "prefix/prefix/parent-title/title" if parent is of the same type since the
   // prefix is added twice. We will remove the duplicate prefix now.
-  // We consider everything before the first token a prefix.
+  // We consider everything before the first token a prefix. This part should
+  // include the trailing /.
   $pattern_prefix = explode('[', $context['pattern']);
   $prefix = $pattern_prefix[0];
 
