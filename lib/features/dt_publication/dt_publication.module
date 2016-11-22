@@ -105,7 +105,7 @@ function dt_publication_ds_fields_info($entity_type) {
  * @param object $entity
  *   The entity to get the view for.
  *
- * @return string
+ * @return string|NULL
  *   The rendered view.
  */
 function _dt_publication_type_name($entity) {
