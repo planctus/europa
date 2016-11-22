@@ -66,8 +66,8 @@ function _dt_core_node_reference_aliases_regenerate($start_data, $is_node = TRUE
 
   // Gets the reference tree.
   foreach (_dt_core_get_alias_fields() as $field) {
-    dt_core_build_node_reference_tree($start_id, $data, $field, 'parent', 0);
-    dt_core_build_node_reference_tree($start_id, $data, $field, 'child', 0);
+    _dt_core_build_node_reference_tree($start_id, $data, $field, 'parent', 0);
+    _dt_core_build_node_reference_tree($start_id, $data, $field, 'child', 0);
   }
 
   // The checks and their sorting.
@@ -90,6 +90,9 @@ function _dt_core_node_reference_aliases_regenerate($start_data, $is_node = TRUE
 /**
  * Helper to generate a recursive list of parent/children relations.
  *
+ * This check helps us to make sure that when we are creating entity references
+ * that use CER, we do not enter into a reference loop.
+ *
  * @param string $nid
  *   The node id to check for.
  * @param array $data
@@ -103,7 +106,7 @@ function _dt_core_node_reference_aliases_regenerate($start_data, $is_node = TRUE
  * @param bool $circular_check
  *   If it is for the circular check.
  */
-function dt_core_build_node_reference_tree($nid, &$data, $field, $type, $level = 0, $circular_check = FALSE) {
+function _dt_core_build_node_reference_tree($nid, &$data, $field, $type, $level = 0, $circular_check = FALSE) {
   if (!field_info_field($field)) {
     return;
   }
@@ -128,7 +131,7 @@ function dt_core_build_node_reference_tree($nid, &$data, $field, $type, $level =
   if (is_array($queryResult)) {
     foreach ($queryResult as $result) {
       $data[$type][$result->target_id] = $result->ParentLevel;
-      dt_core_build_node_reference_tree($result->target_id, $data, $field, $type, $level + 1);
+      _dt_core_build_node_reference_tree($result->target_id, $data, $field, $type, $level + 1);
     }
   }
 }
@@ -144,7 +147,8 @@ function dt_core_pathauto_alias_alter(&$alias, array &$context) {
   // The pattern "prefix/[parent:url]/[title]" might result in an alias like
   // "prefix/prefix/parent-title/title" if parent is of the same type since the
   // prefix is added twice. We will remove the duplicate prefix now.
-  // We consider everything before the first token a prefix.
+  // We consider everything before the first token a prefix. This part should
+  // include the trailing /.
   $pattern_prefix = explode('[', $context['pattern']);
   $prefix = $pattern_prefix[0];
 
@@ -194,7 +198,7 @@ function _dt_core_detect_circular_reference($nid, $parent_nid) {
   $relatives = [];
   foreach (_dt_core_get_alias_fields() as $field_name) {
     // Look for relatives of the future parent.
-    dt_core_build_node_reference_tree($parent_nid, $relatives, $field_name, 'parent', TRUE);
+    _dt_core_build_node_reference_tree($parent_nid, $relatives, $field_name, 'parent', TRUE);
   }
 
   // Check if our node is among its future relatives.
