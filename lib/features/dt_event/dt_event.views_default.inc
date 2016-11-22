@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event.views_default.inc
