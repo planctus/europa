@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_publication.views_default.inc
@@ -111,6 +110,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear';
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
@@ -242,6 +242,11 @@ function dt_publication_views_default_views() {
   /* Display: Publications List */
   $handler = $view->new_display('block', 'Publications List', 'block');
   $handler->display->display_options['block_description'] = 'publications_list';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'publication-list';
   $export['publication_list'] = $view;
 
   $view = new view();

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_page_extended.strongarm.inc
