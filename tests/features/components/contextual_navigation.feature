@@ -1,4 +1,4 @@
-@api
+@api @information @nexteuropa_formatters @dt_person  @dt_policy
 Feature: Contextual navigation
   In order to see related content
   As an editor
@@ -15,7 +15,6 @@ Feature: Contextual navigation
       | President Janet Llanos            | Janet                   | Llanos                 | President         | 1      |
       | Vice-president Christine Gonzalez | Christine               | Gonzalez               | Vice-president    | 1      |
 
-  @information
   Scenario: Dynamic label for related persons with different roles
     Given I am viewing a "Policy" content:
       | title              | Policy                                                                                                                |
@@ -29,7 +28,6 @@ Feature: Contextual navigation
     Then I should see "Jennifer Vazquez" in the ".context-nav .context-nav__items" element
     Then I should see "President Charlie Trusty" in the ".context-nav .context-nav__items" element
 
-  @information
   Scenario: Dynamic label for related persons with equal roles (non commissioner)
     Given I am viewing a "Policy" content:
       | title              | Policy                                           |
@@ -41,7 +39,6 @@ Feature: Contextual navigation
     Then I should see "Charlie Trusty" in the ".context-nav .context-nav__items" element
     Then I should see "Janet Llanos" in the ".context-nav .context-nav__items" element
 
-  @information
   Scenario: Dynamic label for related persons with equal roles
     Given I am viewing a "Policy" content:
       | title              | Policy                                                   |

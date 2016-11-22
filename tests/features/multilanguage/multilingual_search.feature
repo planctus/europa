@@ -1,9 +1,10 @@
-@api @information @political
+@api @information @political @dt_core
 Feature: Search in views in any given language
   To deliver the best user experience
   As a user
   I want to be able to search in my own language
 
+  @dt_topic
   Scenario Outline: Language aware topic search
     Given I am logged in as a user with the "administrator" role
     Given "Topic" content:
@@ -31,6 +32,7 @@ Feature: Search in views in any given language
       | Topic title1 | Околна среда | bg       | Околна     |
       | Topic title2 | Περιβάλλον   | el       | Περιβάλλον |
 
+  @dt_announcement
   Scenario Outline: Language aware announcement search
     Given I am logged in as a user with the "administrator" role
     Given "Announcement" content:
@@ -64,6 +66,7 @@ Feature: Search in views in any given language
       | Announcement title1 | Околна среда | bg       | Околна     |
       | Announcement title2 | Περιβάλλον   | el       | Περιβάλλον |
 
+  @dt_policy @dt_policy_area @dt_department @dt_person
   Scenario Outline: Language aware policy search
     Given I am logged in as a user with the "administrator" role
     Given "Policy area" content:

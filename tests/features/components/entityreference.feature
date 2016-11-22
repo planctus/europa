@@ -1,10 +1,10 @@
-@api
+@api @information
 Feature: Entityreference
   In order to reference content
   As an editor
-  I should be able to reference entitys using an autocomplete widget
+  I should be able to reference entities using an autocomplete widget
 
-  @information @javascript
+  @javascript @dt_topic @dt_page
   Scenario: Entityreference widgets shows the content type and ID when selecting a node
     Given "Topic" content:
       | title             | language | status | nid   | is_new |
@@ -23,7 +23,7 @@ Feature: Entityreference
     And I select the first autocomplete option for "Alternative title" on the "field_core_topics[und][1][target_id]" field
     Then the "field_core_topics[und][1][target_id]" field should contain "Alternative title (Topic - 10000) (10000)"
 
-  @information
+  @dt_person @dt_event
   Scenario: Event speakers entity reference field is translated
     Given I am logged in as a user with the "administrator" role
     And "Person" content:

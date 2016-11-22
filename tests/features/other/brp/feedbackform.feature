@@ -1,4 +1,4 @@
-@api @brp
+@api @brp @brp_feedback_form @dt_nal_services @brp_initiative
 Feature: As an authenticated user I should be able to submit a feedback.
 When I log into the website
 As an authenticated user

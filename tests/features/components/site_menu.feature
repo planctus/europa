@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_site_menu @dt_class @dt_page @dt_roles_permissions
 Feature: Site menu
 
   Scenario: Site menu should follow interface language

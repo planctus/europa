@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_core @dt_announcement @dt_page
 Feature: Redirect path
   As an anonymous user
   I should be redirected to the same content if the content url path changes.

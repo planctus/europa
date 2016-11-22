@@ -1,4 +1,4 @@
-@api @cwt
+@api @cwt @cwt_biography @cwt_core
 Feature: Biography content type
   I want to create a biography with an editorial section
   And I want to be able to edit the biography and change the editorial section
