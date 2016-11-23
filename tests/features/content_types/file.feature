@@ -1,4 +1,4 @@
-@api @shared
+@api @shared @nexteuropa_file
 Feature: File content type
   In order to fill in the website
   As an editor
@@ -63,7 +63,7 @@ Feature: File content type
       | language                    | nl            |
     Then I should see "Engels" in the ".region-content .file" element
 
-  @javascript
+  @javascript @dt_publication
   Scenario: Files can be translated
     Given I am logged in as a user with the "administrator" role
     And I am viewing a "file" content:
@@ -126,6 +126,7 @@ Feature: File content type
     And I click "Available languages (1)"
     Then I should see "version" in the ".file__translations-item .file__title" element
 
+  @dt_page
   Scenario: I can add external links to a file
     Given "File" content:
       | title      | status | field_core_legacy_link  |
@@ -138,7 +139,7 @@ Feature: File content type
     Then I should see "English" in the ".file" element
     Then I should see the link "Download" linking to "http://google.be"
 
-  @javascript @information
+  @javascript
   Scenario: ZIP Files can be uploaded and downloaded by anonymous
     Given I am logged in as a user with the "administrator" role
     And I am viewing a "file" content:

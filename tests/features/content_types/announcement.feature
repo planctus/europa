@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_announcement @dt_department @dt_topic
 Feature: Announcement content type
   In order to get the latest transformation of the announcement content type
   As an anonymous user
@@ -12,7 +12,6 @@ Feature: Announcement content type
       | title             | language | status |
       | RelatedDepartment | en       | 1      |
 
-  @information
   Scenario: Announcement fields are seen in correct places
     Given I am logged in as a user with the "administrator" role
     And I am viewing an "announcement" content:
@@ -41,7 +40,7 @@ Feature: Announcement content type
     And I should see "Author" in the ".page-content" element
     And I should see "Reference" in the ".page-content" element
 
-  @information @political
+  @political
   Scenario: I should be able to select different announcement types.
     Given I am logged in as a user with the "administrator" role
     And I go to "node/add/announcement"

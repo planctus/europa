@@ -1,4 +1,4 @@
-@api @information @political
+@api @information @political @dt_announcement @dt_department @dt_person @dt_priority
 Feature: As a visitor
   I want to see relevant articles from PRD
   So that I am informed

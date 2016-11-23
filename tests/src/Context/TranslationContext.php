@@ -13,7 +13,7 @@ class TranslationContext extends RawDrupalContext {
   /**
    * List of languages.
    *
-   * @var array $languageList
+   * @var array
    *   List of available languages.
    */
   private $languageList;

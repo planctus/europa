@@ -1,4 +1,4 @@
-@api
+@api @nexteuropa_legacy_link
 Feature: Legacy links
   In order to see links to external content
   As an editor
@@ -6,7 +6,7 @@ Feature: Legacy links
   As an anonymous user
   I should be able to see legacy link content that is not full view mode
 
-  @information @political
+  @information @political @dt_announcement @dt_page
   Scenario: Show external legacy link on announcement teaser
     Given "Page" content:
       | title         | language | field_core_description | status | field_core_latest_visibility |
@@ -37,7 +37,7 @@ Feature: Legacy links
     And I follow "Content title"
     Then I should see the link "Announcement title on page" linking to "http://example.en/test"
 
-  @information @political
+  @information @political @dt_page @dt_announcement
   Scenario: As an anonymous user I should see the referenced legacy link teaser
     Given I am not logged in
     And I set the variable "dt_shared_functions_dt_latest_visibility" to "1"
@@ -53,7 +53,7 @@ Feature: Legacy links
     When I reload the page
     Then I should see the link "Announcement title on page" linking to "http://example.en/test"
 
-  @information @political
+  @information @political @dt_announcement
   Scenario: As an anonymous user I should get an access denied on legacy link full view mode
     Given I am not logged in
     Given I am viewing a "Announcement" content:
@@ -64,7 +64,7 @@ Feature: Legacy links
       | field_core_legacy_link | title - /user              |
     Then the url should match "/user"
 
-  @information
+  @information @dt_page @dt_featured_item @dt_info_homepage
   Scenario: As user I can see legacy links to entityreference fields
     Given I am not logged in
     Given "Page" content:

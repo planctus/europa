@@ -1009,9 +1009,15 @@ function dt_core_update_7173() {
 }
 
 /**
- * DTTSB-1039: Update translation of field_core_quick_nav_links.
+ * DTTSB-1078: Enabling redirect module and update perm.
+ *
+ * DTTSB-1039: Update translation of field_core_quick_nav_links. (7174)
  */
-function dt_core_update_7174(&$sandbox) {
+function dt_core_update_7175(&$sandbox) {
+  module_enable(['redirect']);
+  // Update permissions so that site managers and editors
+  // can access redirect settings for each node.
+  features_revert_module('dt_roles_permissions');
   // Reverting core.
   features_revert_module('dt_core');
   // Update field.
@@ -1019,13 +1025,8 @@ function dt_core_update_7174(&$sandbox) {
 }
 
 /**
- * Enabling redirect module and update perm.
- *
- * @see https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1078
+ * DTTSB-1235: Enabling Localization update module.
  */
-function dt_core_update_7175() {
-  module_enable(['redirect']);
-  // Update permissions so that site managers and editors
-  // can access redirect settings for each node.
-  features_revert_module('dt_roles_permissions');
+function dt_core_update_7176() {
+  module_enable(['l10n_update']);
 }

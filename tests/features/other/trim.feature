@@ -2,7 +2,7 @@
 Feature: Trimming settings are correct
   As a site owner
   I want to be sure no trimming is applied where it is not needed
-  @information @wip
+  @information @wip @dt_event
   Scenario Outline: Field is not trimmed when displayed
     Given I am logged in as a user with the administrator role
     # @wip is there because administrator on clean install can't access this page.

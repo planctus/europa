@@ -1,4 +1,4 @@
-@api @brp
+@api @brp @brp_feedback_form @dt_nal_services @brp_initiative
 Feature: Chech the BRP feedback form state, if it is open/close.
 When I go to the BRP website, as an anonymous user I should see different feedback state.
 

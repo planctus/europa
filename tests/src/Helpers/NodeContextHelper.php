@@ -10,14 +10,14 @@ class NodeContextHelper {
   /**
    * Variable holding the complete node object.
    *
-   * @var stdClass $nodeObject
+   * @var object
    */
   private $nodeObject;
 
   /**
    * Variable holding the complete language object.
    *
-   * @var stdClass $language
+   * @var object
    */
   private $language;
 

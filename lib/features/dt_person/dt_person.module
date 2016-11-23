@@ -292,8 +292,8 @@ function _dt_person_token_replace($field) {
  * @param array $field
  *   Array of properties required to render the field.
  *
- * @return string
- *    Rendered content.
+ * @return string|bool
+ *    Rendered content or false if no data.
  */
 function _dt_person_job_role($field) {
   if (!isset($field['entity']) || $field['entity']->type !== 'person') {

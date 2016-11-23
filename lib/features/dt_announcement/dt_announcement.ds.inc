@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_announcement.ds.inc

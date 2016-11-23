@@ -1,4 +1,4 @@
-@api @shared
+@api @shared @dt_editorial
 Feature: Draft viewer role
   In order to validate visual representation of content before it's published
   As a registered user
@@ -20,6 +20,7 @@ Feature: Draft viewer role
       | asselva_test      | should      | asselva@mail.mail      | 1      | administrator | eu.europa.ec/COMM.A.5.002  |
       | site_manager_test | should not  | site_manager@mail.mail | 1      | administrator |                            |
 
+  @dt_page
   Scenario: The user should see the option "View draft" when a node has a draft version.
     Given users:
       | name              | mail                      | status | roles        |
@@ -37,6 +38,7 @@ Feature: Draft viewer role
     Then I go to "lorem-ipsum-basic-page"
     Then I should see the link "View draft" in the "tabs" region
 
+  @dt_announcement
   Scenario: Should see the draft/published version of a related node.
     Given users:
       | name              | mail                      | status | roles        |

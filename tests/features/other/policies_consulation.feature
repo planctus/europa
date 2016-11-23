@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_consultation @dt_policy @dt_impact_assessment
 Feature: Only consultations should be visible.
 When I log into the website
 As an editor
@@ -13,12 +13,10 @@ I should be able to create consultation content
       | title                    | field_core_introduction | field_policy_input |
       | Policy with consultation | Introduction            | Consulation title  |
 
-
     And I am logged in as a user with the "editor" role
     And I go to "admin/content"
     And I follow "Policy with consultation"
     Then I should see text matching "Consultation"
-
 
   Scenario: Description meta tag
     Given "impact_assessment" content:
@@ -28,7 +26,6 @@ I should be able to create consultation content
     Given "policy" content:
       | title                  | field_core_introduction | field_policy_input      |
       | Policy with assessment | Introduction            | Impact Assessment title |
-
 
     And I am logged in as a user with the "editor" role
     And I go to "admin/content"

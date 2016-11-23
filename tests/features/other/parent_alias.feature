@@ -1,9 +1,9 @@
-@api @information @political
+@api @information @political @dt_shared_functions
 Feature: Aliases based on parent node's URL alias
   In order to reflect the hierarchy in the URL aliases
   As an editor
   I should be able to generate the URL alias reflecting the node's parent defined in specific fields
-
+  @dt_page
   Scenario: Correct URL is generated for "Page"
     Given "Page" content:
       | title             | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |
@@ -11,7 +11,7 @@ Feature: Aliases based on parent node's URL alias
       | Second page title | Content description    | Intro                   | First page title   | 1              | 1      |
     And I go to "first-page-title/second-page-title"
     Then I should see "Second page title" in the "title" element
-
+  @dt_page
   Scenario: Circular reference is not allowed for "Page"
     Given "Page" content:
       | title                      | field_core_description | field_core_introduction | field_core_parents         | path[pathauto] | status |
@@ -29,7 +29,7 @@ Feature: Aliases based on parent node's URL alias
     Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Third Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
-
+  @dt_law
   Scenario: Correct URL is generated for "Law"
     Given "Law" content:
       | title            | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |
@@ -37,7 +37,7 @@ Feature: Aliases based on parent node's URL alias
       | Second law title | Content description    | Intro                   | First law title    | 1              | 1      |
     And I go to "law/first-law-title/second-law-title"
     Then I should see "Second law title" in the "title" element
-
+  @dt_law
   Scenario: Circular reference is not allowed for "Law"
     Given "Law" content:
       | title                     | field_core_description | field_core_introduction | field_core_parents        | path[pathauto] | status |
@@ -56,7 +56,7 @@ Feature: Aliases based on parent node's URL alias
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
 
-  @javascript
+  @javascript @dt_page
   Scenario: Alias updates after changing parents or children "Page"
     # Basic setup.
     Given "Page" content:
@@ -107,6 +107,7 @@ Feature: Aliases based on parent node's URL alias
     When I go to "fifth-page-title/first-page-title/third-page-title/fourth-page-title"
     Then I should see "Fourth page title" in the "h1" element
 
+  @dt_policy_area
   Scenario: Correct URL is generated for "Policy area"
     Given "Policy area" content:
       | title                    | field_core_description | field_core_introduction | field_core_policy_areas                           | path[pathauto] | status |
@@ -118,6 +119,7 @@ Feature: Aliases based on parent node's URL alias
     And I go to "strategy/first-title/second-title"
     Then I should see "Page not found"
 
+  @dt_policy_area
   Scenario: Circular reference is not allowed for "Policy area"
     Given "Policy area" content:
       | title                             | field_core_description | field_core_introduction | field_core_policy_areas           | path[pathauto] | status |
@@ -136,7 +138,7 @@ Feature: Aliases based on parent node's URL alias
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
 
-  @javascript
+  @javascript @dt_page
   Scenario: Batch re-generation of aliases yield correct URLs
     Given "Page" content:
       | title             | field_core_description | field_core_introduction | field_core_parents | path[pathauto] | status |

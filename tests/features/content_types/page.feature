@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_page
 Feature: Page content type
 
   Scenario: Unpublished items are not visible in the navigational concept

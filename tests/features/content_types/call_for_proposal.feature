@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_call_for_proposal @dt_date_format @nexteuropa_formatters
 Feature: Call for proposal content type
 
   Scenario: "Open call" single stage and basic fields

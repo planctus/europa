@@ -1,7 +1,7 @@
 @api
 Feature: I want to be see each content type in their defined URL path pattern
 
-  @information
+  @information @dt_announcement @dt_department @dt_info_homepage @dt_law @dt_page @dt_policy @dt_policy_area @dt_class @dt_tender @dt_topic
   Scenario Outline: Correct URL path pattern is generated for each content type
     Given "<content_type>" content:
       | title   | path[pathauto] | status |
@@ -22,7 +22,7 @@ Feature: I want to be see each content type in their defined URL path pattern
       | Call for tenders | Tender test title               | tender-test-title               | tender/            |
       | Topic            | Topic test title                | topic-test-title                | topics/            |
 
-  @information
+  @information @dt_publication
   Scenario: Correct URL path for Publication content
     Given "Publication" content:
       | title                  | status | field_core_date_updated:value | field_core_date_updated:value2 | field_core_date_published:value | field_core_date_published:value2 |
@@ -30,7 +30,7 @@ Feature: I want to be see each content type in their defined URL path pattern
     And I go to "publications/publication-test-title"
     Then I should see "Publication test title" in the "title" element
 
-  @information
+  @information @dt_event
   Scenario: Correct URL path for Event content
     Given "Event" content:
       | title            | status | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location             |
@@ -38,7 +38,7 @@ Feature: I want to be see each content type in their defined URL path pattern
     And I go to "events/event-test-title"
     Then I should see "Event test title" in the "title" element
 
-  @political
+  @political @dt_priority @dt_pri_policy_area
   Scenario Outline: Correct URL path pattern is generated for each content type of political
     Given "<content_type>" content:
       | title   | path[pathauto] | status |

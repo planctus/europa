@@ -1,7 +1,7 @@
-@api @shared
+@api @shared @dt_core
 Feature: "Language neutral" option should not be availabe when creating content
-  In order to have a clear defintion about the lanuage of a node
-  As a contirbutor
+  In order to have a clear definition about the language of a node
+  As a contributor
   I should not be able to choose "Language neutral" as a Language for the node
 
   Scenario Outline: On the entity translation configuration page settings should be correct

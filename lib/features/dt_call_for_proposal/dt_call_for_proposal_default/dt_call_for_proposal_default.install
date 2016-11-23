@@ -22,10 +22,14 @@ function dt_call_for_proposal_default_uninstall() {
 }
 
 /**
- * DTTSB-1065 - Call for proposals update.
+ * DTTSB-1065/1066 - Call for proposals update (7001).
+ *
+ * DTTSB-1133 - Call for proposals update (7002).
  */
-function dt_call_for_proposal_default_update_7001() {
+function dt_call_for_proposal_default_update_7003() {
   $fields = [
+    'field_core_details',
+    'field_core_date_closing',
     'field_cfp_programme',
     'field_cfp_publication',
     'field_cfp_contacts',
@@ -39,7 +43,6 @@ function dt_call_for_proposal_default_update_7001() {
   }
 
   $instances = ['field_core_publications', 'field_core_next_steps'];
-
   foreach ($instances as $instance) {
     // Delete the field instance.
     if ($field_instance = field_info_instance('node', $instance, 'call_for_proposal')) {
@@ -48,6 +51,9 @@ function dt_call_for_proposal_default_update_7001() {
   }
 
   $groups = [
+    'group_cfp_closing_date',
+    'group_cfp_departments',
+    'group_cfp_topics',
     'group_cfp_documents',
     'group_cfp_deadline',
     'group_cfp_content',
@@ -58,52 +64,6 @@ function dt_call_for_proposal_default_update_7001() {
     if ($group = field_group_load_field_group($group_name, 'node', 'call_for_proposal', 'form')) {
       ctools_include('export');
       field_group_group_export_delete($group, FALSE);
-    }
-  }
-}
-
-/**
- * DTTSB-1065/1066 - Call for proposals update.
- */
-function dt_call_for_proposal_default_update_7002() {
-  $fields = [
-    'field_core_details',
-  ];
-
-  foreach ($fields as $field) {
-    // Remove field.
-    if (field_info_field($field)) {
-      field_delete_field($field);
-    }
-  }
-
-  $groups = [
-    'group_cfp_closing_date',
-    'group_cfp_departments',
-    'group_cfp_topics',
-  ];
-
-  foreach ($groups as $group_name) {
-    // Remove a fieldgroup.
-    if ($group = field_group_load_field_group($group_name, 'node', 'call_for_proposal', 'form')) {
-      ctools_include('export');
-      field_group_group_export_delete($group, FALSE);
-    }
-  }
-}
-
-/**
- * DTTSB-1133 - Call for proposals update.
- */
-function dt_call_for_proposal_default_update_7003() {
-  $fields = [
-    'field_core_date_closing',
-  ];
-
-  foreach ($fields as $field) {
-    // Remove field.
-    if (field_info_field($field)) {
-      field_delete_field($field);
     }
   }
 }
