@@ -282,24 +282,38 @@ function dt_announcement_update_7115() {
  * DTTSB-1180: Changing the allowed values of the announcement type field.
  */
 function dt_announcement_update_7116() {
-  // Get the field info.
-  $announcement_type_field_info = field_info_field('field_announcement_type');
-  // Get a reference to the values.
-  $values = &$announcement_type_field_info['settings']['allowed_values'];
+  // Get the field settings from field_config.
+  $data = db_select('field_config', 'fc')
+    ->fields('fc', ['data'])
+    ->condition('field_name', 'field_announcement_type', '=')
+    ->execute()
+    ->fetchObject()
+    ->data;
 
-  $values = [
-    'press_release' => 'Press release',
-    'memo' => 'Factsheet',
-    'mex' => 'Daily news',
-    'speech' => 'Speech',
-    'cldr' => 'Commissioners\' weekly activity',
-    'agenda' => 'Upcoming events',
-    'statement' => 'Statement',
-    'news' => 'News',
-    'news_article' => 'News article',
-    'wm' => 'Weekly meeting',
-  ];
-
-  // Save the field.
-  field_update_field($announcement_type_field_info);
+  // Taking and unserialize data.
+  $data = unserialize($data);
+  // Override previous settings.
+  // There is no value assigned to the field in the database,
+  // which this override would effect.
+  if (!empty($data['settings']['allowed_values'])) {
+    $data['settings']['allowed_values'] = [
+      'press_release' => 'Press release',
+      'memo' => 'Factsheet',
+      'mex' => 'Daily news',
+      'speech' => 'Speech',
+      'cldr' => 'Commissioners\' weekly activity',
+      'agenda' => 'Upcoming events',
+      'statement' => 'Statement',
+      'news' => 'News',
+      'news_article' => 'News article',
+      'wm' => 'Weekly meeting',
+    ];
+    $data = serialize($data);
+    db_update('field_config')
+      ->fields([
+        'data' => $data,
+      ])
+      ->condition('field_name', 'field_announcement_type', '=')
+      ->execute();
+  }
 }
