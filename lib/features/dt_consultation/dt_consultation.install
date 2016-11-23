@@ -24,30 +24,30 @@ function dt_consultation_uninstall() {
  * NEXTEUROPA-7203: Data Migration from Policy Input to Consultation.
  */
 function dt_consultation_update_7101($sandbox) {
-  $features = array('dt_policy', 'dt_policy_input', 'dt_consultation');
+  $features = ['dt_policy', 'dt_policy_input', 'dt_consultation'];
   foreach ($features as $feature) {
     features_revert_module($feature);
   }
 
   // Enable Node Convert module.
   if (!module_exists('node_convert')) {
-    module_enable(array('node_convert'));
+    module_enable(['node_convert']);
   }
 
   // Set up source.
   $source_bundle = 'policy_input';
   // Automatically converted source fields.
-  $source_fields = array(
+  $source_fields = [
     'field_core_introduction',
     'field_policy_input_status',
-  );
+  ];
   // Set up destination.
   $destination_bundle = 'consultation';
   // Automatically converted destination fields.
-  $destination_fields = array(
+  $destination_fields = [
     'field_core_description',
     'field_consultation_status',
-  );
+  ];
   // Set up query.
   $query = new EntityFieldQuery();
   // Mount query.

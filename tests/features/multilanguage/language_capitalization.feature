@@ -1,4 +1,4 @@
-@api @shared
+@api @shared @dt_shared_functions @dt_core
 Feature: Display some specific languages in lower case
   To keep in line with the languages capitalization requirements
   As an administrator user

@@ -14,21 +14,21 @@
  * Implements hook_field_formatter_info().
  */
 function commissioner_date_field_formatter_info() {
-  return array(
-    'commissioner_date_event_date' => array(
+  return [
+    'commissioner_date_event_date' => [
       'label' => t('Event formatter (example: 11 - 14 October 2013)'),
-      'field types' => array('datetime', 'date', 'datestamp'),
-    ),
-  );
+      'field types' => ['datetime', 'date', 'datestamp'],
+    ],
+  ];
 }
 
 /**
  * Implements hook_field_formatter_view().
  */
 function commissioner_date_field_formatter_view($obj_type, $object, $field, $instance, $langcode, $items, $display) {
-  $element = array();
+  $element = [];
   // Build variables array for formatter.
-  $variables = array(
+  $variables = [
     '#obj_type' => $obj_type,
     '#object' => $object,
     '#field' => $field,
@@ -36,11 +36,11 @@ function commissioner_date_field_formatter_view($obj_type, $object, $field, $ins
     '#langcode' => $langcode,
     '#items' => $items,
     '#display' => $display,
-  );
+  ];
   if (function_exists($function = "{$display['module']}_field_formatter_{$display['type']}")) {
-    $element[0] = array(
+    $element[0] = [
       '#markup' => $function($variables),
-    );
+    ];
   }
 
   return $element;
@@ -50,7 +50,7 @@ function commissioner_date_field_formatter_view($obj_type, $object, $field, $ins
  * Field Formatter; Date: Event date.
  */
 function commissioner_date_field_formatter_commissioner_date_event_date($variables) {
-  $element = array();
+  $element = [];
 
   foreach ($variables['#items'] as $delta => $item) {
     $date1 = date("Y-m-d", strtotime($item['value']));
@@ -66,14 +66,14 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
       $output_date = t(
         '<span class="date-block__day-text">@start_day_name - @end_day_name</span><span class="date-block__day">@start_day-@end_day</span><span class="date-block__month">@common_month</span>',
-        array(
+        [
           '@start_day' => $date1_parts[2],
           '@start_day_name' => $start_day_name,
           '@end_day' => $date2_parts[2],
           '@end_day_name' => $end_day_name,
           '@common_month' => $common_month_name,
           '@common_year' => $date1_parts[0],
-        )
+        ]
       );
     }
     elseif ($date1_parts[1] == $date2_parts[1] && $date1_parts[2] == $date2_parts[2] && $date1_parts[0] == $date2_parts[0]) {
@@ -82,11 +82,11 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
       $common_day_name = format_date(mktime(0, 0, 0, $date1_parts[1], $date1_parts[2], $date1_parts[0]), 'custom', "D");
       $output_date = t(
         '<span class="date-block__day-text">@common_day_name</span><span class="date-block__day">@start_day</span><span class="date-block__month">@common_month</span>',
-        array(
+        [
           '@start_day' => $date1_parts[2],
           '@common_day_name' => $common_day_name,
           '@common_month' => $common_month_name,
-        )
+        ]
       );
     }
     else {
@@ -97,7 +97,7 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
       $end_day_name = format_date(mktime(0, 0, 0, $date2_parts[1], $date2_parts[2], $date2_parts[0]), 'custom', "D");
       $output_date = t(
         '<span class="date-block__day-text">@start_day_name - @end_day_name</span><span class="date-block__day">@start_day-@end_day</span><span class="date-block__month">@start_month-@end_month</span>',
-        array(
+        [
           '@start_day' => $date1_parts[2],
           '@start_day_name' => $start_day_name,
           '@start_month' => $start_month_name,
@@ -106,14 +106,14 @@ function commissioner_date_field_formatter_commissioner_date_event_date($variabl
           '@end_day_name' => $end_day_name,
           '@end_month' => $end_month_name,
           '@end_year' => $date2_parts[0],
-        )
+        ]
       );
     }
 
     // Prefix and suffix is not working as we return the markup only.
-    $element[$delta] = array(
+    $element[$delta] = [
       '#markup' => '<div class="date-block">' . $output_date . '</div>',
-    );
+    ];
   }
 
   return $element[0]['#markup'];

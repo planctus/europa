@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_info_homepage.strongarm.inc
@@ -83,7 +82,7 @@ function dt_info_homepage_strongarm() {
         'custom_settings' => FALSE,
       ),
       'full' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -112,6 +111,42 @@ function dt_info_homepage_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'homepage_informational' => array(
+        'custom_settings' => TRUE,
+      ),
+      'homepage_political' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'file' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -126,6 +161,9 @@ function dt_info_homepage_strongarm() {
         ),
         'language' => array(
           'weight' => '5',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

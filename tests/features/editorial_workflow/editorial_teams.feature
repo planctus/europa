@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_editorial
 Feature: In order to guarantee that content can be managed only by the appropriate users
   As a product owner
   I want to have the editorial workflow control access
@@ -85,6 +85,7 @@ Feature: In order to guarantee that content can be managed only by the appropria
       | William       | department   | 200      |
       | William       | basic-page   | 200      |
 
+  @dt_page
   Scenario Outline: "My Drafts" section permissions
     Given I am logged in as "<user>"
     When I go to "admin/workbench/my-drafts"

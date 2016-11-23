@@ -11,20 +11,20 @@
 function dt_node_settings_helpers_overall() {
   $node_types = node_type_get_names();
 
-  $form = array();
-  $form['content_types'] = array(
+  $form = [];
+  $form['content_types'] = [
     '#tree' => TRUE,
     '#type' => 'fieldset',
     '#title' => t('Content types'),
     '#description' => t('Indicate helper content types for the project.'),
-  );
+  ];
 
   foreach ($node_types as $type => $label) {
-    $form['content_types'][$type] = array(
+    $form['content_types'][$type] = [
       '#type' => 'checkbox',
       '#title' => $label,
       '#default_value' => variable_get('dt_node_settings_helper_node_type_' . $type, 0),
-    );
+    ];
   }
   // Add a submit handler function.
   $form['#submit'][] = 'dt_node_settings_helpers_overall_submit';

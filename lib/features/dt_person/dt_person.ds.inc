@@ -90,6 +90,169 @@ function dt_person_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'in_page_navigation' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'social_bookmark_webtools' => array(
+      'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'div',
+          'ow-cl' => 'social-media-links--webtool-horizontal',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'full_name_nolink' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h1',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_person_photo' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_role' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'body' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_departments' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Departments',
+        ),
+      ),
+    ),
+    'field_core_file' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_next_steps' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_agenda_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_person_role_title' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_core_files' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|person|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|job';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'job';
+  $ds_fieldsetting->settings = array(
+    'full_name_nolink' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'job_role' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
+          'meta_modifier' => 'meta__item--type',
+        ),
+      ),
+    ),
+    'field_person_photo' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'field_core_jobs' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'div',
+          'fi-cl' => 'field--labeled',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $export['node|person|job'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|person|meta';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'person';
@@ -192,6 +355,132 @@ function dt_person_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|person|event_speaker'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|person|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'person';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'person';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left_header' => array(
+        0 => 'group_meta',
+        3 => 'full_name_nolink',
+        7 => 'field_person_tagline',
+        19 => 'field_person_role',
+        20 => 'field_person_role_title',
+      ),
+      'central' => array(
+        1 => 'field_person_agenda_introduction',
+        2 => 'body',
+        4 => 'field_core_links',
+        5 => 'field_core_next_steps',
+        6 => 'field_core_publications',
+        9 => 'field_core_file',
+        10 => 'field_core_files',
+        15 => 'group_biography',
+        16 => 'group_agenda',
+        17 => 'group_articles_presentation',
+        18 => 'social_bookmark_webtools',
+      ),
+      'biography_image' => array(
+        8 => 'field_person_photo',
+      ),
+      'biography_column' => array(
+        11 => 'group_context_nav',
+        13 => 'field_core_departments',
+      ),
+      'top' => array(
+        12 => 'field_core_contact',
+      ),
+      'left' => array(
+        14 => 'in_page_navigation',
+      ),
+    ),
+    'fields' => array(
+      'group_meta' => 'left_header',
+      'field_person_agenda_introduction' => 'central',
+      'body' => 'central',
+      'full_name_nolink' => 'left_header',
+      'field_core_links' => 'central',
+      'field_core_next_steps' => 'central',
+      'field_core_publications' => 'central',
+      'field_person_tagline' => 'left_header',
+      'field_person_photo' => 'biography_image',
+      'field_core_file' => 'central',
+      'field_core_files' => 'central',
+      'group_context_nav' => 'biography_column',
+      'field_core_contact' => 'top',
+      'field_core_departments' => 'biography_column',
+      'in_page_navigation' => 'left',
+      'group_biography' => 'central',
+      'group_agenda' => 'central',
+      'group_articles_presentation' => 'central',
+      'social_bookmark_webtools' => 'central',
+      'field_person_role' => 'left_header',
+      'field_person_role_title' => 'left_header',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'left_header' => 'div',
+      'biography_image' => 'div',
+      'biography_column' => 'div',
+      'top' => 'div',
+      'left' => 'div',
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|person|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|person|job';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'person';
+  $ds_layout->view_mode = 'job';
+  $ds_layout->layout = 'ne_2col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'main' => array(
+        0 => 'job_role',
+        1 => 'group_person_meta',
+        2 => 'group_person_name',
+        3 => 'field_core_contact',
+        4 => 'field_core_jobs',
+        5 => 'full_name_nolink',
+      ),
+      'second' => array(
+        6 => 'field_person_photo',
+      ),
+    ),
+    'fields' => array(
+      'job_role' => 'main',
+      'group_person_meta' => 'main',
+      'group_person_name' => 'main',
+      'field_core_contact' => 'main',
+      'field_core_jobs' => 'main',
+      'full_name_nolink' => 'main',
+      'field_person_photo' => 'second',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'main' => 'div',
+      'second' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|person|job'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

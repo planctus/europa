@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_featured_item.features.field_instance.inc
@@ -19,6 +18,13 @@ function dt_featured_item_field_default_field_instances() {
     'description' => 'A short description that clarifies the title.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
+      'hero_links' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -104,6 +110,13 @@ function dt_featured_item_field_default_field_instances() {
         'type' => 'link_button_call_for_action',
         'weight' => 9,
       ),
+      'hero_links' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 9,
+      ),
       'image_label' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -164,6 +177,16 @@ function dt_featured_item_field_default_field_instances() {
     'description' => 'Select or upload an image.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 7,
+      ),
+      'hero_links' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
@@ -266,11 +289,14 @@ function dt_featured_item_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'hero_links' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 10,
       ),
       'image_label' => array(
@@ -320,6 +346,12 @@ function dt_featured_item_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'hero_links' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -375,6 +407,12 @@ function dt_featured_item_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'hero_links' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -440,6 +478,17 @@ function dt_featured_item_field_default_field_instances() {
     'description' => 'Should be the same as the title of the page that is referred to.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_legacy_link',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => NULL,
+          'title_style' => 'h3',
+        ),
+        'type' => 'title_linked_legacy_link',
+        'weight' => 0,
+      ),
+      'hero_links' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_legacy_link',
         'settings' => array(

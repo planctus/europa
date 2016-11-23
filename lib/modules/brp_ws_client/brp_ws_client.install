@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Installation file for BRP WS Client.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function brp_ws_client_uninstall() {
+  foreach (node_type_get_names('names') as $type => $type_name) {
+    variable_del('brp_ws_client_node_connection_' . $type);
+  }
+}

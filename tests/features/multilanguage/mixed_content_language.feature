@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_shared_functions @dt_topic @dt_toplink
 Feature: Display mixed content
   As a user
   I want to see my content

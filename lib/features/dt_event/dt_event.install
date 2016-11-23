@@ -19,7 +19,7 @@ function dt_event_install() {
 function dt_event_uninstall() {
   $path = drupal_get_path('module', 'dt_event') . '/dt_event.info';
   $info = drupal_parse_info_file($path);
-  drupal_set_message(t('NextEuropa event %v feature is uninstalled on your site.', array('%v' => $info['version'])));
+  drupal_set_message(t('NextEuropa event %v feature is uninstalled on your site.', ['%v' => $info['version']]));
 }
 
 /**
@@ -55,7 +55,7 @@ function dt_event_update_7104() {
 
   // Select the nodes that we want to delete.
   $result = db_select('node', 'n')
-    ->fields('n', array('nid'))
+    ->fields('n', ['nid'])
     ->condition('type', $node_type, '=')
     ->execute();
 

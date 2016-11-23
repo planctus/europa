@@ -1,4 +1,4 @@
-@api @shared
+@api @shared @dt_shared_functions @dt_core
 Feature: Splash Screen features
   In order navigate on the site in my language of preference
   As a citizen of the European Union

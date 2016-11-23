@@ -55,9 +55,10 @@ function drush_dt_core_features_revert_dt() {
   module_load_include('inc', 'features', 'features.export');
   $force = drush_get_option('force');
 
-  $features_to_revert = array('nexteuropa_file', 'nexteuropa_page');
+  $features_to_revert = array_filter(array('nexteuropa_file', 'nexteuropa_page'), "module_exists");
+
   foreach (features_get_features(NULL, TRUE) as $module) {
-    if ($module->status && preg_match('/dt_*|cwt_*/', $module->name)) {
+    if ($module->status && preg_match('/dt_*|cwt_*|brp_*/', $module->name)) {
       // If forced, add module regardless of status.
       if ($force) {
         $features_to_revert[] = $module->name;

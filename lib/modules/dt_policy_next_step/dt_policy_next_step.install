@@ -9,45 +9,45 @@
  * Implements hook_field_schema().
  */
 function dt_policy_next_step_field_schema($field) {
-  $columns = array(
-    'when_timeframe' => array(
+  $columns = [
+    'when_timeframe' => [
       'type' => 'varchar',
       'length' => $field['settings']['max_length'],
       'not null' => FALSE,
-    ),
-    'steps_in_bullets' => array(
+    ],
+    'steps_in_bullets' => [
       'type' => 'text',
       'size' => 'big',
       'description' => "Rich text description",
       'not null' => FALSE,
-    ),
-    'timezone' => array(
+    ],
+    'timezone' => [
       'type' => 'text',
       'size' => 'big',
       'description' => "Definition of timezone to use for the dates",
       'not null' => FALSE,
-    ),
-    'time_date_start' => array(
+    ],
+    'time_date_start' => [
       'type' => 'varchar',
       'length' => 255,
       'description' => "Start date of the item",
       'not null' => FALSE,
-    ),
-    'time_date_end' => array(
+    ],
+    'time_date_end' => [
       'type' => 'varchar',
       'length' => 255,
       'description' => "End date of the item",
       'not null' => FALSE,
-    ),
-  );
-  $indexes = array(
-    'when_timeframe' => array('when_timeframe'),
-  );
+    ],
+  ];
+  $indexes = [
+    'when_timeframe' => ['when_timeframe'],
+  ];
 
-  return array(
+  return [
     'columns' => $columns,
     'indexes' => $indexes,
-  );
+  ];
 }
 
 /**
@@ -79,26 +79,26 @@ function dt_policy_next_step_update_7101() {
   $table_prefixes = ['field_data_', 'field_revision_'];
   $table_suffixes = ['_timezone', '_time_date_start', '_time_date_end'];
 
-  $schema_suffixes = array(
-    '_timezone' => array(
+  $schema_suffixes = [
+    '_timezone' => [
       'type' => 'text',
       'size' => 'big',
       'description' => "Definition of timezone to use for the dates",
       'not null' => FALSE,
-    ),
-    '_time_date_start' => array(
+    ],
+    '_time_date_start' => [
       'type' => 'varchar',
       'length' => 255,
       'description' => "Start date of the item",
       'not null' => FALSE,
-    ),
-    '_time_date_end' => array(
+    ],
+    '_time_date_end' => [
       'type' => 'varchar',
       'length' => 255,
       'description' => "End date of the item",
       'not null' => FALSE,
-    ),
-  );
+    ],
+  ];
 
   // Accumulate the list of fields to extend.
   $fields_migrate = [];

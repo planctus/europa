@@ -17,10 +17,10 @@ function dt_core_brp_install() {
     'dt_wysiwyg',
     'dt_roles_permissions',
     // NAL service integrations.
-    'brp_nal_services',
-    'brp_nal_countries',
-    'brp_nal_corporate_bodies',
-    'brp_nal_resource_types',
+    'dt_nal_services',
+    'dt_nal_countries',
+    'dt_nal_corporate_bodies',
+    'dt_nal_resource_types',
     // BRP related modules.
     'brp_ws_client',
     'brp_feedback_form',
@@ -93,9 +93,9 @@ function dt_core_brp_uninstall() {
  */
 function dt_core_brp_update_7101() {
   module_enable([
-    'brp_nal_services',
-    'brp_nal_countries',
-    'brp_nal_resource_types',
+    'dt_nal_services',
+    'dt_nal_countries',
+    'dt_nal_resource_types',
   ]);
 }
 
@@ -168,7 +168,7 @@ function dt_core_brp_update_7107() {
     }
   }
 
-  module_enable(['brp_nal_corporate_bodies']);
+  module_enable(['dt_nal_corporate_bodies']);
 }
 
 /**
@@ -183,7 +183,7 @@ function dt_core_brp_update_7108() {
  * Import PMO.
  */
 function dt_core_brp_update_7109() {
-  module_load_include('inc', 'brp_nal_services', 'brp_nal_services.helpers');
-  _brp_nal_services_run_importer('nal_corporate_bodies_importer', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
-  _brp_nal_services_create_translations('nal_corporate_bodies', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
+  module_load_include('inc', 'dt_nal_services', 'dt_nal_services.helpers');
+  _dt_nal_services_run_importer('nal_corporate_bodies_importer', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
+  _dt_nal_services_create_translations('nal_corporate_bodies', 'http://publications.europa.eu/mdr/resource/authority/corporate-body/xml/corporatebodies.xml');
 }

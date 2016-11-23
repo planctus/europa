@@ -255,6 +255,63 @@ function dt_policy_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-policy-field_core_latest_visibility'.
+  $field_instances['node-policy-field_core_latest_visibility'] = array(
+    'bundle' => 'policy',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Select this checkbox to show the latest block in this page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 27,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 53,
+    ),
+  );
+
   // Exported field_instance: 'node-policy-field_core_legacy_link'.
   $field_instances['node-policy-field_core_legacy_link'] = array(
     'bundle' => 'policy',
@@ -1685,7 +1742,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 56,
     ),
     'widget_type' => 'options_select',
   );
@@ -1757,7 +1814,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 2,
+      'weight' => 55,
     ),
   );
 
@@ -1903,6 +1960,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
   t('Include only documents that give an overview of the entire policy, eg roadmaps. Don\'t include documents that belong to policy actions. They will be added to the respective action page.');
   t('Introduction');
   t('Key files');
+  t('Latest visibility');
   t('Legacy link');
   t('Next steps');
   t('Objectives');
@@ -1926,6 +1984,7 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
   t('Search for policy actions which implement the policy by using keywords. If the policy action you are searching for does not yet exist in the CMS, create it by clicking on "policy actions".
 
     A policy action can be a law, directive, decision, funding, guidance issued as part of coordination of national policies, or consultations. ');
+  t('Select this checkbox to show the latest block in this page');
   t('Sharable banner');
   t('Taxonomy');
   t('The title should use everyday terms

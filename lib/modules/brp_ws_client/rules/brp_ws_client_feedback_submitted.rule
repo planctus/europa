@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains BRP WS Client Custom Rule: Feedback submitted.
+ */
+
+$rule = '
+ { "brp_ws_client_brp_ws_client_feedback_submitted" : {
+     "LABEL" : "BRP Client | Feedback submitted",
+     "PLUGIN" : "reaction rule",
+     "OWNER" : "rules",
+     "TAGS" : [ "BRP Client" ],
+     "REQUIRES" : [ "rules", "brp_ws_client", "entityform" ],
+     "ON" : { "entityform_insert" : [] },
+     "IF" : [
+       { "entity_is_of_bundle" : {
+           "entity" : [ "entityform" ],
+           "type" : "entityform",
+           "bundle" : { "value" : { "brp_initiatives_feedback" : "brp_initiatives_feedback" } }
+         }
+       },
+       { "brp_ws_client_check_status" : { "connection_name" : "brp" } },
+       { "entity_is_new" : { "entity" : [ "entityform" ] } }
+     ],
+     "DO" : [
+       { "drupal_message" : {
+           "message" : "Thank you for your feedback. Your contribution informs us about your views on EU laws in the making.\r\n\u003Cbr\u003E\r\nAll feedback will be published on this site, providing it complies with the \u003Ca href=\u0022[site:feedback_rules_id]\u0022\u003Efeedback rules\u003C\/a\u003E, and taken into account by the Commission when further developing this act.",
+           "repeat" : "0"
+         }
+       },
+       { "brp_ws_client_feedback_submitted" : [] }
+     ]
+   }
+ }
+';

@@ -28,6 +28,20 @@ function dt_date_format_field_formatter_info() {
         'fallback' => 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
       ],
     ],
+    'dt_date' => [
+      'label' => t('DT date (with timezone)'),
+      'field types' => [
+        'date',
+        'datestamp',
+      ],
+      'settings' => [
+        'use_timezone' => '',
+        'base_format' => '',
+        'item_wrapper' => '',
+        'timezone_wrapper' => '',
+        'separator' => '',
+      ],
+    ],
   ];
 }
 
@@ -40,29 +54,81 @@ function dt_date_format_field_formatter_settings_form($field, $instance, $view_m
 
   $element = [];
 
-  $element['render_box'] = [
-    '#title' => t('Render as date box'),
-    '#type' => 'checkbox',
-    '#default_value' => isset($settings['render_box']) ? $settings['render_box'] : TRUE,
-  ];
+  switch ($display['type']) {
 
-  $element['same_date_format'] = [
-    '#title' => t('Same date format'),
-    '#type' => 'textfield',
-    '#default_value' => isset($settings['same_date_format']) ? $settings['same_date_format'] : 'sd_l sd_j sd_F',
-  ];
+    case 'date_event_date':
+      $element['render_box'] = [
+        '#title' => t('Render as date box'),
+        '#type' => 'checkbox',
+        '#default_value' => isset($settings['render_box']) ? $settings['render_box'] : TRUE,
+      ];
 
-  $element['same_day_format'] = [
-    '#title' => t('Same day format'),
-    '#type' => 'textfield',
-    '#default_value' => isset($settings['same_day_format']) ? $settings['same_day_format'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
-  ];
+      $element['same_date_format'] = [
+        '#title' => t('Same date format'),
+        '#type' => 'textfield',
+        '#default_value' => isset($settings['same_date_format']) ? $settings['same_date_format'] : 'sd_l sd_j sd_F',
+      ];
 
-  $element['fallback'] = [
-    '#title' => t('Fallback date format'),
-    '#type' => 'textfield',
-    '#default_value' => isset($settings['fallback']) ? $settings['fallback'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
-  ];
+      $element['same_day_format'] = [
+        '#title' => t('Same day format'),
+        '#type' => 'textfield',
+        '#default_value' => isset($settings['same_day_format']) ? $settings['same_day_format'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_H:ed_i (sd_T)',
+      ];
+
+      $element['fallback'] = [
+        '#title' => t('Fallback date format'),
+        '#type' => 'textfield',
+        '#default_value' => isset($settings['fallback']) ? $settings['fallback'] : 'sd_l sd_j sd_F, sd_H:sd_i - ed_l ed_j ed_F, ed_H:ed_i (sd_T)',
+      ];
+      break;
+
+    case 'dt_date':
+      $element['use_timezone'] = [
+        '#title' => t('Add the timezone information.'),
+        '#type' => 'checkbox',
+        '#default_value' => empty($settings['use_timezone']) ? FALSE : TRUE,
+      ];
+      $element['base_format'] = [
+        '#title' => t('Base format for the date'),
+        '#description' => t('Enter a php valid date format.'),
+        '#type' => 'textfield',
+        '#default_value' => !empty($settings['base_format']) ? $settings['base_format'] : 'j F Y, G:i',
+      ];
+      $element['item_wrapper'] = [
+        '#title' => t('Choose a wrapper for the single values.'),
+        '#type' => 'select',
+        '#options' => [
+          'p' => 'paragraph (p)',
+          'div' => 'block container (div)',
+          'span' => 'inline container (span)',
+          'none' => 'none',
+        ],
+        '#default_value' => !empty($settings['item_wrapper']) ? $settings['item_wrapper'] : 'paragraph',
+      ];
+      $element['timezone_wrapper'] = [
+        '#title' => t('Choose a character to wrap the timezone with.'),
+        '#type' => 'select',
+        '#options' => [
+          'round' => '() round brackets',
+          'square' => '[] square brackets',
+          'curly' => '{} curly brackets',
+          'none' => 'none',
+        ],
+        '#default_value' => !empty($settings['timezone_wrapper']) ? $settings['timezone_wrapper'] : 'none',
+      ];
+      $element['separator'] = [
+        '#title' => t('Choose a separator for the items, if multiple.'),
+        '#type' => 'select',
+        '#options' => [
+          'comma' => 'comma (,)',
+          'dash' => 'dash (-)',
+          'newline' => 'newline',
+          'none' => 'none',
+        ],
+        '#default_value' => !empty($settings['separator']) ? $settings['separator'] : 'newline',
+      ];
+      break;
+  }
 
   return $element;
 }
@@ -104,43 +170,83 @@ function dt_date_format_date_formats() {
  * Implements hook_field_formatter_view().
  */
 function dt_date_format_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  foreach ($items as $item) {
-    // Get the timestamp regardless of the date format.
-    $date_object = new DtDateRangeFormat($item['value'], $item['value2'], $item['date_type']);
+  switch ($display['type']) {
+    case 'dt_date':
+      $element = [];
+      $item_count = count($items);
+      $use_timezone = $display['settings']['use_timezone'];
+      $timezone_wrapper = $display['settings']['timezone_wrapper'];
+      $format = $display['settings']['base_format'];
+      $separator = $display['settings']['separator'];
+      $item_wrapper = $display['settings']['item_wrapper'];
 
-    if ($display['settings']['render_box']) {
-      // Build the array.
-      return [
-        [
-          '#theme' => 'dt_date_format_block',
-          '#date_days_name' => implode('-', $date_object->getDays()),
-          '#date_days' => implode('-', $date_object->getDays('d')),
-          '#date_months' => implode('-', $date_object->getMonths()),
-          '#date_years' => implode('-', $date_object->getYears()),
-          '#entity' => $entity,
-        ],
-      ];
-    }
+      foreach ($items as $delta => $item) {
+        // Format the date.
+        $date = format_date($item['value'], 'custom', $format);
 
-    if ($date_object->isSameDate(TRUE)) {
-      // Monday 1 April.
-      $date_object->setFormat($display['settings']['same_date_format']);
-    }
-    // Same day.
-    elseif ($date_object->isSameDate(FALSE, 'Ymd')) {
-      // Tuesday 17 March, 9.00 – 18.00 (CET).
-      $date_object->setFormat($display['settings']['same_day_format']);
-    }
-    else {
-      // Fallback. (Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
-      $date_object->setFormat($display['settings']['fallback']);
-    }
+        // Add the timezone, if needed.
+        if ($use_timezone) {
+          $date .= _dt_date_format_wrap($timezone_wrapper, $item['timezone']);
+        }
+        // Separator for the item.
+        if (($delta + 1) < $item_count) {
+          _dt_date_format_separator($separator, $date);
+        }
 
-    return [
-      [
-        '#markup' => $date_object->getformattedDateRange(),
-      ],
-    ];
+        // Class based on the date.
+        $classes = $item['value'] + $item['offset'] < time() ? 'class="field__item--expired"' : 'class="field__item"';
+
+        // Add the wrapper.
+        if ($item_wrapper !== 'none') {
+          $date = '<' . $item_wrapper . ' ' . $classes . '>' . $date . '</' . $item_wrapper . '>';
+        }
+
+        // Add the element to the render array.
+        $element[$delta] = ['#markup' => $date];
+      }
+
+      return $element;
+
+    case 'date_event_date':
+      foreach ($items as $item) {
+        // Get the timestamp regardless of the date format.
+        $date_object = new DtDateRangeFormat($item['value'], $item['value2'], $item['date_type']);
+
+        if ($display['settings']['render_box']) {
+          // Build the array.
+          return [
+            [
+              '#theme' => 'dt_date_format_block',
+              '#date_days_name' => implode('-', $date_object->getDays()),
+              '#date_days' => implode('-', $date_object->getDays('d')),
+              '#date_months' => implode('-', $date_object->getMonths()),
+              '#date_years' => implode('-', $date_object->getYears()),
+              '#entity' => $entity,
+            ],
+          ];
+        }
+
+        if ($date_object->isSameDate(TRUE)) {
+          // Monday 1 April.
+          $date_object->setFormat($display['settings']['same_date_format']);
+        }
+        // Same day.
+        elseif ($date_object->isSameDate(FALSE, 'Ymd')) {
+          // Tuesday 17 March, 9.00 – 18.00 (CET).
+          $date_object->setFormat($display['settings']['same_day_format']);
+        }
+        else {
+          // Fallback(Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
+          $date_object->setFormat($display['settings']['fallback']);
+        }
+
+        return [
+          [
+            '#markup' => $date_object->getformattedDateRange(),
+          ],
+        ];
+      }
+      break;
   }
 
   return NULL;
@@ -166,4 +272,56 @@ function dt_date_format_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
+}
+
+/**
+ * Suffixes a string with a separator by name.
+ *
+ * @param string $separator
+ *   The human readable name of the separator.
+ * @param string $string
+ *   The string to work with.
+ */
+function _dt_date_format_separator($separator, &$string) {
+  switch ($separator) {
+    case 'comma':
+      $string .= ', ';
+      break;
+
+    case 'dash':
+      $string .= '- ';
+      break;
+
+    case 'newline':
+      $string .= '<br>';
+      break;
+  }
+}
+
+/**
+ * Wraps a string with brackets.
+ *
+ * @param string $wrapper
+ *   The human readable name of the wrapper.
+ * @param string $string
+ *   The string to work with.
+ *
+ * @return string
+ *   The string wrapped.
+ */
+function _dt_date_format_wrap($wrapper, $string) {
+  switch ($wrapper) {
+    case 'round':
+      return ' (' . $string . ')';
+
+    case 'square':
+      return ' [' . $string . ']';
+
+    case 'curly':
+      return ' {' . $string . '}';
+
+    case 'none':
+      return ' ' . $string;
+  }
+  return NULL;
 }

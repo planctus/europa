@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_featured_item.ds.inc
@@ -246,6 +245,15 @@ function dt_featured_item_ds_layout_settings_info() {
  */
 function dt_featured_item_ds_view_modes_info() {
   $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'hero_links';
+  $ds_view_mode->label = 'Hero links';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['hero_links'] = $ds_view_mode;
 
   $ds_view_mode = new stdClass();
   $ds_view_mode->api_version = 1;

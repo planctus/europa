@@ -129,7 +129,7 @@
   <section id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -201,10 +201,15 @@
     <?php endif; ?>
   </div>
 
-  <a id="main-content" tabindex="-1"></a>
-
   <div class="page-content">
     <div class="container-fluid">
+      <?php if (!empty($page['content_top'])): ?>
+        <a id="top-content" tabindex="-2"></a>
+        <div class="row">
+          <?php print render($page['content_top']); ?>
+        </div>
+      <?php endif; ?>
+      <a id="main-content" tabindex="-1"></a>
       <div class="row">
         <?php if (!empty($page['sidebar_first'])): ?>
           <aside class="col-md-3" role="complementary">

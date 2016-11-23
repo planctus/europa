@@ -327,7 +327,7 @@ function dt_policy_next_step_field_formatter_view($entity_type, $entity, $field,
     $show_timezone = isset($display['settings']['show_timezone']) ? $display['settings']['show_timezone'] : 1;
 
     $elements['#prefix'] = '<div class="timeline' . $modifier . '" data-expander-disable=' . $timeline_expander_disable . '>';
-    $elements['#suffix'] = '</div>';
+    $elements['#suffix'] = '</div><div class="clearfix"></div>';
     foreach ($items as $delta => $item) {
       $item = _dt_policy_next_step_sanitize($item, $langcode);
       $elements[$delta] = [

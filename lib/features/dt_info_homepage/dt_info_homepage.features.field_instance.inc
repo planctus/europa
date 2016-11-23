@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_info_homepage.features.field_instance.inc
@@ -19,19 +18,21 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 18,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 23,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -79,7 +80,7 @@ function dt_info_homepage_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -97,7 +98,14 @@ function dt_info_homepage_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
-      'full' => array(
+      'homepage_informational' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
@@ -161,22 +169,35 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 19,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => 'listing--no-border listing--title-medium listing--frontpage',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 5,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => 'listing--no-border listing--title-medium listing--frontpage',
+          'nexteuropa_listing_wrapper_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'teaser',
@@ -203,7 +224,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -216,22 +237,35 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 17,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => 'listing--no-border',
           'nexteuropa_listing_wrapper_modifier' => 'equal-height',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'image_label',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 6,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'nexteuropa_listing_columns' => 'row_three',
           'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => 'listing--no-border',
+          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'image_label',
@@ -258,7 +292,60 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_hero_links'.
+  $field_instances['node-info_homepage-field_info_homepage_hero_links'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 21,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_hero_links',
+    'label' => 'Hero links',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'apply_chosen' => '',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 14,
     ),
   );
 
@@ -272,12 +359,11 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 17,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'hidden',
         'module' => 'smart_trim',
         'settings' => array(
@@ -293,6 +379,12 @@ function dt_info_homepage_field_default_field_instances() {
         ),
         'type' => 'smart_trim_format',
         'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -342,7 +434,7 @@ function dt_info_homepage_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
@@ -356,12 +448,11 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 18,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
@@ -370,6 +461,12 @@ function dt_info_homepage_field_default_field_instances() {
         ),
         'type' => 'link_button_default',
         'weight' => 1,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -406,7 +503,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 21,
+      'weight' => 20,
     ),
   );
 
@@ -419,28 +516,31 @@ function dt_info_homepage_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 20,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
           'nexteuropa_listing_columns' => 'row_three',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => 'listing--cta listing--title-medium equal-height',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'teaser',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 5,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -461,7 +561,7 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -482,11 +582,17 @@ function dt_info_homepage_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 24,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
       ),
     ),
     'entity_type' => 'node',
@@ -531,11 +637,17 @@ function dt_info_homepage_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
       ),
     ),
     'entity_type' => 'node',
@@ -590,11 +702,17 @@ function dt_info_homepage_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
-      'full' => array(
+      'homepage_informational' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 25,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
       ),
     ),
     'entity_type' => 'node',
@@ -628,6 +746,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
+  t('Hero links');
   t('Introduction');
   t('Secondary links');
   t('Title');

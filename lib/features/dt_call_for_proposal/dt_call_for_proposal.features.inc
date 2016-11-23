@@ -23,9 +23,9 @@ function dt_call_for_proposal_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_call_for_proposal_node_info() {
   $items = array(
     'call_for_proposal' => array(
-      'name' => t('Call for proposal'),
+      'name' => t('Call for proposals'),
       'base' => 'node_content',
-      'description' => t('Create content of type Call for proposal.'),
+      'description' => t('Create content of type Call for proposals.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

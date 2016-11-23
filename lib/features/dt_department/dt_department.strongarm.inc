@@ -135,10 +135,10 @@ function dt_department_strongarm() {
           'weight' => '9',
         ),
         'language' => array(
-          'weight' => '9',
+          'weight' => '46',
         ),
         'scheduler_settings' => array(
-          'weight' => '12',
+          'weight' => '47',
         ),
         'metatags' => array(
           'weight' => '40',

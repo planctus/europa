@@ -40,8 +40,8 @@ function dt_page_update_7101() {
  */
 function dt_page_update_7102() {
   // Revert the feature in order to be sure the field is there.
-  features_revert(array('dt_core' => array('field_base')));
-  features_revert(array('dt_page' => array('field_instance')));
+  features_revert(['dt_core' => ['field_base']]);
+  features_revert(['dt_page' => ['field_instance']]);
   // Set the default value.
   $field_name = 'field_core_latest_visibility';
   // Find all the existing nodes of type team.
@@ -60,7 +60,7 @@ function dt_page_update_7102() {
         // Set the default value.
         $node->{$field_name}[LANGUAGE_NONE][0]['value'] = '0';
         field_attach_update('node', $node);
-        entity_get_controller('node')->resetCache(array($node->nid));
+        entity_get_controller('node')->resetCache([$node->nid]);
       }
     }
   }

@@ -20,18 +20,16 @@ function dt_site_menu_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
+        'module' => 'dt_site_menu',
         'settings' => array(
-          'links' => 0,
           'nexteuropa_listing_columns' => 'two_columns',
+          'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'nexteuropa_listing_item_modifier' => '',
           'show_translations' => '',
-          'use_content_language' => 1,
           'view_mode' => 'title',
         ),
-        'type' => 'entityreference_entity_view',
+        'type' => 'entityreference_entity_view_ifl',
         'weight' => 15,
       ),
     ),

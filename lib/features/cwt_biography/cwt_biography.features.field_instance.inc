@@ -191,7 +191,7 @@ function cwt_biography_field_default_field_instances() {
         'premise' => '',
         'postal_code' => '',
         'locality' => '',
-        'country' => 'BE',
+        'country' => '',
       ),
     ),
     'deleted' => 0,

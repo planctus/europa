@@ -1,9 +1,9 @@
-@api @information
-Feature: In order to manage content I have been contributing to
-  As a content manager
+@api @information @dt_editorial @dt_announcement
+Feature: As a content manager
+  In order to manage content I have been contributing to
   I want to have a page where I can see only content I have contributed to
 
-  Scenario: "All content" can filter content a user has worked on
+  Scenario: In the "All content" tab I can filter content I have worked on
     Given users:
     # Consult OG Role Override module to understand roles matching.
       | name          | mail                     | status | roles           |

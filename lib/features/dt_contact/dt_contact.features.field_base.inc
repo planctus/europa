@@ -58,6 +58,28 @@ function dt_contact_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_contact_location_office'.
+  $field_bases['field_contact_location_office'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_contact_location_office',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_contact_mobile_number'.
   $field_bases['field_contact_mobile_number'] = array(
     'active' => 1,
@@ -135,7 +157,7 @@ function dt_contact_field_default_field_bases() {
     'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'handler' => 'base',
+      'handler' => 'extended_base',
       'handler_settings' => array(
         'behaviors' => array(
           'remoteoverride_field_behavior' => array(
@@ -162,6 +184,49 @@ function dt_contact_field_default_field_bases() {
       'target_type' => 'node',
     ),
     'translatable' => 1,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_core_contacts'.
+  $field_bases['field_core_contacts'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_contacts',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'behaviors' => array(),
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'remoteoverride_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'contact' => 'contact',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
     'type' => 'entityreference',
   );
 

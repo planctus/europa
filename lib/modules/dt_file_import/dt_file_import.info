@@ -1,0 +1,11 @@
+name = Digital Transformation File and Publication import
+description = File and Publication import.
+core = 7.x
+package = Nexteuropa Digital Transformation
+php = 5.4
+dependencies[] = dt_core
+dependencies[] = dt_publication
+dependencies[] = migrate
+dependencies[] = nexteuropa_file
+files[] = migrations/dt_file_import.migrations.inc
+multisite_version = 2.2

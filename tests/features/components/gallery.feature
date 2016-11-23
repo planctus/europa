@@ -1,4 +1,4 @@
-@api @information
+@api @information @dt_gallery
 Feature: Users can use and see the gallery
   In order to show images
   I want a gallery to be presented on pages

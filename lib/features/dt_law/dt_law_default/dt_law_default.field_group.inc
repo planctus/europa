@@ -14,33 +14,30 @@ function dt_law_default_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_law_background|node|law|full';
-  $field_group->group_name = 'group_law_background';
+  $field_group->identifier = 'group_law_architecture|node|law|form';
+  $field_group->group_name = 'group_law_architecture';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'law';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_law_tabgroup';
   $field_group->data = array(
-    'label' => 'Background',
-    'weight' => '5',
+    'label' => 'Page Architecture',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_core_description',
-      1 => 'field_core_background',
+      0 => 'field_core_children',
+      1 => 'field_core_parents',
     ),
-    'format_type' => 'section_group',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Background',
+      'formatter' => 'closed',
       'instance_settings' => array(
-        'classes' => 'group-law-background field-group-section_group',
-        'show_label' => '0',
-        'label_element' => 'h2',
-        'attributes' => 'id="Background"',
-        'modifier' => '',
-        'layout' => '',
+        'description' => '',
+        'classes' => 'group-law-architecture field-group-tab',
+        'required_fields' => 1,
       ),
     ),
   );
-  $field_groups['group_law_background|node|law|full'] = $field_group;
+  $field_groups['group_law_architecture|node|law|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -56,12 +53,12 @@ function dt_law_default_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'title_field',
-      1 => 'field_core_short_title',
-      2 => 'field_core_description',
-      3 => 'field_core_introduction',
-      4 => 'field_core_legacy_link',
-      5 => 'field_law_status',
-      6 => 'field_core_background',
+      1 => 'field_core_description',
+      2 => 'field_core_introduction',
+      3 => 'field_core_legacy_link',
+      4 => 'field_law_status',
+      5 => 'field_core_background',
+      6 => 'field_core_short_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -205,12 +202,12 @@ function dt_law_default_field_group_info() {
     'label' => 'Extra fields',
     'weight' => '11',
     'children' => array(
-      0 => 'field_law_reference_number',
-      1 => 'field_law_entry_date',
-      2 => 'field_law_date_apply',
+      0 => 'field_core_laws',
+      1 => 'field_law_date_apply',
+      2 => 'field_law_entry_date',
       3 => 'field_law_link_to_full_text',
       4 => 'field_law_link_to_summary',
-      5 => 'field_core_laws',
+      5 => 'field_law_reference_number',
       6 => 'field_law_law_type',
     ),
     'format_type' => 'tab',
@@ -351,9 +348,9 @@ function dt_law_default_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_core_departments',
-      1 => 'field_core_topics',
+      1 => 'field_core_policies',
       2 => 'field_core_priorities',
-      3 => 'field_core_policies',
+      3 => 'field_core_topics',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -381,11 +378,12 @@ function dt_law_default_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_law_content',
-      1 => 'group_law_documents',
-      2 => 'group_law_editorial',
-      3 => 'group_law_related',
+      0 => 'group_law_architecture',
+      1 => 'group_law_content',
+      2 => 'group_law_documents',
+      3 => 'group_law_editorial',
       4 => 'group_law_extra',
+      5 => 'group_law_related',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -429,13 +427,13 @@ function dt_law_default_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Background');
   t('Content');
   t('Departments');
   t('Documents');
   t('Editorial settings');
   t('Extra fields');
   t('Meta');
+  t('Page Architecture');
   t('Piorities');
   t('Policies');
   t('Related');

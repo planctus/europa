@@ -1,16 +1,16 @@
-@api @information
-Feature: Field groups should follow the content language and should be translateable.
+@api @information @dt_featured_item @dt_info_homepage @dt_shared_functions
+Feature: Field groups should follow the content language and should be translatable.
 
   Background:
     Given "featured_item" content:
       | title       | status |
-      | LIpsum item | 1      |
+      | Lipsum item | 1      |
 
   Scenario: Users can see translated field groups.
     Given I am logged in as a user with the "administrator" role
     Given I am viewing a "info_homepage" content:
       | title                 | test                  |
-      | field_info_highlights | LIpsum item           |
+      | field_info_highlights | Lipsum item           |
       | language              | en                    |
       | status                | 1                     |
       | og_group_ref          | Global editorial team |

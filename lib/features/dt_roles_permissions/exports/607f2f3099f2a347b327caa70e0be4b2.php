@@ -5,7 +5,7 @@
  * Contains permissions export for role translator.
  */
 
-$permissions['translator'] = array(
+$permissions['translator'] = [
   'access administration menu',
   'access helper content types',
   'administer translation tasks',
@@ -21,4 +21,4 @@ $permissions['translator'] = array(
   'translate interface',
   'translate node entities',
   'translate taxonomy_term entities',
-);
+];

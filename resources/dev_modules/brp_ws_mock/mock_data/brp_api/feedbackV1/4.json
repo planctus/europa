@@ -1,0 +1,47 @@
+{
+  "createdDate": "2016\/06\/20 15:10:59",
+  "modifiedDate": "2016\/06\/20 15:11:19",
+  "id": 4,
+  "feedback": "My feedback field is required.",
+  "dateFeedback": "2016\/06\/20 15:10:59",
+  "language": "BG",
+  "userType": "NON_EU_CITIZEN",
+  "firstName": "Hugh",
+  "surname": "PRIOR",
+  "email": "",
+  "country": "AFG",
+  "organization": null,
+  "tr_number": null,
+  "companySize": null,
+  "scope": null,
+  "publication": "WITHINFO",
+  "status": "REJECTED",
+  "reviewed": false,
+  "hasToBeReviewed": false,
+  "reportsNumber": 15,
+  "englishfeedback": "My feedback field is required.\n",
+  "firstReportDate": null,
+  "referenceInitiative": "Ares(2016)172745",
+  "statusChanged": false,
+  "historyEventOccurs": false,
+  "historyType": null,
+  "userAgent": "Mozilla\/5.0 (Windows NT 6.1; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/51.0.2704.79 Safari\/537.36",
+  "login": "npriohug",
+  "daysElapsedSinceFirstReport": 0,
+  "_links": {
+    "self": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4"
+    },
+    "feedbackV1": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4{?projection}",
+      "templated": true
+    },
+    "initiative": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4\/initiative"
+    },
+    "reports": {
+      "href": "https:\/\/webgate.ec.europa.eu:80\/brp\/api\/feedbackV1\/4\/reports"
+    }
+  },
+  "code": "200"
+}

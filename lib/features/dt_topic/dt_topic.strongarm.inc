@@ -76,13 +76,16 @@ function dt_topic_strongarm() {
           'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '8',
+          'weight' => '51',
         ),
         'language' => array(
-          'weight' => '5',
+          'weight' => '50',
         ),
         'metatags' => array(
           'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),

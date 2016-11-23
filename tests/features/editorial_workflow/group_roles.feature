@@ -1,4 +1,4 @@
-@api @information
+@api @information @political @dt_editorial
 Feature: In order to make roles and permissions management easy
   As an administrator user
   I want to have the same roles and permissions in each Editorial team
@@ -12,7 +12,6 @@ Feature: In order to make roles and permissions management easy
     And I should see text matching "translator"
     And I should see text matching "translator reviewer"
 
-  @information
   Scenario: New editorial teams have the same OG roles
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "editorial_team" content:

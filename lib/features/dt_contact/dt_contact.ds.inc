@@ -52,6 +52,30 @@ function dt_contact_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|contact|job';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'contact';
+  $ds_fieldsetting->view_mode = 'job';
+  $ds_fieldsetting->settings = array(
+    'field_contact_email_address' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Email',
+        ),
+      ),
+    ),
+    'field_core_social_network_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Social media',
+        ),
+      ),
+    ),
+  );
+  $export['node|contact|job'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|contact|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'contact';
@@ -159,9 +183,10 @@ function dt_contact_ds_layout_settings_info() {
         1 => 'field_contact_phone_number',
         2 => 'field_contact_mobile_number',
         3 => 'field_contact_postal_mail',
-        4 => 'field_contact_email_address',
-        5 => 'field_core_social_network_links',
-        6 => 'field_contact_link_form',
+        4 => 'field_contact_location_office',
+        5 => 'field_contact_email_address',
+        6 => 'field_core_social_network_links',
+        7 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
@@ -169,6 +194,7 @@ function dt_contact_ds_layout_settings_info() {
       'field_contact_phone_number' => 'ds_content',
       'field_contact_mobile_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
+      'field_contact_location_office' => 'ds_content',
       'field_contact_email_address' => 'ds_content',
       'field_core_social_network_links' => 'ds_content',
       'field_contact_link_form' => 'ds_content',
@@ -187,6 +213,42 @@ function dt_contact_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|contact|job';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'contact';
+  $ds_layout->view_mode = 'job';
+  $ds_layout->layout = 'ds_reset';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_contact_phone_number',
+        1 => 'field_contact_mobile_number',
+        2 => 'field_contact_postal_mail',
+        3 => 'field_contact_email_address',
+        4 => 'field_core_social_network_links',
+      ),
+    ),
+    'fields' => array(
+      'field_contact_phone_number' => 'ds_content',
+      'field_contact_mobile_number' => 'ds_content',
+      'field_contact_postal_mail' => 'ds_content',
+      'field_contact_email_address' => 'ds_content',
+      'field_core_social_network_links' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => TRUE,
+    'layout_link_attribute' => FALSE,
+    'layout_link_custom' => '',
+  );
+  $export['node|contact|job'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|contact|teaser';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'contact';
@@ -200,9 +262,10 @@ function dt_contact_ds_layout_settings_info() {
         2 => 'field_contact_phone_number',
         3 => 'field_contact_mobile_number',
         4 => 'field_contact_postal_mail',
-        5 => 'field_contact_email_address',
-        6 => 'field_core_social_network_links',
-        7 => 'field_contact_link_form',
+        5 => 'field_contact_location_office',
+        6 => 'field_contact_email_address',
+        7 => 'field_core_social_network_links',
+        8 => 'field_contact_link_form',
       ),
     ),
     'fields' => array(
@@ -211,6 +274,7 @@ function dt_contact_ds_layout_settings_info() {
       'field_contact_phone_number' => 'ds_content',
       'field_contact_mobile_number' => 'ds_content',
       'field_contact_postal_mail' => 'ds_content',
+      'field_contact_location_office' => 'ds_content',
       'field_contact_email_address' => 'ds_content',
       'field_core_social_network_links' => 'ds_content',
       'field_contact_link_form' => 'ds_content',

@@ -22,7 +22,7 @@ function dt_editorial_enable() {
   // Change the og role name from contributor to author.
   if ($contributor_rid = array_search('contributor', $roles)) {
     db_update('og_role')
-      ->fields(array('name' => 'author'))
+      ->fields(['name' => 'author'])
       ->condition('rid', $contributor_rid)
       ->execute();
   }
@@ -62,7 +62,7 @@ function _dt_editorial_disable_ne_workbench() {
  * Re-order moderation states created by different modules.
  */
 function _dt_editorial_reorder_states() {
-  $state_weight = array(
+  $state_weight = [
     'draft' => -10,
     'needs_review' => -9,
     'request_validation' => -8,
@@ -71,12 +71,12 @@ function _dt_editorial_reorder_states() {
     'published' => -5,
     'archived' => -4,
     'expired' => -3,
-  );
+  ];
 
   $types = workbench_moderation_states();
   foreach ($types as $type) {
     db_update('workbench_moderation_states')
-      ->fields(array('weight' => $state_weight[$type->name]))
+      ->fields(['weight' => $state_weight[$type->name]])
       ->condition('name', $type->name)
       ->execute();
   }

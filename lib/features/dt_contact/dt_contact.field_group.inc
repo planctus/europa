@@ -27,6 +27,7 @@ function dt_contact_field_group_info() {
       0 => 'field_contact_phone_number',
       1 => 'field_contact_postal_mail',
       2 => 'field_contact_mobile_number',
+      3 => 'field_contact_location_office',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

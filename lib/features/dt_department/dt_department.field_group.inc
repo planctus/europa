@@ -24,12 +24,12 @@ function dt_department_field_group_info() {
     'label' => 'Content',
     'weight' => '0',
     'children' => array(
-      0 => 'group_taxonomy',
-      1 => 'group_department_contact',
-      2 => 'group_editorial_settings',
-      3 => 'group_person',
-      4 => 'group_priorities',
-      5 => 'group_profile_information',
+      0 => 'group_department_contact',
+      1 => 'group_editorial_settings',
+      2 => 'group_person',
+      3 => 'group_priorities',
+      4 => 'group_profile_information',
+      5 => 'group_taxonomy',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -308,8 +308,9 @@ function dt_department_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
+      2 => 'field_core_latest_visibility',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

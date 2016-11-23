@@ -1,0 +1,141 @@
+<?php
+
+/**
+ * @file
+ * Brp_ws_client.module.
+ *
+ * Provides connection type for Clients module that connect to BRP REST Web
+ * Service.
+ */
+
+module_load_include('inc', 'brp_ws_client', 'includes/client_node_integration');
+module_load_include('inc', 'brp_ws_client', 'includes/client_entityform_integration');
+module_load_include('inc', 'brp_ws_client', 'includes/client_fields_integration');
+
+// Custom Rules elements.
+module_load_include('inc', 'brp_ws_client', 'rules/brp_ws_client_rules_conditions');
+module_load_include('inc', 'brp_ws_client', 'rules/brp_ws_client_rules_actions');
+module_load_include('inc', 'brp_ws_client', 'rules/brp_ws_client_rules_data_types');
+
+use Drupal\dt_core_brp\BrpProps;
+use Drupal\dt_core_brp\BrpTools;
+
+/**
+ * Implements hook_clients_connection_type_info().
+ */
+function brp_ws_client_clients_connection_type_info() {
+  return [
+    'brp_ws' => [
+      'label' => t('BRP REST Web Service Client'),
+      'description' => t('Provides tests for BRP REST Web Service.'),
+      'tests' => [
+        'brp_ws_connection_status' => 'Drupal\brp_ws_client\Tests\BrpClientConnectionStatus',
+        'brp_ws_connection_endpoints' => 'Drupal\brp_ws_client\Tests\BrpClientEndpointList',
+        'brp_ws_connection_metadata' => 'Drupal\brp_ws_client\Tests\BrpClientMetadataList',
+        'brp_ws_connection_endpoint_browser' => 'Drupal\brp_ws_client\Tests\BrpClientEndpointBrowser',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function brp_ws_client_views_api($module = NULL, $api = NULL) {
+  return ["api" => "3.0"];
+}
+
+/**
+ * Implements hook_menu().
+ */
+function brp_ws_client_menu() {
+  $items = [];
+
+  $items['brp-service-availability'] = [
+    'page callback' => '_brp_ws_client_check_availability',
+    'access arguments' => ['access content'],
+    'type' => MENU_CALLBACK,
+  ];
+
+  $items['initiative/%/attachment/%'] = [
+    'title' => 'Get attachment',
+    'description' => 'Get an attachment from BRP web service',
+    // Access callback should't be restricted.
+    'access callback' => TRUE,
+    'page callback'   => '_brp_ws_client_get_initiative_attachment',
+    'page arguments' => [1, 3],
+    'type' => MENU_CALLBACK,
+  ];
+
+  return $items;
+}
+
+/**
+ * Helper to check availability of the BRP service.
+ */
+function _brp_ws_client_check_availability() {
+  drupal_json_output(FALSE);
+  drupal_exit();
+}
+
+/**
+ * Callback function for streaming initiative attachment to the browser.
+ *
+ * @param int $initiative_id
+ *    BRP initiative ID.
+ * @param string $attachment_id
+ *    BRP initiative attachment ID.
+ */
+function _brp_ws_client_get_initiative_attachment($initiative_id, $attachment_id) {
+  // We have to make sure that the given ID is an initiative.
+  if (BrpTools::getInitiativeNodeId($initiative_id)) {
+    $conn_name = BrpTools::getConnectionNameFromBundle(BrpProps::INITIATIVE_CT_BUNDLE);
+    $client = clients_connection_load($conn_name);
+    $remote_inve = $client->getInitiativeById($initiative_id);
+
+    // We have to make sure that attachments belongs to given initiative.
+    if ($att_inf = BrpTools::recursiveArraySearch($attachment_id, $remote_inve['attachments'])) {
+      $service_path = $client->endpoint . BrpProps::SERVICE_ATTACHMENT . '/';
+      $remote_file_path = $service_path . $attachment_id;
+      $file_name = $remote_inve['attachments'][$att_inf[0]]['filename'];
+      $file_name = substr_replace($file_name, 'pdf', strrpos($file_name, '.') + 1);
+      BrpTools::streamRemoteFile($remote_file_path, $file_name);
+    }
+  }
+
+  return drupal_not_found();
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function brp_ws_client_token_info() {
+
+  // Add tokens.
+  $info['tokens']['site']['feedback_rules_id'] = [
+    'name' => t('BRP feedback rules id'),
+    'description' => t('House rules id url.'),
+  ];
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function brp_ws_client_tokens($type, $tokens, array $data = [], array $options = []) {
+  $replacements = [];
+
+  if ($type == 'site') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'feedback_rules_id':
+          $house_rules = variable_get('brp_feedbackfield_rules_url', '#');
+          $replacements[$original] = url($house_rules, ['absolute' => TRUE, 'alias' => FALSE]);
+          break;
+      }
+    }
+  }
+
+  // Return the replacements.
+  return $replacements;
+}

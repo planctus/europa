@@ -100,18 +100,14 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
 function dt_event_preprocess_file_entity(&$variables) {
   // Make sure we only do this for event entity's.
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
-    // Also add the file modifier.
-    $variables['classes_array'][] = 'file--condensed';
-
     // We define the wrapper once and apply it when we need it.
     $caption_wrapper = [
       '#prefix' => '<div class="file__caption">',
       '#suffix' => '</div>',
     ];
-
+    // If it is a video, we have to apply additional modifiers.
     if ($variables['type'] == 'video') {
-      // If it is a video, we have to apply additional modifiers.
-      $variables['classes_array'][] = 'file-video--withbackground';
+      $variables['classes_array'][] = 'file-video--with-background';
       // Also add the description to the content render array.
       if (isset($variables['content']['field_video_description'])) {
         $variables['content']['field_video_description']['#label_display'] = 'hidden';
@@ -164,6 +160,17 @@ function dt_event_preprocess_views_view(&$variables) {
   ];
 
   $variables['header'] = drupal_render($markup);
+
+  $view = $variables['view'];
+  if ($view->name == 'events' && $view->current_display == 'page') {
+    $hitme = libraries_load('hitme');
+    if ($hitme['installed']) {
+      drupal_add_js($hitme['library path'] . '/jquery.hitMe-min.js');
+      drupal_add_js('(function ($) { $(function () { $(\'.listing__item-link\').hitMe(); }); })(jQuery);',
+        ['type' => 'inline', 'scope' => 'footer']
+      );
+    }
+  }
 }
 
 /**
@@ -229,7 +236,7 @@ function dt_event_preprocess_easy_breadcrumb(&$variables) {
   if (_dt_event_is_live_path()) {
     // Add node segment for Event.
     $node = menu_get_object();
-    $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), array(), 'node/' . $node->nid);
+    $variables['breadcrumb'][] = _easy_breadcrumb_build_item(t('@id', ['@id' => $node->title]), [], 'node/' . $node->nid);
     $variables['segments_quantity']++;
   }
 }
@@ -284,6 +291,6 @@ function dt_event_nexteuropa_formatters_view_modes_alter(&$view_modes) {
  */
 function dt_event_preprocess_dt_event_status(&$variables) {
   if (isset($variables['message_body'])) {
-    $variables['message_body'] = drupal_html_to_text($variables['message_body']);
+    $variables['message_body'] = filter_xss($variables['message_body']);
   }
 }

@@ -11,20 +11,45 @@ include_once 'dt_person.features.inc';
  * Implements hook_migrate_api().
  */
 function dt_person_migrate_api() {
-  return array(
+  return [
     'api' => 2,
-    'groups' => array(
-      'NextEuropa Digital Transformation' => array(
+    'groups' => [
+      'NextEuropa Digital Transformation' => [
         'title' => t('Including taxonomy terms in the Person roles vocabulary.'),
-      ),
-    ),
-    'migrations' => array(
-      'DTPersonRolesMigrator' => array(
+      ],
+    ],
+    'migrations' => [
+      'DTPersonRolesMigrator' => [
         'class_name' => 'DTPersonRolesMigration',
         'group_name' => 'NextEuropa Digital Transformation',
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_ds_layout_info().
+ */
+function dt_person_ds_layout_info() {
+  $path = drupal_get_path('module', 'dt_person');
+
+  $layouts = [
+    'person' => [
+      'label' => t('Content type layout: Person'),
+      'path' => $path . '/layouts',
+      'regions' => [
+        'left_header' => t('Left Header'),
+        'biography_image' => t('Biography image'),
+        'biography_column' => t('Biography column'),
+        'top' => t('Top'),
+        'left' => t('Left'),
+        'central' => t('Middle'),
+      ],
+      'is_nexteuropa' => TRUE,
+    ],
+  ];
+
+  return $layouts;
 }
 
 /**
@@ -57,10 +82,10 @@ function dt_person_field_attach_view_alter(&$output, $context) {
         $check_entity = entity_metadata_wrapper('node', $item['entity']);
 
         // Store the data in our custom array so we dont have to get it again.
-        $commissioner_list[$key] = array(
+        $commissioner_list[$key] = [
           'emw' => $check_entity,
           'obj' => $item,
-        );
+        ];
 
         // Check if the tid is the same. If not set our variable to false.
         if (!empty($last_title_tid) && $last_title_tid !== $check_entity->field_person_role->value()->tid) {
@@ -86,7 +111,7 @@ function dt_person_field_attach_view_alter(&$output, $context) {
       foreach ($commissioner_list as $key => $commissioner) {
         $is_commissioner = (!$same_title && $commissioner['emw']->field_person_role->value()->tid == $commissioner_taxonomy_id);
         // If it is the same title. We can just render the "name" mode.
-        if (($same_title || $is_commissioner) && $person_render = entity_view('node', array($commissioner['obj']['entity']), 'name')) {
+        if (($same_title || $is_commissioner) && $person_render = entity_view('node', [$commissioner['obj']['entity']], 'name')) {
           // Update our element.
           $element[$key]['#markup'] = render($person_render);
         }
@@ -121,16 +146,16 @@ function dt_person_field_attach_view_alter(&$output, $context) {
  */
 function dt_person_menu() {
   if (module_exists('masquerade')) {
-    $items = array();
-    $items['user/%user/masquerade'] = array(
+    $items = [];
+    $items['user/%user/masquerade'] = [
       'title' => 'Masquerade',
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('masquerade_block_1', 1),
+      'page arguments' => ['masquerade_block_1', 1],
       'type' => MENU_LOCAL_TASK,
       'access callback' => '_masquerade_tab_access',
-      'access arguments' => array(1),
+      'access arguments' => [1],
       'weight' => 3,
-    );
+    ];
     return $items;
   }
   return NULL;
@@ -163,7 +188,7 @@ function dt_person_form_masquerade_block_1_alter(&$form, &$form_state, $form_id)
   $get_uid = menu_get_object('user');
   if ($get_uid->uid && ($user->uid != $get_uid->uid)) {
     $switch_link = 'masquerade/switch/' . $get_uid->uid;
-    $quick_switch_links = l($get_uid->name, $switch_link, array('query' => array('token' => drupal_get_token($switch_link))));
+    $quick_switch_links = l($get_uid->name, $switch_link, ['query' => ['token' => drupal_get_token($switch_link)]]);
     $form['masquerade_desc']['#markup'] = t('Switch as :') . $quick_switch_links . t(', or enter enter a username to masquerade above.');
   }
 }
@@ -172,30 +197,36 @@ function dt_person_form_masquerade_block_1_alter(&$form, &$form_state, $form_id)
  * Implements hook_ds_fields_info().
  */
 function dt_person_ds_fields_info() {
-  $fields = array();
+  $fields = [];
 
-  $fields['full_name'] = array(
+  $fields['full_name'] = [
     'title' => t('Person full name'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_dt_person_token_replace_fullname',
-    'properties' => array(
+    'properties' => [
       'class' => 'full-name',
       'first_name' => '[node:field_person_first_name]',
       'last_name' => '[node:field_person_last_name]',
       'link' => '[node:legacy-link]',
-    ),
-  );
+    ],
+  ];
 
-  $fields['full_name_nolink'] = array(
+  $fields['full_name_nolink'] = [
     'title' => t('Person full name - nolink'),
     'field_type' => DS_FIELD_TYPE_FUNCTION,
     'function' => '_dt_person_token_replace',
-    'properties' => array(
+    'properties' => [
       'value' => '[node:field_person_first_name] [node:field_person_last_name]',
-    ),
-  );
+    ],
+  ];
 
-  return array('node' => $fields);
+  $fields['job_role'] = [
+    'title' => t('Job role'),
+    'field_type' => DS_FIELD_TYPE_FUNCTION,
+    'function' => '_dt_person_job_role',
+  ];
+
+  return ['node' => $fields];
 }
 
 /**
@@ -221,7 +252,7 @@ function _dt_person_token_replace_fullname($field) {
 
     // Replace all other values using token replace.
     foreach ($field['properties'] as &$property) {
-      $property = token_replace($property, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+      $property = token_replace($property, [$field['entity_type'] => $field['entity']], ['clear' => TRUE]);
     }
     return l($field['properties']['first_name'] . ' ' . $field['properties']['last_name'], $field['properties']['link'], $options);
   }
@@ -240,16 +271,60 @@ function _dt_person_token_replace_fullname($field) {
 function _dt_person_token_replace($field) {
   if (isset($field['properties']['value'])) {
     $value = $field['properties']['value'];
-    $value = token_replace($value, array($field['entity_type'] => $field['entity']), array('clear' => TRUE));
+    $value = token_replace($value, [$field['entity_type'] => $field['entity']], ['clear' => TRUE]);
     return $value;
   }
   return NULL;
 }
 
 /**
+ * Helper to build the role field.
+ *
+ * @param array $field
+ *   Array of properties required to render the field.
+ *
+ * @return string|bool
+ *    Rendered content or false if no data.
+ */
+function _dt_person_job_role($field) {
+  if (!isset($field['entity']) || $field['entity']->type !== 'person') {
+    return FALSE;
+  }
+
+  // Start our render config.
+  $output = "";
+
+  // Get the role.
+  $nwo = entity_metadata_wrapper('node', $field['entity']);
+  if ($nwo->__isset('field_core_jobs')) {
+    // Set the values.
+    $jobs = $nwo->field_core_jobs->value();
+    foreach ($jobs as $job) {
+      $nwo = entity_metadata_wrapper('node', $job);
+      if ($nwo->__isset('field_job_role')) {
+        $job_role = $nwo->field_job_role->value();
+        $tmw = entity_metadata_wrapper('taxonomy_term', $job_role);
+        $render_config = [
+          '#theme' => 'dt_person_job_role',
+          '#role_class' => 'meta__item',
+          '#role_text' => $tmw->name->value(),
+        ];
+        $output .= drupal_render($render_config);
+      }
+    }
+    return $output;
+  }
+
+  return FALSE;
+}
+
+/**
  * Implements hook_node_view_alter().
  */
 function dt_person_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'person' && $build['#view_mode'] == 'full') {
+    drupal_add_js(drupal_get_path('module', 'dt_person') . '/assets/js/person-collapse.js');
+  }
   if ($build['#bundle'] == 'person' && $build['#view_mode'] == 'event_speaker') {
     if ($build['#node']->entity_reference_has_override && isset($build['field_person_role_title'][0]['#markup'])) {
       $build['field_person_role']['#access'] = FALSE;
@@ -327,4 +402,20 @@ function _dt_person_add_default_images() {
       }
     }
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function dt_person_theme() {
+  return [
+    'dt_person_job_role' => [
+      'template' => 'dt_person_job_role',
+      'path' => drupal_get_path('module', 'dt_person') . '/templates',
+      'variables' => [
+        'role_class' => '',
+        'role_text' => '',
+      ],
+    ],
+  ];
 }

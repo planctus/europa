@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * DT File import upload.
+ */
+
+// Constant defining the path used.
+define('DT_FILE_IMPORT_UPLOAD_PATH', 'xml/');
+
+
+/**
+ * Based on 'Migrate Upload Source' sandbox project.
+ *
+ * @see: https://www.drupal.org/sandbox/marcoscano/2317219
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function dt_file_import_permission() {
+  return [
+    'upload xml files for publication and file import' => [
+      'title' => t('Upload XML files for publication and file import'),
+      'description' => t('Allows for the user to upload an xml file for publication and file import.'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu().
+ */
+function dt_file_import_menu() {
+  $items = [];
+
+  $items['admin/content/migrate/upload-xml'] = [
+    'title' => 'Upload xml file',
+    'description' => 'Upload file form helper',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['dt_file_import_xml_upload_form'],
+    'access arguments' => ['upload xml files for publication and file import'],
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+  ];
+
+  return $items;
+}
+
+/**
+ * Form builder function for upload page.
+ */
+function dt_file_import_xml_upload_form($form, $form_state) {
+  $file_default_value = variable_get('dt_file_import_fid', FALSE);
+  $description = t('The file that the migration will use as source. Be sure to check file format and character encoding.');
+  $description_with_warning_delete = $description . '<div style="color:red">' . t('Caution on pressing the REMOVE button! Doing so will permanently delete the file that was previously uploaded to the server.') . '</div>';
+
+  $form['import'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Import file'),
+  ];
+
+  $form['import']['dt_file_import_xml_upload'] = [
+    '#title' => t('File to be used as source'),
+    '#type' => 'managed_file',
+    '#description' => (!$file_default_value) ? $description : $description_with_warning_delete,
+    '#default_value' => $file_default_value,
+    '#upload_location' => 'private://' . DT_FILE_IMPORT_UPLOAD_PATH,
+    '#field_name' => 'dt_file_import_xml_upload',
+    '#upload_validators' => [
+      'file_validate_extensions' => ['xml'],
+    ],
+  ];
+
+  $form['submit'] = [
+    '#type' => 'submit',
+    '#value' => t('Upload the file'),
+  ];
+
+  return $form;
+}
+
+/**
+ * Validate function for 'dt_file_import_xml_upload_form'.
+ */
+function dt_file_import_xml_upload_form_validate($form, &$form_state) {
+  $file = file_load($form_state['values']['dt_file_import_xml_upload']);
+  if (!$file) {
+    form_set_error('dt_file_import_xml_upload', t('The file is invalid.'));
+  }
+
+  // Different from previous, needs validation.
+  $previous_fid = variable_get('dt_file_import_fid', FALSE);
+  if ($previous_fid != $file->fid) {
+    $private_path = variable_get('file_private_path');
+    $file_full_path = $private_path . '/' . DT_FILE_IMPORT_UPLOAD_PATH . $file->filename;
+    $content = file_get_contents($file_full_path);
+
+    if (!empty($file->filename) && isset($content) && !mb_check_encoding($content, 'UTF-8')) {
+      // Delete file.
+      file_delete($file);
+      form_set_error('dt_file_import_xml_upload', t('The file must be in UTF-8 char encoding'));
+    }
+  }
+}
+
+/**
+ * Submit function for 'dt_file_import_xml_upload_form'.
+ */
+function dt_file_import_xml_upload_form_submit($form, &$form_state) {
+  // Load the file via file.fid.
+  $file = file_load($form_state['values']['dt_file_import_xml_upload']);
+
+  $previous_fid = variable_get('dt_file_import_fid', FALSE);
+  if ($previous_fid && $previous_fid != $file->fid) {
+    // Delete previous file if exists and is different from uploaded.
+    $previous_file = file_load($previous_fid);
+    file_usage_delete($previous_file, 'dt_file_import', 'migration', '1');
+    file_delete($previous_file);
+  }
+
+  if ($previous_fid != $file->fid) {
+    // Manage file if different from previous.
+    // Change status to permanent and save.
+    $file->status = FILE_STATUS_PERMANENT;
+    file_save($file);
+
+    // Record that this module is using the file.
+    file_usage_add($file, 'dt_file_import', 'migration', '1');
+    // Let's store the fid to use it as the #default_value.
+    variable_set('dt_file_import_fid', $file->fid);
+
+    // Store the full file path to make things easier in the migrate class.
+    variable_set('dt_file_import_file_path', $file->uri);
+
+    // Confirmation message and redirect.
+    drupal_set_message(t('File uploaded successfully.'));
+  }
+
+  drupal_goto('admin/content/migrate');
+}

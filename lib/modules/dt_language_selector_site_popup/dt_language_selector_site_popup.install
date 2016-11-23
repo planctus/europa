@@ -13,7 +13,7 @@
  */
 function dt_language_selector_site_popup_install() {
   db_update('system')
-    ->fields(array('weight' => 999))
+    ->fields(['weight' => 999])
     ->condition('name', 'dt_language_selector_site_popup', '=')
     ->execute();
 }

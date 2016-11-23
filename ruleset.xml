@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="NextEuropa">
-    <description>Wrapper around codesniffer settings for phpstorm.</description>
-    <rule ref="./phpcs.xml"/>
-</ruleset>

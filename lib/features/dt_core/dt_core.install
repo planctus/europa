@@ -53,6 +53,40 @@ function dt_core_install() {
 }
 
 /**
+ * Implements hook_requirements().
+ */
+function dt_core_requirements($phase) {
+  $requirements = [];
+  $t = get_t();
+
+  switch ($phase) {
+    case 'runtime':
+      $hitme = libraries_load('hitme');
+      if (!$hitme['installed']) {
+        $requirements['hitme_js'] = [
+          'title' => $t('HitMe JavaScript file'),
+          'severity' => REQUIREMENT_ERROR,
+          'description' => $t('You need to download the !hitme and extract the entire contents of the archive into the %path directory on your server.', [
+            '!hitme' => l($t('HitMe JavaScript file'), 'https://github.com/roelvangils/jquery-hitMe/'),
+            '%path' => 'sites/all/libraries',
+          ]),
+          'value' => $t('Not Installed'),
+        ];
+      }
+      else {
+        $requirements['hitme_js'] = [
+          'title' => $t('HitMe JavaScript file'),
+          'severity' => REQUIREMENT_OK,
+          'value' => $t('Installed'),
+        ];
+      }
+      break;
+  }
+
+  return $requirements;
+}
+
+/**
  * Implements hook_uninstall().
  */
 function dt_core_uninstall() {
@@ -972,4 +1006,27 @@ function dt_core_update_7173() {
 
   // Applying a default set of buttons to the Full HTML profile.
   _dt_apply_wysiwyg_buttons();
+}
+
+/**
+ * DTTSB-1078: Enabling redirect module and update perm.
+ *
+ * DTTSB-1039: Update translation of field_core_quick_nav_links. (7174)
+ */
+function dt_core_update_7175(&$sandbox) {
+  module_enable(['redirect']);
+  // Update permissions so that site managers and editors
+  // can access redirect settings for each node.
+  features_revert_module('dt_roles_permissions');
+  // Reverting core.
+  features_revert_module('dt_core');
+  // Update field.
+  _dt_core_enable_entity_translation('field_core_quick_nav_links', $sandbox);
+}
+
+/**
+ * DTTSB-1235: Enabling Localization update module.
+ */
+function dt_core_update_7176() {
+  module_enable(['l10n_update']);
 }
