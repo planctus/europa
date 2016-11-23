@@ -142,7 +142,8 @@ function _dt_publication_listing_exposed($entity) {
       && $emw->field_publications_visibility->value() == TRUE)
       && $emw->field_publications_country_on->value() == 1
       || $emw->field_publications_year_on->value() == 1
-      || $emw->field_publications_type_on->value() == 1) {
+      || $emw->field_publications_type_on->value() == 1
+      || $emw->field_publications_tag_on->value() == 1) {
     // Get the view with the exposed form.
     $view = views_get_view('publication_list');
     $display_id = 'page_1';
@@ -191,6 +192,15 @@ function _dt_publication_listing_exposed($entity) {
       $render['form']['field_publication_type_tid_i18n']['#value'] = $predefined_type;
       if (!empty($_GET['field_publication_type_tid_i18n'])) {
         $render['form']['field_publication_type_tid_i18n']['#value'] = $_GET['field_publication_type_tid_i18n'];
+      }
+    }
+
+    // Publication tag.
+    $predefined_tag = NULL;
+    if (!empty($node->field_publications_tag) && $predefined_tag = $node->field_publications_tag[LANGUAGE_NONE][0]['tid']) {
+      $render['form']['field_core_tags_tid_i18n']['#value'] = $predefined_tag;
+      if (!empty($_GET['field_core_tags_tid_i18n'])) {
+        $render['form']['field_core_tags_tid_i18n']['#value'] = $_GET['field_core_tags_tid_i18n'];
       }
     }
 
@@ -310,10 +320,17 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
         $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
       }
 
+      // Publication tag.
+      $predefined_tag = NULL;
+      if (!empty($node->field_publications_tag) && $predefined_tag = $node->field_publications_tag[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_core_tags_tid_i18n']['value'][$predefined_tag] = $predefined_tag;
+      }
+
       $exp_filters = [
         'field_core_nal_countries_tid_i18n' => ['field_publications_country_on', $predefined_country],
         'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
         'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
+        'field_core_tags_tid_i18n' => ['field_publications_tag_on', $predefined_tag],
       ];
 
       foreach ($exp_filters as $exp_filter_key => $exp_filter) {
