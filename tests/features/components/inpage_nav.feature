@@ -4,7 +4,7 @@ Feature: In-page navigation
   As an editor
   I should be able to hide/show in-page navigation on pages
 
-  @shared
+  @shared @dt_page
   Scenario: Show/hide in-page navigation on Page
     Given "Page" content:
       | title         | field_core_description | field_core_introduction | field_core_in_page_navigation | field_core_latest_visibility | field_core_links              | status |
@@ -18,7 +18,7 @@ Feature: In-page navigation
     When I press the "Save" button
     Then I should not see an ".inpage-nav__wrapper" element
 
-  @information
+  @information @nexteuropa_file @dt_page
   Scenario: Inpage navigation should have the correct order on Page content
     Given a "File" with the title "File Example"
     And I set the variable "dt_shared_functions_dt_latest_visibility" to "1"
@@ -47,7 +47,7 @@ Feature: In-page navigation
       | Documents     |
       | Related links |
 
-  @brp
+  @brp @brp_initiative @dt_page
   Scenario: Inpage navigation should have the correct order on Page content with initiatives
     Given "Initiative" content:
       | title              | status | field_core_description |
@@ -72,7 +72,7 @@ Feature: In-page navigation
       | Latest initiatives |
       | Related links      |
 
-  @information
+  @information @nexteuropa_file @dt_contact @dt_person @dt_department
   Scenario: Inpage navigation should have the correct order on Department content
     Given a "File" with the title "File Example"
     And a "Contact" with the title "Contact Example"
