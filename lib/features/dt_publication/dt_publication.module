@@ -162,7 +162,7 @@ function _dt_publication_listing_exposed($entity) {
     $render['dt_title'] = [
       '#type' => 'markup',
       '#markup' => t('Refine results'),
-      '#prefix' => '<h3>',
+      '#prefix' => '<h3 class="block__title filters__title">',
       '#suffix' => '</h3>',
     ];
     // Add the ready exposed form to the render.
