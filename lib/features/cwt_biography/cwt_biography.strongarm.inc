@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_biography.strongarm.inc

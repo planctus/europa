@@ -167,6 +167,14 @@ function dt_event_ds_fields_info($entity_type) {
       'title' => t('Event: Stream embed intro'),
       'function' => '_dt_event_ds_fields_stream_embed_intro',
     ];
+
+    $fields[$entity_type]['dt_event_livestream_header'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Livestream header'),
+      'function' => '_dt_event_ds_fields_livestream_header',
+      'use_token' => TRUE,
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -202,7 +210,7 @@ function _dt_event_ds_fields_scribble_embed($field) {
   if ($entity->__isset('field_event_scribble_id') && $scribble_id = $entity->field_event_scribble_id->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
     $markup = [
-      '#markup' => '<iframe width="100%" height="600px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '"></iframe>',
+      '#markup' => '<iframe width="100%" height="600" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '" allowfullscreen="allowfullscreen"></iframe>',
     ];
 
     if (isset($field['formatter_settings']['show_intro']) && $field['formatter_settings']['show_intro']) {
@@ -226,11 +234,12 @@ function _dt_event_ds_fields_scribble_embed($field) {
  */
 function _dt_event_ds_fields_stream_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+  if ($entity->__isset('field_event_live_streaming_link') && $entity->field_event_live_streaming_link->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
+    $stream_url = $entity->language($content_language)->field_event_live_streaming_link->value();
     if (isset($stream_url['url'])) {
       $markup = [
-        '#markup' => '<iframe width="100%" height="315px" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '"></iframe>',
+        '#markup' => '<iframe width="100%" height="315" src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=' . $stream_url['url'] . '" allowfullscreen="allowfullscreen"></iframe>',
       ];
 
       return drupal_render($markup);
@@ -777,4 +786,25 @@ function _dt_event_ds_fields_date_and_time($field) {
   };
 
   return drupal_render($output);
+}
+
+/**
+ * Helper function for DS, to show the event location.
+ *
+ * @param array $field
+ *    Hold the current context of the field.
+ *
+ * @return string
+ *    Return the markup.
+ */
+function _dt_event_ds_fields_livestream_header($field) {
+  $entity = entity_metadata_wrapper('node', $field['entity']);
+  $location = $entity->field_core_location->value();
+  $markup = '';
+
+  if ($location) {
+    $markup = '<h2>' . t('Live from @location', ['@location' => $location['locality']]) . '</h2>';
+  }
+
+  return $markup;
 }

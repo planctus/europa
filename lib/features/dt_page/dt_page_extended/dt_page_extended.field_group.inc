@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_page_extended.field_group.inc
@@ -81,13 +80,13 @@ function dt_page_extended_field_group_info() {
     'label' => 'Content',
     'weight' => '1',
     'children' => array(
-      0 => 'group_page_publications',
-      1 => 'group_background',
-      2 => 'group_banner',
-      3 => 'group_editorial_settings',
-      4 => 'group_featured_item',
-      5 => 'group_page_architecture',
-      6 => 'group_page_main',
+      0 => 'group_background',
+      1 => 'group_banner',
+      2 => 'group_editorial_settings',
+      3 => 'group_featured_item',
+      4 => 'group_page_architecture',
+      5 => 'group_page_main',
+      6 => 'group_page_publications',
       7 => 'group_related',
       8 => 'group_taxonomy',
     ),
@@ -112,7 +111,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Editorial settings',
-    'weight' => '17',
+    'weight' => '19',
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
@@ -171,7 +170,7 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Page Architecture',
-    'weight' => '18',
+    'weight' => '17',
     'children' => array(
       0 => 'field_core_children',
       1 => 'field_core_parents',
@@ -411,12 +410,13 @@ function dt_page_extended_field_group_info() {
   $field_group->parent_name = 'group_content_tabgroup';
   $field_group->data = array(
     'label' => 'Publications',
-    'weight' => '19',
+    'weight' => '18',
     'children' => array(
       0 => 'field_publications_visibility',
-      1 => 'group_publications_year',
-      2 => 'group_publications_country',
+      1 => 'group_publications_country',
+      2 => 'group_publications_tag',
       3 => 'group_publications_type',
+      4 => 'group_publications_year',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -469,7 +469,7 @@ function dt_page_extended_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_page_publications';
   $field_group->data = array(
-    'label' => 'Publications Country',
+    'label' => 'Publications country',
     'weight' => '38',
     'children' => array(
       0 => 'field_publications_country',
@@ -491,6 +491,35 @@ function dt_page_extended_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_publications_tag|node|basic_page|form';
+  $field_group->group_name = 'group_publications_tag';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'basic_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_page_publications';
+  $field_group->data = array(
+    'label' => 'Publication tag',
+    'weight' => '41',
+    'children' => array(
+      0 => 'field_publications_tag',
+      1 => 'field_publications_tag_on',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-publications-tag field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_publications_tag|node|basic_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_publications_type|node|basic_page|form';
   $field_group->group_name = 'group_publications_type';
   $field_group->entity_type = 'node';
@@ -498,7 +527,7 @@ function dt_page_extended_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_page_publications';
   $field_group->data = array(
-    'label' => 'Publications Type',
+    'label' => 'Publications type',
     'weight' => '40',
     'children' => array(
       0 => 'field_publications_type',
@@ -527,7 +556,7 @@ function dt_page_extended_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_page_publications';
   $field_group->data = array(
-    'label' => 'Publications Year',
+    'label' => 'Publications year',
     'weight' => '39',
     'children' => array(
       0 => 'field_publications_year',
@@ -618,10 +647,11 @@ function dt_page_extended_field_group_info() {
   t('Free field');
   t('Meta');
   t('Page Architecture');
+  t('Publication tag');
   t('Publications');
-  t('Publications Country');
-  t('Publications Type');
-  t('Publications Year');
+  t('Publications country');
+  t('Publications type');
+  t('Publications year');
   t('Related');
   t('Related links');
   t('Taxonomy');

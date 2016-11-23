@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_publication.views_default.inc
@@ -111,6 +110,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear';
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
@@ -238,10 +238,41 @@ function dt_publication_views_default_views() {
   );
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['type'] = 'select';
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['vocabulary'] = 'publication_types';
+  /* Filter criterion: Content: Publications tag (field_publications_tag) */
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['id'] = 'field_core_tags_tid_i18n';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['table'] = 'field_data_field_core_tags';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['field'] = 'field_core_tags_tid_i18n';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['operator_id'] = 'field_core_tags_tid_i18n_op';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['label'] = 'Tag';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['operator'] = 'field_core_tags_tid_i18n_op';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['identifier'] = 'field_core_tags_tid_i18n';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    16 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    21 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['type'] = 'select';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['vocabulary'] = 'tags';
 
   /* Display: Publications List */
   $handler = $view->new_display('block', 'Publications List', 'block');
   $handler->display->display_options['block_description'] = 'publications_list';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['path'] = 'publication-list';
   $export['publication_list'] = $view;
 
   $view = new view();

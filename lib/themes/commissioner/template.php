@@ -357,12 +357,7 @@ function commissioner_file_link($variables) {
   $url['path'] = file_create_url($file->uri);
   $url['options'] = [];
 
-  // Apply the modifier if needed. Currently it's only on the front page. If on
-  // a later stage, we need this everywhere, we should make this modifier the
-  // default.
-  $modifier = drupal_is_front_page() ? 'file--widebar' : FALSE;
-
-  return _europa_file_markup($file, $url, $modifier);
+  return _europa_file_markup($file, $url);
 
 }
 

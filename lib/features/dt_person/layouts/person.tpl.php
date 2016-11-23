@@ -23,7 +23,6 @@ $header_back = isset($header_back) ? ' page-header--image' : '';
 </div>
 
 <div class="profile_topbar section">
-
   <div class="container section__group">
     <div class="row">
       <?php if ($biography_image): ?>
@@ -39,7 +38,6 @@ $header_back = isset($header_back) ? ' page-header--image' : '';
       <?php endif; ?>
     </div>
   </div>
-
   <?php if ($top): ?>
     <div id="profiletopbar" class="profile_topbar__expander section__group collapse">
       <div class="container">
@@ -48,7 +46,6 @@ $header_back = isset($header_back) ? ' page-header--image' : '';
     </div>
   <?php endif; ?>
 </div>
-
 
 <div class="page-content section">
   <div class="container-fluid">
