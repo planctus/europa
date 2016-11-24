@@ -198,7 +198,7 @@ function dt_core_field_default_field_bases() {
             'status' => 0,
           ),
         ),
-        'limit_bundles_to_host' => 1,
+        'limit_bundles_to_host' => 0,
         'sort' => array(
           'type' => 'none',
         ),
@@ -750,7 +750,7 @@ function dt_core_field_default_field_bases() {
             'status' => 0,
           ),
         ),
-        'limit_bundles_to_host' => 1,
+        'limit_bundles_to_host' => 0,
         'sort' => array(
           'type' => 'none',
         ),
