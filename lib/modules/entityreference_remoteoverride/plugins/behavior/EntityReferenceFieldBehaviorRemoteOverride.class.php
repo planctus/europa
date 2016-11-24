@@ -14,8 +14,12 @@ class EntityReferenceFieldBehaviorRemoteOverride extends EntityReference_Behavio
    */
   public function alterItems(&$items, $entity, $field, $display, $langcode) {
     foreach ($items as &$item) {
-      if ($elements = $this->hasOverriddenFields($item)) {
+      if ($elements = $this->hasOverriddenFields($item, $field)) {
         foreach ($elements as $field_name => $field_value) {
+          // We should only overwrite if the field has data.
+          if (is_null($field_value) || empty($field_value)) {
+            continue;
+          }
           $field_info = field_info_field($field_name);
           // If it is translateable we set the langcode. Otherwise we use
           // LANGUAGE_NONE.
@@ -114,17 +118,31 @@ class EntityReferenceFieldBehaviorRemoteOverride extends EntityReference_Behavio
    *
    * @param array $item
    *   The item to check for.
+   * @param array $field
+   *   The field instance.
    *
    * @return array
    *   List of fields and their overwritten value.
    */
-  private function hasOverriddenFields($item) {
-    // Get all the elements that are override fields.
-    $elements = array_intersect_key($item, array_flip(preg_grep('/er_override_(.*)/', array_keys($item))));
+  private function hasOverriddenFields($item, $field) {
     $available = [];
-    // Change the array keys to the actual field names.
-    foreach ($elements as $key => $value) {
-      $available[str_replace('er_override_', '', $key)] = $value;
+    // Get the enabled overwriteable field.
+    if (
+      isset($field['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior'])
+       && is_array($field['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'])
+    ) {
+      $overridable_fields = $field['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'];
+
+      // Get all the elements that are override fields.
+      $elements = array_intersect_key($item, array_flip(preg_grep('/er_override_(.*)/', array_keys($item))));
+
+      // Change the array keys to the actual field names.
+      foreach ($elements as $key => $value) {
+        $normal_fieldname = str_replace('er_override_', '', $key);
+        if (in_array($normal_fieldname, $overridable_fields) && $overridable_fields[$normal_fieldname] === $normal_fieldname) {
+          $available[$normal_fieldname] = $value;
+        }
+      }
     }
     return $available;
   }
