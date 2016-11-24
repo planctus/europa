@@ -10,90 +10,6 @@
 function dt_info_homepage_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-info_homepage-field_core_contacts'.
-  $field_instances['node-info_homepage-field_core_contacts'] = array(
-    'bundle' => 'info_homepage',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 43,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'nexteuropa_listing_columns' => 'default',
-          'nexteuropa_listing_item_modifier' => '',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => '',
-          'use_content_language' => 1,
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 0,
-      ),
-      'homepage_informational' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'homepage_political' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'nexteuropa_listing_columns' => 'two_columns',
-          'nexteuropa_listing_item_modifier' => '',
-          'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => 'equal-height',
-          'show_translations' => '',
-          'use_content_language' => 1,
-          'view_mode' => 'title',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 9,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 32,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_core_contacts',
-    'label' => 'Contact',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'apply_chosen' => '',
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 19,
-    ),
-  );
-
   // Exported field_instance: 'node-info_homepage-field_core_header_image'.
   $field_instances['node-info_homepage-field_core_header_image'] = array(
     'bundle' => 'info_homepage',
@@ -439,7 +355,7 @@ function dt_info_homepage_field_default_field_instances() {
           'view_mode' => 'image_label',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 6,
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -528,6 +444,76 @@ function dt_info_homepage_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 18,
+    ),
+  );
+
+  // Exported field_instance: 'node-info_homepage-field_info_homepage_contacts'.
+  $field_instances['node-info_homepage-field_info_homepage_contacts'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 45,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'nexteuropa_title_item_link_modifier' => '',
+          'nexteuropa_title_item_modifier' => '',
+          'nexteuropa_title_listing_modifier' => '',
+        ),
+        'type' => 'link_listing_title',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_contacts',
+    'label' => 'Contact',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 19,
     ),
   );
 
