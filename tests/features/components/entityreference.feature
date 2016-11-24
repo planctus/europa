@@ -49,3 +49,5 @@ Feature: Entityreference
     And I select "Global editorial team" from "Your groups (all languages)"
     And I press "Save"
     Then I should see "Dr Hungarian"
+    Then I should see "John"
+    Then I should see "Weekley"
