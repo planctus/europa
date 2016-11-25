@@ -117,10 +117,10 @@ function dt_list_view_content_preprocess_views_view(&$variables) {
  */
 function _dt_list_view_get_bean_content($view) {
 
-  // Check if it might have been called already.
-  $contents = &drupal_static(__FUNCTION__ . '_' . $view->name);
+  // Check if it might have been called already for this view and display.
+  $contents = &drupal_static(__FUNCTION__ . '_' . _dt_list_view_content_view_identifier($view));
 
-  // If the view is complient to the requirements.
+  // If the view is compliant with the requirements.
   if (!isset($contents) && $view->tag == DT_CORE_VIEWS_TAG && array_key_exists(_dt_list_view_content_view_identifier($view), _dt_list_view_content_get_views())) {
 
     // Initialize the contents array.

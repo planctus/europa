@@ -326,7 +326,7 @@ function dt_person_node_view_alter(&$build) {
     drupal_add_js(drupal_get_path('module', 'dt_person') . '/assets/js/person-collapse.js');
   }
   if ($build['#bundle'] == 'person' && $build['#view_mode'] == 'event_speaker') {
-    if ($build['#node']->entity_reference_has_override && isset($build['field_person_role_title'][0]['#markup'])) {
+    if (isset($build['#node']->entity_reference_has_override) && isset($build['field_person_role_title'][0]['#markup'])) {
       $build['field_person_role']['#access'] = FALSE;
       $build['field_person_role_title']['#access'] = TRUE;
     }
