@@ -176,6 +176,7 @@ function dt_page_extended_field_group_info() {
       1 => 'field_core_parents',
       2 => 'field_core_quick_nav_links',
       3 => 'field_core_parent',
+      4 => 'field_core_navigation_visibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
