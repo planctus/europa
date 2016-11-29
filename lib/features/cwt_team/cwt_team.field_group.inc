@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_team.field_group.inc

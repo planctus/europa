@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_core.features.inc
@@ -156,6 +155,7 @@ function cwt_core_default_tmgmt_translator() {
       "scheme" : "public",
       "remote_languages_mappings" : { "en" : "en", "fi" : "fi", "fr" : "fr", "de" : "de", "hu" : "hu" }
     },
+    "entity_type" : "tmgmt_translator",
     "rdf_mapping" : []
   }');
   return $items;

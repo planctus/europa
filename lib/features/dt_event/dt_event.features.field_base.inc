@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event.features.field_base.inc

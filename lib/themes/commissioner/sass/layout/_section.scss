@@ -1,18 +1,8 @@
-section {
-  &.block-dt-social-media-sharing,
-  .btn-time-line,
-  #blog,
-  #calendar,
-  #timeline {
-    float: left;
-  }
-}
-
 .section__group--biography-top {
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 1.667em; 
   margin-bottom: 0;
-  // Dependencies
+  padding-bottom: 1.667em;
+  border-bottom: 1px solid #e2e2e2;
+
   .context-nav {
     width: 100%;
     margin-bottom: 2em;
@@ -46,8 +36,8 @@ section {
         display: block;
         float: left;
         margin-top: 5px;
-        padding-left: 40px;
         margin-right: 10px;
+        padding-left: 40px;
 
         &:focus {
           outline-offset: 0;
@@ -59,8 +49,8 @@ section {
     .field--field-biography-av-portal {
       clear: both;
       display: block;
-      padding-top: 10px;
       width: 100%;
+      padding-top: 10px;
     }
   }
 }
@@ -79,9 +69,9 @@ section {
   }
 
   .group-bio-col {
+    position: relative;
     min-height: 160px;
     padding-bottom: 2.5em;
-    position: relative;
 
     .group-bio-top-footer {
       position: absolute;

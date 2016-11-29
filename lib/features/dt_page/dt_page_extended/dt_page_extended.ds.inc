@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_page_extended.ds.inc
@@ -19,19 +18,9 @@ function dt_page_extended_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'priorities_preprocess' => array(
-      'weight' => '5',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'publications_list' => array(
-      'weight' => '12',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
     ),
     'title' => array(
       'weight' => '0',
@@ -46,6 +35,16 @@ function dt_page_extended_ds_field_settings_info() {
     ),
     'in_page_navigation' => array(
       'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'publication_listing' => array(
+      'weight' => '13',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'publication_listing_exposed' => array(
+      'weight' => '12',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -225,29 +224,34 @@ function dt_page_extended_ds_layout_settings_info() {
         2 => 'field_core_children',
         3 => 'group_page_contextual_navigation',
         4 => 'field_core_banner',
-        19 => 'field_core_priorities',
-        20 => 'field_core_policy_area',
-        21 => 'field_core_departments',
-        22 => 'field_core_persons',
-        23 => 'field_core_topics',
+        20 => 'field_core_priorities',
+        21 => 'field_core_policy_area',
+        22 => 'field_core_departments',
+        23 => 'field_core_persons',
+        24 => 'field_core_topics',
+      ),
+      'left' => array(
+        5 => 'in_page_navigation',
       ),
       'central' => array(
-        5 => 'priorities_preprocess',
-        7 => 'group_page_priorities',
-        8 => 'body',
-        9 => 'group_page_free_field',
+        6 => 'group_page_priorities',
+        7 => 'body',
+        8 => 'group_page_free_field',
+        9 => 'priorities_preprocess',
         10 => 'announcement_block',
         11 => 'field_core_next_steps',
         12 => 'group_page_next_steps',
         13 => 'group_page_documents',
         14 => 'group_page_related_links',
-        15 => 'publications_list',
-        16 => 'field_core_publications',
-        17 => 'field_core_files',
-        18 => 'field_core_links',
+        17 => 'field_core_publications',
+        18 => 'field_core_files',
+        19 => 'field_core_links',
       ),
-      'left' => array(
-        6 => 'in_page_navigation',
+      'bottom_left' => array(
+        15 => 'publication_listing_exposed',
+      ),
+      'bottom_central' => array(
+        16 => 'publication_listing',
       ),
     ),
     'fields' => array(
@@ -256,17 +260,18 @@ function dt_page_extended_ds_layout_settings_info() {
       'field_core_children' => 'top',
       'group_page_contextual_navigation' => 'top',
       'field_core_banner' => 'top',
-      'priorities_preprocess' => 'central',
       'in_page_navigation' => 'left',
       'group_page_priorities' => 'central',
       'body' => 'central',
       'group_page_free_field' => 'central',
+      'priorities_preprocess' => 'central',
       'announcement_block' => 'central',
       'field_core_next_steps' => 'central',
       'group_page_next_steps' => 'central',
       'group_page_documents' => 'central',
       'group_page_related_links' => 'central',
-      'publications_list' => 'central',
+      'publication_listing_exposed' => 'bottom_left',
+      'publication_listing' => 'bottom_central',
       'field_core_publications' => 'central',
       'field_core_files' => 'central',
       'field_core_links' => 'central',
@@ -283,6 +288,8 @@ function dt_page_extended_ds_layout_settings_info() {
       'top' => 'div',
       'left' => 'div',
       'central' => 'div',
+      'bottom_left' => 'div',
+      'bottom_central' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

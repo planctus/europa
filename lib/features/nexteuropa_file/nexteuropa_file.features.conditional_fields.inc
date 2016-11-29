@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * nexteuropa_file.features.conditional_fields.inc

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_team.views_default.inc
@@ -234,7 +233,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['id'] = 'field_biography_address_thoroughfare';
@@ -290,8 +289,10 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['hide_alter_empty'] = FALSE;
   /* Field: Content: Media enquiries */
   $handler->display->display_options['fields']['field_team_media_enquiries']['id'] = 'field_team_media_enquiries';
   $handler->display->display_options['fields']['field_team_media_enquiries']['table'] = 'field_data_field_team_media_enquiries';
@@ -301,7 +302,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_class'] = 'field__items';
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_class'] = 'field field--labeled-align';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_class'] = 'field field--aligned';
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_team_media_enquiries']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_team_media_enquiries']['type'] = 'link_button_default';
@@ -369,7 +370,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_biography_address_thoroughfare']['id'] = 'field_biography_address_thoroughfare';
@@ -417,16 +418,17 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['alter']['text'] = '[field_biography_address_organisation_name]<br>
 [field_biography_address_thoroughfare]<br>
-[field_biography_address_locality]
-';
+[field_biography_address_locality]';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_class'] = 'field__items';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_biography_address_organisation_name']['hide_alter_empty'] = FALSE;
   /* Field: Content: Media enquiries */
   $handler->display->display_options['fields']['field_team_media_enquiries']['id'] = 'field_team_media_enquiries';
   $handler->display->display_options['fields']['field_team_media_enquiries']['table'] = 'field_data_field_team_media_enquiries';
@@ -436,7 +438,7 @@ function cwt_team_views_default_views() {
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_class'] = 'field__items';
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_class'] = 'field field--labeled-align';
+  $handler->display->display_options['fields']['field_team_media_enquiries']['element_wrapper_class'] = 'field field--aligned';
   $handler->display->display_options['fields']['field_team_media_enquiries']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_team_media_enquiries']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_team_media_enquiries']['type'] = 'link_button_default';

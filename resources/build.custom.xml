@@ -391,7 +391,7 @@
     <target
             name="rebuild-dev-db"
             description="Rebuild dev environment with database"
-            depends="build-dev, generate-settings, restore-ac-db"
+            depends="build-dev, add-dt-dev, generate-settings, restore-ac-db"
     />
 
     <!-- Revert all features to make sure we are using the latest config. -->

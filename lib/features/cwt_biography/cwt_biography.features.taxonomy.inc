@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_biography.features.taxonomy.inc
@@ -19,6 +18,7 @@ function cwt_biography_taxonomy_default_vocabularies() {
       'weight' => -6,
       'language' => 'und',
       'i18n_mode' => 1,
+      'entity_type' => 'taxonomy_vocabulary',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -44,6 +44,7 @@ function cwt_biography_taxonomy_default_vocabularies() {
       'weight' => 0,
       'language' => 'und',
       'i18n_mode' => 0,
+      'entity_type' => 'taxonomy_vocabulary',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -69,6 +70,7 @@ function cwt_biography_taxonomy_default_vocabularies() {
       'weight' => -5,
       'language' => 'und',
       'i18n_mode' => 1,
+      'entity_type' => 'taxonomy_vocabulary',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

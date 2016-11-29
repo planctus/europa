@@ -15,18 +15,30 @@ include_once 'dt_page.features.inc';
  */
 function dt_page_ds_pre_render_alter(&$layout_render_array, $context) {
   // If the other conditions meet.
-  if ($context['entity']->type == 'basic_page' && $context['view_mode'] == 'full' && isset($context['entity']->field_core_in_page_navigation)) {
-    $in_page = $context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'];
-    $latest = $context['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'];
+  if ($context['entity']->type == 'basic_page' && $context['view_mode'] == 'full') {
+    $in_page = isset($context['entity']->field_core_in_page_navigation) ? $context['entity']->field_core_in_page_navigation[LANGUAGE_NONE][0]['value'] : NULL;
+    $latest = isset($context['entity']->field_core_latest_visibility) ? $context['entity']->field_core_latest_visibility[LANGUAGE_NONE][0]['value'] : NULL;
+    $nav_block = isset($context['entity']->field_core_navigation_visibility[LANGUAGE_NONE][0]['value']) ? $context['entity']->field_core_navigation_visibility[LANGUAGE_NONE][0]['value'] : NULL;
 
+    // Remove in page nav.
     if ($in_page == '0') {
       // We remove the sidebar.
       unset($layout_render_array['left']);
     }
-    if ($latest == 0) {
+    // Remove latest.
+    if ($latest == '0') {
       foreach ($layout_render_array['central'] as $key => $blocks) {
         if (isset($blocks['group_page_latest'])) {
           unset($layout_render_array['central'][$key]);
+        }
+      }
+    }
+    // Remove navigational blocks.
+    if ($nav_block == '1') {
+      foreach ($layout_render_array['top'] as $index => $field) {
+        if ($field['#field_name'] == "field_core_children") {
+          unset($layout_render_array['top'][$index]);
+          break;
         }
       }
     }
