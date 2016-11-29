@@ -21,7 +21,9 @@ while read -r line; do
 done <<< "$LIST"
 
 # Check the features that changed
-MODIFIEDFILES=$(git diff master --ignore-blank-lines | grep -e "\-\-\- a/lib/features/")
+MODIFIEDFILES=$(git diff $SOURCE..$TARGET --ignore-blank-lines | grep -e "\-\-\- a/lib/features/")
+MODIFIEDFILES+=$(git diff $SOURCE..$TARGET --ignore-blank-lines | grep -e "\-\-\- a/lib/modules/")
+MODIFIEDFILES+=$(git diff $SOURCE..$TARGET --ignore-blank-lines | grep -e "\-\-\- a/lib/themes/")
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PARENTDIR="$(dirname "$DIR")"
