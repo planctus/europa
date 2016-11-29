@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_core.features.menu_links.inc

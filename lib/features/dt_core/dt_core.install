@@ -50,6 +50,10 @@ function dt_core_install() {
 
   // Remove when https://www.drupal.org/node/2534724 is fixed.
   variable_set('jquery_update_jquery_admin_version', '1.8');
+
+  // Enable l10n_update.
+  module_enable(['l10n_update']);
+  variable_set('l10n_update_import_enabled', FALSE);
 }
 
 /**

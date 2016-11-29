@@ -63,7 +63,6 @@ Feature: File content type
       | language                    | nl            |
     Then I should see "Engels" in the ".region-content .file" element
 
-
   @javascript @dt_publication
   Scenario: Files can be translated
     Given I am logged in as a user with the "administrator" role
@@ -86,12 +85,10 @@ Feature: File content type
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
-
     Then I should see "My File Title" in the ".region-content .file" element
     Then I should see "English" in the ".region-content .file" element
     Then I should see the link "Download"
     Then I get the file "test_en.pdf" after clicking "Download"
-
     And I create the following translations for "file" content with title "My File Title":
       | language | title               | status |
       | nl       | Mijn bestands titel | 1      |
@@ -111,14 +108,12 @@ Feature: File content type
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
-
     Then I should see "Mijn bestands titel" in the ".region-content .file" element
     Then I should see "Nederlands" in the ".region-content .file" element
     And I translate the string "Download" to "Dutch" with "Downloaden"
     And I reload the page
     Then I should see the link "Downloaden"
     Then I get the file "test_nl.pdf" after clicking "Download"
-
     When I am viewing a "Publication":
       | title                           | Publication title |
       | language                        | en                |
@@ -152,7 +147,6 @@ Feature: File content type
       | status | 1          |
       | nid    | 99999      |
       | is_new | 1          |
-
     And I click "New draft" in the "tabs" region
     And I select the radio button "Upload the file."
     And I click "Browse"
@@ -172,3 +166,62 @@ Feature: File content type
     And I am on "node/99999"
     Then I should see the link "Download"
     Then I get the file "test_en.zip" after clicking "Download"
+
+  @javascript @information
+  Scenario: Files teaser view test with token
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "file" content:
+      | title    | My File Title |
+      | status   | 1             |
+      | language | en            |
+      | nid      | 99999         |
+      | is_new   | 1             |
+    And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
+    And I click "Browse"
+    And I switch to the frame "mediaBrowser"
+    # <-- Media frame
+    And I attach the file "test_en.pdf" to "files[upload]"
+    And I press "Next"
+    And I press "Next"
+      # Media frame -->
+    And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
+    And I press "Save"
+    And I am viewing a "Page" content:
+      | title       | File teaser view mode test                   |
+      | body:value  | [node:99999:view-mode:teaser]{My File Title} |
+      | body:format | full_html                                    |
+      | status      | 1                                            |
+    Then I should see an ".node.node-file.node-teaser" element
+
+  @javascript @information
+  Scenario: TMX Files can be uploaded and downloaded by anonymous
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "file" content:
+      | title  | File Title |
+      | status | 1          |
+      | nid    | 99999      |
+      | is_new | 1          |
+    And I click "New draft" in the "tabs" region
+    And I select the radio button "Upload the file."
+    And I click "Browse"
+    And I switch to the frame "mediaBrowser"
+    # <-- Media frame
+    And I attach the file "test.tmx" to "files[upload]"
+    And I press "Next"
+    And I press "Next"
+    # Media frame -->
+    And I switch out of all frames
+    And I click "Editorial settings"
+    And I select "Global editorial team" from "Your groups" chosen.js select box
+    And I click "Publishing options"
+    And I select "Published" from "Moderation state"
+    And I press "Save"
+    And I click "Logout"
+    And I am on "node/99999"
+    Then I should see the link "Download"
+    Then I get the file "test.tmx" after clicking "Download"

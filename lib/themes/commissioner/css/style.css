@@ -68,17 +68,10 @@ Styleguide listing.listing--2rows
     padding-left: 15px;
     padding-right: 15px; } }
 
-section.block-dt-social-media-sharing,
-section .btn-time-line,
-section #blog,
-section #calendar,
-section #timeline {
-  float: left; }
-
 .section__group--biography-top {
-  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 0;
   padding-bottom: 1.667em;
-  margin-bottom: 0; }
+  border-bottom: 1px solid #e2e2e2; }
   .section__group--biography-top .context-nav {
     width: 100%;
     margin-bottom: 2em; }
@@ -98,15 +91,15 @@ section #timeline {
       display: block;
       float: left;
       margin-top: 5px;
-      padding-left: 40px;
-      margin-right: 10px; }
+      margin-right: 10px;
+      padding-left: 40px; }
       .group-bio-col .group-bio-top-footer .field--field-social-networks .icon-social:focus {
         outline-offset: 0; }
   .group-bio-col .group-bio-top-footer .field--field-biography-av-portal {
     clear: both;
     display: block;
-    padding-top: 10px;
-    width: 100%; }
+    width: 100%;
+    padding-top: 10px; }
 
 @media (min-width: 768px) {
   .group-bio-col .group-bio-top-footer .field--collapse-button,
@@ -115,9 +108,9 @@ section #timeline {
     display: table-cell;
     width: auto; }
   .group-bio-col {
+    position: relative;
     min-height: 160px;
-    padding-bottom: 2.5em;
-    position: relative; }
+    padding-bottom: 2.5em; }
     .group-bio-col .group-bio-top-footer {
       position: absolute;
       bottom: 0;

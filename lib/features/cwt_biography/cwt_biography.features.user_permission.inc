@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_biography.features.user_permission.inc

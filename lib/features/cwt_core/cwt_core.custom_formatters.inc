@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_core.custom_formatters.inc

@@ -43,6 +43,7 @@ function dt_core_info_install() {
     'dt_list_view_content',
     'dt_law_default',
     'dt_announcement_news_prd_importer',
+    'dt_commemorative_coins_default',
   ];
   module_enable($features);
 
@@ -219,4 +220,11 @@ function dt_core_info_update_7121() {
   ]);
   features_revert_module('dt_person');
   _dt_roles_permissions_import_import('site manager', TRUE);
+}
+
+/**
+ * DTTSB-1259: Enables the Commemorative coins feature.
+ */
+function dt_core_info_update_7122() {
+  module_enable(['dt_commemorative_coins_default']);
 }

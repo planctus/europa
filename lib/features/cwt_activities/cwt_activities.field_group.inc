@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_activities.field_group.inc

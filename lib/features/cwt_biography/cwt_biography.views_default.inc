@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_biography.views_default.inc
@@ -1735,7 +1734,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_email']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_email']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_email']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_email']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_email']['element_default_classes'] = FALSE;
   /* Field: Content: Phone number */
   $handler->display->display_options['fields']['field_biography_phone']['id'] = 'field_biography_phone';
@@ -1748,7 +1747,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_phone']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['field_biography_phone']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_phone']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_biography_phone']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['field_biography_phone']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['field_biography_phone']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Company */
   $handler->display->display_options['fields']['field_biography_address_organisation_name']['id'] = 'field_biography_address_organisation_name';
@@ -1780,9 +1779,6 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['field_biography_address_locality']['field'] = 'field_biography_address_locality';
   $handler->display->display_options['fields']['field_biography_address_locality']['label'] = '';
   $handler->display->display_options['fields']['field_biography_address_locality']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_address_locality']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_biography_address_locality']['alter']['text'] = '<span>[field_biography_address_postal_code]</span>
-  <span>[field_biography_address_locality]</span>';
   $handler->display->display_options['fields']['field_biography_address_locality']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_biography_address_locality']['element_default_classes'] = FALSE;
   /* Field: Content: Address - Country */
@@ -1811,7 +1807,7 @@ function cwt_biography_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['nothing']['element_label_class'] = 'field__label';
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'field field--labeled';
+  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'field';
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
 
   /* Display: Contact block  Press (biography) */

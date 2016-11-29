@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * nexteuropa_file.strongarm.inc
@@ -80,10 +79,10 @@ function nexteuropa_file_strongarm() {
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -118,6 +117,39 @@ function nexteuropa_file_strongarm() {
       'name' => array(
         'custom_settings' => FALSE,
       ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -144,6 +176,14 @@ function nexteuropa_file_strongarm() {
             'visible' => FALSE,
           ),
           'file' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'full' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
             'weight' => '0',
             'visible' => FALSE,
           ),
