@@ -1030,7 +1030,15 @@ function dt_core_update_7175(&$sandbox) {
 
 /**
  * DTTSB-1235: Enabling Localization update module.
+ *
+ * NEPT-85: Tracked changes icons should always be active when tracked changes
+ * exist.
  */
 function dt_core_update_7176() {
   module_enable(['l10n_update']);
+  // Track changes settings follow up. NEPT-85.
+  $settings = variable_get('multisite_wysiwyg', []);
+  $settings['dis_change_track_on_create'] = 1;
+  $settings['en_change_track_on_edit'] = 1;
+  variable_set('multisite_wysiwyg', $settings);
 }
