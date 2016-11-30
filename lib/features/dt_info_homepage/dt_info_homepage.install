@@ -73,17 +73,15 @@ function dt_info_homepage_update_7103() {
 }
 
 /**
- * DTTSB-1202: Updating permissions.
- */
-function dt_info_homepage_update_7104() {
-  // Update permissions.
-  _dt_roles_permissions_import_import('all');
-}
-
-/**
+ * Release 1.4: DTTSB-1202, DTTSB-1208.
+ *
+ * DTTSB-1202: Updating permissions
  * DTTSB-1208: Removing previous Contact implementation.
  */
 function dt_info_homepage_update_7105() {
+  // Update permissions.
+  _dt_roles_permissions_import_import('all');
+  // Remove old instance.
   if ($instance = field_info_instance('node', 'field_core_contacts', 'info_homepage')) {
     field_delete_instance($instance);
   }
