@@ -106,7 +106,7 @@ function dt_info_homepage_field_default_field_instances() {
         'weight' => 0,
       ),
       'homepage_political' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',

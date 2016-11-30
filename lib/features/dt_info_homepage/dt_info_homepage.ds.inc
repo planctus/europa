@@ -37,6 +37,13 @@ function dt_info_homepage_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'field_core_introduction' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Highlight',
+        ),
+      ),
+    ),
     'field_core_links' => array(
       'formatter_settings' => array(
         'ft' => array(),

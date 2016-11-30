@@ -201,3 +201,10 @@ function dt_core_pol_update_7112() {
   // Enable new modules.
   module_enable(['dt_list_view_content', 'dt_info_homepage']);
 }
+
+/**
+ * DTTSB-1204: Enable ds fields.
+ */
+function dt_core_pol_update_7113() {
+  module_enable(['nexteuropa_ds_fields']);
+}

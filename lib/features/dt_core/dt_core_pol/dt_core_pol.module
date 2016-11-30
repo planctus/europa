@@ -34,3 +34,15 @@ function dt_core_pol_entity_view_mode_alter(&$view_mode, $context) {
     $view_mode = 'homepage_political';
   }
 }
+
+/**
+ * Implements hook_dt_header_background_info().
+ */
+function dt_core_pol_dt_header_background_info() {
+  return [
+    [
+      'view_mode' => 'homepage_political',
+      'content_type' => 'info_homepage',
+    ],
+  ];
+}
