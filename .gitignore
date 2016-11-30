@@ -33,3 +33,6 @@ phantomjsdriver.log
 # Ignore QA symlinks
 src/Phing/QualityAssuranceSubsiteTask.php
 src/Phing/QualityAssuranceTask.php
+
+# Ignore external js libraries
+lib/themes/europa/js/libraries
