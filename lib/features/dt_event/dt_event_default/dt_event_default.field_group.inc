@@ -311,6 +311,7 @@ function dt_event_default_field_group_info() {
       2 => 'field_event_media',
       3 => 'field_event_more_links',
       4 => 'field_event_what_happened',
+      5 => 'field_core_publications',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -608,6 +609,7 @@ function dt_event_default_field_group_info() {
     'weight' => '12',
     'children' => array(
       0 => 'field_core_files',
+      1 => 'field_core_publications',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -706,7 +708,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Agenda',
-    'weight' => '51',
+    'weight' => '55',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(

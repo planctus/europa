@@ -183,6 +183,22 @@ Feature: Checking different state of events
       | status                                | 1                    |
     Then I should see "Follow the latest progress and get involved."
 
+  # Past event with publications.
+  Scenario: Event is in the past, should see publications.
+    Given "Publication" content:
+      | title                  | status |
+      | Publication test title | 1      |
+    And I am viewing an "Event" content:
+      | title                       | Event is in the past   |
+      | field_event_status          | no                     |
+      | field_event_is_fully_booked | no                     |
+      | field_event_date:value      | 1472724000             |
+      | field_event_date:value2     | 1472724000             |
+      | field_event_date:timezone   | Europe/Budapest        |
+      | status                      | 1                      |
+      | field_core_publications      | Publication test title |
+    Then I should see "Publication test title"
+
   # "Watch live streaming" button.
   Scenario: "Watch live streaming" button should appear on ongoing event.
   In case of the following conjunction:
