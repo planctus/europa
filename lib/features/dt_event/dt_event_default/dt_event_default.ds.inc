@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event_default.ds.inc
@@ -130,18 +129,8 @@ function dt_event_default_ds_field_settings_info() {
         ),
       ),
     ),
-    'event_livestream_header' => array(
-      'weight' => '65',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_reset',
-        ),
-      ),
-    ),
     'social_bookmark_webtools' => array(
-      'weight' => '68',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -162,7 +151,7 @@ function dt_event_default_ds_field_settings_info() {
       ),
     ),
     'dt_event_stream_embed' => array(
-      'weight' => '67',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -172,7 +161,12 @@ function dt_event_default_ds_field_settings_info() {
       ),
     ),
     'dt_event_stream_embed_intro' => array(
-      'weight' => '66',
+      'weight' => '2',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'dt_event_livestream_header' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -788,9 +782,9 @@ function dt_event_default_ds_layout_settings_info() {
         0 => 'event_livestream_title',
       ),
       'central' => array(
-        1 => 'group_section',
+        1 => 'dt_event_livestream_header',
         2 => 'dt_event_scribble_embed',
-        3 => 'event_livestream_header',
+        3 => 'group_section',
         4 => 'dt_event_stream_embed_intro',
         5 => 'dt_event_stream_embed',
         6 => 'social_bookmark_webtools',
@@ -801,9 +795,9 @@ function dt_event_default_ds_layout_settings_info() {
     ),
     'fields' => array(
       'event_livestream_title' => 'left_header',
-      'group_section' => 'central',
+      'dt_event_livestream_header' => 'central',
       'dt_event_scribble_embed' => 'central',
-      'event_livestream_header' => 'central',
+      'group_section' => 'central',
       'dt_event_stream_embed_intro' => 'central',
       'dt_event_stream_embed' => 'central',
       'social_bookmark_webtools' => 'central',

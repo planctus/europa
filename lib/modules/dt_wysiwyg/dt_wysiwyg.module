@@ -70,9 +70,6 @@ function dt_wysiwyg_wysiwyg_editor_settings_alter(&$settings, $context) {
     $settings['apply_source_formatting'] = 1;
     $settings['cleanup_on_startup'] = TRUE;
 
-    // Remove formats on paste.
-    $settings['forcePasteAsPlainText'] = TRUE;
-
     // Available default values: "p;h2;h3;h4;h5;h6".
     $settings['format_tags'] = "Paragraph;h2;h3;h4;h5;h6";
 

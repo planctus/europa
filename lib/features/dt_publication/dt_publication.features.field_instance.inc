@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_publication.features.field_instance.inc
@@ -653,7 +652,7 @@ function dt_publication_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_nal_countries',
-    'label' => 'NAL Countries',
+    'label' => 'Countries',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1589,7 +1588,7 @@ function dt_publication_field_default_field_instances() {
   t('Identifier of the publication');
   t('Last updated on');
   t('Link to publication');
-  t('NAL Countries');
+  t('Countries');
   t('Only use when you are not uploading the file to the CMS.');
   t('Origin');
   t('Publication type');

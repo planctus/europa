@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_page_extended.features.field_instance.inc
@@ -286,7 +285,7 @@ function dt_page_extended_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -380,7 +379,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 46,
+        'weight' => 55,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
@@ -473,7 +472,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 47,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -641,7 +640,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 48,
+        'weight' => 57,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -736,7 +735,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 47,
+        'weight' => 56,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -842,7 +841,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 45,
+        'weight' => 54,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -997,7 +996,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 44,
+        'weight' => 53,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1058,7 +1057,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 43,
+        'weight' => 52,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1137,7 +1136,7 @@ function dt_page_extended_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 50,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1280,6 +1279,70 @@ function dt_page_extended_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-basic_page-field_core_navigation_visibility'.
+  $field_instances['node-basic_page-field_core_navigation_visibility'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 56,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_navigation_visibility',
+    'label' => 'Turn off the display of the navigational blocks',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-basic_page-field_core_next_steps'.
   $field_instances['node-basic_page-field_core_next_steps'] = array(
     'bundle' => 'basic_page',
@@ -1380,7 +1443,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 51,
+        'weight' => 60,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1447,7 +1510,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 45,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -1486,7 +1549,7 @@ This will appear as a timeline on the page.
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1810,7 +1873,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 46,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
@@ -1866,7 +1929,7 @@ This will appear as a timeline on the page.
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1890,7 +1953,7 @@ This will appear as a timeline on the page.
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 48,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2041,7 +2104,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 49,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2101,7 +2164,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 44,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2171,7 +2234,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2195,7 +2258,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_country',
-    'label' => 'Publications Country',
+    'label' => 'Publications country',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2234,7 +2297,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 41,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2258,7 +2321,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_country_on',
-    'label' => 'Publications Country Visibility',
+    'label' => 'Publications country visibility',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2275,19 +2338,19 @@ This will appear as a timeline on the page.
     ),
   );
 
-  // Exported field_instance: 'node-basic_page-field_publications_type'.
-  $field_instances['node-basic_page-field_publications_type'] = array(
+  // Exported field_instance: 'node-basic_page-field_publications_tag'.
+  $field_instances['node-basic_page-field_publications_tag'] = array(
     'bundle' => 'basic_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Preselect the \'Publications Type\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Publications Type\' shown',
+    'description' => 'Preselect the \'tag\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'tag\' shown',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'i18n_taxonomy',
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 54,
+        'weight' => 51,
       ),
       'full' => array(
         'label' => 'above',
@@ -2316,8 +2379,130 @@ This will appear as a timeline on the page.
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
+    'field_name' => 'field_publications_tag',
+    'label' => 'Publications tag',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_publications_tag_on'.
+  $field_instances['node-basic_page-field_publications_tag_on'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Expose the filter \'tag\' to the user in the Publications Block.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 52,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_publications_tag_on',
+    'label' => 'Publications tag visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 40,
+    ),
+  );
+
+  // Exported field_instance: 'node-basic_page-field_publications_type'.
+  $field_instances['node-basic_page-field_publications_type'] = array(
+    'bundle' => 'basic_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Preselect the \'Publications type\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Publications type\' shown',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 54,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 38,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
     'field_name' => 'field_publications_type',
-    'label' => 'Publications Type',
+    'label' => 'Publications type',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2343,7 +2528,7 @@ This will appear as a timeline on the page.
       ),
     ),
     'deleted' => 0,
-    'description' => 'Exposes the filter \'Publications Type\' to the user in the Publications List Block',
+    'description' => 'Exposes the filter \'Publications type\' to the user in the Publications List Block',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2356,7 +2541,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 40,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2380,7 +2565,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_type_on',
-    'label' => 'Publications Type Visibility',
+    'label' => 'Publications type visibility',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2419,7 +2604,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 42,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2443,7 +2628,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_visibility',
-    'label' => 'Publications Visibility',
+    'label' => 'Publications visibility',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2484,7 +2669,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 43,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2508,7 +2693,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_year',
-    'label' => 'Publications Year',
+    'label' => 'Publications year',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -2557,7 +2742,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2581,7 +2766,7 @@ This will appear as a timeline on the page.
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_publications_year_on',
-    'label' => 'Publications Year Visibility',
+    'label' => 'Publications year visibility',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -2619,7 +2804,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 50,
+        'weight' => 59,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2687,7 +2872,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 49,
+        'weight' => 58,
       ),
       'structured_navigation' => array(
         'label' => 'above',
@@ -2767,7 +2952,7 @@ This will appear as a timeline on the page.
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 51,
       ),
       'structured_navigation' => array(
         'label' => 'hidden',
@@ -2827,7 +3012,8 @@ This will appear as a timeline on the page.
   t('Documents');
   t('Expose the filter \'Year\' to the user ins the Publications Block.');
   t('Expose the filter \'country\' to the user in the Publications Block.');
-  t('Exposes the filter \'Publications Type\' to the user in the Publications List Block');
+  t('Expose the filter \'tag\' to the user in the Publications Block.');
+  t('Exposes the filter \'Publications type\' to the user in the Publications List Block');
   t('Featured item');
   t('Files');
   t('Free field');
@@ -2844,16 +3030,19 @@ This will appear as a timeline on the page.
   t('Parent');
   t('Parent pages');
   t('Preselect the \'Country\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Country\' shown');
-  t('Preselect the \'Publications Type\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Publications Type\' shown');
+  t('Preselect the \'Publications type\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Publications type\' shown');
   t('Preselect the \'Year\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'Year\' shown');
+  t('Preselect the \'tag\', if the field is exposed it will be the pre selected value, if not exposed it will be the \'tag\' shown');
   t('Priority');
-  t('Publications Country');
-  t('Publications Country Visibility');
-  t('Publications Type');
-  t('Publications Type Visibility');
-  t('Publications Visibility');
-  t('Publications Year');
-  t('Publications Year Visibility');
+  t('Publications country');
+  t('Publications country visibility');
+  t('Publications tag');
+  t('Publications tag visibility');
+  t('Publications type');
+  t('Publications type visibility');
+  t('Publications visibility');
+  t('Publications year');
+  t('Publications year visibility');
   t('Quick navigational links');
   t('Related Topics');
   t('Related commissioners');
@@ -2878,6 +3067,7 @@ This will appear as a timeline on the page.
   t('The content of this field is used for when the Priority is displayed in a list element.');
   t('This Enables/Disables the Publications List Block on the Publications List');
   t('Title');
+  t('Turn off the display of the navigational blocks');
   t('Type selection');
   t('Used mainly for Call to Action button value.');
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * cwt_core.default_breakpoint_group.inc

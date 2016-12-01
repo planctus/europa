@@ -60,13 +60,23 @@
           <<?php print $left_wrapper; ?> class="col-md-3 <?php print $left_classes; ?>">
             <?php print $left; ?>
           </<?php print $left_wrapper; ?>>
-        <?php endif; ?>
-        <?php if (isset($left) && !empty($left)) : ?>
           <section class="section col-md-9 <?php print $central_classes; ?>">
         <?php else: ?>
           <section class="section col-md-12 <?php print $central_classes; ?>">
         <?php endif; ?>
           <?php print $central; ?>
+        </section>
+      </div>
+      <div class="row">
+        <?php if (isset($bottom_left) && !empty($bottom_left)) : ?>
+          <<?php print $bottom_left_wrapper; ?> class="col-md-3 <?php print $bottom_left_classes; ?>">
+            <?php print $bottom_left; ?>
+          </<?php print $bottom_left_wrapper; ?>>
+          <section class="section col-md-9 <?php print $bottom_central_classes; ?>">
+        <?php else: ?>
+          <section class="section col-md-12 <?php print $bottom_central_classes; ?>">
+        <?php endif; ?>
+          <?php print $bottom_central; ?>
         </section>
       </div>
     </div>
