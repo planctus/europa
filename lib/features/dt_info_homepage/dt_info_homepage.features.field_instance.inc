@@ -32,7 +32,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 34,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -160,6 +160,57 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-info_homepage-field_core_latest_visibility'.
+  $field_instances['node-info_homepage-field_core_latest_visibility'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 48,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_latest_visibility',
+    'label' => 'Latest block visibility',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-field_core_links'.
   $field_instances['node-info_homepage-field_core_links'] = array(
     'bundle' => 'info_homepage',
@@ -254,6 +305,57 @@ function dt_info_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-info_homepage-field_core_social_network_links'.
+  $field_instances['node-info_homepage-field_core_social_network_links'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'dt_social_network_links',
+        'settings' => array(
+          'icon_image_style' => '',
+        ),
+        'type' => 'social_network_link_default',
+        'weight' => 47,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_core_social_network_links',
+    'label' => 'Social Network Links',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'social_network' => 0,
+      'title' => 0,
+      'url' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'dt_social_network_links',
+      'settings' => array(),
+      'type' => 'social_network_link_default',
+      'weight' => 22,
+    ),
+  );
+
   // Exported field_instance: 'node-info_homepage-field_info_classes'.
   $field_instances['node-info_homepage-field_info_classes'] = array(
     'bundle' => 'info_homepage',
@@ -287,7 +389,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 29,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -476,7 +578,7 @@ function dt_info_homepage_field_default_field_instances() {
           'nexteuropa_title_listing_modifier' => '',
         ),
         'type' => 'link_listing_title',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -544,7 +646,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -567,6 +669,73 @@ function dt_info_homepage_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 16,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_latest_link'.
+  $field_instances['node-info_homepage-field_info_homepage_latest_link'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 46,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(),
+        'type' => 'link_button_call_for_action',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_latest_link',
+    'label' => 'Latest Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 0,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'entity_translation_sync' => FALSE,
+      'rel_remove' => 'default',
+      'title' => 'required',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 21,
     ),
   );
 
@@ -672,7 +841,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 32,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -754,7 +923,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 33,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -880,7 +1049,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'node',
@@ -935,7 +1104,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 37,
       ),
     ),
     'entity_type' => 'node',
@@ -1000,7 +1169,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 36,
       ),
     ),
     'entity_type' => 'node',
@@ -1040,8 +1209,11 @@ function dt_info_homepage_field_default_field_instances() {
   t('Header Background Image');
   t('Hero links');
   t('Introduction');
+  t('Latest Link');
+  t('Latest block visibility');
   t('Priorities link');
   t('Secondary links');
+  t('Social Network Links');
   t('Title');
   t('Topic intro');
   t('Topic link');

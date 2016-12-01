@@ -173,7 +173,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -288,6 +288,37 @@ function dt_info_homepage_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_latest|node|info_homepage|homepage_political';
+  $field_group->group_name = 'group_info_homepage_latest';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'homepage_political';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Latest',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_info_homepage_latest_link',
+      1 => 'announcement_block',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Latest',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_latest|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_info_homepage_political|node|info_homepage|form';
   $field_group->group_name = 'group_info_homepage_political';
   $field_group->entity_type = 'node';
@@ -303,6 +334,9 @@ function dt_info_homepage_field_group_info() {
       2 => 'field_info_homepage_about_button',
       3 => 'field_info_homepage_prior_link',
       4 => 'field_info_homepage_contacts',
+      5 => 'field_info_homepage_latest_link',
+      6 => 'field_core_social_network_links',
+      7 => 'field_core_latest_visibility',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -395,7 +429,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '27',
+    'weight' => '30',
     'children' => array(
       0 => 'field_info_secondary_links',
     ),
