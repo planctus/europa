@@ -69,87 +69,46 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 4,
+      'weight' => -2,
     ),
   );
 
-  // Exported field_instance: 'node-commemorative_coins-field_cc_issue'.
-  $field_instances['node-commemorative_coins-field_cc_issue'] = array(
+  // Exported field_instance: 'node-commemorative_coins-field_cc_issue_page'.
+  $field_instances['node-commemorative_coins-field_cc_issue_page'] = array(
     'bundle' => 'commemorative_coins',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If this issue is part of a collective issue, select the page about this collective issue here.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 10,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_cc_issue',
-    'label' => 'Collective issue',
+    'field_name' => 'field_cc_issue_page',
+    'label' => 'Collective issue page',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_track' => 'full_html_track',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -7,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'full_html_track' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'entityreference',
       'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 6,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
     ),
   );
 
@@ -229,7 +188,49 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-commemorative_coins-field_cc_volume'.
+  $field_instances['node-commemorative_coins-field_cc_volume'] = array(
+    'bundle' => 'commemorative_coins',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 11,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cc_volume',
+    'label' => 'Issuing volume',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 0,
     ),
   );
 
@@ -311,7 +312,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => -3,
     ),
   );
 
@@ -348,7 +349,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_core_image',
     'label' => 'Coin image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -388,7 +389,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -453,7 +454,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 2,
     ),
   );
 
@@ -500,7 +501,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => -1,
     ),
   );
 
@@ -682,12 +683,14 @@ function dt_commemorative_coins_default_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Coin image');
-  t('Collective issue');
+  t('Collective issue page');
   t('Date of issue');
   t('Description');
   t('Group content visibility');
   t('Groups audience');
+  t('If this issue is part of a collective issue, select the page about this collective issue here.');
   t('Issuing country or microstate');
+  t('Issuing volume');
   t('Official journal');
   t('Subject of commemoration');
   t('Title');

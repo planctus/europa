@@ -40,26 +40,46 @@ function dt_commemorative_coins_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_cc_issue'.
-  $field_bases['field_cc_issue'] = array(
+  // Exported field_base: 'field_cc_issue_page'.
+  $field_bases['field_cc_issue_page'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_cc_issue',
+    'field_name' => 'field_cc_issue_page',
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 1,
-    'module' => 'text',
+    'module' => 'entityreference',
     'settings' => array(
       'entity_translation_sync' => FALSE,
-      'max_length' => 255,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'remoteoverride_field_behavior' => array(
+            'status' => 0,
+          ),
+          'tmgmt_field_behavior' => array(
+            'status' => 0,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'basic_page' => 'basic_page',
+        ),
+      ),
+      'target_type' => 'node',
     ),
-    'translatable' => 1,
-    'type' => 'text',
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_cc_subject'.
@@ -82,6 +102,23 @@ function dt_commemorative_coins_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_cc_volume'.
+  $field_bases['field_cc_volume'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc_volume',
+    'indexes' => array(),
+    'locked' => 1,
+    'module' => 'number',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'number_integer',
   );
 
   return $field_bases;
