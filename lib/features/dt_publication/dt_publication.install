@@ -202,3 +202,12 @@ function dt_publication_update_7110() {
       ->execute();
   }
 }
+
+/**
+ * DTTSB-1321: Enable views_filters_selective.
+ */
+function dt_publication_update_7111() {
+  if (!module_exists('views_filters_selective')) {
+    module_enable(['views_filters_selective']);
+  }
+}

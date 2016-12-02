@@ -1579,6 +1579,7 @@ function dt_publication_field_default_field_instances() {
   t('Automatically set to "now" during initial publishing.');
   t('Choose a value to be shown in specific cases.');
   t('Contact information');
+  t('Countries');
   t('Description');
   t('Files');
   t('First published on');
@@ -1588,7 +1589,6 @@ function dt_publication_field_default_field_instances() {
   t('Identifier of the publication');
   t('Last updated on');
   t('Link to publication');
-  t('Countries');
   t('Only use when you are not uploading the file to the CMS.');
   t('Origin');
   t('Publication type');

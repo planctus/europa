@@ -143,7 +143,8 @@ function _dt_publication_listing_exposed($entity) {
       && $emw->field_publications_country_on->value() == 1
       || $emw->field_publications_year_on->value() == 1
       || $emw->field_publications_type_on->value() == 1
-      || $emw->field_publications_tag_on->value() == 1) {
+      || $emw->field_publications_tag_on->value() == 1
+      || $emw->field_publications_topic_on->value() == 1) {
     // Get the view with the exposed form.
     $view = views_get_view('publication_list');
     $display_id = 'page_1';
@@ -167,6 +168,25 @@ function _dt_publication_listing_exposed($entity) {
     ];
     // Add the ready exposed form to the render.
     $render['form'] = drupal_build_form('views_exposed_form', $form_state);
+
+    // Topic.
+    $predefined_topic = NULL;
+    if (!empty($node->field_publications_topic_eurovoc) && $predefined_topic = $node->field_publications_topic_eurovoc[LANGUAGE_NONE][0]['tid']) {
+      $render['form']['field_eurovoc_taxonomy_target_id_selective']['#value'] = $predefined_topic;
+
+      // Make sure the preselected term is in the options.
+      $options = $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options'];
+      if (!array_key_exists($predefined_topic, $options)) {
+        $term = i18n_taxonomy_localize_terms(taxonomy_term_load($predefined_topic));
+        $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options'][$term->tid] = $term->name;
+      }
+      if (!empty($_GET['field_eurovoc_taxonomy_target_id_selective'])) {
+        $render['form']['field_eurovoc_taxonomy_target_id_selective']['#value'] = $_GET['field_eurovoc_taxonomy_target_id_selective'];
+      }
+    }
+    if (!empty($render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All']) && $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] == t('- Any -')) {
+      $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] = t('- All topics -');
+    }
 
     // Country.
     $predefined_country = NULL;
@@ -314,6 +334,12 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
     else {
       $prev_filters = $view->display_handler->get_option('filters');
 
+      // Topic.
+      $predefined_topic = NULL;
+      if (!empty($node->field_publications_topic_eurovoc) && $predefined_topic = $node->field_publications_topic_eurovoc[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_eurovoc_taxonomy_target_id_selective']['value'][$predefined_topic] = $predefined_topic;
+      }
+
       // Country.
       $predefined_country = NULL;
       if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
@@ -339,6 +365,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
       }
 
       $exp_filters = [
+        'field_eurovoc_taxonomy_target_id_selective' => ['field_publications_topic_on', $predefined_topic],
         'field_core_nal_countries_tid_i18n' => ['field_publications_country_on', $predefined_country],
         'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
         'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
