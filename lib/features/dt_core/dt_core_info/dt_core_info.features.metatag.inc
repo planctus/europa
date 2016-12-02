@@ -11,8 +11,6 @@
 function dt_core_info_metatag_export_default() {
   $config = array();
 
-  $config = array();
-
   // Exported Metatag config instance: global.
   $config['global'] = array(
     'instance' => 'global',
@@ -25,9 +23,6 @@ function dt_core_info_metatag_export_default() {
       ),
       'abstract' => array(
         'value' => '',
-      ),
-      'keywords' => array(
-        'value' => 'European Commission, European Union, EU',
       ),
       'robots' => array(
         'value' => array(

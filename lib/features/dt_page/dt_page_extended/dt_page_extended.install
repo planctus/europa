@@ -36,3 +36,95 @@ function dt_page_extended_update_7101() {
     field_delete_instance($instance);
   }
 }
+
+/**
+ * DTTSB-1200: Move metatag keywords to field_core_keywords and clear it.
+ */
+function dt_page_extended_update_7102(&$sandbox) {
+  if (!isset($sandbox['max'])) {
+    // Query all nid of page.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'basic_page');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  // Manage this number of items per pass.
+  $limit = 50;
+
+  // Find all the existing nodes of type basic_page.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'basic_page')
+    ->entityOrderBy('entity_id', 'DESC')
+    ->range($sandbox['progress'], $limit);
+  $results = $query->execute();
+
+  if (isset($results['node'])) {
+    $ids = array_keys($results['node']);
+    $nodes = entity_load('node', $ids);
+
+    foreach ($nodes as $node) {
+      // If there's a value in metatag keywords,
+      // copy it to field_core_keywords
+      // and clear the metatag keywords so it fallbacks to default.
+      foreach ($node->metatags as $language => $metatag) {
+        if (isset($node->metatags[$language]['keywords']) && !empty($node->metatags[$language]['keywords']['value'])) {
+          $value = $node->metatags[$language]['keywords']['value'];
+          $value = drupal_substr(trim(str_replace("European Commission, European Union, EU", "", str_replace("European Commission, European Union, EU,", "", $value))), 0, 500);
+
+          if (!empty($value)) {
+            $node->field_core_keywords[$language][0]['value'] = $value;
+          }
+          unset($node->metatags[$language]['keywords']);
+          node_save($node);
+        }
+      }
+    }
+    // Clear memory.
+    unset($ids);
+    unset($nodes);
+    unset($node);
+  }
+  // Clear memory.
+  unset($results);
+  $sandbox['progress'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
+
+/**
+ * DTTSB-1200: Set default metatag settings to node list.
+ */
+function dt_page_extended_update_7103() {
+  $nids = [
+    1054, 1058, 1059, 1061, 1064, 1108, 1459, 1538, 1539, 1541, 1542,
+    1719, 1741, 1745, 1746, 1749, 1750, 1751, 1752, 1754, 1755, 1756,
+    1757, 1758, 1759, 1760, 1761, 1762, 1763, 1764, 1765, 1766, 1767,
+    1768, 1769, 1770, 1771, 1779, 1782, 1783, 1793, 1797, 1798, 1801,
+    1802, 1803, 1804, 1805, 1806, 1809, 1815, 1817, 1818, 1819, 1821,
+    1822, 1823, 1824, 1825, 1826, 1828, 1831, 1832, 1833, 1834, 1835,
+    1836, 1837, 1902, 1922, 1923, 1925, 1926, 1929, 1931, 1935, 1936,
+    1941, 1960, 1961, 1962, 1972, 1975, 1976, 1978, 1989, 2000, 2001,
+    2002, 2003, 2009, 2010, 2013, 2022,
+  ];
+  $nodes = entity_load('node', $nids);
+
+  foreach ($nodes as $node) {
+    foreach ($node->metatags as $language => $metatag) {
+      $node->metatags[$language] = [
+        'revisit-after' => [
+          'value' => 15,
+          'period' => 'day',
+        ],
+      ];
+      node_save($node);
+    }
+  }
+}

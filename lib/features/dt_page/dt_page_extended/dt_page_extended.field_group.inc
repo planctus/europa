@@ -119,6 +119,7 @@ function dt_page_extended_field_group_info() {
       3 => 'field_core_latest_visibility',
       4 => 'scheduler_settings',
       5 => 'language',
+      6 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -480,6 +480,28 @@ function dt_core_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_core_keywords'.
+  $field_bases['field_core_keywords'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_core_keywords',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'text',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max_length' => 500,
+    ),
+    'translatable' => 1,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_core_latest_visibility'.
   $field_bases['field_core_latest_visibility'] = array(
     'active' => 1,
