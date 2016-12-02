@@ -493,8 +493,6 @@ function dt_publication_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => 1,
           'use_content_language' => TRUE,
           'view_mode' => 'file',
         ),

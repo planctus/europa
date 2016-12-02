@@ -90,27 +90,29 @@ For example, a document published on an unknown date in 2015 can be dated as 1/1
       ),
       'file' => array(
         'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
+        'module' => 'nexteuropa_formatters',
+        'settings' => array(
+          'show_translations' => TRUE,
+        ),
+        'type' => 'link_button_download',
         'weight' => 0,
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'text' => 'Download [file:name]',
+          'show_translations' => TRUE,
         ),
-        'type' => 'file_download_link',
+        'type' => 'link_button_download',
         'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'text' => 'Download [file:name]',
+          'show_translations' => TRUE,
         ),
-        'type' => 'file_download_link',
+        'type' => 'link_button_download',
         'weight' => 0,
       ),
     ),
@@ -168,28 +170,36 @@ For example, a document published on an unknown date in 2015 can be dated as 1/1
       'default' => array(
         'label' => 'above',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'show_translations' => TRUE,
+        ),
         'type' => 'link_button_download',
         'weight' => 2,
       ),
       'file' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'show_translations' => TRUE,
+        ),
         'type' => 'link_button_download',
         'weight' => 1,
       ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'show_translations' => TRUE,
+        ),
         'type' => 'link_button_download',
         'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'show_translations' => TRUE,
+        ),
         'type' => 'link_button_download',
         'weight' => 1,
       ),

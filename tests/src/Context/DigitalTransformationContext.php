@@ -482,26 +482,28 @@ class DigitalTransformationContext extends RawDrupalContext {
    *
    * This is currently the only working solution. This can be improved.
    *
-   * @Then I get the file :filename after clicking :link
+   * @Then /^I get the file "([^"]*)" after clicking "([^"]*)"(?: in the "([^"]*)" element)?$/i
    */
-  public function iGetTheFileAfterClicking($filename, $link) {
-    // Get the link.
-    $link = $this->getSession()->getPage()->findLink($link);
+  public function iGetTheFileAfterClicking($filename, $link, $element = NULL) {
+    $element = !is_null($element) ? $element : 'body';
 
-    // Go to the actual url.
-    $matches = [];
-    preg_match('/file\/(\d*)\/download/', $link->getAttribute('href'), $matches);
+    if ($link = $this->getSession()->getPage()->find('css', $element)->findLink($link)) {
+      // Go to the actual url.
+      $matches = [];
+      preg_match('/file\/(\d*)\/download/', $link->getAttribute('href'), $matches);
 
-    if (isset($matches[1]) && $file_entity = entity_load('file', [$matches[1]])) {
-      $file_entity = reset($file_entity);
+      if (isset($matches[1]) && $file_entity = entity_load('file', [$matches[1]])) {
+        $file_entity = reset($file_entity);
 
-      if ($file_entity->filename !== $filename) {
+        if ($file_entity->filename == $filename) {
+          // Everything is ok.
+          return TRUE;
+        }
         throw new ExpectationException('File download goes to the file ' . $file_entity->filename . ' instead of ' . $filename . '.', $this->getSession());
       }
-    }
-    else {
       throw new ExpectationException('Unable to load the file.', $this->getSession());
     }
+    throw new ExpectationException('Unable to find the download link.', $this->getSession());
   }
 
   /**

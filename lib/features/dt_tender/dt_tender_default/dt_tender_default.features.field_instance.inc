@@ -260,7 +260,6 @@ function dt_tender_default_field_default_field_instances() {
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'file',
         ),
