@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_person.features.field_instance.inc
@@ -41,7 +40,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 47,
       ),
       'meta' => array(
         'label' => 'above',
@@ -232,7 +231,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 43,
       ),
       'meta' => array(
         'label' => 'above',
@@ -298,7 +297,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 45,
       ),
       'meta' => array(
         'label' => 'above',
@@ -398,7 +397,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -550,7 +549,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -636,7 +635,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 46,
       ),
       'meta' => array(
         'label' => 'above',
@@ -722,7 +721,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 48,
       ),
       'meta' => array(
         'label' => 'above',
@@ -792,7 +791,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 44,
       ),
       'meta' => array(
         'label' => 'above',
@@ -874,7 +873,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -960,7 +959,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 42,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1046,7 +1045,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 41,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1141,7 +1140,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 36,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1232,7 +1231,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 39,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1294,7 +1293,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 38,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1420,7 +1419,7 @@ function dt_person_field_default_field_instances() {
           ),
           'fallback_image_style' => '',
           'image_link' => '',
-          'picture_mapping' => 'person_meta',
+          'picture_mapping' => 'person_job',
         ),
         'type' => 'picture',
         'weight' => 4,
@@ -1530,7 +1529,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1597,7 +1596,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1692,7 +1691,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1791,7 +1790,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 40,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1859,7 +1858,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 37,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1934,7 +1933,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2017,7 +2016,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',

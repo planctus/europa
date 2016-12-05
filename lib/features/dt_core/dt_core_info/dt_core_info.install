@@ -44,6 +44,7 @@ function dt_core_info_install() {
     'dt_law_default',
     'dt_announcement_news_prd_importer',
     'dt_commemorative_coins_default',
+    'dt_person_press_contacts_list',
   ];
   module_enable($features);
 
@@ -227,4 +228,11 @@ function dt_core_info_update_7121() {
  */
 function dt_core_info_update_7122() {
   module_enable(['dt_commemorative_coins_default']);
+}
+
+/**
+ * DTTSB-1244: Enable press contacts list.
+ */
+function dt_core_info_update_7123() {
+  module_enable(['dt_person_press_contacts_list']);
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_job.features.inc
@@ -19,7 +18,7 @@ function dt_job_default_cer() {
     "cer_right" : { "und" : [ { "path" : "node:job:field_core_persons" } ] },
     "entity_type" : "cer",
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-8227-0",
+    "entity_translation_handler_id" : "cer-eid-10-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;
@@ -38,6 +37,13 @@ function dt_job_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function dt_job_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
