@@ -275,7 +275,25 @@ class DigitalTransformationContext extends RawDrupalContext {
       ->find('css', 'head > meta[name="' . $metatag . '"]');
 
     if (!is_object($element) || $value !== $element->getAttribute('content')) {
-      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag does not contain %s', $value), $this->getSession());
+      throw new ExpectationException(sprintf('The ' . $metatag . ' metatag is not equal to %s', $value), $this->getSession());
+    }
+  }
+
+  /**
+   * Search part of the canonical link.
+   *
+   * @Then the canonical link should contain the value :value
+   *
+   * @throws ExpectationException
+   *   If it does not contain.
+   */
+  public function theMetatagAttributeShouldContainTheValue($value) {
+    $element = $this->getSession()
+      ->getPage()
+      ->find('css', 'head > link[rel="canonical"]');
+
+    if (!is_object($element) || FALSE === strpos($element->getAttribute('href'), $value)) {
+      throw new ExpectationException(sprintf('The canonical link does not contain %s', $value), $this->getSession());
     }
   }
 
