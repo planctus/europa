@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_department.field_group.inc
