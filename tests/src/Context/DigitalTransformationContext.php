@@ -739,4 +739,13 @@ class DigitalTransformationContext extends RawDrupalContext {
     variable_set($variable, $value);
   }
 
+  /**
+   * Waits for a second.
+   *
+   * @When I wait for a second
+   */
+  public function iWaitForASecond() {
+    sleep(1);
+  }
+
 }

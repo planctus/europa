@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_job.features.field_base.inc
@@ -11,13 +10,13 @@
 function dt_job_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_core_jobs'.
-  $field_bases['field_core_jobs'] = array(
+  // Exported field_base: 'field_core_job'.
+  $field_bases['field_core_job'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_jobs',
+    'field_name' => 'field_core_job',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -53,13 +52,13 @@ function dt_job_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_core_job'.
-  $field_bases['field_core_job'] = array(
+  // Exported field_base: 'field_core_jobs'.
+  $field_bases['field_core_jobs'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_core_job',
+    'field_name' => 'field_core_jobs',
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

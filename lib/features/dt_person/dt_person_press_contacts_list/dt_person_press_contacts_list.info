@@ -1,0 +1,16 @@
+name = dt_person_press_contacts_list
+description = Listing page for press contacts persons
+core = 7.x
+package = NextEuropa Digital Transformation
+php = 5.6
+dependencies[] = context
+dependencies[] = entity
+dependencies[] = nexteuropa_views
+dependencies[] = views
+features[context][] = press_contacts_list
+features[ctools][] = context:context:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = press_contacts
+features_exclude[dependencies][ctools] = ctools
+multisite_version = 2.2

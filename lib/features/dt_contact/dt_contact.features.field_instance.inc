@@ -28,7 +28,7 @@ function dt_contact_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -84,7 +84,7 @@ function dt_contact_field_default_field_instances() {
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -145,7 +145,7 @@ function dt_contact_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -217,10 +217,11 @@ function dt_contact_field_default_field_instances() {
         'weight' => 4,
       ),
       'job' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_plain',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -496,15 +497,9 @@ function dt_contact_field_default_field_instances() {
       ),
       'job' => array(
         'label' => 'inline',
-        'module' => 'addressfield',
-        'settings' => array(
-          'format_handlers' => array(
-            'address' => 'address',
-          ),
-          'use_widget_handlers' => 1,
-        ),
-        'type' => 'addressfield_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -580,7 +575,7 @@ function dt_contact_field_default_field_instances() {
         'module' => 'dt_social_network_links',
         'settings' => array(),
         'type' => 'social_network_link_theme_css',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -640,7 +635,7 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -703,7 +698,7 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -774,7 +769,7 @@ function dt_contact_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',

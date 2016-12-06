@@ -1,34 +1,34 @@
 <?php
 /**
  * @file
- * dt_department.context.inc
+ * dt_person_press_contacts_list.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function dt_department_context_default_contexts() {
+function dt_person_press_contacts_list_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'departments_landing_page';
-  $context->description = '';
-  $context->tag = 'About EC';
+  $context->name = 'press_contacts_list';
+  $context->description = 'The page listing all the press contacts';
+  $context->tag = 'Digital Transformation';
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'department:page' => 'department:page',
+        'press_contacts:page' => 'press_contacts:page',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views--exp-department-page' => array(
+        'views--exp-press_contacts-page' => array(
           'module' => 'views',
-          'delta' => '-exp-department-page',
+          'delta' => '-exp-press_contacts-page',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -39,8 +39,9 @@ function dt_department_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('About EC');
-  $export['departments_landing_page'] = $context;
+  t('Digital Transformation');
+  t('The page listing all the press contacts');
+  $export['press_contacts_list'] = $context;
 
   return $export;
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_department.features.taxonomy.inc
@@ -19,6 +18,7 @@ function dt_department_taxonomy_default_vocabularies() {
       'weight' => 0,
       'language' => 'und',
       'i18n_mode' => 1,
+      'entity_type' => 'taxonomy_vocabulary',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
