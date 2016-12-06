@@ -132,6 +132,7 @@ Feature: File content type
       | field_core_date_published:value | 1400980800        |
       | field_core_date_published:value | 1400980800        |
     When I click "Available languages (1)"
+    And I wait for a second
     Then I should see "Nederlands version" in the ".file__translations .file__title" element
     And I get the file "test_nl.pdf" after clicking "Download" in the ".file__translations" element
     # Check for embedding into a body field.
@@ -143,6 +144,7 @@ Feature: File content type
       | language    | en                                           |
     Then I should see an ".node.node-file.node-teaser" element
     When I click "Available languages (1)"
+    And I wait for a second
     Then I should see "Nederlands version" in the ".file__translations .file__title" element
     And I get the file "test_nl.pdf" after clicking "Download" in the ".file__translations" element
 
