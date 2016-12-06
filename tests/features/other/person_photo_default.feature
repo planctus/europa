@@ -18,7 +18,6 @@ Feature: Event person photo default
       | Speaker event | 1      | Joan Person        | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel |
     And I index all indexes
     Given I am on "events/speaker-event"
-    Then show last response
     Then I see the "img.img-responsive" element with the "src" attribute set to "person_photo_female" in the "speakers" region
 
     # "Meta" view mode
