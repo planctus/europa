@@ -32,7 +32,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 38,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -188,7 +188,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -207,7 +207,7 @@ function dt_info_homepage_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -301,7 +301,7 @@ function dt_info_homepage_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -332,7 +332,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 32,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -352,7 +352,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'dt_social_network_links',
       'settings' => array(),
       'type' => 'social_network_link_default',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -389,7 +389,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 33,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -545,7 +545,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -615,7 +615,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -643,10 +643,20 @@ function dt_info_homepage_field_default_field_instances() {
         'weight' => 0,
       ),
       'homepage_political' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'nexteuropa_listing_columns' => 'default',
+          'nexteuropa_listing_item_modifier' => '',
+          'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
+          'use_content_language' => 1,
+          'view_mode' => 'hero_links',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 6,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -668,6 +678,88 @@ function dt_info_homepage_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-info_homepage-field_info_homepage_hero_linktxt'.
+  $field_instances['node-info_homepage-field_info_homepage_hero_linktxt'] = array(
+    'bundle' => 'info_homepage',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 49,
+      ),
+      'homepage_informational' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'homepage_political' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 5,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_info_homepage_hero_linktxt',
+    'label' => 'Hero link text',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'basic_html' => 'basic_html',
+          'filtered_html' => 'filtered_html',
+          'full_html' => 'full_html',
+          'full_html_track' => 'full_html_track',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'basic_html' => array(
+              'weight' => 5,
+            ),
+            'filtered_html' => array(
+              'weight' => -9,
+            ),
+            'full_html' => array(
+              'weight' => -10,
+            ),
+            'full_html_track' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => -8,
+            ),
+          ),
+        ),
+      ),
+      'entity_translation_sync' => FALSE,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
       'weight' => 16,
     ),
   );
@@ -735,7 +827,7 @@ function dt_info_homepage_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -841,7 +933,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 36,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -923,7 +1015,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 37,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1049,7 +1141,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 39,
       ),
     ),
     'entity_type' => 'node',
@@ -1104,7 +1196,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 41,
       ),
     ),
     'entity_type' => 'node',
@@ -1169,7 +1261,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 40,
       ),
     ),
     'entity_type' => 'node',
@@ -1207,6 +1299,7 @@ function dt_info_homepage_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Header Background Image');
+  t('Hero link text');
   t('Hero links');
   t('Introduction');
   t('Latest Link');

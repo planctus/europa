@@ -77,3 +77,19 @@ Feature: Political Homepage different layout
     And I fill in "field_core_social_network_links[en][0][url]" with "http://facebook.com/"
     And I press "Save"
     Then I should see "Facebook"
+
+  Scenario: Commissioners block is visible and links to the defined urls
+    Given I am logged in as a user with the "administrator" role
+    Given "Featured item" content:
+      | title         | language | status | field_core_legacy_link           | field_feat_item_image |
+      | Featured ext1 | en       | 1      | test - http://ec.europa.eu/test1 | img-president.jpg     |
+      | Featured ext2 | en       | 1      | test - http://ec.europa.eu/test2 | img-commission.jpg    |
+    Given I am viewing a "Homepage" content:
+      | title                            | Frontpage title                      |
+      | field_info_homepage_hero_linktxt | Hero link text above featured items. |
+      | field_info_homepage_hero_links   | Featured ext1, Featured ext2         |
+      | language                         | en                                   |
+      | status                           | 1                                    |
+    Then I should see "Hero link text above featured items." in the ".hero-links__text p" element
+    And I should see the link "Featured ext1" linking to "http://ec.europa.eu/test1"
+    And I should see the link "Featured ext2" linking to "http://ec.europa.eu/test2"
