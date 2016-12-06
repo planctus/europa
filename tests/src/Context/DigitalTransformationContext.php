@@ -715,11 +715,12 @@ class DigitalTransformationContext extends RawDrupalContext {
   }
 
   /**
-   * @Then show content of :arg1
+   * Waits for a second.
+   *
+   * @When I wait for a second
    */
-  public function showContentOf($arg1) {
-    $element = $this->getSession()->getPage()->find('css', $arg1);
-    throw new ExpectationException($element->getHtml(), $this->getSession());
+  public function iWaitForASecond() {
+    sleep(1);
   }
 
 }
