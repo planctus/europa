@@ -188,7 +188,6 @@ Feature: Aliases based on parent node's URL alias
     And I click "Page Architecture"
     And I fill in "edit-field-core-parents-und-0-target-id" with "Second "
     And I wait for AJAX to finish
-    Then show last response
     Then I should see "Second law title"
     And I should not see "Second page title"
 
