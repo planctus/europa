@@ -87,7 +87,13 @@
                     <!-- File ID -->
                     <xs:element name="fid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
                     <!-- Publication ID -->
-                    <xs:element name="pid" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pid" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Type of file -->
                     <xs:element name="type_of_file" minOccurs="0" maxOccurs="1">
                       <xs:simpleType>
@@ -133,7 +139,13 @@
                       </xs:simpleType>
                     </xs:element>
                     <!-- Unique identifier -->
-                    <xs:element name="file_unique_identifier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="file_unique_identifier" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([^,]+)(,[^,]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -211,13 +223,24 @@
                   <xs:sequence>
                     <!-- Publication  ID -->
                     <xs:element name="pid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Collection IDs -->
+                    <xs:element name="cid" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Publication type -->
                     <xs:element name="publication_type" minOccurs="0" maxOccurs="1">
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
+                          <xs:enumeration value="National Parliament opinion and Commission reply"/>
                           <xs:enumeration value="National Plan"/>
                           <xs:enumeration value="Planning and management documents"/>
+                          <xs:enumeration value="Poster"/>
                           <xs:enumeration value="Progress Report"/>
+                          <xs:enumeration value="Study"/>
                           <xs:enumeration value="Communication"/>
                           <xs:enumeration value="Report"/>
                           <xs:enumeration value="White Paper"/>
@@ -227,7 +250,7 @@
                           <xs:enumeration value="Official Document"/>
                           <xs:enumeration value="National Report"/>
                           <xs:enumeration value="Law"/>
-                          <xs:enumeration value="Brochures"/>
+                          <xs:enumeration value="Broc"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
@@ -236,7 +259,13 @@
                     <!-- Last updated on -->
                     <xs:element name="date_updated" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
                     <!-- Published by -->
-                    <xs:element name="publication_authors" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="publication_authors" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Publication origin -->
                     <xs:element name="publication_origin" minOccurs="0" maxOccurs="1">
                       <xs:simpleType>
@@ -258,15 +287,53 @@
                     <!-- Identifier of the publication-->
                     <xs:element name="publication_referenceno" type="xs:string" minOccurs="0" maxOccurs="1"/>
                     <!-- Related topic -->
-                    <xs:element name="core_topics" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="core_topics" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Related content -->
-                    <xs:element name="publication_rel_content" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="publication_rel_content" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Related department -->
-                    <xs:element name="core_departments" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="core_departments" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Related policy -->
-                    <xs:element name="core_policies" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="core_policies" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                     <!-- Taxonomy (EUROVOC) -->
-                    <xs:element name="eurovoc_taxonomy" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="eurovoc_taxonomy" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Link to publication -->
+                    <xs:element name="core_legacy_link" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="[h][t]{2}[p]://.*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -274,6 +341,186 @@
           </xs:complexType>
         </xs:element>
         <!-- Publications end -->
+
+        <!-- Collection translations -->
+        <xs:element name="collection_translations">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Publication translation -->
+              <xs:element name="collection_translation" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Language -->
+                    <xs:element name="language" minOccurs="1" maxOccurs="1" nillable="false">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="2"/>
+                          <xs:maxLength value="4"/>
+                          <xs:enumeration value="bg"/>
+                          <xs:enumeration value="cs"/>
+                          <xs:enumeration value="da"/>
+                          <xs:enumeration value="de"/>
+                          <xs:enumeration value="et"/>
+                          <xs:enumeration value="el"/>
+                          <xs:enumeration value="en"/>
+                          <xs:enumeration value="es"/>
+                          <xs:enumeration value="fr"/>
+                          <xs:enumeration value="ga"/>
+                          <xs:enumeration value="hr"/>
+                          <xs:enumeration value="it"/>
+                          <xs:enumeration value="lv"/>
+                          <xs:enumeration value="lt"/>
+                          <xs:enumeration value="hu"/>
+                          <xs:enumeration value="mt"/>
+                          <xs:enumeration value="nl"/>
+                          <xs:enumeration value="pl"/>
+                          <xs:enumeration value="pt-pt"/>
+                          <xs:enumeration value="ro"/>
+                          <xs:enumeration value="sk"/>
+                          <xs:enumeration value="sl"/>
+                          <xs:enumeration value="fi"/>
+                          <xs:enumeration value="sv"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Collection ID -->
+                    <xs:element name="cid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+                    <!-- Title -->
+                    <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Description -->
+                    <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Summary of abstract of the publication -->
+                    <xs:element name="summary_of_abstract" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Contact information -->
+                    <xs:element name="core_contact" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Collection translations end -->
+
+        <!-- Collection -->
+        <xs:element name="collections">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Collection -->
+              <xs:element name="collection" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <!-- Collection ID -->
+                    <xs:element name="cid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <!-- Publication type -->
+                    <xs:element name="publication_type" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="National Parliament opinion and Commission reply"/>
+                          <xs:enumeration value="National Plan"/>
+                          <xs:enumeration value="Planning and management documents"/>
+                          <xs:enumeration value="Poster"/>
+                          <xs:enumeration value="Progress Report"/>
+                          <xs:enumeration value="Study"/>
+                          <xs:enumeration value="Communication"/>
+                          <xs:enumeration value="Report"/>
+                          <xs:enumeration value="White Paper"/>
+                          <xs:enumeration value="Impact Assessment"/>
+                          <xs:enumeration value="Working Document"/>
+                          <xs:enumeration value="Consultation"/>
+                          <xs:enumeration value="Official Document"/>
+                          <xs:enumeration value="National Report"/>
+                          <xs:enumeration value="Law"/>
+                          <xs:enumeration value="Broc"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- First published on -->
+                    <xs:element name="date_published" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                    <!-- Last updated on -->
+                    <xs:element name="date_updated" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                    <!-- Published by -->
+                    <xs:element name="publication_authors" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Publication origin -->
+                    <xs:element name="publication_origin" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="EC Annual reports"/>
+                          <xs:enumeration value="EU Bookshop"/>
+                          <xs:enumeration value="EU Publications Office"/>
+                          <xs:enumeration value="EUR-lex"/>
+                          <xs:enumeration value="Eurofound"/>
+                          <xs:enumeration value="No Source"/>
+                          <xs:enumeration value="Open data portal"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- NAL Countries -->
+                    <xs:element name="core_nal_countries" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Tags -->
+                    <xs:element name="core_tags" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Identifier of the publication-->
+                    <xs:element name="publication_referenceno" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <!-- Related topic -->
+                    <xs:element name="core_topics" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Related content -->
+                    <xs:element name="publication_rel_content" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Related department -->
+                    <xs:element name="core_departments" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Related policy -->
+                    <xs:element name="core_policies" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Taxonomy (EUROVOC) -->
+                    <xs:element name="eurovoc_taxonomy" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="([0-9]+)(,[0-9]+)*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <!-- Link to collection -->
+                    <xs:element name="core_legacy_link" minOccurs="0" maxOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:pattern value="[h][t]{2}[p]://.*"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <!-- Collection end -->
 
       </xs:sequence>
     </xs:complexType>
