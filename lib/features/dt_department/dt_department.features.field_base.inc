@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_department.features.field_base.inc
