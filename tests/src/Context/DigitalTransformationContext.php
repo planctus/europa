@@ -714,4 +714,12 @@ class DigitalTransformationContext extends RawDrupalContext {
     variable_set($variable, $value);
   }
 
+  /**
+   * @Then show content of :arg1
+   */
+  public function showContentOf($arg1) {
+    $element = $this->getSession()->getPage()->find('css', $arg1);
+    throw new ExpectationException($element->getHtml(), $this->getSession());
+  }
+
 }

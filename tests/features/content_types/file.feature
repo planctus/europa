@@ -118,6 +118,7 @@ Feature: File content type
     Then I get the file "test_nl.pdf" after clicking "Download"
     # Check if translation is visible on full view mode.
     When I click "Available languages (1)"
+    Then show content of ".file__translations"
     Then I should see "English version" in the ".file__translations" element
     And I get the file "test_en.pdf" after clicking "Downloaden" in the ".file__translations" element
     # Check for translations when embedding into a publication.
