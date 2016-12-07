@@ -1,5 +1,6 @@
 @api @information @dt_featured_item @dt_info_homepage @dt_shared_functions
-Feature: Field groups should follow the content language and should be translatable.
+Feature: Field groups should follow the content language and should be
+  translatable.
 
   Background:
     Given "featured_item" content:

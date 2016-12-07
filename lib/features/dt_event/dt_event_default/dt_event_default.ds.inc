@@ -42,11 +42,6 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_collection';
   $ds_fieldsetting->settings = array(
-    'about_heading' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'current_and_upcoming_events' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -84,6 +79,11 @@ function dt_event_default_ds_field_settings_info() {
         ),
       ),
     ),
+    'dt_event_about_heading' => array(
+      'weight' => '11',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'announcement_block' => array(
       'weight' => '9',
       'label' => 'hidden',
@@ -92,11 +92,6 @@ function dt_event_default_ds_field_settings_info() {
         'show_featured_item' => 1,
         'show_social_media' => 1,
         'label' => 'Latest',
-        'ft' => array(),
-      ),
-    ),
-    'field_core_contact' => array(
-      'formatter_settings' => array(
         'ft' => array(),
       ),
     ),
@@ -117,18 +112,6 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'event';
   $ds_fieldsetting->view_mode = 'event_livestream';
   $ds_fieldsetting->settings = array(
-    'event_livestream_title' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'prefix' => '<h1>',
-          'suffix' => '</h1>',
-        ),
-      ),
-    ),
     'social_bookmark_webtools' => array(
       'weight' => '4',
       'label' => 'hidden',
@@ -169,6 +152,14 @@ function dt_event_default_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'dt_event_livestream_title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|event|event_livestream'] = $ds_fieldsetting;
@@ -261,7 +252,7 @@ function dt_event_default_ds_field_settings_info() {
     'field_core_departments' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Organizer',
+          'lb' => 'Organiser',
         ),
       ),
     ),
@@ -298,7 +289,7 @@ function dt_event_default_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'event_related_events' => array(
-      'weight' => '17',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -694,46 +685,44 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_advanced_top_conditional';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'title',
+        3 => 'field_core_tagline',
+      ),
       'top_bottom_left' => array(
-        0 => 'past_events',
-        2 => 'current_and_upcoming_events',
-        8 => 'group_events',
+        1 => 'current_and_upcoming_events',
+        2 => 'past_events',
+        6 => 'group_events',
         18 => 'group_events_ong_fut',
         19 => 'group_events_past',
       ),
-      'left_header' => array(
-        0 => 'title',
-        4 => 'field_core_tagline',
-      ),
-      'central' => array(
-        1 => 'about_heading',
-        5 => 'body',
-        10 => 'group_about',
-        11 => 'group_related_links',
-        12 => 'field_core_links',
-        13 => 'group_contact',
-        14 => 'announcement_block',
-        15 => 'field_core_contact',
-        16 => 'social_bookmark_webtools',
-        17 => 'group_latest_section',
-      ),
       'top_middle_left' => array(
-        6 => 'field_core_media',
+        4 => 'field_core_media',
       ),
       'top_middle_right' => array(
-        7 => 'field_core_introduction',
+        5 => 'field_core_introduction',
       ),
       'top_bottom_right' => array(
-        9 => 'field_core_social_network_links',
+        7 => 'field_core_social_network_links',
+      ),
+      'central' => array(
+        8 => 'group_about',
+        9 => 'group_related_links',
+        10 => 'field_core_links',
+        11 => 'group_contact',
+        12 => 'announcement_block',
+        13 => 'social_bookmark_webtools',
+        14 => 'field_core_contact',
+        15 => 'group_latest_section',
+        16 => 'dt_event_about_heading',
+        17 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'left_header',
-      'past_events' => 'top_bottom_left',
       'current_and_upcoming_events' => 'top_bottom_left',
-      'about_heading' => 'central',
+      'past_events' => 'top_bottom_left',
       'field_core_tagline' => 'left_header',
-      'body' => 'central',
       'field_core_media' => 'top_middle_left',
       'field_core_introduction' => 'top_middle_right',
       'group_events' => 'top_bottom_left',
@@ -743,9 +732,11 @@ function dt_event_default_ds_layout_settings_info() {
       'field_core_links' => 'central',
       'group_contact' => 'central',
       'announcement_block' => 'central',
-      'field_core_contact' => 'central',
       'social_bookmark_webtools' => 'central',
+      'field_core_contact' => 'central',
       'group_latest_section' => 'central',
+      'dt_event_about_heading' => 'central',
+      'body' => 'central',
       'group_events_ong_fut' => 'top_bottom_left',
       'group_events_past' => 'top_bottom_left',
     ),
@@ -778,11 +769,8 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'event_livestream_title',
-      ),
       'central' => array(
-        1 => 'dt_event_livestream_header',
+        0 => 'dt_event_livestream_header',
         2 => 'dt_event_scribble_embed',
         3 => 'group_section',
         4 => 'dt_event_stream_embed_intro',
@@ -792,10 +780,13 @@ function dt_event_default_ds_layout_settings_info() {
         8 => 'group_video',
         9 => 'group_chat',
       ),
+      'left_header' => array(
+        1 => 'dt_event_livestream_title',
+      ),
     ),
     'fields' => array(
-      'event_livestream_title' => 'left_header',
       'dt_event_livestream_header' => 'central',
+      'dt_event_livestream_title' => 'left_header',
       'dt_event_scribble_embed' => 'central',
       'group_section' => 'central',
       'dt_event_stream_embed_intro' => 'central',
@@ -829,17 +820,23 @@ function dt_event_default_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_3_9_advanced_top_conditional';
   $ds_layout->settings = array(
     'regions' => array(
+      'left_header' => array(
+        0 => 'group_meta',
+        2 => 'title',
+        4 => 'dt_event_header',
+        9 => 'field_event_type',
+      ),
       'central' => array(
-        0 => 'dt_event_date_and_time',
+        1 => 'dt_event_date_and_time',
         3 => 'dt_event_address_oneline',
         6 => 'hr_2',
-        8 => 'field_event_available_languages',
+        7 => 'field_event_available_languages',
         10 => 'field_event_target_audience',
-        12 => 'field_core_departments',
+        13 => 'field_core_departments',
         15 => 'field_event_parent_events',
         17 => 'field_event_website',
-        20 => 'group_event_audience',
-        22 => 'dt_event_scribble_embed',
+        21 => 'dt_event_scribble_embed',
+        22 => 'group_event_audience',
         23 => 'group_image_video',
         24 => 'group_event_documents',
         25 => 'group_event_speakers',
@@ -860,23 +857,17 @@ function dt_event_default_ds_layout_settings_info() {
         40 => 'field_core_publications',
         41 => 'field_core_gallery',
       ),
-      'left_header' => array(
-        1 => 'group_meta',
-        2 => 'title',
-        4 => 'dt_event_header',
-        9 => 'field_event_type',
-      ),
       'top_top' => array(
         5 => 'dt_event_status_message_1',
       ),
       'top_middle_left' => array(
-        7 => 'field_event_media',
+        8 => 'field_event_media',
       ),
       'top_middle_right' => array(
         11 => 'field_core_introduction',
-        13 => 'hr_1',
+        12 => 'hr_1',
         14 => 'group_event_context_nav',
-        21 => 'field_core_topics',
+        20 => 'field_core_topics',
       ),
       'top_bottom_left' => array(
         16 => 'group_event_whathappened',
@@ -887,29 +878,29 @@ function dt_event_default_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'dt_event_date_and_time' => 'central',
       'group_meta' => 'left_header',
+      'dt_event_date_and_time' => 'central',
       'title' => 'left_header',
       'dt_event_address_oneline' => 'central',
       'dt_event_header' => 'left_header',
       'dt_event_status_message_1' => 'top_top',
       'hr_2' => 'central',
-      'field_event_media' => 'top_middle_left',
       'field_event_available_languages' => 'central',
+      'field_event_media' => 'top_middle_left',
       'field_event_type' => 'left_header',
       'field_event_target_audience' => 'central',
       'field_core_introduction' => 'top_middle_right',
-      'field_core_departments' => 'central',
       'hr_1' => 'top_middle_right',
+      'field_core_departments' => 'central',
       'group_event_context_nav' => 'top_middle_right',
       'field_event_parent_events' => 'central',
       'group_event_whathappened' => 'top_bottom_left',
       'field_event_website' => 'central',
       'field_event_what_happened' => 'top_bottom_left',
       'field_core_social_network_links' => 'top_bottom_right',
-      'group_event_audience' => 'central',
       'field_core_topics' => 'top_middle_right',
       'dt_event_scribble_embed' => 'central',
+      'group_event_audience' => 'central',
       'group_image_video' => 'central',
       'group_event_documents' => 'central',
       'group_event_speakers' => 'central',
@@ -962,36 +953,16 @@ function dt_event_default_ds_layout_settings_info() {
       'left_header' => array(
         0 => 'group_meta',
         1 => 'title',
-        2 => 'dt_event_header',
+        3 => 'dt_event_header',
         4 => 'field_event_type',
       ),
-      'top_top' => array(
-        3 => 'dt_event_status_message_1',
-      ),
-      'top_middle_left' => array(
-        5 => 'field_core_media',
-      ),
-      'top_middle_right' => array(
-        6 => 'field_core_introduction',
-        7 => 'book_your_seat',
-        8 => 'livestreaming',
-        9 => 'field_core_topics',
-        10 => 'hr_1',
-        11 => 'group_event_context_nav',
-      ),
-      'top_bottom_left' => array(
-        12 => 'body',
-      ),
-      'top_bottom_right' => array(
-        13 => 'field_core_social_network_links',
-      ),
       'central' => array(
-        14 => 'group_practical_information',
-        15 => 'group_event_speakers',
-        16 => 'group_event_schedule',
-        17 => 'group_event_contact',
-        18 => 'group_related_links',
-        19 => 'event_related_events',
+        2 => 'event_related_events',
+        15 => 'group_practical_information',
+        16 => 'group_event_speakers',
+        17 => 'group_event_schedule',
+        18 => 'group_event_contact',
+        19 => 'group_related_links',
         20 => 'group_related_events',
         21 => 'social_bookmark_webtools',
         22 => 'group_practical_info_left',
@@ -1016,13 +987,34 @@ function dt_event_default_ds_layout_settings_info() {
         41 => 'field_event_parent_events',
         42 => 'field_event_website',
       ),
+      'top_top' => array(
+        5 => 'dt_event_status_message_1',
+      ),
+      'top_middle_left' => array(
+        6 => 'field_core_media',
+      ),
+      'top_middle_right' => array(
+        7 => 'field_core_introduction',
+        8 => 'book_your_seat',
+        9 => 'livestreaming',
+        10 => 'field_core_topics',
+        11 => 'hr_1',
+        12 => 'group_event_context_nav',
+      ),
+      'top_bottom_left' => array(
+        13 => 'body',
+      ),
+      'top_bottom_right' => array(
+        14 => 'field_core_social_network_links',
+      ),
     ),
     'fields' => array(
       'group_meta' => 'left_header',
       'title' => 'left_header',
+      'event_related_events' => 'central',
       'dt_event_header' => 'left_header',
-      'dt_event_status_message_1' => 'top_top',
       'field_event_type' => 'left_header',
+      'dt_event_status_message_1' => 'top_top',
       'field_core_media' => 'top_middle_left',
       'field_core_introduction' => 'top_middle_right',
       'book_your_seat' => 'top_middle_right',
@@ -1037,7 +1029,6 @@ function dt_event_default_ds_layout_settings_info() {
       'group_event_schedule' => 'central',
       'group_event_contact' => 'central',
       'group_related_links' => 'central',
-      'event_related_events' => 'central',
       'group_related_events' => 'central',
       'social_bookmark_webtools' => 'central',
       'group_practical_info_left' => 'central',

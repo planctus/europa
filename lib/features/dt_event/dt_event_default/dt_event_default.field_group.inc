@@ -24,7 +24,7 @@ function dt_event_default_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'body',
-      1 => 'about_heading',
+      1 => 'dt_event_about_heading',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -366,7 +366,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '19',
+    'weight' => '56',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -494,7 +494,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Context nav',
-    'weight' => '8',
+    'weight' => '52',
     'children' => array(
       0 => 'field_core_topics',
     ),
@@ -680,7 +680,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Agenda',
-    'weight' => '18',
+    'weight' => '55',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -766,7 +766,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Speakers',
-    'weight' => '17',
+    'weight' => '54',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -1077,7 +1077,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
-    'weight' => '0',
+    'weight' => '35',
     'children' => array(
       0 => 'field_event_type',
     ),
@@ -1103,7 +1103,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Meta',
-    'weight' => '43',
+    'weight' => '51',
     'children' => array(
       0 => 'field_event_type',
     ),
@@ -1181,7 +1181,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info left',
-    'weight' => '33',
+    'weight' => '58',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1294,7 +1294,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical info right',
-    'weight' => '34',
+    'weight' => '59',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1388,7 +1388,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Practical information',
-    'weight' => '11',
+    'weight' => '53',
     'children' => array(),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -1485,8 +1485,8 @@ function dt_event_default_field_group_info() {
       'label' => 'Related events',
       'instance_settings' => array(
         'classes' => '',
-        'show_label' => '0',
-        'label_element' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
         'attributes' => '',
         'modifier' => '',
         'layout' => '',
@@ -1514,20 +1514,13 @@ function dt_event_default_field_group_info() {
     'format_settings' => array(
       'label' => 'Related events',
       'instance_settings' => array(
-        'id' => '',
         'classes' => '',
-        'element' => 'div',
-        'show_label' => '0',
-        'label_element' => 'div',
+        'show_label' => '1',
+        'label_element' => 'h2',
         'attributes' => '',
         'modifier' => '',
         'layout' => '',
-        'required_fields' => 1,
-        'description' => '',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
-      'formatter' => '',
     ),
   );
   $field_groups['group_related_events|node|event|full'] = $field_group;
@@ -1633,7 +1626,7 @@ function dt_event_default_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'row',
-    'weight' => '32',
+    'weight' => '57',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event_search.facetapi_defaults.inc

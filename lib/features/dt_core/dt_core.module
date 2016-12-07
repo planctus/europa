@@ -121,12 +121,14 @@ function dt_core_block_info() {
  */
 function dt_core_block_view($delta = '') {
   $block = [];
+
   switch ($delta) {
     case 'dt_header_site_tab_switcher':
     case 'dt_footer_site_tab_switcher':
       $block['content'] = _dt_core_get_blocks_content($delta);
       break;
   }
+
   return $block;
 }
 
@@ -227,6 +229,7 @@ function _dt_core_create_taxonomy_term($vocabulary_machine_name, $term_name) {
     $entity = entity_create('taxonomy_term', $term);
     return entity_save('taxonomy_term', $entity);
   }
+
   return FALSE;
 }
 
@@ -490,7 +493,7 @@ function dt_core_views_query_alter(&$view, &$query) {
     $or = db_or();
 
     // Also we can add our sorting function here. So lets start with the
-    // ininitialization of that variable.
+    // initialization of that variable.
     $order_by_case = 'CASE ';
     // Add these languages to the query.
     foreach ($fallback_languages as $key => $fallback_language) {
@@ -563,14 +566,14 @@ function dt_core_views_query_alter(&$view, &$query) {
 }
 
 /**
- * Helper function to get plurial names.
+ * Helper function to get plural names.
  *
  * This should move to the dt_node_settings module.
  *
  * @param string $bundle
- *   The name of the bundle to get the plurial name.
+ *   The name of the bundle to get the plural name.
  */
-function _dt_core_get_plurial_content_types($bundle) {
+function _dt_core_get_plural_content_types($bundle) {
   // Forming plurals for existing content types.
   $plurals = [
     'announcement' => t("announcements"),
@@ -629,21 +632,20 @@ function dt_core_preprocess_views_view(&$variables) {
       $content_type = (string) $content_type_filters;
     }
 
-    $variables['title'] = '';
-
-    if ((in_array('listing', $variables['classes_array'])) || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing' && isset($view->exposed_data)) {
+    if ((in_array('listing', $variables['classes_array']))
+        || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing'
+        && isset($view->exposed_data)) {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
       if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
         $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
-        // @codingStandardsIgnoreStart
+        // @codingStandardsIgnoreLine
         $display_title = t($title);
-        // @codingStandardsIgnoreEnd
       }
       else {
         // Make sure we have a fallback.
-        $content_type_forms = _dt_core_get_plurial_content_types($content_type);
+        $content_type_forms = _dt_core_get_plural_content_types($content_type);
         // Set the display title and uppercase it.
         $display_title = drupal_ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       }
@@ -809,11 +811,9 @@ function _dt_core_menu_item($menu, $link, $plid, $title, $weight, $lang = 'en', 
     'i18n_menu' => 1,
     'options' => ['title' => $link],
   ];
-
   menu_link_save($item);
 
   return $item['mlid'];
-
 }
 
 /**
@@ -847,7 +847,9 @@ function _dt_core_menu_item_name_get($name, $menu) {
  * Implements hook_node_view_alter().
  */
 function dt_core_node_view_alter(&$build) {
-  if (isset($build['#bundle']) && $build['#bundle'] == 'basic_page' && isset($build['body'])) {
+  if (isset($build['#bundle'])
+      && $build['#bundle'] == 'basic_page'
+      && isset($build['body'])) {
     $build['#pre_render'][] = '_dt_core_replace_headings';
   }
 }
@@ -868,6 +870,7 @@ function _dt_core_replace_headings($element) {
       $element['body'][$key]['#markup'] = preg_replace_callback('/<h2>(.*)<\/h2>/', '_dt_core_replace_h2', $element['body'][$key]['#markup']);
     }
   }
+
   return $element;
 }
 
@@ -925,6 +928,7 @@ function _dt_core_check_user_organization($account, $org = 'COMM.A.5') {
       }
     }
   }
+
   return FALSE;
 }
 
