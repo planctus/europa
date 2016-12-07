@@ -19,14 +19,16 @@ class TranslationContext extends RawDrupalContext {
   private $languageList;
 
   /**
-   * Initializes context.
+   * Gets the list of available languages.
    *
-   * Every scenario gets its own context instance.
-   * You can also pass arbitrary arguments to the
-   * context constructor through behat.yml.
+   * @todo this will be overwritten by develop on the next release
    */
-  public function __construct() {
-    $this->languageList = reset(language_list('enabled'));
+  private function getLanguages() {
+    if (empty($this->languageList)) {
+      $list = language_list('enabled');
+      $this->languageList = reset($list);
+    }
+    return $this->languageList;
   }
 
   /**
@@ -42,7 +44,7 @@ class TranslationContext extends RawDrupalContext {
    */
   private function getLangCode($language) {
     // Check if the language is enabled.
-    foreach ($this->languageList as $lang) {
+    foreach ($this->getLanguages() as $lang) {
       if ($lang->name == $language || $lang->native == $language) {
         $langcode = $lang->language;
         break;
