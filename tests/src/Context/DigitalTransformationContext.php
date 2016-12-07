@@ -43,8 +43,20 @@ class DigitalTransformationContext extends RawDrupalContext {
    * context constructor through behat.yml.
    */
   public function __construct() {
-    $this->languageList = reset(language_list('enabled'));
     $this->fileContextHelper = new FileContextHelper();
+  }
+
+  /**
+   * Gets the list of available languages.
+   *
+   * @todo this will be overwritten by develop on the next release
+   */
+  private function getLanguages() {
+    if (empty($this->languageList)) {
+      $list = language_list('enabled');
+      $this->languageList = reset($list);
+    }
+    return $this->languageList;
   }
 
   /**
@@ -66,7 +78,7 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function theLanguageShouldBe($arg1, $arg2) {
     // Get the native name.
-    $native_name = $this->languageList[$arg1]->native;
+    $native_name = $this->getLanguages()[$arg1]->native;
 
     // Check our argument and if the native name is in the correct case.
     if ($arg2 == 'upper' && $native_name === ucfirst($native_name)) {
@@ -154,10 +166,10 @@ class DigitalTransformationContext extends RawDrupalContext {
    */
   public function theLanguageShouldHaveWeight($arg1, $arg2) {
     // Check if the weight is correct.
-    if ($this->languageList[$arg1]->weight == $arg2) {
+    if ($this->getLanguages()[$arg1]->weight == $arg2) {
       return;
     }
-    throw new ExpectationException($this->languageList[$arg1]->native . ' has an incorrect weight.', $this->getSession());
+    throw new ExpectationException($this->getLanguages()[$arg1]->native . ' has an incorrect weight.', $this->getSession());
   }
 
   /**
