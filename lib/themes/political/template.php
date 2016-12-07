@@ -15,6 +15,9 @@ function political_preprocess_page(&$variables) {
   $suffix = $delimiter . $language->prefix;
   // Set a variable containing the external url to point to.
   $variables['front_page'] = 'http://ec.europa.eu/index' . $suffix . '.htm';
+
+  // Update logo class.
+  $variables['logo_classes'] = "logo logo--logotypebelow site-header__logo";
 }
 
 /**

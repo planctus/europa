@@ -42,8 +42,8 @@ function dt_core_pol_context_default_contexts() {
         'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
           'module' => 'nexteuropa_europa_search',
           'delta' => 'nexteuropa_europa_search_form',
-          'region' => 'header',
-          'weight' => '-39',
+          'region' => 'header_search',
+          'weight' => '-10',
         ),
         'nexteuropa_feedback-nexteuropa_feedback' => array(
           'module' => 'nexteuropa_feedback',
