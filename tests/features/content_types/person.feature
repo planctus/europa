@@ -7,11 +7,13 @@ Feature: Person content type tests
       | Main Role | 987 |
 
     Given "Job Role types" terms:
-      | name       | parent |
-      | Sub Role   | 987    |
-      | Other Role | 987    |
+      | name       | parent | weight |
+      | Sub Role   | 987    | 10     |
+      | Other Role | 987    | 30     |
+      | Third Role | 987    | 20     |
     And I translate the term "Sub Role" to "Dutch" with "Sub rol"
     And I translate the term "Other Role" to "Dutch" with "Andere rol"
+    And I translate the term "Third Role" to "Dutch" with "Derde rol"
 
     Given "Topic" content:
       | title        | status |
@@ -28,12 +30,16 @@ Feature: Person content type tests
       | title         | field_job_role | status | field_job_responsabilities | field_core_topics |
       | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       |
       | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      |
+      | Example job 3 | Third role     | 1      |                            | Second topic      |
     And I create the following translations for "job" content with title "Example job 1":
       | title           | status | language |
       | Voorbeeld job 1 | 1      | nl       |
     And I create the following translations for "job" content with title "Example job 2":
       | title           | status | language |
       | Voorbeeld job 2 | 1      | nl       |
+    And I create the following translations for "job" content with title "Example job 3":
+      | title           | status | language |
+      | Voorbeeld job 3 | 1      | nl       |
 
     Given "Contact" content:
       | title             | status | field_contact_location_office | field_contact_phone_number | field_contact_mobile_number | field_core_social_network_links:social_network | field_core_social_network_links:title | field_core_social_network_links:url | field_contact_email_address:email |
@@ -59,6 +65,7 @@ Feature: Person content type tests
     And I fill in "field_person_last_name[nl][0][value]" with "Normaal"
     And I fill in "Moderation state" with "published"
     And I press "Save"
+
     Given I am viewing a "Person":
       | title                   | Jane Wilde        |
       | field_person_first_name | Jane              |
@@ -69,10 +76,25 @@ Feature: Person content type tests
       | field_type_of_person    | 0                 |
       | language                | en                |
       | field_core_contact      | Contact example 2 |
-
     And I go to add "nl" translation
     And I fill in "field_person_first_name[nl][0][value]" with "Jane"
     And I fill in "field_person_last_name[nl][0][value]" with "Roekeloos"
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+
+    Given I am viewing a "Person":
+      | title                   | Alfred Rodeo      |
+      | field_person_first_name | Alfred            |
+      | field_person_last_name  | Rodeo             |
+      | field_person_gender     | Male              |
+      | status                  | 1                 |
+      | field_core_jobs         | Example job 3     |
+      | field_type_of_person    | 0                 |
+      | language                | en                |
+      | field_core_contact      | Contact example 2 |
+    And I go to add "nl" translation
+    And I fill in "field_person_first_name[nl][0][value]" with "Fred"
+    And I fill in "field_person_last_name[nl][0][value]" with "Rode"
     And I fill in "Moderation state" with "published"
     And I press "Save"
     And I am an anonymous user
@@ -110,6 +132,26 @@ Feature: Person content type tests
     When I am on "press-contacts_nl"
     Then I should see "Bert Normaal"
     And I should see "Jane Roekeloos"
+
+  Scenario: Press contact listing should display additional information
+    Given I am on "press-contacts"
+    Then I should see "People" in the ".filters__items-number" element
+    # Avoid false positives.
+    And I should not see "People (" in the ".filters__items-number" element
+    # Strict version.
+    And I should not see "People (3)" in the ".filters__items-number" element
+
+  Scenario: When a responsibility is not entered, the job title should be hidden
+    Given I am on "press-contacts"
+    And I fill in "Search by name" with "Alfred Rodeo"
+    And I press "Refine results"
+    Then I should not see "Third role" in the ".view-display-id-page .node-job" element
+
+  Scenario: Press contacts should be sorted by their role type weight
+    Given I am on "press-contacts"
+    Then I should see "Bert Normal" in the ".view-display-id-page li:nth-child(1)" element
+    And I should see "Alfred Rodeo" in the ".view-display-id-page li:nth-child(2)" element
+    And I should see "Jane Wilde" in the ".view-display-id-page li:nth-child(3)" element
 
   @dt_topic
   Scenario: Press contact listing should display filters

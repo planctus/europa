@@ -51,11 +51,11 @@ function dt_person_press_contacts_list_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_job_role_target_id';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -149,6 +149,17 @@ function dt_person_press_contacts_list_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['dt_shared_functions_views_config_hidecount'] = 1;
+  $handler->display->display_options['og_access_override'] = array(
+    'non-member' => 0,
+    'member' => 0,
+    'administrator member' => 0,
+    'author' => 0,
+    'validator' => 0,
+    'reviewer' => 0,
+    'translator' => 0,
+    'translator reviewer' => 0,
+  );
   $handler->display->display_options['path'] = 'press-contacts';
   $export['press_contacts'] = $view;
 

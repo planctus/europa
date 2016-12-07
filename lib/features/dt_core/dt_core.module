@@ -74,7 +74,8 @@ function dt_core_theme($existing, $type, $theme, $path) {
 function dt_core_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($context['field']['type'] == 'entityreference') {
     if ($context['field']['settings']['target_type'] == 'node'
-        && !empty($context['field']['settings']['handler_settings']['target_bundles'])) {
+      && !empty($context['field']['settings']['handler_settings']['target_bundles'])
+    ) {
       $types = array_intersect($context['field']['settings']['handler_settings']['target_bundles'], array_keys(node_type_get_types()));
       $types_count = count($types);
       $links = '';
@@ -633,13 +634,16 @@ function dt_core_preprocess_views_view(&$variables) {
     }
 
     if ((in_array('listing', $variables['classes_array']))
-        || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing'
-        && isset($view->exposed_data)) {
+      || $view->style_plugin->plugin_name == 'nexteuropa_bem_listing'
+      && isset($view->exposed_data)
+    ) {
       // Calculate the number of items displayed in a view listing.
       $total_rows = !$view->total_rows ? count($view->result) : $view->total_rows;
 
-      if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
+      if (isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])
+        && !empty($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'])) {
         $title = $view->display[$view->current_display]->display_options['dt_shared_functions_views_config_title'];
+        // @todo: get rid of t function https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1408
         // @codingStandardsIgnoreLine
         $display_title = t($title);
       }
@@ -650,8 +654,14 @@ function dt_core_preprocess_views_view(&$variables) {
         $display_title = drupal_ucfirst(format_plural($total_rows, $content_type_forms['singular'], $content_type_forms['plural']));
       }
 
+      if (!isset($view->display[$view->current_display]->display_options['dt_shared_functions_views_config_hidecount'])
+        || !$view->display[$view->current_display]->display_options['dt_shared_functions_views_config_hidecount']
+      ) {
+        $display_title .= ' (' . $total_rows . ')';
+      }
+
       $title_markup = [
-        '#markup' => $display_title . ' (' . $total_rows . ')',
+        '#markup' => $display_title,
         '#prefix' => '<div class="filters__result-count"><span class="filters__items-number">',
         '#suffix' => '</span></div>',
       ];
@@ -848,8 +858,9 @@ function _dt_core_menu_item_name_get($name, $menu) {
  */
 function dt_core_node_view_alter(&$build) {
   if (isset($build['#bundle'])
-      && $build['#bundle'] == 'basic_page'
-      && isset($build['body'])) {
+    && $build['#bundle'] == 'basic_page'
+    && isset($build['body'])
+  ) {
     $build['#pre_render'][] = '_dt_core_replace_headings';
   }
 }
