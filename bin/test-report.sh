@@ -25,17 +25,17 @@ s/# features/| tests\/features/g
             scenario_count=$(echo -e "$(wc -l < test.tmp)" | sed -e 's/^[ \t]*//')
             echo -e "| ${type}/${module} | ${scenario_count} |" >> tmp/scenarios/reports.md
             rm test2.tmp
-            printf "\e[1m${module}\e[0m done: \e[32m${scenario_count} scenario(s) found\e[0m\n"
+            printf "${type}/\e[1m${module}\e[0m done: \e[32m${scenario_count} scenario(s) found\e[0m\n"
         else
             echo -e "| __${type}/${module}__ | __0__ |" >> tmp/scenarios/reports.md
-            printf "\e[1m${module}\e[0m done: \e[31m0 scenarios found\e[0m\n"
+            printf "${type}/\e[1m${module}\e[0m done: \e[31m0 scenarios found\e[0m\n"
     fi
     rm test.tmp
 }
 
 LIBPATH=lib
 for path in "${LIBPATH}"/*/ ; do
-        type=${path#"lib/"}
+        type=${path#"${LIBPATH}/"}
         type=${type%"/"}
         if [ "$type" == "features" ] || [ "$type" == "modules" ] ; then
             for d in "${path}"/*/ ; do
