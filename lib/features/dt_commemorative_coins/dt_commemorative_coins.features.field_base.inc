@@ -66,7 +66,7 @@ function dt_commemorative_coins_field_default_field_bases() {
             'status' => 0,
           ),
           'views-select-list' => array(
-            'status' => 0,
+            'status' => 1,
           ),
         ),
         'sort' => array(

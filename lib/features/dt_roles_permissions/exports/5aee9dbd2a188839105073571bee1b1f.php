@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains permissions export for role editor.
@@ -28,6 +27,7 @@ $permissions['editor'] = [
   'create basic_page content',
   'create class content',
   'create class_link_group content',
+  'create commemorative_coins content',
   'create consultation content',
   'create contact content',
   'create coordination content',
@@ -60,6 +60,7 @@ $permissions['editor'] = [
   'delete any basic_page content',
   'delete any class content',
   'delete any class_link_group content',
+  'delete any commemorative_coins content',
   'delete any consultation content',
   'delete any contact content',
   'delete any coordination content',
@@ -95,6 +96,7 @@ $permissions['editor'] = [
   'delete own basic_page content',
   'delete own class content',
   'delete own class_link_group content',
+  'delete own commemorative_coins content',
   'delete own consultation content',
   'delete own contact content',
   'delete own coordination content',
@@ -145,6 +147,7 @@ $permissions['editor'] = [
   'edit any basic_page content',
   'edit any class content',
   'edit any class_link_group content',
+  'edit any commemorative_coins content',
   'edit any consultation content',
   'edit any contact content',
   'edit any coordination content',
@@ -181,6 +184,7 @@ $permissions['editor'] = [
   'edit own basic_page content',
   'edit own class content',
   'edit own class_link_group content',
+  'edit own commemorative_coins content',
   'edit own comments',
   'edit own consultation content',
   'edit own contact content',
