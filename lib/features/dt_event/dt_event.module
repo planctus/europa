@@ -98,7 +98,7 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
  * Here we add extra modifiers to the file markup.
  */
 function dt_event_preprocess_file_entity(&$variables) {
-  // Make sure we only do this for event entity's.
+  // Make sure we only do this for event entities.
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
     // We define the wrapper once and apply it when we need it.
     $caption_wrapper = [
