@@ -201,7 +201,7 @@ function dt_featured_item_field_group_info() {
       'label' => 'Link wrapper',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'hero-links__btn',
+        'classes' => 'is-internal hero-links__btn',
         'element' => 'a',
         'show_label' => '0',
         'label_element' => '',
