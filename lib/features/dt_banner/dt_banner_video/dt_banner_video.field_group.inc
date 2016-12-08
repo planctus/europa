@@ -120,7 +120,7 @@ function dt_banner_video_field_group_info() {
       'instance_settings' => array(
         'id' => '',
         'classes' => 'banner__caption',
-        'element' => 'footer',
+        'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
@@ -150,7 +150,7 @@ function dt_banner_video_field_group_info() {
       'instance_settings' => array(
         'id' => '',
         'classes' => 'banner__caption',
-        'element' => 'footer',
+        'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
         'attributes' => '',
