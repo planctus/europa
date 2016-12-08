@@ -304,6 +304,7 @@ function dt_page_extended_field_group_info() {
       5 => 'field_core_header_image',
       6 => 'field_core_image',
       7 => 'field_core_link',
+      8 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

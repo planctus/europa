@@ -40,8 +40,19 @@ function dt_page_extended_update_7101() {
 /**
  * DTTSB-1200: Move metatag keywords to field_core_keywords and clear it.
  */
-function dt_page_extended_update_7102(&$sandbox) {
+function dt_page_extended_update_7104(&$sandbox) {
   if (!isset($sandbox['max'])) {
+    // Revert module so new fields are instantiated.
+    $features = [
+      'dt_core',
+      'dt_page_extended',
+    ];
+
+    // Reverting the features.
+    foreach ($features as $feature) {
+      features_revert_module($feature);
+    }
+
     // Query all nid of page.
     $count_query = db_select('node', 'n')
       ->condition('type', 'basic_page');
@@ -69,18 +80,17 @@ function dt_page_extended_update_7102(&$sandbox) {
       // If there's a value in metatag keywords,
       // copy it to field_core_keywords
       // and clear the metatag keywords so it fallbacks to default.
-      foreach ($node->metatags as $language => $metatag) {
-        if (isset($node->metatags[$language]['keywords']) && !empty($node->metatags[$language]['keywords']['value'])) {
-          $value = $node->metatags[$language]['keywords']['value'];
-          $value = drupal_substr(trim(str_replace("European Commission, European Union, EU", "", str_replace("European Commission, European Union, EU,", "", $value))), 0, 500);
+      _dt_page_extended_migrate_metatags($node);
 
-          if (!empty($value)) {
-            $node->field_core_keywords[$language][0]['value'] = $value;
-          }
-          unset($node->metatags[$language]['keywords']);
-          node_save($node);
+      // Check revisions (nodes with drafts).
+      if ($node_revs = node_revision_list($node)) {
+        $node_rev_id = array_shift(array_keys($node_revs));
+        if ($node_rev_id != $node->vid) {
+          $node_last_rev = entity_revision_load('node', $node_rev_id);
+          _dt_page_extended_migrate_metatags($node_last_rev);
         }
       }
+
     }
     // Clear memory.
     unset($ids);
@@ -100,9 +110,32 @@ function dt_page_extended_update_7102(&$sandbox) {
 }
 
 /**
+ * Helper function to save metatags.
+ *
+ * @param object $node
+ *   The node object to migrate.
+ */
+function _dt_page_extended_migrate_metatags($node) {
+  if (isset($node->metatags) && is_array($node->metatags)) {
+    foreach ($node->metatags as $language => $metatag) {
+      if (isset($node->metatags[$language]['keywords']) && !empty($node->metatags[$language]['keywords']['value'])) {
+        $value = $node->metatags[$language]['keywords']['value'];
+        $value = drupal_substr(trim(str_replace("European Commission, European Union, EU", "", str_replace("European Commission, European Union, EU,", "", $value))), 0, 500);
+
+        if (!empty($value)) {
+          $node->field_core_keywords[$language][0]['value'] = $value;
+        }
+        unset($node->metatags[$language]['keywords']);
+        node_save($node);
+      }
+    }
+  }
+}
+
+/**
  * DTTSB-1200: Set default metatag settings to node list.
  */
-function dt_page_extended_update_7103() {
+function dt_page_extended_update_7105() {
   $nids = [
     1054, 1058, 1059, 1061, 1064, 1108, 1459, 1538, 1539, 1541, 1542,
     1719, 1741, 1745, 1746, 1749, 1750, 1751, 1752, 1754, 1755, 1756,

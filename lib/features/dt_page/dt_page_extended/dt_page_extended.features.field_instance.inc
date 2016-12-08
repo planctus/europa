@@ -710,7 +710,7 @@ function dt_page_extended_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -815,7 +815,7 @@ function dt_page_extended_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1062,7 +1062,7 @@ function dt_page_extended_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 3,
     ),
   );
 
@@ -1283,7 +1283,7 @@ function dt_page_extended_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1366,7 +1366,7 @@ function dt_page_extended_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 23,
+      'weight' => 22,
     ),
   );
 
@@ -2173,7 +2173,7 @@ This will appear as a timeline on the page.
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 22,
+      'weight' => 21,
     ),
   );
 
