@@ -7,7 +7,6 @@ dependencies[] = bootstrap_fieldgroup
 dependencies[] = conditional_fields
 dependencies[] = ds_extras
 dependencies[] = dt_date_format
-dependencies[] = dt_wysiwyg
 dependencies[] = dt_europa_settings
 dependencies[] = dt_exposed_filter_data
 dependencies[] = dt_help_text
