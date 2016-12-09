@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_core_pol.context.inc
@@ -42,7 +41,7 @@ function dt_core_pol_context_default_contexts() {
         'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
           'module' => 'nexteuropa_europa_search',
           'delta' => 'nexteuropa_europa_search_form',
-          'region' => 'header_search',
+          'region' => 'header',
           'weight' => '-10',
         ),
         'nexteuropa_feedback-nexteuropa_feedback' => array(
@@ -78,6 +77,41 @@ function dt_core_pol_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Digital Transformation');
   $export['dt_core_pol_sitewide'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'homepage-content-type-pages';
+  $context->description = '';
+  $context->tag = 'Digital Transformation';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'info_homepage' => 'info_homepage',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'nexteuropa_europa_search-nexteuropa_europa_search_form' => array(
+          'module' => 'nexteuropa_europa_search',
+          'delta' => 'nexteuropa_europa_search_form',
+          'region' => 'header_search',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Digital Transformation');
+  $export['homepage-content-type-pages'] = $context;
 
   return $export;
 }

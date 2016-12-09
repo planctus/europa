@@ -1,5 +1,31 @@
-@api @political @dt_homepage
+@api @political @dt_info_homepage
 Feature: Political Homepage different layout
+
+  Scenario: Political Homepage site header has different layout from other pages
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing a "Homepage":
+      | title                   | Political hp           |
+      | field_core_introduction | Political introduction |
+      | status                  | 1                      |
+      | language                | en                     |
+      | og_group_ref            | Global editorial team  |
+    Then I should see an "header.site-header.site-header--homepage" element
+    # Language switch and logo.
+    Then I should see an "header div.container-fluid .top-bar .lang-select-site" element
+    Then I should see an "header div.container-fluid a.logo.logo--logotypebelow.site-header__logo" element
+    # Search bar.
+    Then I should see an "header section.header-search-bar div.header-search-bar__wrapper" element
+    # Check pages of other content type
+    Given I am viewing an "announcement" content:
+      | title                         | A new web presence for the Commission |
+      | status                        | 1                                     |
+      | language                      | en                                    |
+    Then I should see an "header.site-header" element
+    Then I should not see an "header.site-header--homepage" element
+    # Logo, searchbar and language switch.
+    Then I should see an "header div.container-fluid a.logo.site-header__logo" element
+    Then I should see an "header div.container-fluid .top-bar section.lang-select-site" element
+    Then I should see an "header div.container-fluid .top-bar section.block-nexteuropa-europa-search" element
 
   Scenario: Political Homepage has different layout and shows translated strings
     Given I am logged in as a user with the "administrator" role

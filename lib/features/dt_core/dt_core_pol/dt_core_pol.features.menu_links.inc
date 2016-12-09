@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_core_pol.features.menu_links.inc

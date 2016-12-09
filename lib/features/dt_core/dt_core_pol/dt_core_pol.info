@@ -1,12 +1,13 @@
 name = Political Core
 description = This is the core feature for the political website
 core = 7.x
-php = 5.5
 package = NextEuropa Digital Transformation Political
 dependencies[] = cer
 dependencies[] = dt_core
 dependencies[] = nexteuropa_ds_fields
+php = 5.5
 features[context][] = dt_core_pol_sitewide
+features[context][] = homepage-content-type-pages
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
