@@ -798,7 +798,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The Publications tag field is designed never to be shown to site visitors. It is provided solely for grouping similar Publications together. Select the Publications tag if you wish to display only Publications with the given tag. (You should never select the "Publications tag visibility"; this option will soon be removed, as the Publications tag field should never bee seen by site visitors',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -808,7 +808,7 @@ function dt_publication_field_default_field_instances() {
         'weight' => 30,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'contextual_date' => '',
@@ -816,8 +816,8 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
-        'type' => 'context_nav_item',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
