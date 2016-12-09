@@ -118,39 +118,34 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   $show_promoted = isset($field['formatter_settings']['show_promoted']) ? $field['formatter_settings']['show_promoted'] : FALSE;
   $limit_results = !empty($field['formatter_settings']['limit_results']) ? $field['formatter_settings']['limit_results'] : 4;
 
-  if ($node->type == "info_homepage") {
-    // Get the view.
-    $view = views_get_view('announcements');
+  // Get the view.
+  $view = views_get_view('announcements');
 
-    // Remove the contextual filter we have.
-    unset($view->display[$display_id]->display_options['arguments']);
-
-    // Add result limit if it is set.
-    if (is_numeric($limit_results)) {
-      $view->display[$display_id]->display_options['pager']['options']['items_per_page'] = $limit_results;
-    }
-
-    // Show only promoted to frontpage items.
-    if ($show_promoted) {
-      $view->display[$display_id]->display_options['filters']['promote'] = [
-        'id' => 'promote',
-        'table' => 'node',
-        'field' => 'promote',
-        'relationship' => 'none',
-        'operator' => '=',
-        'value' => 1,
-      ];
-    }
-
-    // Render the view.
-    $view->preview($display_id);
-    $view->pre_execute();
-    $news_items = $view->render();
+  // Add result limit if it is set.
+  if (is_numeric($limit_results)) {
+    $view->display[$display_id]->display_options['pager']['options']['items_per_page'] = $limit_results;
   }
-  else {
-    // Set our announcements view.
-    $news_items = views_embed_view('announcements', $display_id);
+
+  // Show only promoted to frontpage items.
+  if ($show_promoted) {
+    $view->display[$display_id]->display_options['filters']['promote'] = [
+      'id' => 'promote',
+      'table' => 'node',
+      'field' => 'promote',
+      'relationship' => 'none',
+      'operator' => '=',
+      'value' => 1,
+    ];
   }
+
+  // We alter the view from the info homepage feature
+  // if it is the case of visibility.
+  drupal_alter('dt_announcements_section', $view, $node, $display_id, $field);
+
+  // Render the view.
+  $view->preview($display_id);
+  $view->pre_execute();
+  $news_items = $view->render();
 
   // Get the social media to render.
   if ($show_social_media) {

@@ -327,10 +327,9 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '5',
+    'weight' => '31',
     'children' => array(
       0 => 'field_info_homepage_latest_link',
-      1 => 'announcement_block',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -461,7 +460,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '34',
+    'weight' => '35',
     'children' => array(
       0 => 'field_info_secondary_links',
     ),

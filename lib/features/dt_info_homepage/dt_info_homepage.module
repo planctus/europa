@@ -6,3 +6,41 @@
  */
 
 include_once 'dt_info_homepage.features.inc';
+
+/**
+ * Implements hook_dt_announcement_section_alter().
+ */
+function dt_info_homepage_dt_announcements_section_alter(&$view, $node, $display_id, $field) {
+  if ($node->type == "info_homepage") {
+    $langcode = $GLOBALS['language']->language;
+
+    // Remove the contextual filter we have.
+    unset($view->display[$display_id]->display_options['arguments']);
+
+    // Render more button from the homepage content.
+    $display = [
+      'label' => 'hidden',
+      'type' => 'link_button_call_for_action',
+      'settings' => [
+        'align_right' => 1,
+      ],
+    ];
+    $more_button = field_view_field('node', $node, 'field_info_homepage_latest_link', $display, $langcode);
+
+    // We need spacing before the button.
+    $more_button[0]['#element']['attributes']['class'] .= ' btn--margin-top';
+    $button = drupal_render($more_button);
+
+    // Add the button to the footer area.
+    $options = [
+      'id' => 'area',
+      'table' => 'views',
+      'field' => 'area',
+      'empty' => FALSE,
+      'content' => $button,
+      'format' => 'full_html',
+      'tokenize' => 0,
+    ];
+    $view->set_item($display_id, 'footer', 'area', $options);
+  }
+}
