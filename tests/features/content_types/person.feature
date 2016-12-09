@@ -27,10 +27,10 @@ Feature: Person content type tests
       | Volgende topic | 1      | nl       |
 
     Given "Job" content:
-      | title         | field_job_role | status | field_job_responsabilities | field_core_topics |
-      | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       |
-      | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      |
-      | Example job 3 | Third role     | 1      |                            | Second topic      |
+      | title         | field_job_role | status | field_job_responsabilities | field_core_topics | field_job_team_group |
+      | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       | press_officer        |
+      | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      | multimedia_team      |
+      | Example job 3 | Third role     | 1      |                            | Second topic      | spokesperson         |
     And I create the following translations for "job" content with title "Example job 1":
       | title           | status | language |
       | Voorbeeld job 1 | 1      | nl       |
@@ -61,9 +61,10 @@ Feature: Person content type tests
       | language                | en                |
       | field_core_contact      | Contact example 1 |
     And I go to add "nl" translation
-    And I fill in "field_person_first_name[nl][0][value]" with "Bert"
-    And I fill in "field_person_last_name[nl][0][value]" with "Normaal"
-    And I fill in "Moderation state" with "published"
+    And I fill in the following:
+      | field_person_first_name[nl][0][value] | Bert      |
+      | field_person_last_name[nl][0][value]  | Normaal   |
+      | workbench_moderation_state_new        | published |
     And I press "Save"
 
     Given I am viewing a "Person":
@@ -77,9 +78,10 @@ Feature: Person content type tests
       | language                | en                |
       | field_core_contact      | Contact example 2 |
     And I go to add "nl" translation
-    And I fill in "field_person_first_name[nl][0][value]" with "Jane"
-    And I fill in "field_person_last_name[nl][0][value]" with "Roekeloos"
-    And I fill in "Moderation state" with "published"
+    And I fill in the following:
+      | field_person_first_name[nl][0][value] | Jane      |
+      | field_person_last_name[nl][0][value]  | Roekeloos |
+      | workbench_moderation_state_new        | published |
     And I press "Save"
 
     Given I am viewing a "Person":
@@ -93,10 +95,22 @@ Feature: Person content type tests
       | language                | en                |
       | field_core_contact      | Contact example 2 |
     And I go to add "nl" translation
-    And I fill in "field_person_first_name[nl][0][value]" with "Fred"
-    And I fill in "field_person_last_name[nl][0][value]" with "Rode"
-    And I fill in "Moderation state" with "published"
+    And I fill in the following:
+      | field_person_first_name[nl][0][value] | Fred      |
+      | field_person_last_name[nl][0][value]  | Rode      |
+      | workbench_moderation_state_new        | published |
     And I press "Save"
+
+    Given I am viewing a "Person":
+      | title                   | Duo Buo                      |
+      | field_person_first_name | Duo                          |
+      | field_person_last_name  | Buo                          |
+      | field_person_gender     | Male                         |
+      | status                  | 1                            |
+      | field_core_jobs         | Example job 3, Example job 1 |
+      | field_type_of_person    | 0                            |
+      | language                | en                           |
+      | field_core_contact      | Contact example 2            |
     And I am an anonymous user
 
   Scenario: Press contact listing should not display a link to their entity
@@ -147,11 +161,12 @@ Feature: Person content type tests
     And I press "Refine results"
     Then I should not see "Third role" in the ".view-display-id-page .node-job" element
 
-  Scenario: Press contacts should be sorted by their role type weight
+  Scenario: Press contacts should be sorted by their role type weight, and should not be duplicate
     Given I am on "press-contacts"
     Then I should see "Bert Normal" in the ".view-display-id-page li:nth-child(1)" element
-    And I should see "Alfred Rodeo" in the ".view-display-id-page li:nth-child(2)" element
-    And I should see "Jane Wilde" in the ".view-display-id-page li:nth-child(3)" element
+    And I should see "Duo Buo" in the ".view-display-id-page li:nth-child(2)" element
+    And I should see "Alfred Rodeo" in the ".view-display-id-page li:nth-child(3)" element
+    And I should see "Jane Wilde" in the ".view-display-id-page li:nth-child(4)" element
 
   @dt_topic
   Scenario: Press contact listing should display filters
@@ -160,17 +175,24 @@ Feature: Person content type tests
     And I select "First topic" from "Topics"
     And I select "Second topic" from "Topics"
     Then I should see "Team/role" in the "#block-views-exp-press-contacts-page" element
-    And I select "Sub Role" from "Team/role"
-    And I select "Other Role" from "Team/role"
+    And I select "Spokesperson" from "Team/role"
+    And I select "Assistant" from "Team/role"
+    And I select "Press Officer" from "Team/role"
+    And I select "Multimedia team" from "Team/role"
+    And I select "Communications" from "Team/role"
     Then I should see "Search by name" in the "#block-views-exp-press-contacts-page" element
-    # Check multilingual.
+    # Check multilingual. This works, but test needs to be rewritten.
     And I am on "press-contacts_nl"
     Then I should see "Topics" in the "#block-views-exp-press-contacts-page" element
     And I select "Eerste topic" from "Topics"
     And I select "Volgende topic" from "Topics"
+
+  @wip
+  Scenario: Press contact listing should display filters and can be translated
     Then I should see "Team/role" in the "#block-views-exp-press-contacts-page" element
-    And I select "Sub rol" from "Team/role"
-    And I select "Andere rol" from "Team/role"
+    And I translate the string "Spokesperson" to "Dutch" with "Woordvoerder"
+    And I reload the page
+    And I select "Woordvoerder" from "Team/role"
 
   @dt_topic
   Scenario: Press contact listing can be filtered by Topics
@@ -189,6 +211,7 @@ Feature: Person content type tests
     And I should see "Second topic" in the ".filters__active-facets" element
     Then I should not see "Bert Normal"
     And I should see "Jane Wilde"
+    And I should see "Reset"
     # Check multilingual, if we test one here it is ok.
     And I am on "press-contacts_nl"
     And I select "Eerste topic" from "Topics"
@@ -200,25 +223,31 @@ Feature: Person content type tests
 
   Scenario: Press contact listing can be filtered by Team/role
     Given I am on "press-contacts"
-    And I select "Sub Role" from "Team/role"
+    And I select "Press Officer" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element
-    And I should see "Sub Role" in the ".filters__active-facets" element
+    And I should see "Press Officer" in the ".filters__active-facets" element
     And I should see "Bert Normal"
     And I should not see "Jane Wilde"
     When I select "- Any -" from "Team/role"
     And I press "Refine results"
-    And I select "Other Role" from "Team/role"
+    And I select "Spokesperson" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element
-    And I should see "Other role" in the ".filters__active-facets" element
+    And I should see "Spokesperson" in the ".filters__active-facets" element
     Then I should not see "Bert Normal"
-    And I should see "Jane Wilde"
+    And I should not see "Jane Wilde"
+    And I should see "Alfred Rodeo"
+
+  @wip
+  Scenario: Press contact listing can be filtered by Team/role can be translated
     # Check multilingual, if we test one here it is ok.
     And I am on "press-contacts_nl"
-    And I select "Andere rol" from "Team/role"
+    And I select "Woordvoerder" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element
-    And I should see "Andere rol" in the ".filters__active-facets" element
+    And I should see "Woordvoerder" in the ".filters__active-facets" element
     Then I should not see "Bert Normaal"
-    And I should see "Jane Roekeloos"
+    And I should not see "Jane Roekeloos"
+    And I should see "Fred Rode"
+

@@ -23,14 +23,24 @@ function dt_person_press_contacts_list_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Press contacts';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'nexteuropa_bem_listing';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
+  $handler->display->display_options['style_options']['listing_columns'] = 'default';
+  $handler->display->display_options['style_options']['listing_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
+  $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'job';
   /* Relationship: Entity Reference: Referenced Entity */
@@ -44,13 +54,16 @@ function dt_person_press_contacts_list_views_default_views() {
   $handler->display->display_options['relationships']['field_job_role_target_id']['field'] = 'field_job_role_target_id';
   $handler->display->display_options['relationships']['field_job_role_target_id']['relationship'] = 'field_core_jobs_target_id';
   $handler->display->display_options['relationships']['field_job_role_target_id']['required'] = TRUE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Jobs */
+  $handler->display->display_options['fields']['field_core_jobs']['id'] = 'field_core_jobs';
+  $handler->display->display_options['fields']['field_core_jobs']['table'] = 'field_data_field_core_jobs';
+  $handler->display->display_options['fields']['field_core_jobs']['field'] = 'field_core_jobs';
+  $handler->display->display_options['fields']['field_core_jobs']['label'] = '';
+  $handler->display->display_options['fields']['field_core_jobs']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_core_jobs']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_core_jobs']['delta_offset'] = '0';
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
@@ -96,18 +109,18 @@ function dt_person_press_contacts_list_views_default_views() {
     9 => 0,
   );
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['reference_display'] = 'filter_list_topics:entityreference_1';
-  /* Filter criterion: Content: Job/Role (field_job_role) (reference filter) */
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['id'] = 'field_job_role_target_id_entityreference_filter';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['table'] = 'field_data_field_job_role';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['field'] = 'field_job_role_target_id_entityreference_filter';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['relationship'] = 'field_core_jobs_target_id';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['group'] = 1;
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['expose']['operator_id'] = 'field_job_role_target_id_entityreference_filter_op';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['expose']['label'] = 'Team/role';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['expose']['operator'] = 'field_job_role_target_id_entityreference_filter_op';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['expose']['identifier'] = 'field_job_role_target_id_entityreference_filter';
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Team/group (field_job_team_group) (translated) */
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['id'] = 'field_job_team_group_value_i18n';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['table'] = 'field_data_field_job_team_group';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['field'] = 'field_job_team_group_value_i18n';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['relationship'] = 'field_core_jobs_target_id';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['group'] = 1;
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['operator_id'] = 'field_job_team_group_value_i18n_op';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['label'] = 'Team/role';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['operator'] = 'field_job_team_group_value_i18n_op';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['identifier'] = 'field_job_team_group_value_i18n';
+  $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -120,7 +133,6 @@ function dt_person_press_contacts_list_views_default_views() {
     11 => 0,
     9 => 0,
   );
-  $handler->display->display_options['filters']['field_job_role_target_id_entityreference_filter']['reference_display'] = 'job_role_reference_filter:entityreference_1';
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
