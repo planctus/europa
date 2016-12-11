@@ -240,7 +240,7 @@ function dt_contact_field_default_field_instances() {
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_contact_location_office',
-    'label' => 'Location, Office',
+    'label' => 'Location',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -841,7 +841,7 @@ function dt_contact_field_default_field_instances() {
   t('Group content visibility');
   t('Groups audience');
   t('Link to form');
-  t('Location, Office');
+  t('Location');
   t('Mobile number');
   t('Name');
   t('Name of office, organisation or person the contact details refer to.');
