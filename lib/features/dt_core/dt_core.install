@@ -1049,3 +1049,14 @@ function dt_core_update_7176() {
 function dt_core_update_7177() {
   module_enable(['media_browser_plus']);
 }
+
+/**
+ * DTTSB-1337: Enable multiform.
+ *
+ * This is only for AC enabling since the module was not added to .make.
+ * When merging for the release this can be ignored since 7177 will enable the
+ * module in any case.
+ */
+function dt_core_update_7178() {
+  module_enable(['multiform']);
+}
