@@ -109,6 +109,9 @@ projects[options_element][version] = "1.7"
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc3"
 
+projects[media_browser_plus][subdir] = "contrib"
+projects[media_browser_plus][version] = "3.0-beta4"
+
 ; End custom_formatters specific.
 
 ; =========

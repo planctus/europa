@@ -20,6 +20,7 @@ Feature: File content type
     And I attach the file "test_en.pdf" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
     # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
@@ -47,6 +48,7 @@ Feature: File content type
     And I attach the file "test_en.pdf" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
     # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
@@ -80,6 +82,7 @@ Feature: File content type
     And I attach the file "test_en.pdf" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
     # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
@@ -103,6 +106,7 @@ Feature: File content type
     And I attach the file "test_nl.pdf" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
     # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
@@ -177,6 +181,7 @@ Feature: File content type
     And I attach the file "test_en.zip" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
       # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
@@ -205,6 +210,7 @@ Feature: File content type
     And I attach the file "test.tmx" to "files[upload]"
     And I press "Next"
     And I press "Next"
+    And I press "Save"
     # Media frame -->
     And I switch out of all frames
     And I click "Editorial settings"
