@@ -56,6 +56,48 @@ function dt_announcement_news_prd_importer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-announcement-field_announcement_type'.
+  $field_instances['node-news_prd_importer-field_announcement_type'] = array(
+    'bundle' => 'news_prd_importer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 14,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 1,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_announcement_type',
+    'label' => 'Announcement type',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-news_prd_importer-field_core_departments'.
   $field_instances['node-news_prd_importer-field_core_departments'] = array(
     'bundle' => 'news_prd_importer',

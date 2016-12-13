@@ -17,6 +17,7 @@ features[field_instance][] = node-news_prd_importer-body
 features[field_instance][] = node-news_prd_importer-field_core_departments
 features[field_instance][] = node-news_prd_importer-field_core_persons
 features[field_instance][] = node-news_prd_importer-field_core_priorities
+features[field_instance][] = node-news_prd_importer-field_announcement_type
 features[node][] = news_prd_importer
 features[variable][] = comment_anonymous_news_prd_importer
 features[variable][] = comment_default_mode_news_prd_importer
