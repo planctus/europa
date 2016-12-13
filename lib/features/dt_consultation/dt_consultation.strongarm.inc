@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_consultation.strongarm.inc
@@ -63,6 +62,19 @@ function dt_consultation_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_settings_node__consultation';
+  $strongarm->value = array(
+    'default_language' => 'xx-et-default',
+    'hide_language_selector' => 0,
+    'exclude_language_none' => 1,
+    'lock_language' => 0,
+    'shared_fields_original_only' => 0,
+  );
+  $export['entity_translation_settings_node__consultation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__consultation';
   $strongarm->value = array(
     'view_modes' => array(
@@ -70,7 +82,7 @@ function dt_consultation_strongarm() {
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -105,6 +117,39 @@ function dt_consultation_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'structured_navigation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -118,7 +163,10 @@ function dt_consultation_strongarm() {
           'weight' => '0',
         ),
         'language' => array(
-          'weight' => '5',
+          'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -132,13 +180,6 @@ function dt_consultation_strongarm() {
   $strongarm->name = 'helper_content_type_consultation';
   $strongarm->value = 1;
   $export['helper_content_type_consultation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'dt_node_settings_helper_node_type_consultation';
-  $strongarm->value = 1;
-  $export['dt_node_settings_helper_node_type_consultation'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -205,19 +246,6 @@ function dt_consultation_strongarm() {
   $strongarm->name = 'node_submitted_consultation';
   $strongarm->value = 0;
   $export['node_submitted_consultation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'entity_translation_settings_node__consultation';
-  $strongarm->value = array(
-    'default_language' => 'xx-et-default',
-    'hide_language_selector' => 0,
-    'exclude_language_none' => 1,
-    'lock_language' => 0,
-    'shared_fields_original_only' => 0,
-  );
-  $export['entity_translation_settings_node__consultation'] = $strongarm;
 
   return $export;
 }

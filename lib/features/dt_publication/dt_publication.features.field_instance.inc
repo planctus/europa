@@ -493,8 +493,6 @@ function dt_publication_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
-          'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => 1,
           'use_content_language' => TRUE,
           'view_mode' => 'file',
         ),
@@ -800,7 +798,7 @@ function dt_publication_field_default_field_instances() {
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The Publications tag field is designed never to be shown to site visitors. It is provided solely for grouping similar Publications together. Select the Publications tag if you wish to display only Publications with the given tag. (You should never select the "Publications tag visibility"; this option will soon be removed, as the Publications tag field should never bee seen by site visitors',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -810,7 +808,7 @@ function dt_publication_field_default_field_instances() {
         'weight' => 30,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
           'contextual_date' => '',
@@ -818,8 +816,8 @@ function dt_publication_field_default_field_instances() {
           'expander_trim_at' => 0,
           'expander_trim_to' => 0,
         ),
-        'type' => 'context_nav_item',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1579,6 +1577,7 @@ function dt_publication_field_default_field_instances() {
   t('Automatically set to "now" during initial publishing.');
   t('Choose a value to be shown in specific cases.');
   t('Contact information');
+  t('Countries');
   t('Description');
   t('Files');
   t('First published on');
@@ -1588,7 +1587,6 @@ function dt_publication_field_default_field_instances() {
   t('Identifier of the publication');
   t('Last updated on');
   t('Link to publication');
-  t('Countries');
   t('Only use when you are not uploading the file to the CMS.');
   t('Origin');
   t('Publication type');

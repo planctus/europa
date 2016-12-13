@@ -21,6 +21,7 @@ Feature: Publication List shows on page bottom with filters that have or not def
     Given I am viewing a "Page" content:
       | title                         | Page w/ Pub List |
       | field_publications_visibility | 1                |
+      | field_publications_topic_on   | 1                |
       | field_publications_country_on | 1                |
       | field_publications_year_on    | 1                |
       | field_publications_type_on    | 1                |
@@ -29,6 +30,7 @@ Feature: Publication List shows on page bottom with filters that have or not def
       | status                        | 1                |
     Then I should see "Page w/ Pub List"
     Then I should see "Publications" in the ".page-content" element
+    Then I should see "Topic" in the ".page-content .views-exposed-form" element
     Then I should see "Country" in the ".page-content .views-exposed-form" element
     Then I should see "Year" in the ".page-content .views-exposed-form" element
     Then I should see "Publication type" in the ".page-content .views-exposed-form" element
@@ -42,6 +44,7 @@ Feature: Publication List shows on page bottom with filters that have or not def
     Given I am viewing a "Page" content:
       | title                         | Page w/ Pub List |
       | field_publications_visibility | 1                |
+      | field_publications_topic_on   | 0                |
       | field_publications_country_on | 1                |
       | field_publications_year_on    | 0                |
       | field_publications_type_on    | 0                |
@@ -49,6 +52,7 @@ Feature: Publication List shows on page bottom with filters that have or not def
       | language                      | en               |
       | status                        | 1                |
     Then I should see "Country" in the ".page-content .views-exposed-form" element
+    Then I should not see "Topic" in the ".page-content .views-exposed-form" element
     Then I should not see "Year" in the ".page-content .views-exposed-form" element
     Then I should not see "Publication type" in the ".page-content .views-exposed-form" element
     Then I should not see "Tag" in the ".page-content .views-exposed-form" element
@@ -71,15 +75,16 @@ Feature: Publication List shows on page bottom with filters that have or not def
 
   Scenario: One page with Publication List, filter not exposed but with default value
     Given I am viewing a "Page" content:
-      | title                         | Page w/ Pub List |
-      | field_publications_visibility | 1                |
-      | field_publications_country_on | 0                |
-      | field_publications_year_on    | 0                |
-      | field_publications_year       | 1388577600       |
-      | field_publications_type_on    | 0                |
-      | field_publications_tag_on     | 0                |
-      | language                      | en               |
-      | status                        | 1                |
+      | title                            | Page w/ Pub List |
+      | field_publications_visibility    | 1                |
+      | field_publications_topic_on      | 0                |
+      | field_publications_country_on    | 0                |
+      | field_publications_year_on       | 0                |
+      | field_publications_year          | 1388577600       |
+      | field_publications_type_on       | 0                |
+      | field_publications_tag_on        | 0                |
+      | language                         | en               |
+      | status                           | 1                |
     Then I should not see an ".page-content .views-exposed-form" element
     Then I should see "Pub 2014" in the ".page-content .view-content" element
     Then I should not see "Pub 2016" in the ".page-content .view-content" element

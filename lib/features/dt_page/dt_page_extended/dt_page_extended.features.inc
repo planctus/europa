@@ -18,7 +18,7 @@ function dt_page_extended_default_cer() {
     "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parents" } ] },
     "entity_type" : "cer",
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-16560-0",
+    "entity_translation_handler_id" : "cer-eid-16854-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;

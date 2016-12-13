@@ -175,6 +175,22 @@ function dt_event_ds_fields_info($entity_type) {
       'function' => '_dt_event_ds_fields_livestream_header',
       'use_token' => TRUE,
     ];
+
+    $fields[$entity_type]['dt_event_about_heading'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: About heading'),
+      'function' => '_dt_event_ds_fields_about_heading',
+      'use_token' => TRUE,
+    ];
+
+    $fields[$entity_type]['dt_event_livestream_title'] = [
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'ui_limit' => ['event|*'],
+      'title' => t('Event: Livestream title'),
+      'function' => '_dt_event_ds_fields_livestream_title',
+      'use_token' => TRUE,
+    ];
   }
 
   if (isset($fields[$entity_type])) {
@@ -207,7 +223,8 @@ function dt_event_ds_field_format_summary($field) {
  */
 function _dt_event_ds_fields_scribble_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  if ($entity->__isset('field_event_scribble_id') && $scribble_id = $entity->field_event_scribble_id->value()) {
+  if ($entity->__isset('field_event_scribble_id')
+      && $scribble_id = $entity->field_event_scribble_id->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
     $markup = [
       '#markup' => '<iframe src="//ec.europa.eu/cookie-consent/iframe?lang=' . $content_language . '&oriurl=//embed.scribblelive.com/Embed/v5.aspx?Id=' . $scribble_id . '" allowfullscreen="allowfullscreen" scrolling="no"></iframe>',
@@ -234,7 +251,8 @@ function _dt_event_ds_fields_scribble_embed($field) {
  */
 function _dt_event_ds_fields_stream_embed($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  if ($entity->__isset('field_event_live_streaming_link') && $entity->field_event_live_streaming_link->value()) {
+  if ($entity->__isset('field_event_live_streaming_link')
+      && $entity->field_event_live_streaming_link->value()) {
     $content_language = _dt_shared_functions_content_language($field['entity']);
     $stream_url = $entity->language($content_language)->field_event_live_streaming_link->value();
     if (isset($stream_url['url'])) {
@@ -260,7 +278,8 @@ function _dt_event_ds_fields_stream_embed($field) {
  */
 function _dt_event_ds_fields_stream_embed_intro($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
-  if ($entity->__isset('field_event_live_streaming_link') && $stream_url = $entity->field_event_live_streaming_link->value()) {
+  if ($entity->__isset('field_event_live_streaming_link')
+      && $stream_url = $entity->field_event_live_streaming_link->value()) {
     if (isset($stream_url['url'])) {
       // Content language to render the field.
       $content_language = _dt_shared_functions_content_language($field['entity']);
@@ -281,10 +300,15 @@ function _dt_event_ds_fields_stream_embed_intro($field) {
       // Get the field.
       $date = field_view_field($entity->type(), $entity->raw(), 'field_event_date', $display, $content_language);
 
+      $markup = '<div class="col-md-6">' . drupal_render($date) . '</div>';
+      $markup .= '<div class="col-md-6 text-right"><p>';
+      $markup .= l(t('Event details', [], ['langcode' => $content_language]), 'node/' . $entity->getIdentifier());
+      $markup .= '</p></div>';
+
       // Build the markup.
       $markup = [
         '#prefix' => '<div class="row">',
-        '#markup' => '<div class="col-md-6">' . drupal_render($date) . '</div><div class="col-md-6 text-right"><p>' . l(t('Event details'), 'node/' . $entity->getIdentifier()) . '</p></div>',
+        '#markup' => $markup,
         '#suffix' => '</div>',
       ];
 
@@ -309,7 +333,8 @@ function _dt_event_ds_fields_status_message($field) {
   // should not see any status message.
   // If the field formatter 'event_status_inline_formatter',
   // then use 'dt_event_status_message' theme function.
-  $theme_function = ($field['formatter'] == 'event_status_inline_formatter') ? 'dt_event_status' : 'europa_status_message';
+  $theme_function = $field['formatter'] == 'event_status_inline_formatter'
+      ? 'dt_event_status' : 'europa_status_message';
   // Default config.
   $render_config = [
     '#theme' => $theme_function,
@@ -321,16 +346,17 @@ function _dt_event_ds_fields_status_message($field) {
     return NULL;
   }
 
+  // The desired language.
+  $langcode = $GLOBALS['language_content']->language;
+
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_ONGOING:
-      $render_config['#message_title'] = t('This event has started.');
+      $render_config['#message_title'] = t('This event has started.', [], ['langcode' => $langcode]);
 
       // If live stream is available we add it to the message.
-      if (
-        _dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING
-        && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])
-      ) {
-        $render_config['#message_body'] = l(t('Watch live streaming'), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
+      if (_dt_event_live_stream_state($field['entity']) == DT_EVENT_LIVE_STREAM_ONGOING
+          && isset($field['entity']->field_event_live_streaming_link[_dt_shared_functions_content_language($field['entity'])])) {
+        $render_config['#message_body'] = l(t('Watch live streaming', [], ['langcode' => $langcode]), drupal_get_path_alias('node/' . $field['entity']->nid) . '/live');
         $render_config['#message_classes'][] = 'live';
         $render_config['#message_type'] = 'Live streaming message';
       }
@@ -338,7 +364,7 @@ function _dt_event_ds_fields_status_message($field) {
 
     case DT_EVENT_STATE_FUTURE:
       if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
-        $render_config['#message_title'] = t('This event has been rescheduled.');
+        $render_config['#message_title'] = t('This event has been rescheduled.', [], ['langcode' => $langcode]);
         $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
         $render_config['#message_classes'][] = 'warning';
         $render_config['#message_type'] = 'Warning message';
@@ -346,14 +372,14 @@ function _dt_event_ds_fields_status_message($field) {
       break;
 
     case DT_EVENT_STATE_CANCELLED:
-      $render_config['#message_title'] = t('This event has been cancelled.');
+      $render_config['#message_title'] = t('This event has been cancelled.', [], ['langcode' => $langcode]);
       $render_config['#message_body'] = _dt_event_get_status_information($field['entity']);
       $render_config['#message_classes'][] = 'warning';
       $render_config['#message_type'] = 'Warning message';
       break;
 
     case DT_EVENT_STATE_PAST:
-      $render_config['#message_title'] = t('This event has ended.');
+      $render_config['#message_title'] = t('This event has ended.', [], ['langcode' => $langcode]);
       break;
 
     default:
@@ -374,15 +400,19 @@ function _dt_event_ds_fields_status_message($field) {
  *   The markup or nothing.
  */
 function _dt_event_ds_fields_status_label($field) {
+  // The desired language.
+  $langcode = $GLOBALS['language_content']->language;
+
   switch ($field['entity']->event_status) {
     case DT_EVENT_STATE_FUTURE:
-      if (isset($field['entity']->event_status_rescheduled) && $field['entity']->event_status_rescheduled) {
-        $label = t('Rescheduled');
+      if (isset($field['entity']->event_status_rescheduled)
+          && $field['entity']->event_status_rescheduled) {
+        $label = t('Rescheduled', [], ['langcode' => $langcode]);
       }
       break;
 
     case DT_EVENT_STATE_CANCELLED:
-      $label = t('Cancelled');
+      $label = t('Cancelled', [], ['langcode' => $langcode]);
       break;
   }
 
@@ -423,7 +453,9 @@ function _dt_event_ds_fields_address_oneline($field) {
   if (!empty($parts)) {
     $address = implode(', ', $parts);
     if (isset($field['formatter_settings']['show_link']) && $field['formatter_settings']['show_link']) {
-      return $address . ' ' . l(t('View map'), 'https://www.google.com/maps?q=' . $address);
+      // The desired language.
+      $langcode = $GLOBALS['language_content']->language;
+      return $address . ' ' . l(t('View map', [], ['langcode' => $langcode]), 'https://www.google.com/maps?q=' . $address);
     }
 
     return $address;
@@ -467,24 +499,22 @@ function _dt_event_ds_fields_book_your_seat($field) {
   ];
 
   // Few conditions should be met.
-  if (
-    isset($field['entity']->event_status, $emw->field_event_is_fully_booked)
-    && in_array($field['entity']->event_status, $allowed_states)
-    && !$emw->field_event_is_fully_booked->value()
-  ) {
+  if (isset($field['entity']->event_status, $emw->field_event_is_fully_booked)
+      && in_array($field['entity']->event_status, $allowed_states)
+      && !$emw->field_event_is_fully_booked->value()) {
+    // The desired language.
+    $langcode = $GLOBALS['language_content']->language;
+
     // If registration is still open we can show the button.
-    if (
-      $field['view_mode'] !== 'teaser'
-      && $emw->field_event_registration_end->value() > time()
-      && $emw->field_event_registration->value()
-    ) {
-      // The desired language.
-      $langcode = $GLOBALS['language_content']->language;
+    if ($field['view_mode'] !== 'teaser'
+        && $emw->field_event_registration_end->value() > time()
+        && $emw->field_event_registration->value()) {
       // Get the field data.
       $registration = $emw->language($langcode)->field_event_registration->value();
       // Our button text will default if not filled in.
       $button_link = $registration['url'];
-      $button_text = !empty($registration['title']) && $registration['title'] !== $button_link ? $registration['title'] : t('Book your seat');
+      $button_text = !empty($registration['title']) && $registration['title'] !== $button_link
+          ? $registration['title'] : t('Book your seat', [], ['langcode' => $langcode]);
     }
     // Special case if ongoing and live stream is available.
     elseif (
@@ -492,7 +522,7 @@ function _dt_event_ds_fields_book_your_seat($field) {
       $emw->field_event_live_streaming_link->value()
     ) {
       $button_link = drupal_get_path_alias('node/' . $field['entity']->nid) . '/live';
-      $button_text = t('Watch live streaming');
+      $button_text = t('Watch live streaming', [], ['langcode' => $langcode]);
     }
 
     if (isset($button_text) && isset($button_link)) {
@@ -551,10 +581,11 @@ function _dt_event_ds_fields_livestreaming($field) {
   ];
 
   // Few conditions should be met.
-  if (
-    isset($field['entity']->event_status)
-    && in_array($field['entity']->event_status, $allowed_states)
-  ) {
+  if (isset($field['entity']->event_status)
+      && in_array($field['entity']->event_status, $allowed_states)) {
+    // The desired language.
+    $langcode = $GLOBALS['language_content']->language;
+
     // Based on the state we set our message.
     switch ($field['entity']->event_livestream_status) {
       case DT_EVENT_LIVE_STREAM_FUTURE:
@@ -562,14 +593,14 @@ function _dt_event_ds_fields_livestreaming($field) {
         $replacement = [
           '@time' => format_date($emw->field_event_live_streaming_date->value->value(), 'custom', 'H:i (T)', $timezone),
         ];
-        $streaming_text = t('<strong>Watch live</strong> at @time', $replacement);
+        $streaming_text = t('<strong>Watch live</strong> at @time', $replacement, ['langcode' => $langcode]);
         break;
 
       case DT_EVENT_LIVE_STREAM_ONGOING:
         // @todo: This will be implemented in a future ticket.
         $stream_count = 0;
         if ($stream_count >= 1) {
-          $streaming_text = t('@count are watching', ['@count' => $stream_count]);
+          $streaming_text = t('@count are watching', ['@count' => $stream_count], ['langcode' => $langcode]);
         }
         break;
     }
@@ -648,7 +679,8 @@ function _dt_event_date_display(array $field, $entity, $short = FALSE) {
   $other_states = [DT_EVENT_STATE_PAST, DT_EVENT_STATE_CANCELLED];
 
   // Assign the format.
-  $format = in_array($field['entity']->event_status, $other_states) ? $formats['other'][$format_to_use] : $formats['future_ongoing'][$format_to_use];
+  $format = in_array($field['entity']->event_status, $other_states)
+      ? $formats['other'][$format_to_use] : $formats['future_ongoing'][$format_to_use];
 
   // Single day event.
   if ($date_object->isSameDate(TRUE)) {
@@ -687,9 +719,12 @@ function _dt_event_date_display(array $field, $entity, $short = FALSE) {
 function _dt_event_ds_fields_header_event($field) {
   $entity = entity_metadata_wrapper('node', $field['entity']);
   $is_streaming = $entity->field_event_is_live_streaming->value();
+  // The desired language.
+  $langcode = $GLOBALS['language_content']->language;
 
   // Check if we should render the teaser version.
-  $teaser_mode = isset($field['formatter_settings']['teaser_version']) ? $field['formatter_settings']['teaser_version'] : FALSE;
+  $teaser_mode = isset($field['formatter_settings']['teaser_version'])
+      ? $field['formatter_settings']['teaser_version'] : FALSE;
 
   // Set the default classes.
   $element_classes = [
@@ -718,7 +753,7 @@ function _dt_event_ds_fields_header_event($field) {
 
   // Event location, online event only.
   if ($entity->field_event_is_online->value()) {
-    $location_content .= t('Online only');
+    $location_content .= t('Online only', [], ['langcode' => $langcode]);
   }
   // All of the others.
   else {
@@ -745,7 +780,9 @@ function _dt_event_ds_fields_header_event($field) {
 
   if ($is_streaming && (!in_array($field['entity']->event_status, $unavailable_states))) {
     $is_streaming_modifier_class = ' listing__status-container--inline';
-    $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">' . t('live streaming available') . '</span>';
+    $markup .= '<span class="icon icon--livestreaming ' . $element_classes['livestream'] . '">';
+    $markup .= t('live streaming available', [], ['langcode' => $langcode]);
+    $markup .= '</span>';
   }
 
   // Start building the render array.
@@ -774,15 +811,18 @@ function _dt_event_ds_fields_header_event($field) {
  *   The event header component markup.
  */
 function _dt_event_ds_fields_date_and_time($field) {
-  $entity = entity_metadata_wrapper('node', $field['entity']);
+  $node_wrapper = entity_metadata_wrapper('node', $field['entity']);
   $output = [];
 
-  if (isset($entity->field_event_date)) {
-    $formatted_date = _dt_event_date_display($field, $entity);
+  if (isset($node_wrapper->field_event_date)) {
+    $formatted_date = _dt_event_date_display($field, $node_wrapper);
     // Add the date markup.
-    $markup = ($field['entity']->event_status == DT_EVENT_STATE_CANCELLED) ? '<del>' . $formatted_date . '</del>' : $formatted_date;
+    $markup = ($field['entity']->event_status == DT_EVENT_STATE_CANCELLED
+        ? '<del>' . $formatted_date . '</del>' : $formatted_date);
     // Start building the render array.
-    $output = ['#markup' => $markup];
+    $output = [
+      '#markup' => $markup,
+    ];
   };
 
   return drupal_render($output);
@@ -798,13 +838,76 @@ function _dt_event_ds_fields_date_and_time($field) {
  *    Return the markup.
  */
 function _dt_event_ds_fields_livestream_header($field) {
-  $entity = entity_metadata_wrapper('node', $field['entity']);
-  $location = $entity->field_core_location->value();
-  $markup = '';
+  $node_wrapper = entity_metadata_wrapper('node', $field['entity']);
+  $location = $node_wrapper->field_core_location->value();
+  $output = [];
 
   if ($location) {
-    $markup = '<h2>' . t('Live from @location', ['@location' => $location['locality']]) . '</h2>';
+    // The desired language.
+    $langcode = $GLOBALS['language_content']->language;
+    // Start building the render array.
+    $output = [
+      '#prefix' => '<h2>',
+      '#suffix' => '</h2>',
+      '#markup' => t('Live from @location', ['@location' => $location['locality']], ['langcode' => $langcode]),
+    ];
   }
 
-  return $markup;
+  return drupal_render($output);
+}
+
+/**
+ * Helper function for DS, to show the event "About" title.
+ *
+ * @param array $field
+ *    Hold the current context of the field.
+ *
+ * @return string
+ *    Return the markup.
+ */
+function _dt_event_ds_fields_about_heading($field) {
+  $node_wrapper = entity_metadata_wrapper('node', $field['entity']);
+  $title = $node_wrapper->title->value();
+  $output = [];
+
+  if ($title) {
+    // The desired language.
+    $langcode = $GLOBALS['language_content']->language;
+    // Start building the render array.
+    $output = [
+      '#prefix' => '<h2 id="about">',
+      '#suffix' => '</h2>',
+      '#markup' => t('About @title', ['@title' => $title], ['langcode' => $langcode]),
+    ];
+  }
+
+  return drupal_render($output);
+}
+
+/**
+ * Helper function for DS, to show the event livestream title.
+ *
+ * @param array $field
+ *    Hold the current context of the field.
+ *
+ * @return string
+ *    Return the markup.
+ */
+function _dt_event_ds_fields_livestream_title($field) {
+  $node_wrapper = entity_metadata_wrapper('node', $field['entity']);
+  $title = $node_wrapper->title->value();
+  $output = [];
+
+  if ($title) {
+    // The desired language.
+    $langcode = $GLOBALS['language_content']->language;
+    // Start building the render array.
+    $output = [
+      '#prefix' => '<h1>',
+      '#suffix' => '</h1>',
+      '#markup' => t('Live: @title', ['@title' => $title], ['langcode' => $langcode]),
+    ];
+  }
+
+  return drupal_render($output);
 }

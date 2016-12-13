@@ -123,8 +123,8 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['style_options']['listing_modifier'] = '';
   $handler->display->display_options['style_options']['listing_wrapper_modifier'] = '';
   $handler->display->display_options['style_options']['listing_item_modifier'] = '';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'title';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -138,6 +138,15 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Taxonomy */
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['id'] = 'field_eurovoc_taxonomy';
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['table'] = 'field_data_field_eurovoc_taxonomy';
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['field'] = 'field_eurovoc_taxonomy';
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['delta_offset'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -158,7 +167,33 @@ function dt_publication_views_default_views() {
     'publication' => 'publication',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: NAL Countries (field_core_nal_countries) (translated) */
+  /* Filter criterion: Taxonomy (field_eurovoc_taxonomy) (selective) */
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['id'] = 'field_eurovoc_taxonomy_target_id_selective';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['table'] = 'field_data_field_eurovoc_taxonomy';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['field'] = 'field_eurovoc_taxonomy_target_id_selective';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['ui_name'] = 'Taxonomy (field_eurovoc_taxonomy) (selective)';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['group'] = 1;
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['expose']['label'] = 'Topic';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['expose']['identifier'] = 'field_eurovoc_taxonomy_target_id_selective';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    16 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    21 => 0,
+    10 => 0,
+  );
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['selective_display_field'] = 'field_eurovoc_taxonomy';
+  $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['selective_items_limit'] = '100';
+  /* Filter criterion: Content: Countries (field_core_nal_countries) (translated) */
   $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['id'] = 'field_core_nal_countries_tid_i18n';
   $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['table'] = 'field_data_field_core_nal_countries';
   $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['field'] = 'field_core_nal_countries_tid_i18n';

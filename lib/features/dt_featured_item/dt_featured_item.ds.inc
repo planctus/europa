@@ -43,6 +43,37 @@ function dt_featured_item_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|featured_item|hero_links';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'featured_item';
+  $ds_fieldsetting->view_mode = 'hero_links';
+  $ds_fieldsetting->settings = array(
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'strong',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
+    ),
+    'field_feat_item_image' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|featured_item|hero_links'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|featured_item|image_label';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'featured_item';
@@ -164,6 +195,38 @@ function dt_featured_item_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|featured_item|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|featured_item|hero_links';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'featured_item';
+  $ds_layout->view_mode = 'hero_links';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'group_featured_item_link_wrapper',
+        1 => 'title_field',
+        2 => 'field_feat_item_image',
+      ),
+    ),
+    'fields' => array(
+      'group_featured_item_link_wrapper' => 'ds_content',
+      'title_field' => 'ds_content',
+      'field_feat_item_image' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|featured_item|hero_links'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

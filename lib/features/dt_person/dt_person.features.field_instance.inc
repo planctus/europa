@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_person.features.field_instance.inc
@@ -41,7 +40,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 47,
       ),
       'meta' => array(
         'label' => 'above',
@@ -232,7 +231,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 43,
       ),
       'meta' => array(
         'label' => 'above',
@@ -298,7 +297,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 45,
       ),
       'meta' => array(
         'label' => 'above',
@@ -388,7 +387,6 @@ function dt_person_field_default_field_instances() {
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => 1,
           'use_content_language' => 1,
           'view_mode' => 'file',
         ),
@@ -399,7 +397,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'meta' => array(
         'label' => 'above',
@@ -551,7 +549,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 33,
       ),
       'meta' => array(
         'label' => 'above',
@@ -637,7 +635,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 46,
       ),
       'meta' => array(
         'label' => 'above',
@@ -723,7 +721,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 48,
       ),
       'meta' => array(
         'label' => 'above',
@@ -793,7 +791,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 44,
       ),
       'meta' => array(
         'label' => 'above',
@@ -875,7 +873,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'meta' => array(
         'label' => 'above',
@@ -961,7 +959,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 42,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1028,26 +1026,16 @@ function dt_person_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 0,
       ),
       'job' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 41,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1142,7 +1130,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 36,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1233,7 +1221,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 39,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1295,7 +1283,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 38,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1421,7 +1409,7 @@ function dt_person_field_default_field_instances() {
           ),
           'fallback_image_style' => '',
           'image_link' => '',
-          'picture_mapping' => 'person_meta',
+          'picture_mapping' => 'person_job',
         ),
         'type' => 'picture',
         'weight' => 4,
@@ -1531,7 +1519,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 32,
       ),
       'meta' => array(
         'label' => 'hidden',
@@ -1551,7 +1539,7 @@ function dt_person_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_role',
     'label' => 'Role',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -1598,7 +1586,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 31,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1693,7 +1681,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 30,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1792,7 +1780,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 40,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1860,7 +1848,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 37,
       ),
       'meta' => array(
         'label' => 'above',
@@ -1935,7 +1923,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 34,
       ),
       'meta' => array(
         'label' => 'above',
@@ -2018,7 +2006,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 35,
       ),
       'meta' => array(
         'label' => 'above',

@@ -859,7 +859,6 @@ Note: the status of the calls change from open to closed when the last deadline 
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
-          'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'file',
         ),

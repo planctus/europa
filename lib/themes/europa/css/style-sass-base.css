@@ -4559,6 +4559,11 @@ li > ol {
 li > ul {
   list-style-type: disc; }
 
+.field ul:not(.social-media-links__list) {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1em; }
+
 .navbar-toggle {
   border-radius: 0px;
   border: none; }
@@ -4853,6 +4858,18 @@ textarea.error {
   padding: 15px 0 0 0;
   overflow: hidden;
   width: 100%; }
+
+.site-header--homepage .top-bar {
+  height: 90px;
+  padding: 0;
+  top: 0;
+  float: right; }
+  .site-header--homepage .top-bar .lang-select-site .lang-select-site__link {
+    padding-right: 0; }
+
+@media (min-width: 480px) {
+  .site-header--homepage .top-bar {
+    height: 156px; } }
 
 .site-menu__toggle {
   float: right;

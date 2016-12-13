@@ -183,7 +183,7 @@ function dt_event_views_default_views() {
   $handler->display->display_options['filters']['facet_filter_2']['field'] = 'facet_filter';
   $handler->display->display_options['filters']['facet_filter_2']['group'] = 1;
   $handler->display->display_options['filters']['facet_filter_2']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['facet_filter_2']['expose']['label'] = 'Organizer';
+  $handler->display->display_options['filters']['facet_filter_2']['expose']['label'] = 'Organiser';
   $handler->display->display_options['filters']['facet_filter_2']['expose']['operator'] = 'facet_filter_2_op';
   $handler->display->display_options['filters']['facet_filter_2']['expose']['identifier'] = 'facet_filter_2';
   $handler->display->display_options['filters']['facet_filter_2']['expose']['remember_roles'] = array(
@@ -395,24 +395,6 @@ function dt_event_views_default_views() {
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Event date and time - end date (field_event_date:value2) */
-  $handler->display->display_options['sorts']['field_event_date_value2']['id'] = 'field_event_date_value2';
-  $handler->display->display_options['sorts']['field_event_date_value2']['table'] = 'field_data_field_event_date';
-  $handler->display->display_options['sorts']['field_event_date_value2']['field'] = 'field_event_date_value2';
-  $handler->display->display_options['sorts']['field_event_date_value2']['relationship'] = 'field_event_children_events_target_id';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* No results behavior: Global: Unfiltered text */
-  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area_text_custom']['content'] = 'No events planned.';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -579,7 +561,7 @@ function dt_event_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Related events';
+  $handler->display->display_options['title'] = '<none>';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -598,10 +580,11 @@ function dt_event_views_default_views() {
   $handler->display->display_options['row_options']['relationship'] = 'field_event_children_events_target_id';
   $handler->display->display_options['row_options']['view_mode'] = 'meta';
   $handler->display->display_options['row_options']['links'] = FALSE;
-  /* Header: Global: Unfiltered text */
+  /* Header: More about */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['ui_name'] = 'More about';
   $handler->display->display_options['header']['area_text_custom']['content'] = 'More about [title] | %all_events_link';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   /* Relationship: Parent entity */

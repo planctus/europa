@@ -353,11 +353,7 @@ function commissioner_preprocess_file_entity(&$variables) {
  * Override theme_file_link().
  */
 function commissioner_file_link($variables) {
-  $file = $variables['file'];
-  $url['path'] = file_create_url($file->uri);
-  $url['options'] = [];
-
-  return _europa_file_markup($file, $url);
+  return _nexteuropa_formatters_file_markup($variables['file']);
 
 }
 

@@ -173,7 +173,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -205,7 +205,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'About the European Commission',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_core_links',
       1 => 'field_info_homepage_about_button',
@@ -228,6 +228,37 @@ function dt_info_homepage_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_commissionrs|node|info_homepage|homepage_political';
+  $field_group->group_name = 'group_info_homepage_commissionrs';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'homepage_political';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Commissioners',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_info_homepage_hero_links',
+      1 => 'field_info_homepage_hero_linktxt',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Commissioners',
+      'instance_settings' => array(
+        'classes' => 'field-group-section_group hero-links',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_commissionrs|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_info_homepage_contacts|node|info_homepage|homepage_political';
   $field_group->group_name = 'group_info_homepage_contacts';
   $field_group->entity_type = 'node';
@@ -236,7 +267,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_info_homepage_contacts',
     ),
@@ -288,6 +319,36 @@ function dt_info_homepage_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_info_homepage_latest|node|info_homepage|homepage_political';
+  $field_group->group_name = 'group_info_homepage_latest';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'info_homepage';
+  $field_group->mode = 'homepage_political';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Latest',
+    'weight' => '31',
+    'children' => array(
+      0 => 'field_info_homepage_latest_link',
+    ),
+    'format_type' => 'section_group',
+    'format_settings' => array(
+      'label' => 'Latest',
+      'instance_settings' => array(
+        'classes' => '',
+        'show_label' => '0',
+        'label_element' => 'h2',
+        'attributes' => 'id="latest"',
+        'modifier' => '',
+        'layout' => '',
+      ),
+    ),
+  );
+  $field_groups['group_info_homepage_latest|node|info_homepage|homepage_political'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_info_homepage_political|node|info_homepage|form';
   $field_group->group_name = 'group_info_homepage_political';
   $field_group->entity_type = 'node';
@@ -298,11 +359,15 @@ function dt_info_homepage_field_group_info() {
     'label' => 'Political site related',
     'weight' => '13',
     'children' => array(
-      0 => 'field_info_homepage_hero_links',
-      1 => 'field_core_links',
-      2 => 'field_info_homepage_about_button',
-      3 => 'field_info_homepage_prior_link',
-      4 => 'field_info_homepage_contacts',
+      0 => 'field_core_links',
+      1 => 'field_info_homepage_about_button',
+      2 => 'field_info_homepage_contacts',
+      3 => 'field_info_homepage_hero_links',
+      4 => 'field_info_homepage_prior_link',
+      5 => 'field_core_latest_visibility',
+      6 => 'field_core_social_network_links',
+      7 => 'field_info_homepage_latest_link',
+      8 => 'field_info_homepage_hero_linktxt',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -395,7 +460,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '27',
+    'weight' => '35',
     'children' => array(
       0 => 'field_info_secondary_links',
     ),
@@ -685,6 +750,7 @@ function dt_info_homepage_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('About the European Commission');
+  t('Commissioners');
   t('Contact');
   t('Content');
   t('Editorial settings');

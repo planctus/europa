@@ -17,3 +17,17 @@ function dt_commemorative_coins_install() {
 function dt_commemorative_coins_uninstall() {
   drupal_set_message(t('NextEuropa commemorative_coins feature is uninstalled on your site.'));
 }
+
+/**
+ * DTTSB-1311: Enable views_filters_selective.
+ *
+ * DTTSB-1313: change field.
+ */
+function dt_commemorative_coins_update_7102() {
+  module_enable(['views_filters_selective']);
+  $field = 'field_cc_issue';
+
+  if (field_info_field($field)) {
+    field_delete_field($field);
+  }
+}

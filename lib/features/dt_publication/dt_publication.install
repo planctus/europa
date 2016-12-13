@@ -180,9 +180,15 @@ function dt_publication_update_7109() {
 }
 
 /**
+ * DTTSB-1321: Enable views_filters_selective.
+ *
  * DTTSB-1049: Update translation of collection at Publications.
  */
-function dt_publication_update_7110() {
+function dt_publication_update_7111() {
+  if (!module_exists('views_filters_selective')) {
+    module_enable(['views_filters_selective']);
+  }
+
   // Update fields in the publication content type.
   features_revert_module('dt_publication');
 

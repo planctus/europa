@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_event_search.features.inc
@@ -120,6 +119,7 @@ function dt_event_search_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0",
+    "entity_type" : "search_api_index",
     "rdf_mapping" : []
   }');
   return $items;
@@ -240,6 +240,7 @@ function dt_event_search_default_search_api_server() {
       }
     },
     "enabled" : "1",
+    "entity_type" : "search_api_server",
     "rdf_mapping" : []
   }');
   return $items;

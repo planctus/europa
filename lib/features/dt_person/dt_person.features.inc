@@ -29,6 +29,38 @@ function dt_person_ctools_plugin_api($module = NULL, $api = NULL) {
 function dt_person_image_default_styles() {
   $styles = array();
 
+  // Exported image style: person_130px_1x.
+  $styles['person_130px_1x'] = array(
+    'label' => 'person_130px_1x',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 130,
+          'height' => 130,
+          'retinafy' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: person_130px_2x.
+  $styles['person_130px_2x'] = array(
+    'label' => 'person_130px_2x',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 130,
+          'height' => 130,
+          'retinafy' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: person_160px_1x.
   $styles['person_160px_1x'] = array(
     'label' => 'person_160px_1x',

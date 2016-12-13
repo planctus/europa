@@ -1,12 +1,14 @@
 #!/bin/bash
 # This can be used like this:
-# ./getReleaseTickets.sh master release/1
+# ./getReleaseTickets.sh master release/1 1.5 25
 # Then it will show all the links.
 
 echo Please make sure your local versions are up to date.
 
 SOURCE=$1
 TARGET=$2
+RELEASE=$3
+PR=$4
 
 echo " "
 echo "#########################################"
@@ -33,5 +35,5 @@ echo "#########################################"
 echo "The following features have been updated:"
 echo "#########################################"
 
-php -f "$PARENTDIR/resources/scripts/other/ReleasePreparation.php" -- "UpdatedFeatures" "$MODIFIEDFILES"
+php -f "$PARENTDIR/resources/scripts/other/ReleasePreparation.php" -- "UpdatedFeatures" "$MODIFIEDFILES" "$RELEASE" "$PR"
 

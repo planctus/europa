@@ -13,9 +13,8 @@ function dt_announcement_install() {
   multisite_config_service('nexteuropa_core')->applyDefaultConfigurationToContentType('announcement');
   // Inintialize readmore patterns.
   variable_set('dt_announcement_read_more__topic', 'All news on [node_title]');
-  variable_set('dt_announcement_read_more__department', 'All news on [node_title]');
+  variable_set('dt_announcement_read_more__department', 'More news');
   variable_set('dt_announcement_read_more__policy_area', 'All news on [node_title]');
-  variable_set('dt_announcement_read_more__department', 'All news on [abbreviation]');
   variable_set('dt_announcement_read_more__priority', 'All news on this priority');
   variable_set('dt_announcement_read_more__policy', 'All news on this policy');
 }
@@ -27,7 +26,6 @@ function dt_announcement_uninstall() {
   variable_del('dt_announcement_read_more__topic');
   variable_del('dt_announcement_read_more__department');
   variable_del('dt_announcement_read_more__policy_area');
-  variable_del('dt_announcement_read_more__department');
   variable_del('dt_announcement_read_more__priority');
   variable_del('dt_announcement_read_more__policy');
   drupal_set_message(t('NextEuropa Class feature is uninstalled on your site.'));
@@ -316,4 +314,11 @@ function dt_announcement_update_7116() {
       ->condition('field_name', 'field_announcement_type', '=')
       ->execute();
   }
+}
+
+/**
+ * DTTSB-1350: Changing the label of the read more on the announcement list.
+ */
+function dt_announcement_update_7117() {
+  variable_set('dt_announcement_read_more__department', 'More news');
 }

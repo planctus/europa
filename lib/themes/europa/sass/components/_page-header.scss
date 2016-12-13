@@ -1,15 +1,22 @@
 /*
 Page header
 
-Page header component
+Page header default component.
 
 Markup: html/page-header.html
 
 .page-header--image - Header with a background image
 .page-header--large-intro - Header with larger intro text
 
+Style guide: page-header
+*/
 
-Style guide page-header
+/*
+Page header component with xlarger intro text.
+
+Markup: html/page-header--xlarge-intro.html
+
+Style guide: page-header.xlarge-intro
 */
 
 /*
@@ -17,7 +24,7 @@ Political page header
 
 Markup: html/page-header--political.html
 
-Style guide page-header.political
+Style guide: page-header.political
 */
 
 /*
@@ -25,16 +32,9 @@ Informational site page header
 
 Markup: html/page-header--informational.html
 
-Style guide page-header.informational
+Style guide: page-header.informational
 */
 
-/*
-Informational site homepage header
-
-Markup: html/page-header--informational-home.html
-
-Style guide page-header.informational-home
-*/
 
 .page-header {
   margin: 0;
@@ -143,5 +143,63 @@ Style guide page-header.informational-home
     &::before {
       margin-right: 0.5em;
     }
+  }
+}
+
+.page-header--xlarge-intro {
+  min-height: 150px;
+  padding-bottom: 0;
+
+  .page-header__hero-title {
+    min-height: 75px;
+    margin: 75px 0 0;
+    padding: 16px;
+    background-color: $blue-darker;
+  }
+
+  .field__label--above {
+    padding: 0;
+    color: $white;
+    font-size: $font-size-h5;
+    font-weight: $font-weight-normal;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: $font-size-h3;
+  }
+}
+
+@include breakpoint(screen-msm-min) {
+  .page-header--xlarge-intro {
+    height: 320px;
+
+    .page-header__hero-title {
+      margin: auto;
+      padding-top: 5em;
+      background-color: transparent;
+    }
+
+    .field__label--above {
+      width: 146px;
+      height: 34px;
+      margin: 0;
+      line-height: 34px;
+      background-color: $blue-darker;
+      text-align: center;
+    }
+
+    p {
+      width: 550px;
+      padding: 22px 5px 22px 33px;
+      background-color: $white;
+      color: $blue-dark;
+    }
+  }
+}
+
+.node-info-homepage.view-mode-homepage_political {
+  .page-header {
+    @extend .page-header--xlarge-intro;
   }
 }

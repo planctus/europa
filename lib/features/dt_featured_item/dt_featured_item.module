@@ -15,3 +15,15 @@ function dt_featured_item_nexteuropa_legacy_link_alter(&$legacy_link_url, $entit
     $legacy_link_url = url('node/' . $entity->field_feat_item_reference[LANGUAGE_NONE][0]['target_id']);
   }
 }
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ */
+function dt_featured_item_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
+  if ($context['view_mode'] == "hero_links" && $context['bundle'] == "featured_item") {
+    $classes = $layout_render_array['ds_content'][0]['#group']->classes;
+    $content_language = $layout_render_array['ds_content'][0]['#group']->label_language;
+    $url = $context['entity']->field_core_legacy_link[$content_language][0]['url'];
+    $layout_render_array['ds_content'][0]['#prefix'] = '<a href="' . $url . '" class="' . $classes . '">';
+  }
+}

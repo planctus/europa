@@ -24,6 +24,10 @@ function dt_announcement_ds_fields_info($entity_type) {
             'type' => 'checkbox',
             'description' => t('Display or do not display the featured item'),
           ],
+          'show_promoted' => [
+            'type' => 'checkbox',
+            'description' => t('Display only promoted to front page items'),
+          ],
           'show_social_media' => [
             'type' => 'checkbox',
             'description' => t('Display or do not display the social media'),
@@ -31,6 +35,10 @@ function dt_announcement_ds_fields_info($entity_type) {
           'label' => [
             'type' => 'textfield',
             'description' => t('The label to display above the component'),
+          ],
+          'limit_results' => [
+            'type' => 'textfield',
+            'description' => t('Limit results. Default is 4.'),
           ],
         ],
         'default' => [
@@ -104,11 +112,40 @@ function _dt_announcement_ds_fields_announcement_block($field) {
   }
 
   // Default settings.
+  $display_id = 'latest_block';
   $show_featured = isset($field['formatter_settings']['show_featured_item']) ? $field['formatter_settings']['show_featured_item'] : FALSE;
   $show_social_media = isset($field['formatter_settings']['show_social_media']) ? $field['formatter_settings']['show_social_media'] : FALSE;
+  $show_promoted = isset($field['formatter_settings']['show_promoted']) ? $field['formatter_settings']['show_promoted'] : FALSE;
+  $limit_results = !empty($field['formatter_settings']['limit_results']) ? $field['formatter_settings']['limit_results'] : 4;
 
-  // Set our announcements view.
-  $news_items = views_embed_view('announcements', 'latest_block');
+  // Get the view.
+  $view = views_get_view('announcements');
+
+  // Add result limit if it is set.
+  if (is_numeric($limit_results)) {
+    $view->display[$display_id]->display_options['pager']['options']['items_per_page'] = $limit_results;
+  }
+
+  // Show only promoted to frontpage items.
+  if ($show_promoted) {
+    $view->display[$display_id]->display_options['filters']['promote'] = [
+      'id' => 'promote',
+      'table' => 'node',
+      'field' => 'promote',
+      'relationship' => 'none',
+      'operator' => '=',
+      'value' => 1,
+    ];
+  }
+
+  // We alter the view from the info homepage feature
+  // if it is the case of visibility.
+  drupal_alter('dt_announcements_section', $view, $node, $display_id, $field);
+
+  // Render the view.
+  $view->preview($display_id);
+  $view->pre_execute();
+  $news_items = $view->render();
 
   // Get the social media to render.
   if ($show_social_media) {

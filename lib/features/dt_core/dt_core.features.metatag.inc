@@ -21,8 +21,8 @@ function dt_core_metatag_export_default() {
       'description' => array(
         'value' => '[node:field_core_description]',
       ),
-      'last-modified' => array(
-        'value' => '[node:changed:custom:d/m/Y]',
+      'keywords' => array(
+        'value' => '[node:field_core_keywords]',
       ),
       'last-modified' => array(
         'value' => '[node:changed:custom:d/m/Y]',

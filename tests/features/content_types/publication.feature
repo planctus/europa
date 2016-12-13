@@ -5,9 +5,15 @@ Feature: Publication content type should have 2 types of visualization.
 
   @nexteuropa_file
   Scenario: One publication containing files (document)
+    Given "tags" terms:
+      | name    |
+      | A test tag |
+    
     Given "file" content:
       | title         | status | language |
       | My File Title | 1      | en       |
+
+    
     Given I am viewing a "Publication" content:
       | title                           | Activity Report 2014 Communication |
       | field_core_date_updated:value   | 1400980800                         |
@@ -17,10 +23,12 @@ Feature: Publication content type should have 2 types of visualization.
       | field_publication_collection    | 0                                  |
       | field_core_description          | Content description                |
       | field_core_files                | My File Title                      |
+      | field_core_tags                 | A test tag                         |
       | status                          | 1                                  |
     Then I should see text matching "Files"
     Then I should not see an ".meta--header" element
     But I should not see text matching "Documents"
+    And I should not see text matching "A test tag"
 
   Scenario: Collection of publications (documents)
     Given I am viewing a "Publication" content:

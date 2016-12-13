@@ -91,6 +91,9 @@ projects[entityreference_view_widget][version] = "2.0-rc7"
 projects[views_tree][subdir] = "contrib"
 projects[views_tree][version] = "2.0"
 
+projects[views_selective_filters][subdir] = "contrib"
+projects[views_selective_filters][version] = "1.5"
+
 projects[hierarchical_select][subdir] = "contrib"
 projects[hierarchical_select][version] = "3.0-beta7"
 

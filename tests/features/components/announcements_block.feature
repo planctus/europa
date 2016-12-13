@@ -48,7 +48,7 @@ Feature: Announcements block
 
     Examples:
       | content_name | reference_fieldname   | label_visible | link_visible | all_link_text                         | all_link_url                        |
-      | Department   | field_core_department | should        | should       | All news on DG TEST                   | /announcements_en?department=999999 |
+      | Department   | field_core_department | should        | should       | More news                             | /announcements_en?department=999999 |
       | Policy       | field_core_policies   | should not    | should       | All news on this policy               | /announcements_en?policies=999999   |
       | Topic        | field_core_topics     | should        | should       | All news on Topic with announcements  | /announcements_en?topics=999999     |
       | Priority     | field_core_priorities | should        | should       | All news on this priority             | /announcements_en?priorities=999999 |
