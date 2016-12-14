@@ -149,7 +149,9 @@ Feature: File content type
     Then I should see an ".node.node-file.node-teaser" element
     When I click "Available languages (1)"
     And I wait for a second
-    Then I should see "Nederlands version" in the ".file__translations .file__title" element
+    Then I should see a ".field--field-core-file a.btn.file__btn.btn-default" element
+    And I should see a ".field--field-core-file ul.file__translations-list a.btn.file__btn.btn--condensed.is-internal" element
+    And I should see "Nederlands version" in the ".file__translations .file__title" element
     And I get the file "test_nl.pdf" after clicking "Download" in the ".file__translations" element
 
   @dt_page
