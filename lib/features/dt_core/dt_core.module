@@ -936,3 +936,15 @@ function dt_core_user_login(&$edit, $account) {
     _dt_core_add_user_role($account, 'draft viewer');
   }
 }
+
+/**
+ * Implements hook_menu_alter().
+ */
+function dt_core_menu_alter(&$items) {
+  // Convert "contact" into "contact-form" so "contact" can be used by nodes.
+  // @see NEPT-403; DTTSB-1439.
+  if (isset($items['contact'])) {
+    $items['contact-form'] = $items['contact'];
+    unset($items['contact']);
+  }
+}
