@@ -36,6 +36,9 @@ function dt_info_homepage_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
     'announcement_block' => array(
       'weight' => '5',
@@ -56,6 +59,13 @@ function dt_info_homepage_ds_field_settings_info() {
       'formatter_settings' => array(
         'ft' => array(
           'lb' => 'Highlight',
+        ),
+      ),
+    ),
+    'field_core_links' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
         ),
       ),
     ),
@@ -225,16 +235,13 @@ function dt_info_homepage_ds_layout_settings_info() {
   $ds_layout->layout = 'ne_bootstrap_1col_stacked';
   $ds_layout->settings = array(
     'regions' => array(
-      'left_header' => array(
-        0 => 'field_core_introduction',
-      ),
       'central' => array(
-        1 => 'priorities_listing',
-        2 => 'group_info_homepage_section_top',
-        3 => 'field_info_highlights',
-        4 => 'field_info_homepage_prior_link',
-        5 => 'field_core_links',
-        6 => 'group_info_homepage_commissionrs',
+        0 => 'priorities_listing',
+        2 => 'field_info_homepage_prior_link',
+        3 => 'group_info_homepage_section_top',
+        4 => 'field_info_highlights',
+        5 => 'group_info_homepage_commissionrs',
+        6 => 'field_core_links',
         7 => 'group_info_homepage_about',
         8 => 'field_info_homepage_about_button',
         9 => 'group_info_homepage_contacts',
@@ -244,15 +251,18 @@ function dt_info_homepage_ds_layout_settings_info() {
         13 => 'field_info_homepage_hero_links',
         14 => 'group_info_highlights',
       ),
+      'left_header' => array(
+        1 => 'field_core_introduction',
+      ),
     ),
     'fields' => array(
-      'field_core_introduction' => 'left_header',
       'priorities_listing' => 'central',
+      'field_core_introduction' => 'left_header',
+      'field_info_homepage_prior_link' => 'central',
       'group_info_homepage_section_top' => 'central',
       'field_info_highlights' => 'central',
-      'field_info_homepage_prior_link' => 'central',
-      'field_core_links' => 'central',
       'group_info_homepage_commissionrs' => 'central',
+      'field_core_links' => 'central',
       'group_info_homepage_about' => 'central',
       'field_info_homepage_about_button' => 'central',
       'group_info_homepage_contacts' => 'central',
