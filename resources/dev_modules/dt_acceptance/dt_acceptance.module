@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * This file contains helper hooks and code to improve the development.
+ */
+
+/**
+ * Implements hook_modules_enabled().
+ */
+function dt_acceptance_modules_enabled($modules) {
+  if (module_exists('node_revision_delete')) {
+    // Set default time frame.
+    variable_set('node_revision_delete_time', 'every_time');
+    $content_types = node_type_get_types();
+    foreach ($content_types as $ct) {
+      // Enable revision limit.
+      variable_set('node_revision_delete_track_' . $ct->type, '1');
+      // Set revision limit amount.
+      variable_set('node_revision_delete_number_' . $ct->type, '5');
+    }
+  }
+}

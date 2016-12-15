@@ -171,10 +171,20 @@
 
     </target>
 
-    <target name="fetch-ac-db" description="Downloads the AC database." depends="">
+    <target name="fetch-ac-db" description="Downloads the AC database without revision data." depends="">
+        <delete file="${acquia.dump}"/>
+        <echo msg="Downloading remote database without revision data"/>
+        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --structure-tables-list=cache,cache_*,field_revision_* --gzip > ${acquia.dump}.gz"/>
+        <echo msg="AC database downloaded."/>
+        <echo msg="Unpacking database"/>
+        <exec command="gunzip ${acquia.dump}.gz"/>
+        <echo msg="Database unpacked"/>
+    </target>
+
+    <target name="fetch-full-ac-db" description="Downloads the full AC database." depends="">
         <delete file="${acquia.dump}"/>
         <echo msg="Downloading remote database"/>
-        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --gzip > ${acquia.dump}.gz"/>
+        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --structure-tables-list=cache,cache_* --gzip > ${acquia.dump}.gz"/>
         <echo msg="AC database downloaded."/>
         <echo msg="Unpacking database"/>
         <exec command="gunzip ${acquia.dump}.gz"/>
@@ -301,6 +311,30 @@
         </phingcall>
     </target>
 
+    <!-- Copy development modules. -->
+    <target name="custom-development-modules">
+        <if>
+            <not>
+                <equals arg1="${development.modules.custom.acceptance}" arg2=""/>
+            </not>
+            <then>
+                <mkdir dir="${phing.project.tmp.dir}/build/sites/all/modules/develop" />
+                <echo msg="Copy development modules."/>
+                <foreach list="${development.modules.custom.acceptance}" delimiter=" " param="module" target="copy-custom-development-modules"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="copy-custom-development-modules">
+        <echo msg="Copy development module: ${module}."/>
+        <exec
+                command='cp -r ${development.modules.custom}/${module} "${phing.project.tmp.dir}/build/sites/all/modules/develop/"'
+                dir="${project.basedir}"
+                passthru="true"
+                checkreturn="true"
+        />
+    </target>
+
     <target name="copy-acceptance-files">
         <exec
                 command='cp -r ${dist.build.dir}/* "${phing.project.tmp.dir}/build/sites/all/"'
@@ -313,7 +347,7 @@
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."
-            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance"/>
+            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance, custom-development-modules"/>
 
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">

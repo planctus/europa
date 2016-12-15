@@ -1,0 +1,6 @@
+name = DT Acceptance
+description = Helper tools for digital transformation development.
+core = 7.x
+package = NextEuropa Digital Transformation Helpers
+dependencies[] = node_revision_delete
+php = 5.6
