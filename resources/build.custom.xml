@@ -19,8 +19,6 @@
 
         <echo message="Set up private files directory"/>
         <phingcall target="set-private-files" />
-        <echo message="Revert project features"/>
-        <phingcall target="revert-dt-features" />
     </target>
 
     <property name="acquia.repo.dir" value="acquia-cloud"/>
