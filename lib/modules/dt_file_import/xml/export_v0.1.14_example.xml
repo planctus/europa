@@ -201,7 +201,7 @@
 			<core_contact>3144</core_contact>
 		</publication_translation>
 		<publication_translation>
-			<language>en</language>
+			<language>de</language>
 			<pid>2</pid>
 			<title>Test publication 2.</title>
 			<description>En desc.</description>
@@ -304,7 +304,7 @@
 	</publications>
 	<collection_translations>
 		<collection_translation>
-			<language>en</language>
+			<language>de</language>
 			<cid>1</cid>
 			<title>C Test collection 1.</title>
 			<description>En desc col.</description>

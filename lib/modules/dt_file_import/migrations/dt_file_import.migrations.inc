@@ -115,6 +115,32 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
   }
 
   /**
+   * Get the primary language of the content.
+   *
+   * @param string $type
+   *   Import types, following types are allowed as a parameter:
+   *   - 'collection',
+   *   - 'publication',
+   *   - 'file'.
+   * @param int $id
+   *   - ID of item.
+   *
+   * @return bool|string
+   *   - FALSE: When no result.
+   *   - Title of the item.
+   */
+  public function getPrimaryLanguage($type = NULL, $id = NULL) {
+    // Check the available languages.
+    if ($languages = $this->getLanguages($type, $id)) {
+      $language = array_search('en', $languages) ? 'en' : $languages[0];
+      return $language;
+    }
+    // In this case there is no title, should report at migration messages.
+    $this->queueMessage(t('There was no language given for @type! (ID: @id)', ['@type' => $type, '@id' => $id]));
+    return FALSE;
+  }
+
+  /**
    * Helper for finding the correct title of an item.
    *
    * @param string $type
@@ -130,24 +156,12 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
    *   - Title of the item.
    */
   public function getTitleById($type = NULL, $id = NULL) {
-    // Check the available languages.
-    $languages = $this->getLanguages($type, $id);
-
     // Check if we have any language.
-    if (!empty($languages)) {
-      // Language fallback.
-      // Try English title first,
-      // than if not found, pickup the first item of languages.
-      $language_fallback_order = [
-        'en',
-        $languages[0],
-      ];
-      foreach ($language_fallback_order as $language_item) {
-        $xml = $this->getTranslationElementByIdAndLanguage($type, $id, $language_item);
-        // Check the language version if there is any title.
-        if ($xml && isset($xml->title)) {
-          return $xml->title;
-        }
+    if ($language = $this->getPrimaryLanguage($type, $id)) {
+      $xml = $this->getTranslationElementByIdAndLanguage($type, $id, $language);
+      // Check the language version if there is any title.
+      if ($xml && isset($xml->title)) {
+        return (string) $xml->title[0];
       }
     }
     // In this case there is no title, should report at migration messages.
@@ -302,7 +316,7 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
     $this->addFieldMapping('sticky')->defaultValue(0);
     $this->addFieldMapping('revision')->defaultValue(0);
     $this->addFieldMapping('field_publication_collection')->defaultValue(1);
-    $this->addFieldMapping('language')->defaultValue('en');
+
     // Unmapped fields.
     $this->addUnmigratedDestinations(
       [
@@ -330,6 +344,7 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
         'field_core_publications',
         'group_content_access',
         'is_new',
+        'language',
         'log',
         'metatag_abstract',
         'metatag_article:author',
@@ -456,6 +471,23 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Prepare the node before migration.
+   *
+   * @param object $node
+   *   - Node.
+   * @param array $row
+   *   - Rows.
+   */
+  public function prepare(&$node, $row) {
+    $default_language = $this->getPrimaryLanguage('collection', $row->cid);
+    $node->translations = (object) [
+      'original' => $default_language,
+      'data' => [],
+    ];
+    $node->language = $default_language;
+  }
+
+  /**
    * Prepare the row to check for english title first than others.
    *
    * @param object $row
@@ -471,47 +503,51 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
   /**
    * When a row import completed.
    *
-   * @param object|\stdClass $entity
-   *   The entity, which already in the database.
+   * @param object|\stdClass $node
+   *   The node, which already in the database.
    * @param \stdClass $row
    *   Imported row from migration.
    */
-  public function complete(stdClass $entity, stdClass $row) {
+  public function complete(stdClass $node, stdClass $row) {
     // Publication languages.
     $publication_languages = $this->getLanguages('collection', $row->cid);
+    $default_language = $this->getPrimaryLanguage('collection', $row->cid);
 
-    // Translation setting at the content.
-    $data = [];
+    // Adding language specific settings to file node.
+    $entity_translation_handler = entity_translation_get_handler('node', $node);
+    $entity_translation_handler->setOriginalLanguage($default_language);
 
     // Go through all languages.
     foreach ($publication_languages as $language) {
       // Get the xml node related pid and language.
       $xml = $this->getTranslationElementByIdAndLanguage('collection', $row->cid, $language);
-      // Title.
-      $entity->title_field[$language][0]['value'] = isset($xml->title) ? (string) $xml->title : NULL;
-      $entity->field_core_description[$language][0]['value'] = isset($xml->description) ? (string) $xml->description : NULL;
-      $entity->body[$language][0]['value'] = isset($xml->summary_of_abstract) ? (string) $xml->summary_of_abstract : NULL;
+      if (isset($xml->title)) {
+        // Title.
+        $node->title_field[$language][0]['value'] = (string) $xml->title;
+        $node->field_core_description[$language][0]['value'] = isset($xml->description) ? (string) $xml->description : NULL;
+        $node->body[$language][0]['value'] = isset($xml->summary_of_abstract) ? (string) $xml->summary_of_abstract : NULL;
 
-      $data[$language] = [
-        'entity_type' => 'node',
-        'entity_id' => $entity->nid,
-        'language' => $language,
-        'source' => ($language == 'en') ? '' : 'en',
-        'uid' => '1',
-        'status' => '1',
-        'translate' => '0',
-        'created' => REQUEST_TIME,
-        'changed' => REQUEST_TIME,
-      ];
+        // Set the translation.
+        if ($language != $default_language) {
+          // Language.
+          $translation = [
+            'entity_type' => 'node',
+            'entity_id' => $node->nid,
+            'language' => $language,
+            'source' => $default_language,
+            'uid' => '1',
+            'status' => '1',
+            'translate' => '0',
+            'created' => REQUEST_TIME,
+            'changed' => REQUEST_TIME,
+          ];
+          $entity_translation_handler->setTranslation($translation);
+        }
+      }
     }
 
-    // Adding language specific settings to file node.
-    $entity->translations = (object) [
-      'original' => 'en',
-      'data' => $data,
-    ];
-
-    node_save($entity);
+    // Saving collection.
+    node_save($node);
   }
 
 }
@@ -659,7 +695,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
     // Collection import.
     // The `cid` is not a valid field at publication content type,
     // but somehow we should find the related collection
-    // (I mean publication with collection) entity.
+    // (I mean publication with collection) node.
     $this->addFieldMapping('cids', 'cid')
       ->separator(',')
       ->xpath('cid')
@@ -671,7 +707,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
     $this->addFieldMapping('sticky')->defaultValue(0);
     $this->addFieldMapping('revision')->defaultValue(0);
     $this->addFieldMapping('field_publication_collection')->defaultValue(0);
-    $this->addFieldMapping('language')->defaultValue('en');
+
     // Unmapped fields.
     $this->addUnmigratedDestinations(
       [
@@ -699,6 +735,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
         'field_core_publications',
         'group_content_access',
         'is_new',
+        'language',
         'log',
         'metatag_abstract',
         'metatag_article:author',
@@ -825,6 +862,23 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Prepare the node before migration.
+   *
+   * @param object $node
+   *   - Node.
+   * @param array $row
+   *   - Rows.
+   */
+  public function prepare(&$node, $row) {
+    $default_language = $this->getPrimaryLanguage('collection', $row->pid);
+    $node->translations = (object) [
+      'original' => $default_language,
+      'data' => [],
+    ];
+    $node->language = $default_language;
+  }
+
+  /**
    * Prepare the row to check for english title otherwise skip.
    *
    * @param object $row
@@ -840,52 +894,58 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
   /**
    * When a row import completed.
    *
-   * @param object|\stdClass $entity
-   *   The entity, which already in the database.
+   * @param object|\stdClass $node
+   *   The node, which already in the database.
    * @param \stdClass $row
    *   Imported row from migration.
    */
-  public function complete(stdClass $entity, stdClass $row) {
+  public function complete(stdClass $node, stdClass $row) {
     // Publication languages.
     $publication_languages = $this->getLanguages('publication', $row->pid);
+    $default_language = $this->getPrimaryLanguage('publication', $row->pid);
 
-    // Translation setting at the content.
-    $data = [];
+    // Adding language specific settings to file node.
+    $entity_translation_handler = entity_translation_get_handler('node', $node);
+    $entity_translation_handler->setOriginalLanguage($default_language);
 
     // Go through all languages.
     foreach ($publication_languages as $language) {
       // Get the xml node related pid and language.
       $xml = $this->getTranslationElementByIdAndLanguage('publication', $row->pid, $language);
-      // Title.
-      $entity->title_field[$language][0]['value'] = isset($xml->title) ? (string) $xml->title : NULL;
-      $entity->field_core_description[$language][0]['value'] = isset($xml->description) ? (string) $xml->description : NULL;
-      $entity->body[$language][0]['value'] = isset($xml->summary_of_abstract) ? (string) $xml->summary_of_abstract : NULL;
+      if (isset($xml->title)) {
+        // Title.
+        $node->title_field[$language][0]['value'] = (string) $xml->title;
+        $node->field_core_description[$language][0]['value'] = isset($xml->description) ? (string) $xml->description : NULL;
+        $node->body[$language][0]['value'] = isset($xml->summary_of_abstract) ? (string) $xml->summary_of_abstract : NULL;
 
-      $data[$language] = [
-        'entity_type' => 'node',
-        'entity_id' => $entity->nid,
-        'language' => $language,
-        'source' => ($language == 'en') ? '' : 'en',
-        'uid' => '1',
-        'status' => '1',
-        'translate' => '0',
-        'created' => REQUEST_TIME,
-        'changed' => REQUEST_TIME,
-      ];
+        // Set up translation.
+        if ($language != $default_language) {
+          // Language.
+          $translation = [
+            'entity_type' => 'node',
+            'entity_id' => $node->nid,
+            'language' => $language,
+            'source' => $default_language,
+            'uid' => '1',
+            'status' => '1',
+            'translate' => '0',
+            'created' => REQUEST_TIME,
+            'changed' => REQUEST_TIME,
+          ];
+          $entity_translation_handler->setTranslation($translation);
+        }
+      }
     }
 
-    // Adding language specific settings to file node.
-    $entity->translations = (object) [
-      'original' => 'en',
-      'data' => $data,
-    ];
+    // Saving publication.
+    node_save($node);
 
     // Collection update.
-    if (isset($entity->cids)) {
+    if (isset($node->cids)) {
       // Using multiple, comma-separated pids.
-      foreach ($entity->cids as $cid) {
+      foreach ($node->cids as $cid) {
         if ($collection = node_load($cid)) {
-          $collection->field_core_publications[LANGUAGE_NONE][]['target_id'] = $entity->nid;
+          $collection->field_core_publications[LANGUAGE_NONE][]['target_id'] = $node->nid;
           node_save($collection);
         }
         // Drop an error message if there is no related publication.
@@ -895,22 +955,21 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
       }
     }
 
-    node_save($entity);
   }
 
   /**
    * Removing related publications at rollback.
    *
-   * @param array $entity_ids
-   *   Entity IDs which will be removed.
+   * @param array $node_ids
+   *   Node IDs which will be removed.
    */
-  public function prepareRollback($entity_ids) {
+  public function prepareRollback($node_ids) {
     // Removing all file reference from Publication, which will be deleted.
     // Querying Publications, which has file reference by the given ids.
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'publication')
-      ->fieldCondition('field_core_publications', 'target_id', $entity_ids, 'IN');
+      ->fieldCondition('field_core_publications', 'target_id', $node_ids, 'IN');
     $result = $query->execute();
     // Loading affected Collections.
     $nids = array_keys($result['node']);
@@ -923,7 +982,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
         // Should delete the publication reference,
         // when the reference is NULL
         // or Publication ID is in the set of files to be deleted.
-        if (!isset($item->nid) || array_search($item->nid, $entity_ids) !== FALSE) {
+        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
           unset($wrapper->field_core_publications[$key]);
         }
       }
@@ -1021,18 +1080,21 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
 
     // Publication import.
     // The `pid` is not a valid field at file content type,
-    // but somehow we should find the related publication entity.
+    // but somehow we should find the related publication node.
     $this->addFieldMapping('pids', 'pid')
       ->separator(',')
       ->xpath('pid')
       ->sourceMigration('DTPublication');
+
+    // Language.
+    $this->addFieldMapping('language', 'language');
 
     // Default values.
     $this->addFieldMapping('status')->defaultValue(1);
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('sticky')->defaultValue(0);
     $this->addFieldMapping('revision')->defaultValue(0);
-    $this->addFieldMapping('language')->defaultValue('en');
+
     // Unmapped fields.
     $this->addUnmigratedDestinations(
       [
@@ -1202,6 +1264,23 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Prepare the node before migration.
+   *
+   * @param object $node
+   *   - Node.
+   * @param array $row
+   *   - Rows.
+   */
+  public function prepare(&$node, $row) {
+    $default_language = $this->getPrimaryLanguage('file', $row->fid);
+    $node->translations = (object) [
+      'original' => $default_language,
+      'data' => [],
+    ];
+    $node->language = $default_language;
+  }
+
+  /**
    * Prepare the row to check for english title otherwise skip.
    *
    * @param object $row
@@ -1217,90 +1296,92 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
   /**
    * When a row import completed.
    *
-   * @param object|\stdClass $entity
-   *   The entity, which already in the database.
+   * @param object|\stdClass $node
+   *   The node, which already in the database.
    * @param \stdClass $row
    *   Imported row from migration.
    */
-  public function complete(stdClass $entity, stdClass $row) {
+  public function complete(stdClass $node, stdClass $row) {
     // Languages.
     $file_languages = $this->getLanguages('file', $row->fid);
+    $default_language = $this->getPrimaryLanguage('file', $row->fid);
 
-    // Translation setting at the content.
-    $data = [];
+    // Adding language specific settings to file node.
+    $entity_translation_handler = entity_translation_get_handler('node', $node);
+    $entity_translation_handler->setOriginalLanguage($default_language);
 
     // Iterate on all languages, which are related to the import.
     foreach ($file_languages as $language) {
       // Get the xml node related fid and language.
       $xml = $this->getTranslationElementByIdAndLanguage('file', $row->fid, $language);
 
-      // Title.
-      $entity->title_field[$language][0]['value'] = isset($xml->title) ? (string) $xml->title : NULL;
+      if (isset($xml->title)) {
+        // Title.
+        $node->title_field[$language][0]['value'] = (string) $xml->title;
 
-      // File processing, like: download or link to an external resource.
-      switch ($row->file_link_upload) {
-        // Download and store a file.
-        case 'Upload the file':
-          $file = $this->getFile($xml);
-          // Skip the full process if there is no file provided.
-          if (empty($file)) {
-            break 2;
-          }
-          $entity->field_core_file[$language][] = (array) $this->getFile($xml);
-          break;
+        // File processing, like: download or link to an external resource.
+        switch ($row->file_link_upload) {
+          // Download and store a file.
+          case 'Upload the file':
+            $file = $this->getFile($xml);
+            // Skip the full process if there is no file provided.
+            if (empty($file)) {
+              break 2;
+            }
+            $node->field_core_file[$language][] = (array) $this->getFile($xml);
+            break;
 
-        // External link, using legacy link.
-        case 'Link to file':
-          $url = isset($xml->source_file_url) ? (string) $xml->source_file_url : NULL;
-          $entity->field_core_legacy_link[$language][] = [
-            'url' => $url,
-            'attribute' => [],
+          // External link, using legacy link.
+          case 'Link to file':
+            $url = isset($xml->source_file_url) ? (string) $xml->source_file_url : NULL;
+            $node->field_core_legacy_link[$language][] = [
+              'url' => $url,
+              'attribute' => [],
+            ];
+            break;
+        }
+
+        // Set translation.
+        if ($language != $default_language) {
+          // Language.
+          $translation = [
+            'entity_type' => 'node',
+            'entity_id' => $node->nid,
+            'language' => $language,
+            'source' => $default_language,
+            'uid' => '1',
+            'status' => '1',
+            'translate' => '0',
+            'created' => REQUEST_TIME,
+            'changed' => REQUEST_TIME,
           ];
-          break;
+          $entity_translation_handler->setTranslation($translation);
+        }
       }
-
-      // Node specific data.
-      $data[$language] = [
-        'entity_type' => 'node',
-        'entity_id' => $entity->nid,
-        'language' => $language,
-        'source' => ($language == 'en') ? '' : 'en',
-        'uid' => '1',
-        'status' => '1',
-        'translate' => '0',
-        'created' => REQUEST_TIME,
-        'changed' => REQUEST_TIME,
-      ];
     }
 
     // Delete the node if there is no file imported and no link given.
     // We need to do this here because translation need a nid, and we don't
-    // have nid in prepare process to provide for the entity object.
-    if (!isset($entity->field_core_file) && !isset($entity->field_core_legacy_link)) {
-      node_delete($entity->nid);
+    // have nid in prepare process to provide for the node object.
+    if (!isset($node->field_core_file) && !isset($node->field_core_legacy_link)) {
+      node_delete($node->nid);
     }
     else {
-      // Adding language specific settings to file node.
-      $entity->translations = (object) [
-        'original' => 'en',
-        'data' => $data,
-      ];
-
       // Store file node.
-      node_save($entity);
+      node_save($node);
 
       // Publication update.
-      if (isset($entity->pids)) {
-        // Check $entity->pids is an array.
-        if (is_array($entity->pids)) {
-          $pids = $entity->pids;
+      if (isset($node->pids)) {
+        // Check $node->pids is an array.
+        if (is_array($node->pids)) {
+          $pids = $node->pids;
         }
         else {
-          $pids = [$entity->pids];
+          $pids = [$node->pids];
         }
         foreach ($pids as $pid) {
           if ($publication = node_load((integer) $pid)) {
-            $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $entity->nid;
+            $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $node->nid;
             node_save($publication);
           }
           // Drop an error message if there is no related publication.
@@ -1359,7 +1440,12 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     $query = curl_exec($curl_handle);
     $curl_info = curl_getinfo($curl_handle);
     if ($curl_info['http_code'] != 200) {
-      $this->queueMessage(t('The target url of the file is not accessible. Url: @url, FID: @id.', ['@url' => $url, '@id' => $fid]));
+      $this->queueMessage(
+        t(
+          'The target url of the file is not accessible. Url: !url, FID: @id.',
+          ['!url' => l($url, $url), '@id' => $fid]
+        )
+      );
     }
     curl_close($curl_handle);
 
@@ -1369,16 +1455,16 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
   /**
    * Removing imported managed files at rollback.
    *
-   * @param array $entity_ids
-   *   Entity IDs which will be removed.
+   * @param array $node_ids
+   *   Node IDs which will be removed.
    */
-  public function prepareRollback($entity_ids) {
+  public function prepareRollback($node_ids) {
     // Removing all file reference from Publication, which will be deleted.
     // Querying Publications, which has file reference by the given ids.
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'publication')
-      ->fieldCondition('field_core_files', 'target_id', $entity_ids, 'IN');
+      ->fieldCondition('field_core_files', 'target_id', $node_ids, 'IN');
     $result = $query->execute();
     // Loading affected Publications.
     $nids = array_keys($result['node']);
@@ -1391,7 +1477,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
         // Should delete the file reference,
         // when the reference is NULL
         // or File ID is in the set of files to be deleted.
-        if (!isset($item->nid) || array_search($item->nid, $entity_ids) !== FALSE) {
+        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
           unset($wrapper->field_core_files[$key]);
         }
       }
@@ -1399,7 +1485,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     }
 
     // Removing managed files.
-    $nodes = node_load_multiple($entity_ids);
+    $nodes = node_load_multiple($node_ids);
     $fids = [];
     foreach ($nodes as $node) {
       foreach ($node->field_core_file as $item) {
