@@ -10,7 +10,7 @@ include_once 'dt_job.features.inc';
 /**
  * Implements hook_preprocess_HOOK().
  *
- * The job/role field should be hidden when no respobiabilities are filled in.
+ * The job/role field should be removed when no responsibilities are filled in.
  */
 function dt_job_preprocess_node(&$variables) {
   if ($variables['type'] == 'job' && $variables['view_mode'] == 'job') {
