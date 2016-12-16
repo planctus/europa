@@ -181,6 +181,10 @@
     <?php endif; ?>
   </div>
 
+  <?php if (!empty($messages)): ?>
+    <?php print $messages; ?>
+  <?php endif; ?>
+
   <?php print render($page['content']); ?>
 
   <div class="container-fluid">
