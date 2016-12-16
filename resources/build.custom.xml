@@ -301,10 +301,10 @@
     </target>
 
     <!-- Download development modules. -->
-    <target name="download-development-modules-acceptance" depends="generate-development-makefile">
+    <target name="download-development-modules-acceptance">
         <echo msg="Download development modules."/>
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="${subsite.temporary.development.make}"/>
+            <property name="drush.make.target.file" value="${development.make.dev}"/>
             <property name="drush.make.root" value="${phing.project.tmp.dir}/build"/>
         </phingcall>
     </target>
@@ -345,7 +345,7 @@
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."
-            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance, custom-development-modules"/>
+            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, custom-development-modules, download-development-modules-acceptance"/>
 
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">
