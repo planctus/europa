@@ -39,6 +39,8 @@
                     <xs:element name="language" minOccurs="1" maxOccurs="1" nillable="false">
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
+                          <xs:minLength value="2"/>
+                          <xs:maxLength value="5"/>
                           <xs:enumeration value="bg"/>
                           <xs:enumeration value="cs"/>
                           <xs:enumeration value="da"/>
@@ -167,7 +169,7 @@
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
                           <xs:minLength value="2"/>
-                          <xs:maxLength value="4"/>
+                          <xs:maxLength value="5"/>
                           <xs:enumeration value="bg"/>
                           <xs:enumeration value="cs"/>
                           <xs:enumeration value="da"/>
@@ -355,7 +357,7 @@
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
                           <xs:minLength value="2"/>
-                          <xs:maxLength value="4"/>
+                          <xs:maxLength value="5"/>
                           <xs:enumeration value="bg"/>
                           <xs:enumeration value="cs"/>
                           <xs:enumeration value="da"/>
