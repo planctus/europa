@@ -42,3 +42,13 @@ Feature: Url aliases have specific configurations and patterns.
     Then I should see "Created new alias sub-page/page-title"
     And I should see "replacing law/new-law-title/page-title"
     And the canonical link should contain the value "/sub-page/page-title_en"
+
+  @api @information @political @dt_shared_functions
+  Scenario: When a page has a long title the url alias should be limited to 250 characters
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "Page" content:
+      | title              | Lorem ipsum dolor sit amet consectetur adipiscing elit Donec commodo gravida nibh non varius mi dictum in Sed sed nulla condimentum fermentum neque ut auctor risus nulla condimentum fermentum neque ut auctor risus|
+      | status             | 1          |
+      | language           | en         |
+    Then I go to "lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-donec-commodo-gravida-nibh-non-varius-mi-dictum-sed-sed-nulla-condimentum-fermentum-neque-ut-auctor-risus-nulla-condimentum-fermentum-neque-ut-auctor-risus"
+    Then I should see "Lorem ipsum dolor sit amet consectetur adipiscing elit Donec commodo gravida nibh non varius mi dictum in Sed sed nulla condimentum fermentum neque ut auctor risus nulla condimentum fermentum neque ut auctor risus" in the "title" element
