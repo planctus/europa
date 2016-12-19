@@ -1,19 +1,19 @@
 <?php
 /**
  * @file
- * dt_law_default.strongarm.inc
+ * dt_priority_default.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function dt_law_default_strongarm() {
+function dt_priority_default_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__law';
+  $strongarm->name = 'field_bundle_settings_node__priority';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -46,13 +46,16 @@ function dt_law_default_strongarm() {
       'title' => array(
         'custom_settings' => FALSE,
       ),
-      'name' => array(
+      'revision' => array(
         'custom_settings' => FALSE,
       ),
       'file' => array(
         'custom_settings' => FALSE,
       ),
-      'revision' => array(
+      'structured_navigation' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlight' => array(
         'custom_settings' => FALSE,
       ),
       'event_collection' => array(
@@ -64,16 +67,10 @@ function dt_law_default_strongarm() {
       'event_past' => array(
         'custom_settings' => FALSE,
       ),
-      'image_label' => array(
-        'custom_settings' => FALSE,
-      ),
-      'structured_navigation' => array(
-        'custom_settings' => TRUE,
-      ),
-      'highlight' => array(
-        'custom_settings' => FALSE,
-      ),
       'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
         'custom_settings' => FALSE,
       ),
       'homepage_informational' => array(
@@ -88,33 +85,32 @@ function dt_law_default_strongarm() {
       'event_speaker' => array(
         'custom_settings' => FALSE,
       ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
-        'metatags' => array(
-          'weight' => '40',
+        'title' => array(
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '2',
         ),
         'scheduler_settings' => array(
-          'weight' => '0',
+          'weight' => '60',
         ),
         'language' => array(
-          'weight' => '5',
+          'weight' => '57',
+        ),
+        'metatags' => array(
+          'weight' => '4',
         ),
       ),
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__law'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_node_law_pattern';
-  $strongarm->value = 'law/[node:field-core-parents:0:url:path]/[node:source:title]';
-  $export['pathauto_node_law_pattern'] = $strongarm;
+  $export['field_bundle_settings_node__priority'] = $strongarm;
 
   return $export;
 }

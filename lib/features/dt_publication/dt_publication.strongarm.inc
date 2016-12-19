@@ -84,12 +84,21 @@ function dt_publication_strongarm() {
         'custom_settings' => FALSE,
       ),
       'structured_navigation' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'event_speaker' => array(
         'custom_settings' => FALSE,
       ),
       'name' => array(
+        'custom_settings' => FALSE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
         'custom_settings' => FALSE,
       ),
     ),

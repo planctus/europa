@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy_area.field_group.inc
@@ -111,8 +110,8 @@ function dt_policy_area_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_policy_area',
-      2 => 'field_core_description',
-      3 => 'field_core_introduction',
+      2 => 'field_core_introduction',
+      3 => 'field_core_description',
       4 => 'field_core_legacy_link',
       5 => 'field_core_policy_areas',
     ),

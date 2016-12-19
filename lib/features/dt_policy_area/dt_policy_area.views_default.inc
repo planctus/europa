@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy_area.views_default.inc
@@ -62,7 +61,7 @@ function dt_policy_area_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Description */
+  /* Field: Field: Description */
   $handler->display->display_options['fields']['field_core_description']['id'] = 'field_core_description';
   $handler->display->display_options['fields']['field_core_description']['table'] = 'field_data_field_core_description';
   $handler->display->display_options['fields']['field_core_description']['field'] = 'field_core_description';

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_topic.context.inc

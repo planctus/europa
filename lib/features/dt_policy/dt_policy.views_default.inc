@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy.views_default.inc

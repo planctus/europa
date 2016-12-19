@@ -31,6 +31,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 6,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -129,6 +135,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -196,6 +208,12 @@ function dt_publication_field_default_field_instances() {
         ),
         'type' => 'context_nav_item',
         'weight' => 4,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -274,6 +292,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 38,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -349,6 +373,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 8,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -404,6 +434,13 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 43,
+      ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -493,11 +530,19 @@ function dt_publication_field_default_field_instances() {
           'nexteuropa_listing_columns' => 'default',
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
+          'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => TRUE,
           'view_mode' => 'file',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 8,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -555,6 +600,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'link_button_primary',
         'weight' => 2,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -634,6 +685,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'context_nav_item',
         'weight' => 8,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -699,6 +756,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 10,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -756,6 +819,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 36,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -819,6 +888,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -881,6 +956,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'context_nav_item',
         'weight' => 7,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -937,6 +1018,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 30,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1010,6 +1097,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'context_nav_item',
         'weight' => 5,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1070,6 +1163,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 37,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1120,6 +1219,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 39,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1180,6 +1285,12 @@ function dt_publication_field_default_field_instances() {
         ),
         'type' => 'context_nav_item',
         'weight' => 6,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1279,6 +1390,12 @@ function dt_publication_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 9,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1335,6 +1452,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 1,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1394,6 +1517,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 42,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1458,6 +1587,12 @@ function dt_publication_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 41,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1535,6 +1670,13 @@ function dt_publication_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 40,
       ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1601,6 +1743,7 @@ function dt_publication_field_default_field_instances() {
   t('Summary or abstract of the publication');
   t('Tags');
   t('Taxonomy');
+  t('The Publications tag field is designed never to be shown to site visitors. It is provided solely for grouping similar Publications together. Select the Publications tag if you wish to display only Publications with the given tag. (You should never select the "Publications tag visibility"; this option will soon be removed, as the Publications tag field should never bee seen by site visitors');
   t('The text displayed (along with title and publication type) when this publication is in a listing');
   t('This is displayed as \'meta\' information in addition to the publication title.');
   t('Title');

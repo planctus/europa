@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_class.ds.inc
@@ -104,6 +103,30 @@ function dt_class_ds_field_settings_info() {
     ),
   );
   $export['node|class|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|class|structured_navigation';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'class';
+  $ds_fieldsetting->view_mode = 'structured_navigation';
+  $ds_fieldsetting->settings = array(
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|class|structured_navigation'] = $ds_fieldsetting;
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
@@ -270,6 +293,41 @@ function dt_class_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|class|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|class|structured_navigation';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'class';
+  $ds_layout->view_mode = 'structured_navigation';
+  $ds_layout->layout = 'ne_1col_section_item';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'description' => array(
+        0 => 'field_core_description',
+      ),
+      'title' => array(
+        1 => 'title_field',
+      ),
+    ),
+    'fields' => array(
+      'field_core_description' => 'description',
+      'title_field' => 'title',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'title' => 'div',
+      'description' => 'div',
+      'children' => 'div',
+      'links' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|class|structured_navigation'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
