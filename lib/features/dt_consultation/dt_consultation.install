@@ -121,3 +121,21 @@ function _dt_consultation_node_convert($source_node, $source_wrapper, &$destinat
   // Status converter.
   $destination_wrapper->field_consultation_status->set('closed');
 }
+
+/**
+ * DTTSB-1214 - Update consultation content type.
+ */
+function dt_consultation_update_7102() {
+  $instances = ['field_core_introduction', 'field_consultation_status'];
+  foreach ($instances as $instance) {
+    // Delete the field instance.
+    if ($field_instance = field_info_instance('node', $instance, 'consultation')) {
+      field_delete_instance($field_instance);
+    }
+  }
+
+  // Remove field base field_consultation_status.
+  if (field_info_field('field_consultation_status')) {
+    field_delete_field('field_consultation_status');
+  }
+}

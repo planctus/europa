@@ -26,10 +26,9 @@ function dt_featured_item_field_default_field_instances() {
       ),
       'hero_links' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'image_label' => array(
         'label' => 'hidden',
@@ -112,10 +111,9 @@ function dt_featured_item_field_default_field_instances() {
       ),
       'hero_links' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'link_button_call_for_action',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'image_label' => array(
         'label' => 'hidden',
@@ -194,7 +192,7 @@ function dt_featured_item_field_default_field_instances() {
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 7,
+        'weight' => 2,
       ),
       'image_label' => array(
         'label' => 'hidden',
@@ -297,7 +295,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 30,
       ),
       'image_label' => array(
         'label' => 'hidden',
@@ -355,7 +353,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 29,
       ),
       'image_label' => array(
         'label' => 'above',
@@ -416,7 +414,7 @@ function dt_featured_item_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 28,
       ),
       'image_label' => array(
         'label' => 'above',
@@ -490,14 +488,10 @@ function dt_featured_item_field_default_field_instances() {
       ),
       'hero_links' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_legacy_link',
-        'settings' => array(
-          'title_class' => '',
-          'title_link' => NULL,
-          'title_style' => 'h3',
-        ),
-        'type' => 'title_linked_legacy_link',
-        'weight' => 0,
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'image_label' => array(
         'label' => 'hidden',

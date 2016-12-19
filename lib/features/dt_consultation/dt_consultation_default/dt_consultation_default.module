@@ -6,3 +6,4 @@
  */
 
 include_once 'dt_consultation_default.features.inc';
+module_load_include('inc', 'dt_consultation_default', 'dt_consultation_default.ds_fields');

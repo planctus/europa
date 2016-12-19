@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_person.ds.inc
@@ -214,9 +213,21 @@ function dt_person_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'job';
   $ds_fieldsetting->settings = array(
     'full_name_nolink' => array(
-      'weight' => '3',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h3',
+          'fi-cl' => 'listing__title',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+          'fi-first-last' => FALSE,
+        ),
+      ),
     ),
     'job_role' => array(
       'weight' => '0',
@@ -227,11 +238,6 @@ function dt_person_ds_field_settings_info() {
           'func' => 'theme_ds_field_nexteuropa_formatters_meta_item',
           'meta_modifier' => 'meta__item--type',
         ),
-      ),
-    ),
-    'field_person_photo' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
     'field_core_jobs' => array(
@@ -445,28 +451,26 @@ function dt_person_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'person';
   $ds_layout->view_mode = 'job';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_hitme';
   $ds_layout->settings = array(
     'regions' => array(
       'main' => array(
-        0 => 'job_role',
-        1 => 'group_person_meta',
-        2 => 'group_person_name',
+        0 => 'group_person_job_meta',
+        1 => 'job_role',
+        2 => 'full_name_nolink',
         3 => 'field_core_contact',
         4 => 'field_core_jobs',
-        5 => 'full_name_nolink',
       ),
       'second' => array(
-        6 => 'field_person_photo',
+        5 => 'field_person_photo',
       ),
     ),
     'fields' => array(
+      'group_person_job_meta' => 'main',
       'job_role' => 'main',
-      'group_person_meta' => 'main',
-      'group_person_name' => 'main',
+      'full_name_nolink' => 'main',
       'field_core_contact' => 'main',
       'field_core_jobs' => 'main',
-      'full_name_nolink' => 'main',
       'field_person_photo' => 'second',
     ),
     'classes' => array(),

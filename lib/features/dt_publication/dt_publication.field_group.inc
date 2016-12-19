@@ -215,9 +215,8 @@ function dt_publication_field_group_info() {
       1 => 'field_publication_authors',
       2 => 'field_publication_referenceno',
       3 => 'field_core_date_published',
-      4 => 'field_core_tags',
-      5 => 'field_core_nal_countries',
-      6 => 'publication_collections',
+      4 => 'field_core_nal_countries',
+      5 => 'publication_collections',
     ),
     'format_type' => 'context_nav',
     'format_settings' => array(

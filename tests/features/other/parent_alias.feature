@@ -3,6 +3,7 @@ Feature: Aliases based on parent node's URL alias
   In order to reflect the hierarchy in the URL aliases
   As an editor
   I should be able to generate the URL alias reflecting the node's parent defined in specific fields
+
   @dt_page
   Scenario: Correct URL is generated for "Page"
     Given "Page" content:
@@ -11,6 +12,7 @@ Feature: Aliases based on parent node's URL alias
       | Second page title | Content description    | Intro                   | First page title   | 1              | 1      |
     And I go to "first-page-title/second-page-title"
     Then I should see "Second page title" in the "title" element
+
   @dt_page
   Scenario: Circular reference is not allowed for "Page"
     Given "Page" content:
@@ -29,6 +31,7 @@ Feature: Aliases based on parent node's URL alias
     Then I fill in the reference "edit-field-core-parents-und-0-target-id" with "Third Circular Page title"
     When I press the "Save" button
     Then I should see "There is a circular reference between this page and one of its parent!"
+
   @dt_law
   Scenario: Correct URL is generated for "Law"
     Given "Law" content:
@@ -37,6 +40,7 @@ Feature: Aliases based on parent node's URL alias
       | Second law title | Content description    | Intro                   | First law title    | 1              | 1      |
     And I go to "law/first-law-title/second-law-title"
     Then I should see "Second law title" in the "title" element
+
   @dt_law
   Scenario: Circular reference is not allowed for "Law"
     Given "Law" content:
@@ -188,7 +192,6 @@ Feature: Aliases based on parent node's URL alias
     And I click "Page Architecture"
     And I fill in "edit-field-core-parents-und-0-target-id" with "Second "
     And I wait for AJAX to finish
-    Then show last response
     Then I should see "Second law title"
     And I should not see "Second page title"
 

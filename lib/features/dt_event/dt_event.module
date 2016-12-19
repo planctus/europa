@@ -98,7 +98,7 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
  * Here we add extra modifiers to the file markup.
  */
 function dt_event_preprocess_file_entity(&$variables) {
-  // Make sure we only do this for event entity's.
+  // Make sure we only do this for event entities.
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
     // We define the wrapper once and apply it when we need it.
     $caption_wrapper = [
@@ -135,9 +135,8 @@ function dt_event_views_pre_render(&$view) {
       $view->display['default']->handler->options['use_more_text'] = decode_entities($read_more_text);
     }
   }
-
   // Replace the link token with the link.
-  if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
+  elseif ($view->name == 'related_events' && $view->current_display == 'block') {
     if (FALSE !== strpos($view->header['area_text_custom']->options['content'], '%all_events_link')) {
       // @todo: Instead of using /events, get the view and return the path of it.
       $link = l(t('View all events'), '/events');

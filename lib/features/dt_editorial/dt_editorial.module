@@ -157,9 +157,8 @@ function dt_editorial_views_query_alter(&$view, &$query) {
  *   Whether a $user has a by-pass for a given set of $roles.
  */
 function _dt_editorial_user_is_member($user, $roles = []) {
-  $user_memberships = _dt_editorial_get_user_og_roles($user);
   // If the user has any OG roles.
-  if (isset($user_memberships) && count($user_memberships)) {
+  if ($user_memberships = _dt_editorial_get_user_og_roles($user)) {
     // And the role of the user is part of the bypass list.
     $role = og_role_load($user_memberships['rid']);
     if (in_array($role->name, $roles)) {

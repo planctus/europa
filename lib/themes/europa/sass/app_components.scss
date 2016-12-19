@@ -3,6 +3,7 @@
 @import "../bootstrap-sass/bootstrap/mixins";
 @import "../bootstrap-sass/bootstrap/grid";
 @import "../bootstrap-sass/bootstrap/labels";
+@import "../bootstrap-sass/bootstrap/responsive-embed";
 
 // Importing bootstrap variables
 @import "mixins";
@@ -32,6 +33,7 @@
 @import "components/filters";
 @import "components/footer";
 @import "components/gallery";
+@import "components/header-search-bar";
 @import "components/help-block";
 @import "components/hero-links";
 @import "components/highlighted-item";

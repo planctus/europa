@@ -20,19 +20,19 @@ Feature: Checking different state of events
       | Conference |
 
     Given "Event" content:
-      | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               |
-      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel   |
-      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1969952002             | 1969952002              | Europe/Budapest           | country: NL - locality: Amsterdam |
-      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris     |
+      | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               | language |
+      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | N/A                             | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel   | en       |
+      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952002             | 1969952002              | Europe/Budapest           | country: NL - locality: Amsterdam | en       |
+      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris     | en       |
     And I index all indexes
 
   Scenario Outline: Status messages before event.
-  Before the event:
-  - Current time < Event start time
-  Status message:
-  - Status field: "no", then see no message.
-  - Status field: "reschedule", then see message: "The event has been rescheduled".
-  - Status field: "cancelled", then see message: "The event has been cancelled".
+    Before the event:
+    - Current time < Event start time
+    Status message:
+    - Status field: "no", then see no message.
+    - Status field: "reschedule", then see message: "The event has been rescheduled".
+    - Status field: "cancelled", then see message: "The event has been cancelled".
     Given I am viewing an "Event" content:
       | title                     | <title>         |
       | field_event_status        | <event_status>  |
@@ -50,13 +50,13 @@ Feature: Checking different state of events
 
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear and be translatable.
-  "Book your seat" button displaying criteria:
-  - Before the event or event is ongoing.
-  - Have registration link, minimum the link.
-  - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
-  - Not "Fully booked".
-  - When the event status is not "cancelled".
-    Given I am logged in as a user with the "Administrator" role
+    "Book your seat" button displaying criteria:
+    - Before the event or event is ongoing.
+    - Have registration link, minimum the link.
+    - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
+    - Not "Fully booked".
+    - When the event status is not "cancelled".
+    Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
       | field_event_status                    | no                                                         |
@@ -81,8 +81,7 @@ Feature: Checking different state of events
     Then I should see "Reserveer je zit test, knop zichtbaar, link en titel"
     Then I should see the link "Registratie titel" linking to "http://google.be"
 
-
-      # "Book your seat" should appear.
+  # "Book your seat" should appear.
   Scenario: "Book your seat" can link to an e-mail address
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
@@ -183,13 +182,29 @@ Feature: Checking different state of events
       | status                                | 1                    |
     Then I should see "Follow the latest progress and get involved."
 
+  # Past event with publications.
+  Scenario: Event is in the past, should see publications.
+    Given "Publication" content:
+      | title                  | status |
+      | Publication test title | 1      |
+    And I am viewing an "Event" content:
+      | title                       | Event is in the past   |
+      | field_event_status          | no                     |
+      | field_event_is_fully_booked | no                     |
+      | field_event_date:value      | 1472724000             |
+      | field_event_date:value2     | 1472724000             |
+      | field_event_date:timezone   | Europe/Budapest        |
+      | status                      | 1                      |
+      | field_core_publications      | Publication test title |
+    Then I should see "Publication test title"
+
   # "Watch live streaming" button.
   Scenario: "Watch live streaming" button should appear on ongoing event.
-  In case of the following conjunction:
-  - "Live streaming available": yes.
-  - "Date and time of live streaming" current moment is between start and end time of live streaming.
-  - When the event status is not "cancelled".
-  - "Live streaming link" is given.
+    In case of the following conjunction:
+    - "Live streaming available": yes.
+    - "Date and time of live streaming" current moment is between start and end time of live streaming.
+    - When the event status is not "cancelled".
+    - "Live streaming link" is given.
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
@@ -210,6 +225,37 @@ Feature: Checking different state of events
     And I index all indexes
     And I go to "events"
     Then I should see the link "Watch live streaming"
+
+  # Event translations
+  Scenario: "Watch live streaming", "Live: @title", "Related events", "Topic" should be translatable.
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing an "Event" content:
+      | title                                       | Watch live test, button should appear |
+      | field_event_status                          | no                                    |
+      | field_event_is_live_streaming               | yes                                   |
+      | field_event_live_streaming_date:show_todate | 1                                     |
+      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value2      | 1893456000                            |
+      | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
+      | field_event_live_streaming_link             | http://localhost                      |
+      | field_core_topics                           | Energy                                |
+      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value2                     | 1893456000                            |
+      | field_event_date:timezone                   | Europe/Budapest                       |
+      | status                                      | 1                                     |
+      | language                                    | en                                    |
+    And I translate the string "Live: @title" to "French" with "Live FR: @title"
+    And I translate the string "Watch live streaming" to "French" with "Watch live streaming FR"
+    And I translate the string "Topic" to "French" with "Topic FR"
+    And I go to add "fr" translation
+    And I fill in "title_field[fr][0][value]" with "Watch live test, button should appear FR"
+    And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
+    And I select "Global editorial team" from "Your groups (all languages)"
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+    Then I should see "Topic FR" in the ".context-nav .context-nav__label" element
+    Then I follow "Watch live streaming FR"
+    Then I should see the heading "Live FR: Watch live test, button should appear FR"
 
   # Event cancelled.
   Scenario: "Watch live streaming" button should not appear, when the event "cancelled".
@@ -309,18 +355,38 @@ Feature: Checking different state of events
     And I go to "events"
     Then I should not see the link "Watch live streaming"
 
-  Scenario: Event collection "Upcoming events".
+  Scenario: Event collection "Upcoming events" and "About @title" should be translatable.
+    Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                       | Event collection                      |
+      | body:value                  | Event collection body description     |
+      | body:format                 | full_html                             |
       | field_event_collection      | A collection with multiple events     |
       | field_event_children_events | Energy event, Food event, Extra event |
       | status                      | 1                                     |
+      | language                    | en                                    |
     Then I should see an ".field--current-and-upcoming-events" element
     Then I should see the following in the repeated ".listing__title" element within the context of the ".field--current-and-upcoming-events" element:
       | text         |
       | Energy event |
       | Extra event  |
       | Food event   |
+    And I translate the string "About @title" to "French" with "About FR @title"
+    And I go to add "fr" translation
+    And I fill in "title_field[fr][0][value]" with "Event collection FR"
+    And I select "Global editorial team" from "Your groups (all languages)"
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+    Then I should see the heading "About FR Event collection FR"
+    Then I follow "Energy event"
+    And I translate the string "Related events" to "French" with "Related events FR"
+    And I go to add "fr" translation
+    And I fill in "title_field[fr][0][value]" with "Energy event FR"
+    And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
+    And I select "Global editorial team" from "Your groups (all languages)"
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+    Then I should see the heading "Related events FR"
 
   Scenario: Empty events should display no results messages
     Given I am viewing an "Event" content:
@@ -345,8 +411,8 @@ Feature: Checking different state of events
     And I select "Food" from "Topic"
     And I select "Dialogue" from "Event type"
     And I select "Conference" from "Event type"
-    And I select "Budget" from "Organizer"
-    And I select "ClimateAction" from "Organizer"
+    And I select "Budget" from "Organiser"
+    And I select "ClimateAction" from "Organiser"
     And I select "Belgium" from "Location"
     And I select "Netherlands" from "Location"
     And I select "France" from "Location"
@@ -365,7 +431,7 @@ Feature: Checking different state of events
       | Netherlands | Food event   | Energy event     | Extra event      |
       | France      | Extra event  | Energy event     | Food event       |
 
-  Scenario Outline: I should be able to filter by various filters on the event listing page (select)
+  Scenario Outline: I should be able to filter by various filters on the event listing page (select).
     Given I am on "Events"
     And I select "<first_value>" from "<filter>"
     And I press the "Refine results" button
@@ -382,7 +448,7 @@ Feature: Checking different state of events
       | filter     | all_value     | first_value | first_value_energy | first_value_food | second_value  | second_value_energy | second_value_food |
       | Topic      | Any topic     | Energy      | see                | not see          | Food          | not see             | see               |
       | Event type | Any type      | Conference  | not see            | see              | Dialogue      | see                 | not see           |
-      | Organizer  | Any organiser | Budget      | see                | not see          | ClimateAction | not see             | see               |
+      | Organiser  | Any organiser | Budget      | see                | not see          | ClimateAction | not see             | see               |
 
   Scenario: I should be able to filter by online only (checkbox)
     Given I am on "Events"
@@ -398,7 +464,7 @@ Feature: Checking different state of events
     Then I should not see "Energy event"
     Then I should see "Food event"
 
-  Scenario: I should be able to filter by a combination of facets and views and I should see the tags
+  Scenario: I should be able to filter by a combination of facets and views and I should see the tags.
     Given I am on "Events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button

@@ -37,10 +37,18 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'search_api_facetapi_MONTH',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 3,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -69,87 +77,55 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 4,
+      'weight' => -2,
     ),
   );
 
-  // Exported field_instance: 'node-commemorative_coins-field_cc_issue'.
-  $field_instances['node-commemorative_coins-field_cc_issue'] = array(
+  // Exported field_instance: 'node-commemorative_coins-field_cc_issue_page'.
+  $field_instances['node-commemorative_coins-field_cc_issue_page'] = array(
     'bundle' => 'commemorative_coins',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'If this issue is part of a collective issue, select the page about this collective issue here.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 10,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 6,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_cc_issue',
+    'field_name' => 'field_cc_issue_page',
     'label' => 'Collective issue',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'basic_html' => 'basic_html',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'full_html_track' => 'full_html_track',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'basic_html' => array(
-              'weight' => -7,
-            ),
-            'filtered_html' => array(
-              'weight' => -9,
-            ),
-            'full_html' => array(
-              'weight' => -10,
-            ),
-            'full_html_track' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => -8,
-            ),
-          ),
-        ),
-      ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'entityreference',
       'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 6,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
     ),
   );
 
@@ -174,9 +150,14 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h4',
+        ),
+        'type' => 'title_linked',
         'weight' => 0,
       ),
     ),
@@ -184,7 +165,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_cc_subject',
     'label' => 'Subject of commemoration',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -229,7 +210,61 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-commemorative_coins-field_cc_volume'.
+  $field_instances['node-commemorative_coins-field_cc_volume'] = array(
+    'bundle' => 'commemorative_coins',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 11,
+      ),
+      'teaser' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => 1,
+          'scale' => 0,
+          'thousand_separator' => ',',
+        ),
+        'type' => 'number_integer',
+        'weight' => 4,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cc_volume',
+    'label' => 'Issuing volume',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => ' coins',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 0,
     ),
   );
 
@@ -254,10 +289,11 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 1,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -297,21 +333,21 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         ),
       ),
       'entity_translation_sync' => FALSE,
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => '',
+        'maxlength_js' => 800,
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => -3,
     ),
   );
 
@@ -338,17 +374,21 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
+        'weight' => 7,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_core_image',
     'label' => 'Coin image',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -388,7 +428,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -397,7 +437,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
     'bundle' => 'commemorative_coins',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Link to the official journal of this coin on EUR-Lex.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -413,10 +453,11 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'link_default',
+        'weight' => 5,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -453,7 +494,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 2,
     ),
   );
 
@@ -462,7 +503,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
     'bundle' => 'commemorative_coins',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Issuing country or microstate',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -478,16 +519,17 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_nal_country',
-    'label' => 'Issuing country or microstate',
+    'label' => 'Issuing country',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -500,7 +542,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => -1,
     ),
   );
 
@@ -531,7 +573,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 35,
       ),
     ),
     'entity_type' => 'node',
@@ -586,7 +628,7 @@ function dt_commemorative_coins_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 36,
       ),
     ),
     'entity_type' => 'node',
@@ -650,10 +692,9 @@ function dt_commemorative_coins_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'nexteuropa_formatters',
         'settings' => array(),
-        'type' => 'listing_title',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 34,
       ),
     ),
     'entity_type' => 'node',
@@ -687,7 +728,11 @@ function dt_commemorative_coins_default_field_default_field_instances() {
   t('Description');
   t('Group content visibility');
   t('Groups audience');
+  t('If this issue is part of a collective issue, select the page about this collective issue here.');
+  t('Issuing country');
   t('Issuing country or microstate');
+  t('Issuing volume');
+  t('Link to the official journal of this coin on EUR-Lex.');
   t('Official journal');
   t('Subject of commemoration');
   t('Title');

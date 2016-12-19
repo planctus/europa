@@ -32,11 +32,17 @@ class TranslationContext extends RawDrupalContext {
   }
 
   /**
-   * Translates an interface string to a given language.
+   * Gets the language code.
    *
-   * @Then I translate the string :source_string to :language with :target_string
+   * @param string $language
+   *
+   * @return string
+   *   The langcode if found
+   *
+   * @throws ExpectationException
+   *   When the language is not available.
    */
-  public function iTranslateTheStringToWith($source_string, $language, $target_string) {
+  private function getLangCode($language) {
     // Check if the language is enabled.
     foreach ($this->getLanguages() as $lang) {
       if ($lang->name == $language || $lang->native == $language) {
@@ -49,16 +55,47 @@ class TranslationContext extends RawDrupalContext {
     if (!isset($langcode)) {
       throw new ExpectationException($language . " is not found in the enabled languages.", $this->getSession());
     }
+    return $langcode;
+  }
 
+  /**
+   * Translates an interface string to a given language.
+   *
+   * @Then I translate the string :source_string to :language with :target_string
+   */
+  public function iTranslateTheStringToWith($source_string, $language, $target_string) {
     $report = [
       'skips' => 0,
       'updates' => 0,
       'deletes' => 0,
       'additions' => 0,
     ];
-    if (!_locale_import_one_string_db($report, $langcode, '', $source_string, $target_string, 'default', '', LOCALE_IMPORT_OVERWRITE)) {
-      throw new ExpectationException('Could not translate ' . $source_string . ' into ' . $target_string . '. Language: ' . $language);
+    if (!_locale_import_one_string_db($report, $this->getLangCode($language), '', $source_string, $target_string, 'default', '', LOCALE_IMPORT_OVERWRITE)) {
+      throw new ExpectationException('Could not translate ' . $source_string . ' into ' . $target_string . '. Language: ' . $language, $this->getSession());
     }
+  }
+
+  /**
+   * Translates a term into a given language.
+   *
+   * @Given I translate the term :term_name to :language with :translation
+   */
+  public function iTranslateTheTermToWith($term_name, $language, $translation) {
+    $term = taxonomy_get_term_by_name($term_name);
+
+    if (!empty($term)) {
+      $term = reset($term);
+
+      i18n_string_translation_update(
+        ['taxonomy', 'term', $term->tid, 'name'],
+        $translation,
+        $this->getLangCode($language),
+        $term->name
+      );
+      return TRUE;
+    }
+
+    throw new ExpectationException('Term ' . $term_name . ' not found.', $this->getSession());
   }
 
 }

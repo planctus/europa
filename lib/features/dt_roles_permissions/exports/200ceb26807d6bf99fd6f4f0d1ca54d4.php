@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains permissions export for role administrator.
@@ -142,6 +141,7 @@ $permissions['administrator'] = [
   'create basic_page content',
   'create class content',
   'create class_link_group content',
+  'create commemorative_coins content',
   'create contact content',
   'create department content',
   'create editorial_team content',
@@ -178,6 +178,7 @@ $permissions['administrator'] = [
   'delete any basic_page content',
   'delete any class content',
   'delete any class_link_group content',
+  'delete any commemorative_coins content',
   'delete any contact content',
   'delete any department content',
   'delete any document files',
@@ -215,6 +216,7 @@ $permissions['administrator'] = [
   'delete own basic_page content',
   'delete own class content',
   'delete own class_link_group content',
+  'delete own commemorative_coins content',
   'delete own contact content',
   'delete own department content',
   'delete own document files',
@@ -261,6 +263,7 @@ $permissions['administrator'] = [
   'edit any basic_page content',
   'edit any class content',
   'edit any class_link_group content',
+  'edit any commemorative_coins content',
   'edit any contact content',
   'edit any department content',
   'edit any document files',
@@ -300,6 +303,7 @@ $permissions['administrator'] = [
   'edit own basic_page content',
   'edit own class content',
   'edit own class_link_group content',
+  'edit own commemorative_coins content',
   'edit own comments',
   'edit own contact content',
   'edit own department content',

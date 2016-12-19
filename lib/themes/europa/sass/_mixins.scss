@@ -63,15 +63,15 @@
 }
 
 // Language generator.
-@mixin logo-background-languages($file_path, $file_extension) {
+@mixin logo-background-languages($file_path, $file_extension, $logo_class: logo--logotype) {
   @each $item in $languages {
     .language-#{$item} {
-      .logo--logotype {
+      .#{$logo_class} {
         background-image: url("#{$file_path}#{$item}#{$file_extension}");
       }
 
       @media print {
-        .logo--logotype::before {
+        .#{$logo_class}::before {
           content: url("#{$file_path}#{$item}#{$file_extension}");
         }
       }
@@ -172,6 +172,7 @@ $modifiers: (
 }
 
 @mixin form-control() {
+  @extend .hidden-print;
   color: $form-control-text-color;
   background-color: $form-control-background-color;
   border: 1px solid $form-control-border-color;
@@ -201,18 +202,10 @@ $modifiers: (
     color: $form-control-color-disabled;
     background-color: $form-control-background-color-disabled;
   }
-  @extend .hidden-print;
 
   &.select {
     border-width: 1px;
   }
-}
-
-// Aspect ratio.
-@mixin aspect-ratio($ratio-or-width, $height: null) {
-  position: relative;
-  width: 100%;
-  padding-bottom: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
 }
 
 // External link specific adjustments.
@@ -295,4 +288,12 @@ $modifiers: (
       background-image: url($social_path + $image_hover) $extra_hover;
     }
   }
+}
+
+// Media caption.
+@mixin media-caption() {
+  padding: 0.715em 1em;
+  line-height: 1.5715;
+  background-color: $grey-lighter;
+  font-size: $font-size-xsmall;
 }

@@ -19,7 +19,7 @@
 			<source_file_url>http://ec.europa.eu/transport/doc/organisation-chart/move_en.pdf</source_file_url>
 			<title>Mobility and transport - Organisation chart</title>
 			<target_filename>organisation-chart-DG-MOVE_en.pdf</target_filename>
-			<language>en</language>
+			<language>nl</language>
 			<fid>2</fid>
 		</file_translation>
 		<file_translation>
@@ -47,21 +47,21 @@
 			<source_file_url>http://ec.europa.eu/atwork/synthesis/aar/doc/trade_aar_2014_annex_part_1.pdf</source_file_url>
 			<title>Annex 1</title>
 			<target_filename>dg-trade-activity-report_2014_annex1_en.pdf</target_filename>
-			<language>een</language>
+			<language>en</language>
 			<fid>5</fid>
 		</file_translation>
 		<file_translation>
 			<source_file_url>http://ec.europa.eu/atwork/synthesis/aar/doc/trade_aar_2014_annex_part_2.pdf</source_file_url>
 			<title>Annex 2</title>
 			<target_filename>dg-trade-activity-report_2014_annex2_en.pdf</target_filename>
-			<language>een</language>
+			<language>en</language>
 			<fid>5</fid>
 		</file_translation>
 		<file_translation>
 			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-amended-work-programme2016_en.pdf</source_file_url>
 			<title>Communication - Amended 2016 work programme</title>
 			<target_filename>Amended-2016-work-programme-communication_March2016_en.pdf</target_filename>
-			<language>en</language>
+			<language>fi</language>
 			<fid>6</fid>
 		</file_translation>
 		<file_translation>
@@ -75,7 +75,7 @@
 			<source_file_url>http://ec.europa.eu/dgs/communication/contracts-and-grants/annual_work_programme/awp/c-2015-9059-work-programme2016_en.pdf</source_file_url>
 			<title>Communication - 2016 work programme</title>
 			<target_filename>2017-work-programme-communication_December2015_en.pdf</target_filename>
-			<language>en</language>
+			<language>ga</language>
 			<fid>3</fid>
 		</file_translation>
 		<file_translation>
@@ -117,7 +117,7 @@
 	<files>
 		<file>
 			<fid>1</fid>
-			<pid>1</pid>
+			<pid>1,2,3</pid>
 			<type_of_file>Document</type_of_file>
 			<date_of_publication>2014-01-15T00:00:00.000</date_of_publication>
 			<file_location>EUR-lex</file_location>
@@ -152,7 +152,7 @@
 		</file>
 		<file>
 			<fid>5</fid>
-			<pid>1</pid>
+			<pid>1,2</pid>
 			<type_of_file>Form</type_of_file>
 			<date_of_publication>2016-02-16T00:00:00.000</date_of_publication>
 			<file_link_upload>Link to file</file_link_upload>
@@ -190,7 +190,7 @@
 			<title>Publication d'essa 1.</title>
 			<description>Fr desc.</description>
 			<summary_of_abstract>Fr sum.</summary_of_abstract>
-			<core_contact>3135.3144</core_contact>
+			<core_contact>3135,3144</core_contact>
 		</publication_translation>
 		<publication_translation>
 			<language>hu</language>
@@ -201,7 +201,7 @@
 			<core_contact>3144</core_contact>
 		</publication_translation>
 		<publication_translation>
-			<language>en</language>
+			<language>de</language>
 			<pid>2</pid>
 			<title>Test publication 2.</title>
 			<description>En desc.</description>
@@ -214,7 +214,7 @@
 			<title>Publication d'essa 2.</title>
 			<description>Fr desc.</description>
 			<summary_of_abstract>Fr sum.</summary_of_abstract>
-			<core_contact>3135.3144</core_contact>
+			<core_contact>3135,3144</core_contact>
 		</publication_translation>
 		<publication_translation>
 			<language>hu</language>
@@ -238,7 +238,7 @@
 			<title>Publication d'essa 3.</title>
 			<description>Fr desc.</description>
 			<summary_of_abstract>Fr sum.</summary_of_abstract>
-			<core_contact>3135.3144</core_contact>
+			<core_contact>3135,3144</core_contact>
 		</publication_translation>
 		<publication_translation>
 			<language>hu</language>
@@ -252,6 +252,7 @@
 	<publications>
 		<publication>
 			<pid>1</pid>
+			<cid>1,2</cid>
 			<publication_type>Progress Report</publication_type>
 			<date_published>2015-08-12T00:00:00.000</date_published>
 			<date_updated>2015-08-12T00:00:00.000</date_updated>
@@ -268,6 +269,7 @@
 		</publication>
 		<publication>
 			<pid>2</pid>
+			<cid>2,3</cid>
 			<publication_type>Report</publication_type>
 			<date_published>2013-02-14T00:00:00.000</date_published>
 			<date_updated>2013-02-15T00:00:00.000</date_updated>
@@ -279,7 +281,7 @@
 			<core_topics>356</core_topics>
 			<publication_rel_content>2010</publication_rel_content>
 			<core_departments>880</core_departments>
-			<core_policies>1631.1705</core_policies>
+			<core_policies>1631,1705</core_policies>
 			<eurovoc_taxonomy>5</eurovoc_taxonomy>
 		</publication>
 		<publication>
@@ -287,16 +289,121 @@
 			<publication_type>Communication</publication_type>
 			<date_published>2016-01-17T00:00:00.000</date_published>
 			<date_updated>2016-01-20T00:00:00.000</date_updated>
-			<publication_authors>3135.3144</publication_authors>
+			<publication_authors>3135,3144</publication_authors>
 			<publication_origin>EC Annual reports</publication_origin>
 			<core_nal_countries>Cuba,Croatia</core_nal_countries>
 			<core_tags>ablak</core_tags>
 			<publication_referenceno>GHI 789,XXL,XL,L</publication_referenceno>
 			<core_topics>356,379,387</core_topics>
 			<publication_rel_content>2857</publication_rel_content>
-			<core_departments>2828.932</core_departments>
+			<core_departments>2828,932</core_departments>
 			<core_policies>1705</core_policies>
 			<eurovoc_taxonomy>10</eurovoc_taxonomy>
+			<core_legacy_link>http://ec.europa.eu/</core_legacy_link>
 		</publication>
 	</publications>
+	<collection_translations>
+		<collection_translation>
+			<language>de</language>
+			<cid>1</cid>
+			<title>C Test collection 1.</title>
+			<description>En desc col.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>fr</language>
+			<cid>1</cid>
+			<title>C Colletion d'essa 1.</title>
+			<description>Fr desc col.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135,3144</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>hu</language>
+			<cid>1</cid>
+			<title>C Teszt kollekció 1.</title>
+			<description>Hu desc col.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>en</language>
+			<cid>2</cid>
+			<title>C Test collection 2.</title>
+			<description>En desc col.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>fr</language>
+			<cid>2</cid>
+			<title>C Colletion d'essa 2.</title>
+			<description>Fr desc col.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135,3144</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>hu</language>
+			<cid>2</cid>
+			<title>C Teszt kollekció 2.</title>
+			<description>Hu desc col.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>en</language>
+			<cid>3</cid>
+			<title>C Test collection 3.</title>
+			<description>En desc col.</description>
+			<summary_of_abstract>En sum.</summary_of_abstract>
+			<core_contact>3244</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>fr</language>
+			<cid>3</cid>
+			<title>C Colletion d'essa 3.</title>
+			<description>Fr desc col.</description>
+			<summary_of_abstract>Fr sum.</summary_of_abstract>
+			<core_contact>3135,3144</core_contact>
+		</collection_translation>
+		<collection_translation>
+			<language>hu</language>
+			<cid>3</cid>
+			<title>CTeszt kollekció 3.</title>
+			<description>Hu desc col.</description>
+			<summary_of_abstract>Hu sim.</summary_of_abstract>
+			<core_contact>3144</core_contact>
+		</collection_translation>
+	</collection_translations>
+	<collections>
+		<collection>
+			<cid>1</cid>
+			<publication_type>Progress Report</publication_type>
+			<date_published>2011-02-11T00:00:00.000</date_published>
+			<date_updated>2011-02-11T00:00:00.000</date_updated>
+			<publication_authors>3135,3144</publication_authors>
+			<publication_origin>Eurofound</publication_origin>
+			<core_nal_countries>Belgium</core_nal_countries>
+			<core_tags>punk ipa, harcore ipa</core_tags>
+			<publication_referenceno>Moeder Lambic</publication_referenceno>
+			<core_topics>356,379</core_topics>
+			<publication_rel_content>2010</publication_rel_content>
+			<core_departments>880</core_departments>
+			<core_policies>1705</core_policies>
+			<eurovoc_taxonomy>5</eurovoc_taxonomy>
+		</collection>
+		<collection>
+			<cid>2</cid>
+			<publication_type>Communication</publication_type>
+			<publication_referenceno>Brussels beer project</publication_referenceno>
+		</collection>
+		<collection>
+			<cid>3</cid>
+			<publication_type>Impact Assessment</publication_type>
+			<date_published>2011-02-11T00:00:00.000</date_published>
+			<date_updated>2011-02-11T00:00:00.000</date_updated>
+			<core_legacy_link>http://ec.europa.eu/</core_legacy_link>
+		</collection>
+	</collections>
 </import>

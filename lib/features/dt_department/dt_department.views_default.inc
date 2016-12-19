@@ -23,7 +23,7 @@ function dt_department_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Departments and Executive Agencies';
+  $handler->display->display_options['title'] = 'Departments and executive agencies';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -157,7 +157,7 @@ function dt_department_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Departments / Agencies';
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Departments / Executive agencies';
   $handler->display->display_options['path'] = 'departments';
   $export['department'] = $view;
 

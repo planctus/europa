@@ -59,7 +59,21 @@ function dt_contact_ds_field_settings_info() {
     'field_contact_email_address' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'lb' => 'Email',
+          'lb' => 'E-mail',
+        ),
+      ),
+    ),
+    'field_contact_location_office' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Office',
+        ),
+      ),
+    ),
+    'field_contact_mobile_number' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Mobile',
         ),
       ),
     ),
@@ -245,17 +259,17 @@ function dt_contact_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_contact_phone_number',
         1 => 'field_contact_mobile_number',
-        2 => 'field_contact_postal_mail',
-        3 => 'field_contact_email_address',
-        4 => 'field_core_social_network_links',
+        2 => 'field_contact_email_address',
+        3 => 'field_core_social_network_links',
+        4 => 'field_contact_location_office',
       ),
     ),
     'fields' => array(
       'field_contact_phone_number' => 'ds_content',
       'field_contact_mobile_number' => 'ds_content',
-      'field_contact_postal_mail' => 'ds_content',
       'field_contact_email_address' => 'ds_content',
       'field_core_social_network_links' => 'ds_content',
+      'field_contact_location_office' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
