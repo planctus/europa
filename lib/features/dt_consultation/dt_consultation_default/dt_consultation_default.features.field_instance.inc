@@ -36,7 +36,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 42,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -120,7 +120,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 43,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -203,7 +203,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 37,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -287,7 +287,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 38,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -370,7 +370,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 44,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -428,6 +428,51 @@ function dt_consultation_default_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-consultation-field_consultation_status'.
+  $field_instances['node-consultation-field_consultation_status'] = array(
+    'bundle' => 'consultation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What is the status of this consultation',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_field',
+        'settings' => array(),
+        'type' => 'i18n_list_default',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_consultation_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-consultation-field_consultation_target_groups'.
   $field_instances['node-consultation-field_consultation_target_groups'] = array(
@@ -454,7 +499,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 39,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -548,7 +593,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 33,
       ),
     ),
     'entity_type' => 'node',
@@ -599,17 +644,9 @@ function dt_consultation_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'ec_date_j_f_y',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => 0,
-        ),
-        'type' => 'date_default',
-        'weight' => 3,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -670,17 +707,9 @@ function dt_consultation_default_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'ec_date_j_f_y',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => 0,
-        ),
-        'type' => 'date_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -739,10 +768,10 @@ function dt_consultation_default_field_default_field_instances() {
         'weight' => 4,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -791,7 +820,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 45,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -885,7 +914,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 34,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -933,7 +962,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 46,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1010,7 +1039,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1061,10 +1090,13 @@ function dt_consultation_default_field_default_field_instances() {
         'weight' => 3,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 0,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1125,7 +1157,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 32,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1176,7 +1208,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 40,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1226,7 +1258,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 41,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -1287,7 +1319,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 47,
       ),
     ),
     'entity_type' => 'node',
@@ -1342,7 +1374,7 @@ function dt_consultation_default_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 48,
       ),
     ),
     'entity_type' => 'node',
@@ -1456,6 +1488,7 @@ function dt_consultation_default_field_default_field_instances() {
   t('Reference publications');
   t('Results of the consultation and next steps');
   t('Specify who should contribute to this consultation.');
+  t('Status');
   t('Target group(s)');
   t('Taxonomy');
   t('The authoring department');
@@ -1464,6 +1497,7 @@ function dt_consultation_default_field_default_field_instances() {
   t('Topics');
   t('View the contributions');
   t('View the questionnaire');
+  t('What is the status of this consultation');
 
   return $field_instances;
 }
