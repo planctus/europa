@@ -187,6 +187,20 @@ function dt_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_max_component_length';
+  $strongarm->value = 250;
+  $export['pathauto_max_component_length'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_max_length';
+  $strongarm->value = 250;
+  $export['pathauto_max_length'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_punctuation_left_parenthesis';
   $strongarm->value = '1';
   $export['pathauto_punctuation_left_parenthesis'] = $strongarm;
