@@ -69,7 +69,9 @@ function dt_announcement_ds_fields_info($entity_type) {
  * Implements hook_ds_field_settings_form().
  */
 function dt_announcement_ds_field_settings_form($field) {
-  return ds_ds_field_settings_form($field);
+  $form = ds_ds_field_settings_form($field);
+  $form['limit_results']['#element_validate'][] = 'element_validate_number';
+  return $form;
 }
 
 /**
@@ -120,11 +122,7 @@ function _dt_announcement_ds_fields_announcement_block($field) {
 
   // Get the view.
   $view = views_get_view('announcements');
-
-  // Add result limit if it is set.
-  if (is_numeric($limit_results)) {
-    $view->display[$display_id]->display_options['pager']['options']['items_per_page'] = $limit_results;
-  }
+  $view->display[$display_id]->display_options['pager']['options']['items_per_page'] = $limit_results;
 
   // Show only promoted to frontpage items.
   if ($show_promoted) {

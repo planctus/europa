@@ -62,7 +62,7 @@ function dt_page_extended_update_7104(&$sandbox) {
   }
 
   // Manage this number of items per pass.
-  $limit = 50;
+  $limit = 20;
 
   // Find all the existing nodes of type basic_page.
   $query = new EntityFieldQuery();
