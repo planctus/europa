@@ -27,12 +27,12 @@ Feature: Checking different state of events
     And I index all indexes
 
   Scenario Outline: Status messages before event.
-    Before the event:
-    - Current time < Event start time
-    Status message:
-    - Status field: "no", then see no message.
-    - Status field: "reschedule", then see message: "The event has been rescheduled".
-    - Status field: "cancelled", then see message: "The event has been cancelled".
+  Before the event:
+  - Current time < Event start time
+  Status message:
+  - Status field: "no", then see no message.
+  - Status field: "reschedule", then see message: "The event has been rescheduled".
+  - Status field: "cancelled", then see message: "The event has been cancelled".
     Given I am viewing an "Event" content:
       | title                     | <title>         |
       | field_event_status        | <event_status>  |
@@ -50,12 +50,12 @@ Feature: Checking different state of events
 
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear and be translatable.
-    "Book your seat" button displaying criteria:
-    - Before the event or event is ongoing.
-    - Have registration link, minimum the link.
-    - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
-    - Not "Fully booked".
-    - When the event status is not "cancelled".
+  "Book your seat" button displaying criteria:
+  - Before the event or event is ongoing.
+  - Have registration link, minimum the link.
+  - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
+  - Not "Fully booked".
+  - When the event status is not "cancelled".
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
@@ -195,16 +195,16 @@ Feature: Checking different state of events
       | field_event_date:value2     | 1472724000             |
       | field_event_date:timezone   | Europe/Budapest        |
       | status                      | 1                      |
-      | field_core_publications      | Publication test title |
+      | field_core_publications     | Publication test title |
     Then I should see "Publication test title"
 
   # "Watch live streaming" button.
   Scenario: "Watch live streaming" button should appear on ongoing event.
-    In case of the following conjunction:
-    - "Live streaming available": yes.
-    - "Date and time of live streaming" current moment is between start and end time of live streaming.
-    - When the event status is not "cancelled".
-    - "Live streaming link" is given.
+  In case of the following conjunction:
+  - "Live streaming available": yes.
+  - "Date and time of live streaming" current moment is between start and end time of live streaming.
+  - When the event status is not "cancelled".
+  - "Live streaming link" is given.
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
@@ -388,13 +388,29 @@ Feature: Checking different state of events
     And I press "Save"
     Then I should see the heading "Related events FR"
 
-  Scenario: Empty events should display no results messages
+  Scenario: Empty event collection should display no results messages
     Given I am viewing an "Event" content:
       | title                  | Event collection                  |
       | field_event_collection | A collection with multiple events |
       | status                 | 1                                 |
     Then I should see "No past events available." in the ".tab-content" element
     Then I should see "No events planned." in the ".tab-content" element
+
+  Scenario: Event collection should display About section only if it has Extended description value
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing an "Event" content:
+      | title                  | Event collection                  |
+      | field_event_collection | A collection with multiple events |
+      | body:value             | Event collection body description |
+      | body:format            | full_html                         |
+      | status                 | 1                                 |
+      | language               | en                                |
+    Then I should see the heading "About Event collection"
+    And I follow "New draft" in the "tabs" region
+    And I fill in "body[en][0][value]" with ""
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+    Then I should not see the heading "About Event collection"
 
   Scenario: On the events listing page I should see the events.
     Given I am on "Events"

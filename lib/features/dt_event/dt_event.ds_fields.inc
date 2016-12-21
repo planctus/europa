@@ -868,9 +868,10 @@ function _dt_event_ds_fields_livestream_header($field) {
 function _dt_event_ds_fields_about_heading($field) {
   $node_wrapper = entity_metadata_wrapper('node', $field['entity']);
   $title = $node_wrapper->title->value();
+  $body = $node_wrapper->body->value();
   $output = [];
 
-  if ($title) {
+  if ($title && $body) {
     // The desired language.
     $langcode = $GLOBALS['language_content']->language;
     // Start building the render array.
