@@ -225,3 +225,28 @@ Feature: File content type
     Then I should see the link "Download"
     Then I get the file "test.tmx" after clicking "Download"
 
+  @dt_publication
+  Scenario: File is displayed with the file--link modifier
+    Given "file_origins" terms:
+      | name             |
+      | File origin term |
+    Given I am logged in as a user with the "administrator" role
+    # In order to see the page  (full view mode) of a file with external link, it needs administrator role.
+    And I am viewing a "File":
+      | title                  | File title              |
+      | status                 | 1                       |
+      | field_core_legacy_link | Link - http://google.be |
+      | field_file_link_upload | link                    |
+      | field_file_location    | File origin term        |
+    Then I should see "File title" in the ".file.file--link" element
+    Then I should see the link "File title" linking to "http://google.be"
+    Given I am viewing a "Publication":
+      | title                           | Pub w/ external file-link |
+      | status                          | 1                         |
+      | field_core_files                | File title                |
+      | field_core_date_updated:value   | 1400980800                |
+      | field_core_date_updated:value2  | 1400980800                |
+      | field_core_date_published:value | 1400980800                |
+      | field_core_date_published:value | 1400980800                |
+    Then I should see "File title" in the ".file.file--link" element
+    Then I should see the link "File title" linking to "http://google.be"
