@@ -169,6 +169,39 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
     return FALSE;
   }
 
+  /**
+   * Publication and Collections prepareRoll method.
+   *
+   * @param array $node_ids
+   *   Node IDs of related publication or collections.
+   */
+  public function publicationAndCollectionPrepareRollback($node_ids) {
+    // Removing all file reference from Publication, which will be deleted.
+    // Querying Publications, which has file reference by the given ids.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'publication')
+      ->fieldCondition('field_core_publications', 'target_id', $node_ids, 'IN');
+    $result = $query->execute();
+    // Loading affected Collections.
+    $nids = array_keys($result['node']);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $node) {
+      // Removing only the affected publication references.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $publications = $wrapper->field_core_publications->value();
+      foreach ($publications as $key => $item) {
+        // Should delete the publication reference,
+        // when the reference is NULL
+        // or Publication ID is in the set of files to be deleted.
+        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
+          unset($wrapper->field_core_publications[$key]);
+        }
+      }
+      $wrapper->save();
+    }
+  }
+
 }
 
 /**
@@ -548,6 +581,16 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
 
     // Saving collection.
     node_save($node);
+  }
+
+  /**
+   * Removing related collections at rollback.
+   *
+   * @param array $node_ids
+   *   Node IDs which will be removed.
+   */
+  public function prepareRollback($node_ids) {
+    $this->publicationAndCollectionPrepareRollback($node_ids);
   }
 
 }
@@ -964,30 +1007,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
    *   Node IDs which will be removed.
    */
   public function prepareRollback($node_ids) {
-    // Removing all file reference from Publication, which will be deleted.
-    // Querying Publications, which has file reference by the given ids.
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'publication')
-      ->fieldCondition('field_core_publications', 'target_id', $node_ids, 'IN');
-    $result = $query->execute();
-    // Loading affected Collections.
-    $nids = array_keys($result['node']);
-    $nodes = node_load_multiple($nids);
-    foreach ($nodes as $node) {
-      // Removing only the affected publication references.
-      $wrapper = entity_metadata_wrapper('node', $node);
-      $publications = $wrapper->field_core_publications->value();
-      foreach ($publications as $key => $item) {
-        // Should delete the publication reference,
-        // when the reference is NULL
-        // or Publication ID is in the set of files to be deleted.
-        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
-          unset($wrapper->field_core_publications[$key]);
-        }
-      }
-      $wrapper->save();
-    }
+    $this->publicationAndCollectionPrepareRollback($node_ids);
   }
 
 }
