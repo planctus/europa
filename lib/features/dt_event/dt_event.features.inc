@@ -18,7 +18,7 @@ function dt_event_default_cer() {
     "cer_right" : { "und" : [ { "path" : "node:event:field_event_children_events" } ] },
     "entity_type" : "cer",
     "rdf_mapping" : [],
-    "entity_translation_handler_id" : "cer-eid-184-0",
+    "entity_translation_handler_id" : "cer-eid-1044-0",
     "translations" : {"original":null,"data":[]}
   }');
   return $items;

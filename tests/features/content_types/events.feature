@@ -223,7 +223,7 @@ Feature: Checking different state of events
     Then I should see a ".field--dt-event-status-message-2 .messages--icon-center.live a" element
     Then I should see "Watch live streaming" in the ".messages--icon-center.live" element
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should see the link "Watch live streaming"
 
   # Event translations
@@ -274,7 +274,7 @@ Feature: Checking different state of events
       | status                                      | 1                                    |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # No live streaming.
@@ -294,7 +294,7 @@ Feature: Checking different state of events
       | status                                      | 1                                      |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # Current time is before broadcasting start.
@@ -313,7 +313,7 @@ Feature: Checking different state of events
       | status                                   | 1                                                              |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # Current time is outside of broadcasting interval.
@@ -333,7 +333,7 @@ Feature: Checking different state of events
       | status                                      | 1                                                                     |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # There is no stream link given.
@@ -352,7 +352,7 @@ Feature: Checking different state of events
       | status                                      | 1                                   |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   Scenario: Event collection "Upcoming events" and "About @title" should be translatable.
@@ -413,12 +413,12 @@ Feature: Checking different state of events
     Then I should not see the heading "About Event collection"
 
   Scenario: On the events listing page I should see the events.
-    Given I am on "Events"
+    Given I am on "events_list"
     Then I should see "Energy event"
     And I should see "Food event"
 
   Scenario: On the events listing page I should see all the filters.
-    Given I am on "Events"
+    Given I am on "events_list"
     Then I should see "Online events only"
     And I should see "Online events with live streaming available"
     # Here we test select values, simply be selecting them.
@@ -434,7 +434,7 @@ Feature: Checking different state of events
     And I select "France" from "Location"
 
   Scenario Outline: I should be able to filter by Country
-    Given I am on "Events"
+    Given I am on "events_list"
     And I select "<country>" from "Location"
     And I press the "Refine results" button
     Then I should see "<should_see>"
@@ -448,7 +448,7 @@ Feature: Checking different state of events
       | France      | Extra event  | Energy event     | Food event       |
 
   Scenario Outline: I should be able to filter by various filters on the event listing page (select).
-    Given I am on "Events"
+    Given I am on "events_list"
     And I select "<first_value>" from "<filter>"
     And I press the "Refine results" button
     Then I should <first_value_energy> "Energy event"
@@ -467,21 +467,21 @@ Feature: Checking different state of events
       | Organiser  | Any organiser | Budget      | see                | not see          | ClimateAction | not see             | see               |
 
   Scenario: I should be able to filter by online only (checkbox)
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events only"
     And I press the "Refine results" button
     Then I should see "Energy event"
     Then I should not see "Food event"
 
   Scenario: I should be able to filter by livestream (checkbox)
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
     Then I should see "Food event"
 
   Scenario: I should be able to filter by a combination of facets and views and I should see the tags.
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
@@ -559,3 +559,50 @@ Feature: Checking different state of events
       | field_event_date:timezone   | Europe/Budapest |
       | status                      | 1               |
     Then I should not see "Images and videos"
+
+  Scenario: Event collection "Upcoming and Past events" more link points to event list, using a query filter
+    Given I am logged in as a user with the "administrator" role
+    Given "Event" content:
+      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location           | language |
+      | Extra 2 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Extra 3 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Extra 4 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 1 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 2 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 3 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 4 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 5 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 6 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+    And I index all indexes
+
+    Given I am viewing an "Event" content:
+      | title                       | Event collection                                                                                                                                                       |
+      | body:value                  | Event collection body description                                                                                                                                      |
+      | body:format                 | full_html                                                                                                                                                              |
+      | field_event_collection      | A collection with multiple events                                                                                                                                      |
+      | field_event_children_events | Energy event, Food event, Extra event, Extra 2 event, Extra 3 event, Extra 4 event, Past 1 event, Past 2 event, Past 3 event, Past 4 event, Past 5 event, Past 6 event |
+      | status                      | 1                                                                                                                                                                      |
+      | language                    | en                                                                                                                                                                     |
+      | nid                         | 100002                                                                                                                                                                 |
+      | is_new                      | 1                                                                                                                                                                      |
+    Then I should see an ".field--current-and-upcoming-events" element
+    And I should see the following in the repeated ".listing__title" element within the context of the ".field--current-and-upcoming-events" element:
+      | text          |
+      | Energy event  |
+      | Extra event   |
+      | Extra 2 event |
+      | Extra 3 event |
+      | Extra 4 event |
+    And I should not see the link "Food event"
+    And I should see the link "View all events for Event collection" linking to "/events_list_en?facet__select__field_event_parent_events=100002"
+    Then I should see an ".field--past-events" element
+    And I should see the following in the repeated ".listing__title" element within the context of the ".field--past-events" element:
+      | text          |
+      | Past 1 event  |
+      | Past 2 event  |
+      | Past 3 event  |
+      | Past 4 event  |
+      | Past 5 event  |
+    And I should not see the link "Past 6 event"
+    Then I follow "View all events for Event collection"
+    Then I should see "Event collection" in the ".filters__active-facets" element

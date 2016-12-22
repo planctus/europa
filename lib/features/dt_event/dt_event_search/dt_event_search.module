@@ -20,3 +20,15 @@ function dt_event_search_post_features_enable_feature($component) {
     }
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function dt_event_search_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form') {
+    if (isset($form['facet_filter_5'])) {
+      // Sorting countries array; get defined locale first.
+      uasort($form['facet_filter_5']['#options'], '_dt_shared_functions_compare_ascii');
+    }
+  }
+}
