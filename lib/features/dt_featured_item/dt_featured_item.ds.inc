@@ -53,8 +53,8 @@ function dt_featured_item_ds_field_settings_info() {
         'ft' => array(
           'func' => 'theme_ds_field_expert',
           'fi' => TRUE,
-          'fi-el' => 'strong',
-          'fi-cl' => '',
+          'fi-el' => 'span',
+          'fi-cl' => 'hero-links__caption',
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
@@ -207,14 +207,14 @@ function dt_featured_item_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'group_featured_item_link_wrapper',
-        1 => 'title_field',
-        2 => 'field_feat_item_image',
+        1 => 'field_feat_item_image',
+        2 => 'title_field',
       ),
     ),
     'fields' => array(
       'group_featured_item_link_wrapper' => 'ds_content',
-      'title_field' => 'ds_content',
       'field_feat_item_image' => 'ds_content',
+      'title_field' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
