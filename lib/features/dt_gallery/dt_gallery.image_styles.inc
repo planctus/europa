@@ -83,6 +83,39 @@ function dt_gallery_image_default_styles() {
     $effect['data']['retinafy'] = TRUE;
   }
 
+  // Create image styles for gallery detail view.
+  $europa_breakpoints = breakpoints_breakpoint_load_all_active('europa');
+  $dimensions = [
+    'mobile' => [320, 240],
+    'narrow' => [480, 360],
+    'medium' => [768, 576],
+    'normal' => [992, 744],
+    'wide' => [2048, 1536],
+  ];
+
+  foreach ($europa_breakpoints as $breakpoint) {
+    if ($breakpoint->source == 'europa' && isset($dimensions[$breakpoint->name])) {
+      $styles['gallery_full_' . $breakpoint->name] = [
+        'label' => 'Gallery Full - ' . $breakpoint->name,
+        'effects' => [
+          1 => [
+            'name' => 'image_scale',
+            'data' => [
+              'width' => $dimensions[$breakpoint->name][0],
+              'height' => $dimensions[$breakpoint->name][1],
+              'upscale' => 0,
+              'retinafy' => 0,
+            ],
+            'weight' => 1,
+          ],
+        ],
+      ];
+      $styles['gallery_full_2x_' . $breakpoint->name] = $styles['gallery_full_' . $breakpoint->name];
+      $styles['gallery_full_2x_' . $breakpoint->name]['label'] = $styles['gallery_full_' . $breakpoint->name]['label'] . ' -  Retina';
+      $styles['gallery_full_2x_' . $breakpoint->name]['effects'][1]['data']['retinafy'] = TRUE;
+    }
+  }
+
   return $styles;
 }
 
@@ -96,6 +129,38 @@ function dt_gallery_image_default_styles() {
  *   The operation, save or delete.
  */
 function _dt_gallery_get_picture_presets($op = 'save') {
+  $europa_breakpoints = breakpoints_breakpoint_load_all_active('europa');
+  // Gallery full item picture mapping.
+  if ($op == 'save') {
+    $picture_mapping = new PictureMapping();
+    $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
+    $picture_mapping->api_version = 2;
+    $picture_mapping->label = 'Gallery full';
+    $picture_mapping->machine_name = 'gallery_full';
+    $picture_mapping->breakpoint_group = 'europa';
+    $mapping = [];
+    foreach ($europa_breakpoints as $name => $breakpoint) {
+      if ($breakpoint->source == 'europa') {
+        $mapping[$name] = [
+          '1x' => [
+            'mapping_type' => 'image_style',
+            'image_style' => 'gallery_full_' . $breakpoint->name,
+          ],
+          '2x' => [
+            'mapping_type' => 'image_style',
+            'image_style' => 'gallery_full_2x_' . $breakpoint->name,
+          ],
+        ];
+      }
+    }
+    $picture_mapping->mapping = $mapping;
+    $picture_mapping->save();
+  }
+  elseif ($op == 'delete') {
+    ctools_export_crud_delete('picture_mapping', 'gallery_full');
+  }
+
+  // Gallery grid picture mapping.
   foreach (_dt_gallery_get_image_sizes() as $columns) {
     if ($op == 'save') {
       $picture_mapping = new PictureMapping();
@@ -161,7 +226,6 @@ function _dt_gallery_get_picture_presets($op = 'save') {
     elseif ($op == 'delete') {
       ctools_export_crud_delete('picture_mapping', 'gallery_responsive_grid_' . $columns);
     }
-
   }
 }
 

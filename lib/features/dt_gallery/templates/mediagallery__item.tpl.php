@@ -8,8 +8,8 @@
 <?php if ($image): ?>
   <div class="mediagallery__item col-sm-<?php print $size; ?> col-md-<?php print $size; ?><?php print $hasicon; ?>">
     <div class="mediagallery__item_container">
+      <a href="<?php print $gallery_link; ?>">
       <?php print $image; ?>
-
       <?php if ($caption): ?>
         <span class="mediagallery__caption"><?php print $caption; ?></span>
       <?php endif; ?>
@@ -18,6 +18,7 @@
           <span class="icon <?php print $type; ?>"></span>
         </span>
       <?php endif; ?>
+      </a>
     </div>
   </div>
 <?php endif; ?>

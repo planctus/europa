@@ -101,6 +101,16 @@ abstract class DtGalleryItemBase {
   }
 
   /**
+   * Gets the file id.
+   *
+   * @return int
+   *   The file fid.
+   */
+  public function getId() {
+    return $this->getFile()->fid;
+  }
+
+  /**
    * Gets the file title.
    *
    * @return string
@@ -128,6 +138,16 @@ abstract class DtGalleryItemBase {
    */
   public function getUri() {
     return $this->getFile()->uri;
+  }
+
+  /**
+   * Gets the file type.
+   *
+   * @return int
+   *   The file fid.
+   */
+  public function getType() {
+    return $this->getFile()->type;
   }
 
   /**
@@ -168,6 +188,16 @@ abstract class DtGalleryItemBase {
    */
   public function getFileHeight() {
     return FALSE;
+  }
+
+  /**
+   * Gets the file uri.
+   *
+   * @return string
+   *   The file uri.
+   */
+  public function getGalleryItemLink($node) {
+    return url(drupal_get_path_alias($node->path['source']) . '/' . DtGallery::GALLERY_PATH_SEGMENT . '/' . $this->getId());
   }
 
 }

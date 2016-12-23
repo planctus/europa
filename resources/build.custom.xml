@@ -347,6 +347,12 @@
             description="Build a version of the subsite intended to distribute as a release package."
             depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, custom-development-modules, download-development-modules-acceptance"/>
 
+    <!-- Builds the CI environment, including the snapshot -->
+    <target
+            name="build-cphp"
+            description="Builds the project for CI testing on CPHP."
+            depends="build-dev, add-dt-dev, install, revert-dt-features, cc-all, snapshot" />
+
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">
         <!-- Remove old settings file -->
@@ -445,5 +451,17 @@
                 bin="${drush.bin}"
                 verbose="${drush.verbose}"
                 haltonerror="false" />
+    </target>
+
+    <!-- Clears caches -->
+    <target name="cc-all">
+        <echo msg="Clearing caches" />
+        <drush
+            command="cc all"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}"
+            haltonerror="false" />
     </target>
 </project>

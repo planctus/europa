@@ -28,3 +28,10 @@ function dt_gallery_uninstall() {
     image_style_delete($style);
   }
 }
+
+/**
+ * Create image styles and picture mappings.
+ */
+function dt_gallery_update_7001() {
+  _dt_gallery_get_picture_presets();
+}

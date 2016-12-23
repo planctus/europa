@@ -138,13 +138,15 @@ function _dt_publication_listing($entity) {
 function _dt_publication_listing_exposed($entity) {
   $emw = entity_metadata_wrapper('node', $entity['entity']);
   $node = $entity['entity'];
-  if ((isset($emw->field_publications_visibility)
-      && $emw->field_publications_visibility->value() == TRUE)
-      && $emw->field_publications_country_on->value() == 1
-      || $emw->field_publications_year_on->value() == 1
-      || $emw->field_publications_type_on->value() == 1
-      || $emw->field_publications_tag_on->value() == 1
-      || $emw->field_publications_topic_on->value() == 1) {
+  $publication_list_visibility = (!empty($emw->field_publications_visibility)
+    && $emw->field_publications_visibility->value() == TRUE);
+  if ($publication_list_visibility && (
+        $emw->field_publications_country_on->value() == 1
+        || $emw->field_publications_year_on->value() == 1
+        || $emw->field_publications_type_on->value() == 1
+        || $emw->field_publications_tag_on->value() == 1
+        || $emw->field_publications_topic_on->value() == 1
+    )) {
     // Get the view with the exposed form.
     $view = views_get_view('publication_list');
     $display_id = 'page_1';

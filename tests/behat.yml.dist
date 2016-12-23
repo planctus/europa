@@ -45,5 +45,7 @@ default:
         pager: '.pager'
         speakers: '#speakers'
         sidebar: '.region-sidebar-first'
+        gallery_upload: '#edit-field-core-gallery'
+        gallery_overlay: '.gallery-overlay'
   formatters:
     ${behat.formatter.name}: ~

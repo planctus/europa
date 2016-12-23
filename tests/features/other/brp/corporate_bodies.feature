@@ -1,6 +1,7 @@
 @api @brp @dt_nal_services @brp_initiative
 Feature: As an anonymous user
   I want to be able to see all corporate bodies in the filter.
+
   Background:
     Given I am logged in as a user with the "administrator" role
     Then I go to "import/nal_corporate_bodies_importer_en"
@@ -54,3 +55,21 @@ Feature: As an anonymous user
       | Publications Office                                                                       |
       | Secretariat-General                                                                       |
       | Service for Foreign Policy Instruments                                                    |
+
+
+  @javascript
+  Scenario: The visitor should see the corporate body in the search.
+    Given I go to "/departments_en"
+    Then I should have the following options for "Department":
+      | Directorate-General for Agriculture and Rural Development               |
+      | Directorate-General for Climate Action                                  |
+      | Directorate-General for Communication                                   |
+      | Directorate-General for Communications Networks, Content and Technology |
+      | Directorate-General for Competition                                     |
+    Given I go to "/departments_fr"
+    Then I should have the following options for "Department":
+      | Directorate-General for Agriculture and Rural Development               |
+      | Directorate-General for Climate Action                                  |
+      | Directorate-General for Communication                                   |
+      | Directorate-General for Communications Networks, Content and Technology |
+      | Directorate-General for Competition                                     |
