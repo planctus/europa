@@ -236,3 +236,13 @@ function dt_core_info_update_7122() {
 function dt_core_info_update_7123() {
   module_enable(['dt_person_press_contacts_list']);
 }
+
+/**
+ * DTTSB-1511: Recurring news item by anonymous user.
+ *
+ * Disabled this module to avoid the consumer importing dummy data, because
+ * Integration Layer News is not yet fully developed.
+ */
+function dt_core_info_update_7124() {
+  module_disable(['dt_integration_announcement_consumer']);
+}
