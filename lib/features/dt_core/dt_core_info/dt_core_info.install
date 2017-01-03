@@ -33,10 +33,6 @@ function dt_core_info_install() {
     'dt_consultation_default',
     'dt_call_for_proposal_default',
     'dt_tender_default',
-    'nexteuropa_integration',
-    'integration_producer_ui',
-    'integration_consumer_ui',
-    'dt_integration_announcement_consumer',
     'dt_file_import',
     'dt_nal_services',
     'dt_nal_countries',
@@ -240,8 +236,8 @@ function dt_core_info_update_7123() {
 /**
  * DTTSB-1511: Recurring news item by anonymous user.
  *
- * Disabled this module to avoid the consumer importing dummy data, because
- * Integration Layer News is not yet fully developed.
+ * Disabled all modules related to Integration Layer News to avoid the consumer
+ * importing dummy data and it's not yet fully developed.
  */
 function dt_core_info_update_7124() {
   module_disable([
