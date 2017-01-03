@@ -48,7 +48,7 @@ Feature: Redirect path
     Then I should see "Test redirect new alias" in the "h1" element
 
     #Automatic redirect for announcement.
-  Scenario: A Announcement redirect alias should be done automatically.
+  Scenario: A Announcement redirect alias should not be done automatically.
     Given I am logged in as a user with the "site manager" role
     And I am viewing an "announcement" content:
       | title                       | Automatic redirect    |
@@ -72,7 +72,7 @@ Feature: Redirect path
     And I select "published" from "Moderation state"
     And I press the "Save" button
     And I go to "announcements/automatic-redirect"
-    Then I should see "New automatic redirect" in the "h1" element
+    Then I should not see "New automatic redirect" in the "h1" element
 
   #Automatic redirect for page child and parent configuration.
   Scenario: Automatic URL is generated for "Page" after update
