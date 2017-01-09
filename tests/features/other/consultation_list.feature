@@ -21,6 +21,7 @@ Feature: Consultation content type
     And I go to "consultations"
     # Consultation Content in main content section.
     Then I should see "Consultation status: Open" in the "#block-system-main .field--consultation-status-label .label--highlight" element
+
     And I should see "Consultation status: Closed" in the "#block-system-main .field--consultation-status-label .label--status" element
     And I should see "Consultation period" in the "#block-system-main .field--consultation-period" element
     And I should see "Policy area" in the "#block-system-main .field--field-core-policy-areas" element
