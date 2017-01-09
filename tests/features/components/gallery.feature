@@ -57,6 +57,8 @@ Feature: Users can use and see the gallery
     And I switch out of all frames
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
+    And I click "URL path settings"
+    And I check the box "Generate automatic URL alias"
     And I press "Save"
     When I go to "/node/1234567/gallery_en"
     Then I should not see the heading "Page not found"
