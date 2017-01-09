@@ -9,11 +9,11 @@ Feature: Consultation content type
       | title      | language | status |
       | PolicyArea | en       | 1      |
     Given "Consultation" content:
-      | title               | status | field_core_date_opening:value | field_core_date_closing:value | field_core_policy_areas |
-      | "Open Consultation" | 1      | 1483228800                    | 1483228800                    | PolicyArea              |
+      | title               | status | field_core_date_opening:value | field_core_date_closing:value | field_core_policy_areas | field_core_description |
+      | "Open Consultation" | 1      | 1452086424                    | 1578316824                    | PolicyArea              | Consultation text open |
     Given "Consultation" content:
-      | title                | status | field_core_date_opening:value | field_core_date_closing:value | field_core_policy_areas |
-      | "Close Consultation" | 1      | 1480604808                    | 1481034166                    | PolicyArea              |
+      | title                | status | field_core_date_opening:value | field_core_date_closing:value | field_core_policy_areas | field_core_description   |
+      | "Close Consultation" | 1      | 1480604808                    | 1481034166                    | PolicyArea              | Consultation text closed |
 
   Scenario: Consultation search page should offer user a way search and view
   Consultations.
@@ -22,6 +22,7 @@ Feature: Consultation content type
     And I go to "consultations"
     # Consultation Content in main content section.
     Then I should see "Consultation status: Open" in the "#block-system-main .field--consultation-status-label .label--highlight" element
+
     And I should see "Consultation status: Closed" in the "#block-system-main .field--consultation-status-label .label--status" element
     And I should see "Consultation period" in the "#block-system-main .field--consultation-period" element
     And I should see "Policy area" in the "#block-system-main .field--field-core-policy-areas" element
@@ -51,7 +52,6 @@ Feature: Consultation content type
     And I follow "New draft" in the "tabs"
     And I fill in "field_core_date_opening[und][0][value][date]" with "01/12/2016"
     And I fill in "field_core_date_closing[und][0][value][date]" with "04/12/2016"
-    And I fill in "field_core_description[en][0][value]" with "Required field"
     And I fill in "Moderation state" with "published"
     And I press "Save"
     # View the change in the listing page, both Consultations are now closed.
