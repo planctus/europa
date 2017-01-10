@@ -248,20 +248,13 @@ function dt_department_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['label'] = '';
-  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['tid']['separator'] = '';
-  /* Field: Taxonomy term: Name (translated) */
-  $handler->display->display_options['fields']['name_i18n']['id'] = 'name_i18n';
-  $handler->display->display_options['fields']['name_i18n']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name_i18n']['field'] = 'name_i18n';
-  $handler->display->display_options['fields']['name_i18n']['label'] = '';
-  $handler->display->display_options['fields']['name_i18n']['element_label_colon'] = FALSE;
+  /* Field: Entity translation: Name: translated */
+  $handler->display->display_options['fields']['name_field_et_1']['id'] = 'name_field_et_1';
+  $handler->display->display_options['fields']['name_field_et_1']['table'] = 'field_data_name_field';
+  $handler->display->display_options['fields']['name_field_et_1']['field'] = 'name_field_et';
+  $handler->display->display_options['fields']['name_field_et_1']['label'] = '';
+  $handler->display->display_options['fields']['name_field_et_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field_et_1']['type'] = 'text_plain';
   /* Filter criterion: Taxonomy vocabulary: Machine name */
   $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
@@ -278,8 +271,7 @@ function dt_department_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'entityreference_style';
   $handler->display->display_options['style_options']['search_fields'] = array(
-    'name_i18n' => 'name_i18n',
-    'tid' => 0,
+    'name_field_et_1' => 'name_field_et_1',
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;

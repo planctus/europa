@@ -75,45 +75,21 @@ function dt_consultation_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'consultation';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'content_type_label' => array(
-      'weight' => '14',
+    'consultation_status_label' => array(
+      'weight' => '16',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'consultation_period' => array(
+      'weight' => '3',
+      'label' => 'inline',
+      'format' => 'default',
+    ),
+    'field_core_policy_areas' => array(
       'formatter_settings' => array(
         'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
+          'lb' => 'Policy area',
         ),
-      ),
-    ),
-    'field_consultation_status' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_ds_field_expert',
-          'fi' => TRUE,
-          'fi-el' => 'span',
-          'fi-cl' => 'meta__item meta__item--type',
-          'fi-at' => '',
-          'fi-def-at' => FALSE,
-          'fi-odd-even' => FALSE,
-          'fi-first-last' => FALSE,
-        ),
-      ),
-    ),
-    'field_core_date_opening' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
-    'field_core_date_closing' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
       ),
     ),
   );
@@ -234,19 +210,17 @@ function dt_consultation_default_ds_layout_settings_info() {
       'main' => array(
         0 => 'group_consultation_meta',
         1 => 'title_field',
-        2 => 'field_core_date_opening',
-        3 => 'field_core_date_closing',
-        4 => 'content_type_label',
-        5 => 'field_consultation_status',
+        2 => 'field_core_policy_areas',
+        3 => 'consultation_period',
+        4 => 'consultation_status_label',
       ),
     ),
     'fields' => array(
       'group_consultation_meta' => 'main',
       'title_field' => 'main',
-      'field_core_date_opening' => 'main',
-      'field_core_date_closing' => 'main',
-      'content_type_label' => 'main',
-      'field_consultation_status' => 'main',
+      'field_core_policy_areas' => 'main',
+      'consultation_period' => 'main',
+      'consultation_status_label' => 'main',
     ),
     'classes' => array(),
     'wrappers' => array(

@@ -21,6 +21,7 @@ dependencies[] = entityreference_filter
 dependencies[] = field_object
 dependencies[] = file_entity
 dependencies[] = media_avportal
+dependencies[] = media_browser_plus
 dependencies[] = media_youtube
 dependencies[] = metatag_views
 dependencies[] = multisite_maxlength
