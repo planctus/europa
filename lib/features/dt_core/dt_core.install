@@ -1042,3 +1042,10 @@ function dt_core_update_7176() {
   $settings['en_change_track_on_edit'] = 1;
   variable_set('multisite_wysiwyg', $settings);
 }
+
+/**
+ * DTTSB-1337: Enable Media Browser Plus module.
+ */
+function dt_core_update_7178() {
+  module_enable(['media_browser_plus']);
+}

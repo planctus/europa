@@ -115,6 +115,32 @@ function dt_consultation_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_consultation_status'.
+  $field_bases['field_consultation_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_consultation_status',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'open' => 'Open',
+        'closed' => 'Closed',
+      ),
+      'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_consultation_target_groups'.
   $field_bases['field_consultation_target_groups'] = array(
     'active' => 1,

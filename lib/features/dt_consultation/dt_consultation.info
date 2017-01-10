@@ -16,6 +16,7 @@ features[field_base][] = field_consultation_how_to_submit
 features[field_base][] = field_consultation_objective
 features[field_base][] = field_consultation_questionnaire
 features[field_base][] = field_consultation_results
+features[field_base][] = field_consultation_status
 features[field_base][] = field_consultation_target_groups
 features[field_base][] = field_core_consultation
 features[field_base][] = field_core_consultations
@@ -83,7 +84,6 @@ features_exclude[field_group][group_consultation_results|node|consultation|full]
 features_exclude[field_group][group_consultation_target_group|node|consultation|full] = group_consultation_target_group|node|consultation|full
 features_exclude[field_instance][node-consultation-field_core_introduction] = node-consultation-field_core_introduction
 features_exclude[field_instance][node-consultation-field_core_legacy_link] = node-consultation-field_core_legacy_link
-features_exclude[field_instance][node-consultation-field_consultation_status] = node-consultation-field_consultation_status
 features_exclude[field_instance][node-consultation-field_consultation_type] = node-consultation-field_consultation_type
 features_exclude[field_instance][node-consultation-group_content_access] = node-consultation-group_content_access
 features_exclude[field_instance][node-consultation-og_group_ref] = node-consultation-og_group_ref

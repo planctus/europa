@@ -106,10 +106,16 @@ projects[form_builder][version] = "1.0"
 projects[options_element][subdir] = "contrib"
 projects[options_element][version] = "1.7"
 
+; End custom_formatters specific.
+
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc3"
 
-; End custom_formatters specific.
+projects[media_browser_plus][subdir] = "contrib"
+projects[media_browser_plus][version] = "3.0-beta4"
+
+projects[multiform][subdir] = "contrib"
+projects[multiform][version] = "1.3"
 
 ; =========
 ; Libraries

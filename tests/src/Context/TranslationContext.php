@@ -82,16 +82,27 @@ class TranslationContext extends RawDrupalContext {
    */
   public function iTranslateTheTermToWith($term_name, $language, $translation) {
     $term = taxonomy_get_term_by_name($term_name);
-
     if (!empty($term)) {
       $term = reset($term);
-
-      i18n_string_translation_update(
-        ['taxonomy', 'term', $term->tid, 'name'],
-        $translation,
-        $this->getLangCode($language),
-        $term->name
-      );
+      $lang_code = $this->getLangCode($language);
+      $translation_set = [
+        'translate' => 0,
+        'status' => 1,
+        'language' => $lang_code,
+        'source' => 'en',
+      ];
+      $handler = entity_translation_get_handler('taxonomy_term', $term);
+      $values = [
+        'name_field' => [
+          $lang_code => [
+            '0' => [
+              'value' => $translation,
+            ]
+          ]
+        ]
+      ];
+      $handler->setTranslation($translation_set, $values);
+      taxonomy_term_save($term);
       return TRUE;
     }
 

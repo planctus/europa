@@ -7,3 +7,124 @@
 
 include_once 'dt_consultation_default.features.inc';
 module_load_include('inc', 'dt_consultation_default', 'dt_consultation_default.ds_fields');
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Update's the consultation when the node is created or updated.
+ */
+function dt_consultation_default_node_presave($node) {
+  if ($node->type == 'consultation') {
+    $status = _dt_consultation_default_get_status($node);
+    if ($status) {
+      $node->field_consultation_status[LANGUAGE_NONE][0]['value'] = $status;
+    }
+  }
+}
+
+/**
+ * Helper function to determine the consultation status.
+ *
+ * @param object $node
+ *    Current node object being saved.
+ *
+ * @return string
+ *    Returns the status for the consultation.
+ */
+function _dt_consultation_default_get_status($node) {
+  $cew = entity_metadata_wrapper('node', $node);
+
+  // Dates are mandatory but double check if they are being submitted.
+  if (!$cew->__isset('field_core_date_closing') && !$cew->__isset('field_core_date_opening')) {
+    return FALSE;
+  }
+
+  // Check if its a past/future consultation.
+  if (!empty($cew->field_core_date_closing->value())) {
+    // Check if consultation ends today and because the we need to take into
+    // account hour granularity, we convert them to date and compared them.
+    if (date('d-m-Y', $cew->field_core_date_closing->value()) == date('d-m-Y', time())) {
+      return DT_CONSULTATION_DEFAULT_OPEN_STATE;
+    }
+    elseif ($cew->field_core_date_closing->value() < time()) {
+      return DT_CONSULTATION_DEFAULT_CLOSE_STATE;
+    }
+  }
+
+  return DT_CONSULTATION_DEFAULT_OPEN_STATE;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * We hide the field from the user.
+ */
+function dt_consultation_default_form_consultation_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['field_consultation_status']['#type'] = 'hidden';
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * Target only on upcoming and open publications, consultations will be updated
+ * on cron run which haven't been updated.
+ */
+function dt_consultation_default_cron() {
+  $dt_consultation_default_cron_last = variable_get('dt_consultation_default_cron_last');
+  if (date('ymd', $dt_consultation_default_cron_last) != date('ymd', time())) {
+    _dt_consultation_default_update_status();
+    variable_set('dt_consultation_default_cron_last', date('ymd', time()));
+  }
+
+}
+
+/**
+ * Helper function which will update the status of consultations.
+ */
+function _dt_consultation_default_update_status() {
+  // Create a query which will only process the upcoming and open.
+  $conditions = [
+    0 => [
+      // Open to close.
+      'start' => '<',
+      'close' => '<',
+      'current_state' => DT_CONSULTATION_DEFAULT_OPEN_STATE,
+      'future_state' => DT_CONSULTATION_DEFAULT_CLOSE_STATE,
+    ],
+  ];
+
+  // Query to selet only the consultations to be updated.
+  foreach ($conditions as $update_var) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'consultation')
+      ->propertyCondition('status', NODE_PUBLISHED)
+      ->fieldCondition('field_consultation_status', 'value', $update_var['current_state'], '=')
+      ->fieldCondition('field_core_date_opening', 'value', time(), $update_var['start'])
+      ->fieldCondition('field_core_date_closing', 'value', time(), $update_var['close']);
+    $result = $query->execute();
+
+    if (isset($result['node'])) {
+      $consultation_nids = array_keys($result['node']);
+      $consultations = entity_load('node', $consultation_nids);
+      // Update consultations.
+      _dt_consultation_default_process_states($consultations, $update_var['future_state']);
+    }
+  }
+}
+
+/**
+ * Helper to set the consultation state values.
+ *
+ * @param array $consulations
+ *   Array containing all consultations to be processed.
+ * @param string $state
+ *    The current state to applied.
+ */
+function _dt_consultation_default_process_states($consulations, $state) {
+  foreach ($consulations as $open_consultation) {
+    $emw = entity_metadata_wrapper('node', $open_consultation);
+    $emw->field_consultation_status->set($state);
+    $emw->save();
+  }
+}

@@ -80,6 +80,12 @@ function dt_announcement_news_prd_importer_feeds_after_parse(FeedsSource $source
           $news_type = drupal_strtolower($matches[0]);
           $item[$news_type_exp] = array_key_exists($news_type, $news_type_mapping) ? $news_type_mapping[$news_type] : $news_type;
         }
+        else {
+          // Check if we have static value for this.
+          if (!empty($feed_node_wrapper->field_announcement_type->value())) {
+            $item[$news_type_exp] = $feed_node_wrapper->field_announcement_type->value();
+          }
+        }
       }
       // Setting departments.
       if (!isset($item[$department_exp]) && !empty($feed_node_wrapper->field_core_departments)) {
