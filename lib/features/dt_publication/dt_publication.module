@@ -193,13 +193,13 @@ function _dt_publication_listing_exposed($entity) {
     // Country.
     $predefined_country = NULL;
     if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
-      $render['form']['field_core_nal_countries_tid_i18n']['#value'] = $predefined_country;
-      if (!empty($_GET['field_core_nal_countries_tid_i18n'])) {
-        $render['form']['field_core_nal_countries_tid_i18n']['#value'] = $_GET['field_core_nal_countries_tid_i18n'];
+      $render['form']['field_core_nal_countries_tid_selective']['#value'] = $predefined_country;
+      if (!empty($_GET['field_core_nal_countries_tid_selective'])) {
+        $render['form']['field_core_nal_countries_tid_selective']['#value'] = $_GET['field_core_nal_countries_tid_selective'];
       }
     }
-    if (!empty($render['form']['field_core_nal_countries_tid_i18n']['#options']['All']) && $render['form']['field_core_nal_countries_tid_i18n']['#options']['All'] == t('- Any -')) {
-      $render['form']['field_core_nal_countries_tid_i18n']['#options']['All'] = t('- All countries -');
+    if (!empty($render['form']['field_core_nal_countries_tid_selective']['#options']['All']) && $render['form']['field_core_nal_countries_tid_selective']['#options']['All'] == t('- Any -')) {
+      $render['form']['field_core_nal_countries_tid_selective']['#options']['All'] = t('- All countries -');
     }
 
     // Year.
@@ -345,7 +345,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
       // Country.
       $predefined_country = NULL;
       if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
-        $prev_filters['field_core_nal_countries_tid_i18n']['value'][$predefined_country] = $predefined_country;
+        $prev_filters['field_core_nal_countries_tid_selective']['value'][$predefined_country] = $predefined_country;
       }
 
       // Year.
@@ -368,7 +368,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
 
       $exp_filters = [
         'field_eurovoc_taxonomy_target_id_selective' => ['field_publications_topic_on', $predefined_topic],
-        'field_core_nal_countries_tid_i18n' => ['field_publications_country_on', $predefined_country],
+        'field_core_nal_countries_tid_selective' => ['field_publications_country_on', $predefined_country],
         'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
         'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
         'field_core_tags_tid_i18n' => ['field_publications_tag_on', $predefined_tag],
