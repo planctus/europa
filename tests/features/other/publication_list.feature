@@ -35,7 +35,7 @@ Feature: Publication List shows on page bottom with filters that have or not def
     Then I should see "Year" in the ".page-content .views-exposed-form" element
     Then I should see "Publication type" in the ".page-content .views-exposed-form" element
     Then I should see "Tag" in the ".page-content .views-exposed-form" element
-    Then I should see "- All countries -" in the "#edit-field-core-nal-countries-tid-i18n" element
+    Then I should see "- All countries -" in the "#edit-field-core-nal-countries-tid-selective" element
     Then I should see "- All years -" in the "#edit-field-core-date-updated-value-value-year" element
     Then I should see "- All publication types -" in the "#edit-field-publication-type-tid-i18n" element
     Then I should see "- All tags -" in the "#edit-field-core-tags-tid-i18n" element
