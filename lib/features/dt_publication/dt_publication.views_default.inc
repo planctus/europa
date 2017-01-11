@@ -154,6 +154,13 @@ function dt_publication_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['delta_offset'] = '0';
+  /* Field: Content: Countries */
+  $handler->display->display_options['fields']['field_core_nal_countries']['id'] = 'field_core_nal_countries';
+  $handler->display->display_options['fields']['field_core_nal_countries']['table'] = 'field_data_field_core_nal_countries';
+  $handler->display->display_options['fields']['field_core_nal_countries']['field'] = 'field_core_nal_countries';
+  $handler->display->display_options['fields']['field_core_nal_countries']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_core_nal_countries']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_core_nal_countries']['delta_offset'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -200,32 +207,33 @@ function dt_publication_views_default_views() {
   );
   $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['selective_display_field'] = 'field_eurovoc_taxonomy';
   $handler->display->display_options['filters']['field_eurovoc_taxonomy_target_id_selective']['selective_items_limit'] = '100';
-  /* Filter criterion: Content: Countries (field_core_nal_countries) (translated) */
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['id'] = 'field_core_nal_countries_tid_i18n';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['table'] = 'field_data_field_core_nal_countries';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['field'] = 'field_core_nal_countries_tid_i18n';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['expose']['operator_id'] = 'field_core_nal_countries_tid_i18n_op';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['expose']['label'] = 'Country';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['expose']['operator'] = 'field_core_nal_countries_tid_i18n_op';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['expose']['identifier'] = 'field_core_nal_countries_tid_i18n';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['expose']['remember_roles'] = array(
+  /* Filter criterion: Countries (field_core_nal_countries) (selective) */
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['id'] = 'field_core_nal_countries_tid_selective';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['table'] = 'field_data_field_core_nal_countries';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['field'] = 'field_core_nal_countries_tid_selective';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['ui_name'] = 'Countries (field_core_nal_countries) (selective)';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['expose']['identifier'] = 'field_core_nal_countries_tid_selective';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
     6 => 0,
     4 => 0,
     5 => 0,
-    16 => 0,
+    14 => 0,
     7 => 0,
     12 => 0,
     9 => 0,
-    21 => 0,
+    18 => 0,
     10 => 0,
+    15 => 0,
   );
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['type'] = 'select';
-  $handler->display->display_options['filters']['field_core_nal_countries_tid_i18n']['vocabulary'] = 'nal_countries';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['selective_display_field'] = 'field_core_nal_countries';
+  $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['selective_items_limit'] = '100';
   /* Filter criterion: Year */
   $handler->display->display_options['filters']['field_core_date_updated_value']['id'] = 'field_core_date_updated_value';
   $handler->display->display_options['filters']['field_core_date_updated_value']['table'] = 'field_data_field_core_date_updated';
