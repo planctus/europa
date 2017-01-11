@@ -71,7 +71,7 @@ function dt_consultation_default_form_consultation_node_form_alter(&$form, &$for
  */
 function dt_consultation_default_cron() {
   $dt_consultation_default_cron_last = variable_get('dt_consultation_default_cron_last');
-  if (date('ymd', $dt_consultation_default_cron_last) != date('ymd', time())) {
+  if (format_date($dt_consultation_default_cron_last, 'custom', 'ymd') != format_date(time(), 'custom', 'ymd')) {
     _dt_consultation_default_update_status();
     variable_set('dt_consultation_default_cron_last', date('ymd', time()));
   }
