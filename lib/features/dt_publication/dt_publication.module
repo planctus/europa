@@ -210,8 +210,8 @@ function _dt_publication_listing_exposed($entity) {
         $render['form']['field_core_date_updated_value']['value']['year']['#value'] = $_GET['field_core_date_updated_value']['value']['year'];
       }
     }
-    if (!empty($render['form']['field_core_date_updated_value']['value']['year']['#options']['']) && $render['form']['field_core_date_updated_value']['value']['year']['#options'][''] == t('-Year')) {
-      $render['form']['field_core_date_updated_value']['value']['year']['#options'][''] = t('- All years -');
+    if (!empty($render['form']['field_core_date_published']['value']['year']['#options']['']) && $render['form']['field_core_date_published']['value']['year']['#options'][''] == t('-Year')) {
+      $render['form']['field_core_date_published']['value']['year']['#options'][''] = t('- All years -');
     }
 
     // Publication type.

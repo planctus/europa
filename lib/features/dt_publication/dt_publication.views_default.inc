@@ -244,7 +244,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator_id'] = 'field_core_date_updated_value_op';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Year';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator'] = 'field_core_date_updated_value_op';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['identifier'] = 'field_core_date_updated_value';
+  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['identifier'] = 'field_core_date_published';
   $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -252,12 +252,13 @@ function dt_publication_views_default_views() {
     6 => 0,
     4 => 0,
     5 => 0,
-    16 => 0,
+    14 => 0,
     7 => 0,
     12 => 0,
     9 => 0,
-    21 => 0,
+    18 => 0,
     10 => 0,
+    15 => 0,
   );
   $handler->display->display_options['filters']['field_core_date_updated_value']['granularity'] = 'year';
   $handler->display->display_options['filters']['field_core_date_updated_value']['default_to_date'] = '-15';
