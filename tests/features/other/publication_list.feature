@@ -32,7 +32,6 @@ Feature: Publication List shows on page bottom with filters that have or not def
       | field_publications_tag_on     | 1                |
       | language                      | en               |
       | status                        | 1                |
-    Then show last response
     Then I should see "Page w/ Pub List"
     Then I should see "Publications" in the ".page-content" element
     Then I should see "Topic" in the ".page-content .views-exposed-form" element
