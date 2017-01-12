@@ -13,6 +13,6 @@ Feature: Display item count on listing pages
     Examples:
       | listing         |
       | "departments"   |
-      | "announcements" |
+      | "news" |
       | "policies"      |
       | "topics"        |

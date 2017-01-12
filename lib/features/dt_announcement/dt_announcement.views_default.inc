@@ -22,7 +22,7 @@ function dt_announcement_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Announcements';
+  $handler->display->display_options['title'] = 'News';
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -301,7 +301,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
     'field_data_field_core_date_published.field_core_date_published_value' => 'field_data_field_core_date_published.field_core_date_published_value',
   );
-  /* Filter criterion: Content: Related commissioners (field_core_persons:target_id) */
+  /* Filter criterion: Content: Related commissioners (field_core_persons) */
   $handler->display->display_options['filters']['field_core_persons_target_id']['id'] = 'field_core_persons_target_id';
   $handler->display->display_options['filters']['field_core_persons_target_id']['table'] = 'field_data_field_core_persons';
   $handler->display->display_options['filters']['field_core_persons_target_id']['field'] = 'field_core_persons_target_id';
@@ -361,7 +361,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Policies (field_core_policies) */
+  /* Filter criterion: Content: Related policy (field_core_policies) */
   $handler->display->display_options['filters']['field_core_policies_target_id']['id'] = 'field_core_policies_target_id';
   $handler->display->display_options['filters']['field_core_policies_target_id']['table'] = 'field_data_field_core_policies';
   $handler->display->display_options['filters']['field_core_policies_target_id']['field'] = 'field_core_policies_target_id';
@@ -401,7 +401,7 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  /* Filter criterion: Content: Topics (field_core_topics) */
+  /* Filter criterion: Content: Related topics (field_core_topics) */
   $handler->display->display_options['filters']['field_core_topics_target_id']['id'] = 'field_core_topics_target_id';
   $handler->display->display_options['filters']['field_core_topics_target_id']['table'] = 'field_data_field_core_topics';
   $handler->display->display_options['filters']['field_core_topics_target_id']['field'] = 'field_core_topics_target_id';
@@ -421,8 +421,9 @@ function dt_announcement_views_default_views() {
     7 => 0,
     9 => 0,
   );
-  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Announcements';
-  $handler->display->display_options['path'] = 'announcements';
+  $handler->display->display_options['dt_shared_functions_views_config_title'] = 'News';
+  $handler->display->display_options['dt_shared_functions_views_config_hidecount'] = 0;
+  $handler->display->display_options['path'] = 'news';
 
   /* Display: Latest */
   $handler = $view->new_display('block', 'Latest', 'latest_block');
@@ -437,7 +438,7 @@ function dt_announcement_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'All latest on [node_title]';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
-  $handler->display->display_options['link_url'] = '/announcements?[field_name]=[field_value]';
+  $handler->display->display_options['link_url'] = '/news?[field_name]=[field_value]';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';

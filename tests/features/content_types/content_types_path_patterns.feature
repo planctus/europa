@@ -11,7 +11,7 @@ Feature: I want to be see each content type in their defined URL path pattern
 
     Examples:
       | content_type     | title                           | url_title                       | url_pattern_prefix |
-      | Announcement     | Announcement test title         | announcement-test-title         | announcements/     |
+      | Announcement     | Announcement test title         | announcement-test-title         | news/     |
       | Department       | Department test title           | department-test-title           | departments/       |
       | Homepage         | Information Homepage test title | information-homepage-test-title |                    |
       | Law              | Law test title                  | law-test-title                  | law/               |

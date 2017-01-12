@@ -62,30 +62,30 @@ Feature: Draft viewer role
       | body                        | A test body         |
       | field_announcement_location | Brussels            |
       | field_core_announcement     | Ann. one, Ann. two  |
-    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
-    Then I should see the link "Ann. two" linking to "/announcements/ann-two_en"
+    Then I should see the link "Ann. one" linking to "/news/ann-one_en"
+    Then I should see the link "Ann. two" linking to "/news/ann-two_en"
 
     Given I am logged in as a user with the "administrator" role
-    Then I am at "/announcements/ann-one_en"
+    Then I am at "/news/ann-one_en"
     Then I follow "New draft" in the "tabs" region
     Then I fill in "title_field[en][0][value]" with "Ann. one draft"
     Then I uncheck "Generate automatic URL alias"
     Then I press the "Save" button
 
     Given I am logged in as "Draft viewer user"
-    And I am at "/announcements/announcement-lipsum_en"
-    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
+    And I am at "/news/announcement-lipsum_en"
+    Then I should see the link "Ann. one" linking to "/news/ann-one_en"
 
     Given I am logged in as a user with the "administrator" role
-    And I am at "/announcements/announcement-lipsum_en"
+    And I am at "/news/announcement-lipsum_en"
     Then I follow "New draft" in the "tabs" region
     Then I fill in "title_field[en][0][value]" with "Announcement lipsum draft"
     Then I uncheck "Generate automatic URL alias"
     Then I press the "Save" button
 
     Given I am logged in as "Draft viewer user"
-    And I am at "/announcements/announcement-lipsum_en"
-    Then I should see the link "Ann. one" linking to "/announcements/ann-one_en"
+    And I am at "/news/announcement-lipsum_en"
+    Then I should see the link "Ann. one" linking to "/news/ann-one_en"
     Then I follow "View draft" in the "tabs" region
     Then I follow "Ann. one"
     Then I should see "Ann. one draft"

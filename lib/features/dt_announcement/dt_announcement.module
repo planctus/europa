@@ -181,7 +181,7 @@ function dt_announcement_views_pre_render(&$view) {
       // Construct the url. This will use the $url_query defined above and does
       // support multiple values.
       $url = url(
-        'announcements',
+        'news',
         [
           'query' => isset($url_query) ? $url_query : [],
         ]

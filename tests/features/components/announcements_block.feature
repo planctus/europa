@@ -47,12 +47,12 @@ Feature: Announcements block
     Then I should see the link "<all_link_text>" linking to "<all_link_url>"
 
     Examples:
-      | content_name | reference_fieldname   | label_visible | link_visible | all_link_text                         | all_link_url                        |
-      | Department   | field_core_department | should        | should       | More news                             | /announcements_en?department=999999 |
-      | Policy       | field_core_policies   | should not    | should       | All news on this policy               | /announcements_en?policies=999999   |
-      | Topic        | field_core_topics     | should        | should       | All news on Topic with announcements  | /announcements_en?topics=999999     |
-      | Priority     | field_core_priorities | should        | should       | All news on this priority             | /announcements_en?priorities=999999 |
-      | Page         | field_core_pages      | should        | should       | All latest on Page with announcements | /announcements_en?pages=999999      |
+      | content_name | reference_fieldname   | label_visible | link_visible | all_link_text                         | all_link_url               |
+      | Department   | field_core_department | should        | should       | More news                             | /news_en?department=999999 |
+      | Policy       | field_core_policies   | should not    | should       | All news on this policy               | /news_en?policies=999999   |
+      | Topic        | field_core_topics     | should        | should       | All news on Topic with announcements  | /news_en?topics=999999     |
+      | Priority     | field_core_priorities | should        | should       | All news on this priority             | /news_en?priorities=999999 |
+      | Page         | field_core_pages      | should        | should       | All latest on Page with announcements | /news_en?pages=999999      |
 
 
   Scenario: Visitors should see sticky and promoted highlights above announcements list
@@ -60,7 +60,8 @@ Feature: Announcements block
       | title                   | status | sticky | promote |
       | Sticky Announcement     | 1      | 1      | 0       |
       | Promoted Announcement 1 | 1      | 0      | 1       |
-    When I go to "announcements_en"
+    When I go to "news_en"
+    Then show last response
     Then the ".node-announcement.node-sticky .featured-item" element should contain "Sticky Announcement"
     Then the ".node-announcement.node-promoted .featured-item" element should contain "Promoted Announcement 1"
 

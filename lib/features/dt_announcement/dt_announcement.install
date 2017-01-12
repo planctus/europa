@@ -322,3 +322,47 @@ function dt_announcement_update_7116() {
 function dt_announcement_update_7117() {
   variable_set('dt_announcement_read_more__department', 'More news');
 }
+
+/**
+ * DTTSB-1118: Changing the announcement title and path to news.
+ */
+function dt_announcement_update_7118(&$sandbox) {
+  // Initial settings.
+  if (!isset($sandbox['max'])) {
+    // Reverting dt_announcement.
+    features_revert_module('dt_announcement');
+    // Query all nid item.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'announcement');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = 50;
+  $nids = db_select('node', 'n')
+    ->condition('n.type', 'announcement')
+    ->fields('n', ['nid'])
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit)
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = entity_load('node', $nids);
+    foreach ($nodes as $node) {
+      $node->path['pathauto'] = TRUE;
+      // Make sure the alias will be updated.
+      pathauto_node_update_alias($node, 'update');
+    }
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
