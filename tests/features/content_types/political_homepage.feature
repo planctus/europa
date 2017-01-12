@@ -61,7 +61,7 @@ Feature: Political Homepage different layout
     Then I should see "Promoted Announcement 1" in the ".field--announcement-block" element
     Then I should not see "Promoted Announcement 2" in the ".field--announcement-block" element
 
-  Scenario: Latest link can be translated
+  Scenario: Latest link can be translated and moved to the right
     Given I am logged in as a user with the "administrator" role
     And "Announcement" content:
       | title                   | status | sticky | promote |
@@ -82,7 +82,8 @@ Feature: Political Homepage different layout
     And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see "Latest fr" in the ".field--announcement-block" element
-    Then I should see "More news fr" in the ".field--field-info-homepage-latest-link" element
+    And I should see "More news fr" in the ".field--field-info-homepage-latest-link" element
+    And I should see an ".pull-right" element
 
   Scenario: Social media block is visible for the latest block
     Given I am logged in as a user with the "administrator" role
@@ -119,3 +120,17 @@ Feature: Political Homepage different layout
     Then I should see "Hero link text above featured items." in the ".hero-links__text p" element
     And I should see the link "Featured ext1" linking to "http://ec.europa.eu/test1"
     And I should see the link "Featured ext2" linking to "http://ec.europa.eu/test2"
+
+  Scenario: About block is visible and it is two column
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing a "Homepage" content:
+      | title                            | Frontpage title                                   |
+      | field_core_links                 | Test - http://google.be, Test2 - http://google.be |
+      | field_info_homepage_about_button | More About - http://google.be                     |
+      | language                         | en                                                |
+      | status                           | 1                                                 |
+    Then I should see the link "Test" linking to "http://google.be"
+    And I should see the link "Test2" linking to "http://google.be"
+    And I should see the link "More About" linking to "http://google.be"
+    And I should see an ".pull-right" element
+    And I should see an ".listing__wrapper--two-columns" element

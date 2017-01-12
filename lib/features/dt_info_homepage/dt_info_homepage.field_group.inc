@@ -173,7 +173,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Featured',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_info_highlights',
     ),
@@ -327,9 +327,10 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Latest',
-    'weight' => '31',
+    'weight' => '5',
     'children' => array(
       0 => 'field_info_homepage_latest_link',
+      1 => 'announcement_block',
     ),
     'format_type' => 'section_group',
     'format_settings' => array(
@@ -460,7 +461,7 @@ function dt_info_homepage_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Section bottom',
-    'weight' => '35',
+    'weight' => '36',
     'children' => array(
       0 => 'field_info_secondary_links',
     ),

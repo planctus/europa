@@ -19,6 +19,7 @@ Feature: As a visitor
       | title         | language | status | nid    | is_new | field_core_latest_visibility |
       | Test Priority | en       | 1      | 300000 | 1      | Enable                       |
 
+
     Given I am logged in as a user with the "site manager, editor" roles
     And I am viewing an "News PRD Importer" importer:
       | title                           | PRD Types Import Test                                        |
@@ -51,6 +52,15 @@ Feature: As a visitor
       | feeds[FeedsHTTPFetcher][source] | /sites/all/modules/dev_modules/prd_rss/priority.rss |
       | field_core_priorities           | Test Priority                                       |
       | language                        | en                                                  |
+    When I follow "Import" in the "tabs"
+    And I press "Import"
+    And I wait for the batch job to finish
+
+    Given I am viewing an "News PRD Importer" importer:
+      | title                           | Newsroom Import Test                                     |
+      | feeds[FeedsHTTPFetcher][source] | /sites/all/modules/dev_modules/newsroom_rss/newsroom.rss |
+      | field_announcement_type         | Speech                                                   |
+      | language                        | en                                                       |
     When I follow "Import" in the "tabs"
     And I press "Import"
     And I wait for the batch job to finish
@@ -146,3 +156,9 @@ Feature: As a visitor
     Then the select "#edit-field-announcement-type .form-select" should be set to "press_release"
     And I click "Related content"
     Then the "edit-field-core-persons-und-0-target-id" field should contain "Commissioner John Doe (Person) (200000)"
+    
+    Given I go to "admin/content"
+    And I follow "New stockshot: Vocational education and training across the EU"
+    And I follow "New draft" in the "tabs"
+    Then the select "#edit-field-announcement-type .form-select" should be set to "speech"
+    

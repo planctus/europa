@@ -45,6 +45,8 @@ class DTDepartmentTasksMigration extends Migration {
     $this->destination = new MigrateDestinationTerm('department_tasks');
 
     $this->addFieldMapping('name', 'department_task');
+    $this->addFieldMapping('name_field', 'department_task');
+    $this->addfieldMapping('language')->defaultValue('en');
     $this->addUnmigratedDestinations(
       array(
         'description',
@@ -70,8 +72,6 @@ class DTDepartmentTasksMigration extends Migration {
         'metatag_shortlink',
         'metatag_standout',
         'metatag_title',
-        'name_field',
-        'name_field:language',
         'parent',
         'parent_name',
         'path',
