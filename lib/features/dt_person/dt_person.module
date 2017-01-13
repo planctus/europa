@@ -312,11 +312,18 @@ function _dt_person_job_role($field) {
       $nwo = entity_metadata_wrapper('node', $job);
       if ($nwo->__isset('field_job_role')) {
         $job_role = $nwo->field_job_role->value();
+        // Check if person has acting role assign.
+        $acting = '';
+        if ($nwo->__isset('field_job_acting_role')
+          && $nwo->field_job_acting_role->value()
+        ) {
+          $acting = '(' . t('Acting') . ') ';
+        }
         $tmw = entity_metadata_wrapper('taxonomy_term', $job_role);
         $render_config = [
           '#theme' => 'dt_person_job_role',
           '#role_class' => 'meta__item',
-          '#role_text' => $tmw->name->value(),
+          '#role_text' => $acting . $tmw->name->value(),
         ];
         $output .= drupal_render($render_config);
       }
