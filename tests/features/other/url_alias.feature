@@ -20,7 +20,7 @@ Feature: Url aliases have specific configurations and patterns.
     And I fill in the reference "edit-field-core-parents-und-0-target-id" with "New law title"
     And I fill in "Moderation state" with "published"
     # First time we enter checkbox is checked.
-    Then the "Generate automatic URL alias" checkbox should be checked
+    And I check the box "Generate automatic URL alias"
     When I press "Save"
     Then I should see "Created new alias law/new-law-title/page-title"
     And I should see "replacing law/law-title/page-title"
