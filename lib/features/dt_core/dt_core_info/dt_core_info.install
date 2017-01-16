@@ -247,25 +247,9 @@ function dt_core_info_update_7124() {
     'integration_producer_ui',
     'integration_consumer_ui',
     'integration_producer',
-    'integration_consumer',
     'nexteuropa_integration',
     'integration_migrate',
     'integration_couchdb',
     'integration_ui',
-    'integration',
-  ]);
-}
-
-/**
- * DTTSB-1547: Enable critical platform modules.
- *
- * These needs to be enabled because otherwise the migrate module is broken.
- *
- * @todo: This needs more investigation later.
- */
-function dt_core_info_update_7125() {
-  module_enable([
-    'integration',
-    'integration_consumer',
   ]);
 }
