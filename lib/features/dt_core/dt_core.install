@@ -1049,3 +1049,21 @@ function dt_core_update_7176() {
 function dt_core_update_7178() {
   module_enable(['media_browser_plus']);
 }
+
+/**
+ * DTTSB-1527: Press contact page fix.
+ */
+function dt_core_update_7179() {
+  $tables = [
+    'field_data_field_core_quick_nav_links',
+    'field_revision_field_core_quick_nav_links',
+  ];
+
+  foreach ($tables as $table) {
+    if (db_table_exists($table)) {
+      db_delete($table)
+        ->condition('language', 'und')
+        ->execute();
+    }
+  }
+}
