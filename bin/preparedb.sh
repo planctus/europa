@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # This script helps to prepare production dumps for acquia usage.
 #
