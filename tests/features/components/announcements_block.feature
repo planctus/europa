@@ -54,14 +54,12 @@ Feature: Announcements block
       | Priority     | field_core_priorities | should        | should       | All news on this priority             | /news_en?priorities=999999 |
       | Page         | field_core_pages      | should        | should       | All latest on Page with announcements | /news_en?pages=999999      |
 
-
   Scenario: Visitors should see sticky and promoted highlights above announcements list
     Given "Announcement" content:
       | title                   | status | sticky | promote |
       | Sticky Announcement     | 1      | 1      | 0       |
       | Promoted Announcement 1 | 1      | 0      | 1       |
     When I go to "news_en"
-    Then show last response
     Then the ".node-announcement.node-sticky .featured-item" element should contain "Sticky Announcement"
     Then the ".node-announcement.node-promoted .featured-item" element should contain "Promoted Announcement 1"
 
