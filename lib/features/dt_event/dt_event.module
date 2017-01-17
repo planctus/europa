@@ -100,22 +100,26 @@ function dt_event_entity_view_mode_alter(&$view_mode, $context) {
 function dt_event_preprocess_file_entity(&$variables) {
   // Make sure we only do this for event entities.
   if (isset($variables['entity']) && $variables['entity']->type == 'event') {
-    // We define the wrapper once and apply it when we need it.
+    // We define the wrapper once for the caption and apply it when we need it.
     $caption_wrapper = [
       '#prefix' => '<div class="file__caption">',
       '#suffix' => '</div>',
     ];
     // If it is a video, we have to apply additional modifiers.
     if ($variables['type'] == 'video') {
+      /* @todo This should be fixed in the ticket DTTSB-1578 and then we can
+       * remove this line of code. */
+      unset($variables['content']['field_folder']);
+      // Adds the modifier class to apply the background color.
       $variables['classes_array'][] = 'file-video--with-background';
       // Also add the description to the content render array.
-      if (isset($variables['content']['field_video_description'])) {
+      if (!empty($variables['content']['field_video_description'])) {
         $variables['content']['field_video_description']['#label_display'] = 'hidden';
         $variables['content']['field_video_description'] += $caption_wrapper;
       }
     }
     // Add the BEM wrapper.
-    if (isset($variables['content']['field_caption'])) {
+    if (!empty($variables['content']['field_caption'])) {
       $variables['content']['field_caption'] += $caption_wrapper;
     }
   }
