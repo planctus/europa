@@ -22,7 +22,7 @@ function dt_person_press_contacts_list_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Press contacts';
+  $handler->display->display_options['title'] = 'Press contacts – Spokesperson\'s Service';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
@@ -172,7 +172,7 @@ function dt_person_press_contacts_list_views_default_views() {
     'translator' => 0,
     'translator reviewer' => 0,
   );
-  $handler->display->display_options['path'] = 'press-contacts';
+  $handler->display->display_options['path'] = 'press-contacts-spokespersons-service';
   $export['press_contacts'] = $view;
 
   return $export;
