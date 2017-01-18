@@ -269,7 +269,7 @@ function dt_core_info_update_7124() {
     'nexteuropa_integration',
     'integration_migrate',
     'integration_couchdb',
-    'integration_consume',
+    'integration_consumer',
     'integration_ui',
     'integration',
   ]);
