@@ -266,10 +266,10 @@ function dt_core_info_update_7124() {
     'integration_producer_ui',
     'integration_consumer_ui',
     'integration_producer',
+    'integration_consumer',
     'nexteuropa_integration',
     'integration_migrate',
     'integration_couchdb',
-    'integration_consumer',
     'integration_ui',
     'integration',
   ]);
