@@ -1067,3 +1067,15 @@ function dt_core_update_7179() {
     }
   }
 }
+
+/**
+ * DTTSB-1237: Webtools snippets.
+ *
+ * This is only for increasing the height of the HTML filters in order not to
+ * filter tokens.
+ */
+function dt_core_update_7180() {
+  multisite_config_service('filter')->setTextFilterWeight('full_html', 'filter_tokens', 50);
+  multisite_config_service('filter')->setTextFilterWeight('full_html_track', 'filter_tokens', 50);
+  module_enable(['nexteuropa_webtools']);
+}
