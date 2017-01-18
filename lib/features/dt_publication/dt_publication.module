@@ -205,13 +205,13 @@ function _dt_publication_listing_exposed($entity) {
     // Year.
     $predefined_year = NULL;
     if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
-      $render['form']['field_core_date_updated_value']['#value'] = date('Y', $predefined_year);
-      if (!empty($_GET['field_core_date_updated_value'])) {
-        $render['form']['field_core_date_updated_value']['value']['year']['#value'] = $_GET['field_core_date_updated_value']['value']['year'];
+      $render['form']['field_core_date_published']['#value'] = date('Y', $predefined_year);
+      if (!empty($_GET['field_core_date_published'])) {
+        $render['form']['field_core_date_published']['value']['year']['#value'] = $_GET['field_core_date_published']['value']['year'];
       }
     }
-    if (!empty($render['form']['field_core_date_published']['value']['year']['#options']['']) && $render['form']['field_core_date_published']['value']['year']['#options'][''] == t('-Year')) {
-      $render['form']['field_core_date_published']['value']['year']['#options'][''] = t('- All years -');
+    if (!empty($render['form']['field_core_date_published_value']['value']['year']['#options']['']) && $render['form']['field_core_date_published_value']['value']['year']['#options'][''] == t('-Year')) {
+      $render['form']['field_core_date_published_value']['value']['year']['#options'][''] = t('- All years -');
     }
 
     // Publication type.
@@ -351,7 +351,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
       // Year.
       $predefined_year = NULL;
       if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
-        $prev_filters['field_core_date_updated_value']['value']['value'] = date('Y', $predefined_year);
+        $prev_filters['field_core_date_published_value']['value']['value'] = date('Y', $predefined_year);
       }
 
       // Publication type.
@@ -369,7 +369,7 @@ function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
       $exp_filters = [
         'field_eurovoc_taxonomy_target_id_selective' => ['field_publications_topic_on', $predefined_topic],
         'field_core_nal_countries_tid_selective' => ['field_publications_country_on', $predefined_country],
-        'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
+        'field_core_date_published_value' => ['field_publications_year_on', $predefined_year],
         'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
         'field_core_tags_tid_i18n' => ['field_publications_tag_on', $predefined_tag],
       ];

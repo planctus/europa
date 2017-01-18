@@ -234,18 +234,17 @@ function dt_publication_views_default_views() {
   );
   $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['selective_display_field'] = 'field_core_nal_countries';
   $handler->display->display_options['filters']['field_core_nal_countries_tid_selective']['selective_items_limit'] = '100';
-  /* Filter criterion: Year */
-  $handler->display->display_options['filters']['field_core_date_updated_value']['id'] = 'field_core_date_updated_value';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['table'] = 'field_data_field_core_date_updated';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['field'] = 'field_core_date_updated_value';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['ui_name'] = 'Year';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_core_date_updated_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator_id'] = 'field_core_date_updated_value_op';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['label'] = 'Year';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['operator'] = 'field_core_date_updated_value_op';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['identifier'] = 'field_core_date_published';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: First published on (field_core_date_published) */
+  $handler->display->display_options['filters']['field_core_date_published_value']['id'] = 'field_core_date_published_value';
+  $handler->display->display_options['filters']['field_core_date_published_value']['table'] = 'field_data_field_core_date_published';
+  $handler->display->display_options['filters']['field_core_date_published_value']['field'] = 'field_core_date_published_value';
+  $handler->display->display_options['filters']['field_core_date_published_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_core_date_published_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_core_date_published_value']['expose']['operator_id'] = 'field_core_date_published_value_op';
+  $handler->display->display_options['filters']['field_core_date_published_value']['expose']['label'] = 'Year';
+  $handler->display->display_options['filters']['field_core_date_published_value']['expose']['operator'] = 'field_core_date_published_value_op';
+  $handler->display->display_options['filters']['field_core_date_published_value']['expose']['identifier'] = 'field_core_date_published_value';
+  $handler->display->display_options['filters']['field_core_date_published_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -260,9 +259,8 @@ function dt_publication_views_default_views() {
     10 => 0,
     15 => 0,
   );
-  $handler->display->display_options['filters']['field_core_date_updated_value']['granularity'] = 'year';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['default_to_date'] = '-15';
-  $handler->display->display_options['filters']['field_core_date_updated_value']['year_range'] = '+1:-10';
+  $handler->display->display_options['filters']['field_core_date_published_value']['granularity'] = 'year';
+  $handler->display->display_options['filters']['field_core_date_published_value']['year_range'] = '-10:+2';
   /* Filter criterion: Content: Publication type (field_publication_type) (translated) */
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['id'] = 'field_publication_type_tid_i18n';
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['table'] = 'field_data_field_publication_type';
