@@ -215,7 +215,7 @@ function dt_info_homepage_field_group_info() {
       'label' => 'About the European Commission',
       'instance_settings' => array(
         'classes' => '',
-        'show_label' => '0',
+        'show_label' => '1',
         'label_element' => 'h2',
         'attributes' => '',
         'modifier' => '',

@@ -579,7 +579,7 @@ function dt_info_homepage_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
-          'modifier' => '',
+          'modifier' => 'two-columns',
           'nexteuropa_title_item_link_modifier' => '',
           'nexteuropa_title_item_modifier' => '',
           'nexteuropa_title_listing_modifier' => '',
