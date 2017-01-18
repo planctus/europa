@@ -41,6 +41,7 @@ function dt_person_press_contacts_list_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Digital Transformation');
   t('The page listing all the press contacts');
+  t('Press contacts – Spokesperson\'s Service');
   $export['press_contacts_list'] = $context;
 
   return $export;
