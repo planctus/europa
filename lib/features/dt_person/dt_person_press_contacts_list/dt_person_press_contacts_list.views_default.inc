@@ -172,7 +172,7 @@ function dt_person_press_contacts_list_views_default_views() {
     'translator' => 0,
     'translator reviewer' => 0,
   );
-  $handler->display->display_options['path'] = 'press-contacts-spokespersons-service';
+  $handler->display->display_options['path'] = 'contact/press-services/press-contacts/press-contacts-spokespersons-service';
   $export['press_contacts'] = $view;
 
   return $export;
