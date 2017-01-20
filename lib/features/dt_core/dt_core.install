@@ -1049,3 +1049,33 @@ function dt_core_update_7176() {
 function dt_core_update_7178() {
   module_enable(['media_browser_plus']);
 }
+
+/**
+ * DTTSB-1527: Press contact page fix.
+ */
+function dt_core_update_7179() {
+  $tables = [
+    'field_data_field_core_quick_nav_links',
+    'field_revision_field_core_quick_nav_links',
+  ];
+
+  foreach ($tables as $table) {
+    if (db_table_exists($table)) {
+      db_delete($table)
+        ->condition('language', 'und')
+        ->execute();
+    }
+  }
+}
+
+/**
+ * DTTSB-1237: Webtools snippets.
+ *
+ * This is only for increasing the height of the HTML filters in order not to
+ * filter tokens.
+ */
+function dt_core_update_7180() {
+  multisite_config_service('filter')->setTextFilterWeight('full_html', 'filter_tokens', 50);
+  multisite_config_service('filter')->setTextFilterWeight('full_html_track', 'filter_tokens', 50);
+  module_enable(['nexteuropa_webtools']);
+}
