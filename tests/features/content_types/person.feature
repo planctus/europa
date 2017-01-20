@@ -114,12 +114,12 @@ Feature: Person content type tests
     And I am an anonymous user
 
   Scenario: Press contact listing should not display a link to their entity
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     Then I should not see the link "Jane Wilde"
     Then I should not see the link "Bert Normal"
 
   Scenario: Press contact listing should display persons along with their contacts
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     # We only have to verify the labels once.
     Then I should see "Phone number"
     And I should see "Mobile"
@@ -143,12 +143,12 @@ Feature: Person content type tests
     And I should see "Linkedin profile"
     And I should see "contact@behat.org"
     # Check multilingual.
-    When I am on "press-contacts_nl"
+    When I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     Then I should see "Bert Normaal"
     And I should see "Jane Roekeloos"
 
   Scenario: Press contact listing should display additional information
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     Then I should see "People" in the ".filters__items-number" element
     # Avoid false positives.
     And I should not see "People (" in the ".filters__items-number" element
@@ -156,13 +156,13 @@ Feature: Person content type tests
     And I should not see "People (3)" in the ".filters__items-number" element
 
   Scenario: When a responsibility is not entered, the job title should be hidden
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     And I fill in "Search by name" with "Alfred Rodeo"
     And I press "Refine results"
     Then I should not see "Third role" in the ".view-display-id-page .node-job" element
 
   Scenario: Press contacts should be sorted by their role type weight, and should not be duplicate
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     Then I should see "Bert Normal" in the ".view-display-id-page li:nth-child(1)" element
     And I should see "Duo Buo" in the ".view-display-id-page li:nth-child(2)" element
     And I should see "Alfred Rodeo" in the ".view-display-id-page li:nth-child(3)" element
@@ -170,7 +170,7 @@ Feature: Person content type tests
 
   @dt_topic
   Scenario: Press contact listing should display filters
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     Then I should see "Topics" in the "#block-views-exp-press-contacts-page" element
     And I select "First topic" from "Topics"
     And I select "Second topic" from "Topics"
@@ -182,7 +182,7 @@ Feature: Person content type tests
     And I select "Communications" from "Team/role"
     Then I should see "Search by name" in the "#block-views-exp-press-contacts-page" element
     # Check multilingual. This works, but test needs to be rewritten.
-    And I am on "press-contacts_nl"
+    And I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     Then I should see "Topics" in the "#block-views-exp-press-contacts-page" element
     And I select "Eerste topic" from "Topics"
     And I select "Volgende topic" from "Topics"
@@ -194,9 +194,16 @@ Feature: Person content type tests
     And I reload the page
     And I select "Woordvoerder" from "Team/role"
 
+  Scenario: Press contact listing translated
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_hu"
+    Then I translate the string "Press contacts – Spokesperson's Service" to "Hungarian" with "HunPress"
+    And the cache has been cleared
+    And I reload the page
+    Then I should see text matching "HunPress"
+
   @dt_topic
   Scenario: Press contact listing can be filtered by Topics
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     And I select "First topic" from "Topics"
     And I press "Refine results"
     Then I should see "TOPICS" in the ".filters__active-facets" element
@@ -213,7 +220,7 @@ Feature: Person content type tests
     And I should see "Jane Wilde"
     And I should see "Reset"
     # Check multilingual, if we test one here it is ok.
-    And I am on "press-contacts_nl"
+    And I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     And I select "Eerste topic" from "Topics"
     And I press "Refine results"
     Then I should see "TOPICS" in the ".filters__active-facets" element
@@ -222,7 +229,7 @@ Feature: Person content type tests
     And I should not see "Jane Roekeloos"
 
   Scenario: Press contact listing can be filtered by Team/role
-    Given I am on "press-contacts"
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     And I select "Press Officer" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element
@@ -234,6 +241,7 @@ Feature: Person content type tests
     And I select "Spokesperson" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element
+
     And I should see "Spokesperson" in the ".filters__active-facets" element
     Then I should not see "Bert Normal"
     And I should not see "Jane Wilde"
@@ -242,7 +250,7 @@ Feature: Person content type tests
   @wip
   Scenario: Press contact listing can be filtered by Team/role can be translated
     # Check multilingual, if we test one here it is ok.
-    And I am on "press-contacts_nl"
+    And I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     And I select "Woordvoerder" from "Team/role"
     And I press "Refine results"
     Then I should see "TEAM/ROLE" in the ".filters__active-facets" element

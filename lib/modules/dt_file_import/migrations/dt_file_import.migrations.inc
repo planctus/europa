@@ -35,6 +35,37 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
     if (!file_prepare_directory($this->folder, FILE_CREATE_DIRECTORY)) {
       drupal_mkdir($this->folder);
     }
+
+    $this->team = [
+      new MigrateTeamMember('János Kuszing', '',
+        t('Implementor')),
+      new MigrateTeamMember('Ádám Nagy', '',
+        t('Implementor')),
+      new MigrateTeamMember('Tamás Kugler', '',
+        t('Team Lead')),
+      new MigrateTeamMember('Rob Harings', '',
+        t('Team Lead')),
+      new MigrateTeamMember('Jorge Manuel Alves', '',
+        t('Team Member')),
+      new MigrateTeamMember('Pedro Rafael Carvalho Da Fonseca ', '',
+        t('Team Member')),
+      new MigrateTeamMember('Davide Ferrante', '',
+        t('Team Member')),
+      new MigrateTeamMember('Nelson Jose Filipe Matias', '',
+        t('Team Member')),
+      new MigrateTeamMember('Guiherme Dos Ramos Almeida', '',
+        t('Team Member')),
+      new MigrateTeamMember('Dave Coote', '',
+        t('Team Member')),
+      new MigrateTeamMember('Bruno Van Essche', '',
+        t('Team Member')),
+      new MigrateTeamMember('Emin Mammadov', '',
+        t('Scrum Master')),
+      new MigrateTeamMember('Hugh Prior', '',
+        t('Product Owner')),
+      new MigrateTeamMember('Niki Lin', '',
+        t('Product Owner')),
+    ];
   }
 
   /**
@@ -130,11 +161,30 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
    *   - Title of the item.
    */
   public function getPrimaryLanguage($type = NULL, $id = NULL) {
+    // When the type is 'file', should check the original attribute.
+    if ($type == 'file') {
+      // Validating type.
+      $this->validateImportType($type);
+      $id_name = self::IMPORT_TYPES[$type];
+
+      // Check the indicator 'original="true"' for primary language.
+      $xpath = "/import/${type}_translations/${type}_translation[${id_name}='${id}' and @original='true']/language";
+      $xml_lang = $this->xml->xpath($xpath);
+      if (!empty($xml_lang)) {
+        // Take the first element of array.
+        $language = (string) $xml_lang[0];
+        return $language;
+      }
+    }
+
     // Check the available languages.
     if ($languages = $this->getLanguages($type, $id)) {
+      // Use the English as a primary language (if it is exist),
+      // otherwise the first element of the languages array.
       $language = array_search('en', $languages) ? 'en' : $languages[0];
       return $language;
     }
+
     // In this case there is no title, should report at migration messages.
     $this->queueMessage(t('There was no language given for @type! (ID: @id)', ['@type' => $type, '@id' => $id]));
     return FALSE;
@@ -998,6 +1048,13 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 class DtFileImportFileImport extends DtFileImportGeneralMigration {
 
   /**
+   * Stores files order.
+   *
+   * @var array
+   */
+  protected $fileWeight;
+
+  /**
    * Constructor of migrations.
    *
    * @param array $arguments
@@ -1010,6 +1067,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
 
     // Used fields.
     $fields = [
+      'weight' => t('Weight'),
       'pid' => t('Publication ID'),
       'type_of_file' => t('Type of file'),
       'date_of_publication' => t('Date of publication'),
@@ -1042,6 +1100,8 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     );
 
     $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('weight', 'weight')
+      ->xpath('@weight');
 
     // Type of file.
     $this->addFieldMapping('field_file_type_file', 'type_of_file')
@@ -1264,6 +1324,26 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
   }
 
   /**
+   * Set the field_core_files in a publication, related to file weight.
+   *
+   * @param object $publication
+   *   Field_core_files field in a publication content.
+   */
+  protected function sortFilesInPublication(&$publication) {
+    // Takes the nids and sort by their weights.
+    $nids = array_column($publication->field_core_files[LANGUAGE_NONE], 'target_id');
+    usort($nids, function ($a, $b) {
+      return $this->fileWeight[$a] > $this->fileWeight[$b];
+    });
+
+    // Empty 'field_core_files' and added sorted NodeIDs.
+    $publication->field_core_files[LANGUAGE_NONE] = [];
+    foreach ($nids as $nid) {
+      $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $nid;
+    }
+  }
+
+  /**
    * Prepare the node before migration.
    *
    * @param object $node
@@ -1309,6 +1389,9 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     // Adding language specific settings to file node.
     $entity_translation_handler = entity_translation_get_handler('node', $node);
     $entity_translation_handler->setOriginalLanguage($default_language);
+
+    // Store NodeID with the related weight.
+    $this->fileWeight[$node->nid] = isset($row->weight) ? (int) $row->weight : 50;
 
     // Iterate on all languages, which are related to the import.
     foreach ($file_languages as $language) {
@@ -1381,7 +1464,9 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
         }
         foreach ($pids as $pid) {
           if ($publication = node_load((integer) $pid)) {
+            // Add item to field_core_files.
             $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $node->nid;
+            $this->sortFilesInPublication($publication);
             node_save($publication);
           }
           // Drop an error message if there is no related publication.
