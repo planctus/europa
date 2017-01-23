@@ -211,8 +211,8 @@ function dt_publication_update_7111() {
 
 /**
  * DTTSB-1514: Publications content type: Type selection box no longer "ticked".
- * So collections and pages appear blank.
  *
+ * So collections and pages appear blank.
  *
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1514
  */
