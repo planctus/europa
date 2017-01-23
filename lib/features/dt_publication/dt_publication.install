@@ -210,9 +210,8 @@ function dt_publication_update_7111() {
 }
 
 /**
- * Implements hook_update().
+ * DTTSB-1514: Publications content type: Type selection box no longer "ticked".
  *
- * Publications content type: Type selection box no longer "ticked".
  * So collections and pages appear blank.
  *
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1514
