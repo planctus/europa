@@ -71,6 +71,16 @@
                     <!-- File ID -->
                     <xs:element name="fid" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" nillable="false"/>
                   </xs:sequence>
+                  <xs:attribute name="original">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="true"/>
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="TRUE"/>
+                        <xs:enumeration value="FALSE"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -149,6 +159,14 @@
                       </xs:simpleType>
                     </xs:element>
                   </xs:sequence>
+                  <xs:attribute name="weight" default="50">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:integer">
+                        <xs:minInclusive value="0"/>
+                        <xs:maxInclusive value="100"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

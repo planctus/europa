@@ -208,3 +208,72 @@ function dt_publication_update_7111() {
       ->execute();
   }
 }
+
+/**
+ * DTTSB-1514: Publications content type: Type selection box no longer "ticked".
+ *
+ * So collections and pages appear blank.
+ *
+ * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1514
+ */
+function dt_publication_update_7112(&$sandbox) {
+  $limit = 50;
+
+  if (!isset($sandbox['max'])) {
+    $sandbox['progress'] = 0;
+    // Get all publications which don't have a type.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'publication')
+      ->propertyCondition('status', NODE_PUBLISHED);
+    $sandbox['max'] = $query->count()->execute();
+  }
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'publication')
+    ->propertyCondition('status', NODE_PUBLISHED);
+  $query = $query->range($sandbox['progress'], $limit);
+  $result = $query->execute();
+
+  // Update publications which are don't have a type.
+  foreach (entity_load('node', array_keys($result['node'])) as $node) {
+    $emw = entity_metadata_wrapper('node', $node);
+    // Check if field has data if not let's update this field.
+    if (empty($emw->field_publication_collection->value())) {
+      $update = FALSE;
+      // Check if publication is a collection or a file.
+      if ($emw->field_core_publications->value() && !$emw->field_core_files->value()) {
+        // A collection of multiple publications.
+        $type = 1;
+        $update = TRUE;
+      }
+      // One publication.
+      elseif (!$emw->field_core_publications->value() && $emw->field_core_files->value()) {
+        $type = 0;
+        $update = TRUE;
+      }
+      if ($update) {
+        $node->field_publication_collection[LANGUAGE_NONE][0]['value'] = $type;
+        // Take care of publications revisions and not unpublish them.
+        $node->revision = 1;
+        $node->log = 'Publication automatic update collection/single.';
+        $node->uid = 1;
+        node_save($node);
+        workbench_moderation_moderate($node, 'published');
+        watchdog('dt_publication', 'Publication updated: @publication', ['@publication' => $node->nid], WATCHDOG_NOTICE);
+      }
+      else {
+        watchdog('dt_publication', 'Publication not updated: @publication', ['@publication' => $node->nid], WATCHDOG_NOTICE);
+      }
+    }
+  }
+
+  $sandbox['progress'] += $limit;
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}
