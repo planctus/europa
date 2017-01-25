@@ -46,14 +46,14 @@ class NodeContextHelper {
       $this->nodeObject = $node;
     }
     else {
-      throw new \Exception("Could not initialize node as you are not on a node page.");
+      $this->nodeObject = NULL;
     }
   }
 
   /**
    * Get the node id.
    *
-   * @return string
+   * @return int
    *   The id of the node.
    */
   public function getNodeId() {
@@ -78,6 +78,15 @@ class NodeContextHelper {
    */
   public function getNodePath() {
     return '/node/' . $this->nodeObject->nid;
+  }
+
+  /**
+   * Checks if is a node.
+   *
+   * @return bool
+   */
+  public function isNode() {
+    return is_object($this->nodeObject);
   }
 
   /**

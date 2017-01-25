@@ -105,8 +105,13 @@ class DigitalTransformationContext extends RawDrupalContext {
       throw new ExpectationException('Requested language ' . $language_name . ' not found or inactive', $this->getSession());
     }
 
-    // Redirect the user to the new language page.
-    $this->visitPath($this->currentNode()->getNodePath() . '_' . $language_code);
+    if ($this->currentNode()->isNode()) {
+      $url = $this->currentNode()->getNodePath();
+    }
+    else {
+      $url = $this->getSession()->getCurrentUrl();
+    }
+    $this->visitPath($url . '_' . $language_code);
   }
 
   /**
