@@ -351,7 +351,7 @@
     <target
             name="build-cphp"
             description="Builds the project for CI testing on CPHP."
-            depends="build-dev, add-dt-dev, install, revert-dt-features, cc-all, snapshot" />
+            depends="build-dev, add-dt-dev, install, revert-dt-features, enable-test-modules, cc-all, snapshot" />
 
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">
@@ -463,5 +463,30 @@
             bin="${drush.bin}"
             verbose="${drush.verbose}"
             haltonerror="false" />
+    </target>
+
+    <target name="enable-test-modules">
+        <echo msg="Enabling and reverting test modules" />
+        <drush
+                command="en dt_test_flexible_date"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+        <drush
+                command="fr dt_test_flexible_date"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+        <drush
+                command="en dt_test_flexible_date_content"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
     </target>
 </project>
