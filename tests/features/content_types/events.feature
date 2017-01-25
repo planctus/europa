@@ -27,12 +27,12 @@ Feature: Checking different state of events
     And I index all indexes
 
   Scenario Outline: Status messages before event.
-  Before the event:
-  - Current time < Event start time
-  Status message:
-  - Status field: "no", then see no message.
-  - Status field: "reschedule", then see message: "The event has been rescheduled".
-  - Status field: "cancelled", then see message: "The event has been cancelled".
+    Before the event:
+    - Current time < Event start time
+    Status message:
+    - Status field: "no", then see no message.
+    - Status field: "reschedule", then see message: "The event has been rescheduled".
+    - Status field: "cancelled", then see message: "The event has been cancelled".
     Given I am viewing an "Event" content:
       | title                     | <title>         |
       | field_event_status        | <event_status>  |
@@ -50,12 +50,12 @@ Feature: Checking different state of events
 
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear and be translatable.
-  "Book your seat" button displaying criteria:
-  - Before the event or event is ongoing.
-  - Have registration link, minimum the link.
-  - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
-  - Not "Fully booked".
-  - When the event status is not "cancelled".
+    "Book your seat" button displaying criteria:
+    - Before the event or event is ongoing.
+    - Have registration link, minimum the link.
+    - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
+    - Not "Fully booked".
+    - When the event status is not "cancelled".
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
@@ -200,31 +200,37 @@ Feature: Checking different state of events
 
   # "Watch live streaming" button.
   Scenario: "Watch live streaming" button should appear on ongoing event.
-  In case of the following conjunction:
-  - "Live streaming available": yes.
-  - "Date and time of live streaming" current moment is between start and end time of live streaming.
-  - When the event status is not "cancelled".
-  - "Live streaming link" is given.
+    In case of the following conjunction:
+    - "Live streaming available": yes.
+    - "Date and time of live streaming" current moment is between start and end time of live streaming.
+    - When the event status is not "cancelled".
+    - "Live streaming link" is given.
+    Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
+      | field_event_is_online                       | no                                    |
       | field_event_is_live_streaming               | yes                                   |
       | field_event_live_streaming_date:show_todate | 1                                     |
-      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value       | 1420070400                            |
       | field_event_live_streaming_date:value2      | 1893456000                            |
       | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
       | field_event_live_streaming_link             | http://localhost                      |
-      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value                      | 1420070400                            |
       | field_event_date:value2                     | 1893456000                            |
       | field_event_date:timezone                   | Europe/Budapest                       |
+      | field_core_location                         | country: FR - locality: Paris         |
       | status                                      | 1                                     |
     Then I should see the link "Watch live streaming"
     Then I should see "This event has started"
     Then I should see a ".field--dt-event-status-message-2 .messages--icon-center.live a" element
     Then I should see "Watch live streaming" in the ".messages--icon-center.live" element
+    And I translate the string "live streaming available" to "French" with "diffusion en direct disponible"
     And I index all indexes
     And I go to "events_list"
     Then I should see the link "Watch live streaming"
+    Then I change the language to "French"
+    Then I should see "diffusion en direct disponible" in the ".icon.icon--livestreaming.icon--text-small" element
 
   # Event translations
   Scenario: "Watch live streaming", "Live: @title", "Related events", "Topic" should be translatable.
@@ -232,30 +238,38 @@ Feature: Checking different state of events
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
+      | field_event_is_online                       | no                                    |
       | field_event_is_live_streaming               | yes                                   |
+      | field_event_type                            | Conference                            |
       | field_event_live_streaming_date:show_todate | 1                                     |
-      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value       | 1420070400                            |
       | field_event_live_streaming_date:value2      | 1893456000                            |
       | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
       | field_event_live_streaming_link             | http://localhost                      |
+      | field_core_departments                      | ClimateAction                         |
       | field_core_topics                           | Energy                                |
-      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value                      | 1420070400                            |
       | field_event_date:value2                     | 1893456000                            |
       | field_event_date:timezone                   | Europe/Budapest                       |
+      | field_core_location                         | country: FR - locality: Paris         |
       | status                                      | 1                                     |
       | language                                    | en                                    |
-    And I translate the string "Live: @title" to "French" with "Live FR: @title"
-    And I translate the string "Watch live streaming" to "French" with "Watch live streaming FR"
-    And I translate the string "Topic" to "French" with "Topic FR"
+    And I translate the string "Live: @title" to "French" with "En direct: @title"
+    And I translate the string "Watch live streaming" to "French" with "Regarder en direct"
+    And I translate the string "Topic" to "French" with "Topique"
+    And I translate the string "live streaming available" to "French" with "diffusion en direct disponible"
+    And I translate the string "Live from @location" to "French" with "En direct de @location"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Watch live test, button should appear FR"
+    And I fill in "title_field[fr][0][value]" with "Regarder le test en direct, le bouton doit apparaître"
     And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see "Topic FR" in the ".context-nav .context-nav__label" element
-    Then I follow "Watch live streaming FR"
-    Then I should see the heading "Live FR: Watch live test, button should appear FR"
+    Then I should see "Topique" in the ".context-nav .context-nav__label" element
+    Then I should see "diffusion en direct disponible" in the ".icon.icon--livestreaming.page-header__livestreaming" element
+    Then I follow "Regarder en direct"
+    Then I should see the heading "En direct: Regarder le test en direct, le bouton doit apparaître"
+    Then I should see the heading "En direct de Paris"
 
   # Event cancelled.
   Scenario: "Watch live streaming" button should not appear, when the event "cancelled".
@@ -355,7 +369,7 @@ Feature: Checking different state of events
     And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
-  Scenario: Event collection "Upcoming events" and "About @title" should be translatable.
+  Scenario: Event collection "Upcoming events", "Related events" and "About @title" should be translatable.
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                       | Event collection                      |
@@ -371,22 +385,22 @@ Feature: Checking different state of events
       | Energy event |
       | Extra event  |
       | Food event   |
-    And I translate the string "About @title" to "French" with "About FR @title"
+    And I translate the string "About @title" to "French" with "Environ @title"
+    And I translate the string "Related events" to "French" with "Evénements associés"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Event collection FR"
+    And I fill in "title_field[fr][0][value]" with "Collection d'événements"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see the heading "About FR Event collection FR"
+    Then I should see the heading "Environ Collection d'événements"
     Then I follow "Energy event"
-    And I translate the string "Related events" to "French" with "Related events FR"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Energy event FR"
+    And I fill in "title_field[fr][0][value]" with "Événement d'énergie"
     And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see the heading "Related events FR"
+    Then I should see the heading "Evénements associés"
 
   Scenario: Empty event collection should display no results messages
     Given I am viewing an "Event" content:
