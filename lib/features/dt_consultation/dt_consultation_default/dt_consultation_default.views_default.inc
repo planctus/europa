@@ -83,22 +83,20 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['fields']['language_3']['label'] = '';
   $handler->display->display_options['fields']['language_3']['exclude'] = TRUE;
   $handler->display->display_options['fields']['language_3']['element_label_colon'] = FALSE;
-  /* Field: Field: Description (field_core_description:language) */
-  $handler->display->display_options['fields']['language_4']['id'] = 'language_4';
-  $handler->display->display_options['fields']['language_4']['table'] = 'field_data_field_core_description';
-  $handler->display->display_options['fields']['language_4']['field'] = 'language';
-  $handler->display->display_options['fields']['language_4']['label'] = '';
-  $handler->display->display_options['fields']['language_4']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['language_4']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Status (field_consultation_status) */
   $handler->display->display_options['sorts']['field_consultation_status_value']['id'] = 'field_consultation_status_value';
   $handler->display->display_options['sorts']['field_consultation_status_value']['table'] = 'field_data_field_consultation_status';
   $handler->display->display_options['sorts']['field_consultation_status_value']['field'] = 'field_consultation_status_value';
   $handler->display->display_options['sorts']['field_consultation_status_value']['order'] = 'DESC';
+  /* Sort criterion: Content: Closing date (field_core_date_closing) */
+  $handler->display->display_options['sorts']['field_core_date_closing_value']['id'] = 'field_core_date_closing_value';
+  $handler->display->display_options['sorts']['field_core_date_closing_value']['table'] = 'field_data_field_core_date_closing';
+  $handler->display->display_options['sorts']['field_core_date_closing_value']['field'] = 'field_core_date_closing_value';
   /* Sort criterion: Content: Opening date (field_core_date_opening) */
   $handler->display->display_options['sorts']['field_core_date_opening_value']['id'] = 'field_core_date_opening_value';
   $handler->display->display_options['sorts']['field_core_date_opening_value']['table'] = 'field_data_field_core_date_opening';
   $handler->display->display_options['sorts']['field_core_date_opening_value']['field'] = 'field_core_date_opening_value';
+  $handler->display->display_options['sorts']['field_core_date_opening_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -130,7 +128,6 @@ function dt_consultation_default_views_default_views() {
     'language_1' => 'language_1',
     'language_2' => 'language_2',
     'language_3' => 'language_3',
-    'language_4' => 'language_4',
   );
   /* Filter criterion: Content: Status (field_consultation_status) */
   $handler->display->display_options['filters']['field_consultation_status_value']['id'] = 'field_consultation_status_value';
