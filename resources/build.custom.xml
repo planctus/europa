@@ -42,7 +42,8 @@
         <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
         <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
         <exec dir="${acquia.repo}" command="git pull --tags"></exec>
-
+        <phingcall target="gen-styleguide"></phingcall>
+       
         <echo msg="Delete acquia-cloud/docroot."/>
         <delete includeemptydirs="true" failonerror="false">
             <fileset dir="${acquia.docroot}">
@@ -451,6 +452,21 @@
                 bin="${drush.bin}"
                 verbose="${drush.verbose}"
                 haltonerror="false" />
+    </target>
+
+    <target name="gen-styleguide">
+        <exec command="if [ -f '${europa}node_modules/.bin/kss' ]; then echo 'true'; else echo 'false'; fi;" outputProperty="output.IS_FILE_EXISTS" />
+        <if>
+            <equals arg1="${output.IS_FILE_EXISTS}" arg2="true" />
+            <then>
+                <!-- Generate the styleguide -->
+                <echo msg="Generating styleguide" />
+                <exec command="${europa}node_modules/.bin/kss --config ${europa}kss-config.json"/>
+            </then>
+            <else>
+                <fail message="It seems you don't have the required software to generate the styleguide, please run npm install in the Europa folder before trying again."/>
+            </else>
+        </if>
     </target>
 
     <!-- Clears caches -->

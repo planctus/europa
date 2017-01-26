@@ -65,7 +65,15 @@ All Behat related files are located in the `tests/` folder.
 
 For more information about testing within our project, [Read this article](https://github.com/haringsrob/harings.be/blob/master/articles/drupal-behat-testing-guide.md).
 
-### 5. Other files and folders
+### 5. Styleguide
+
+The DT repository contains all the source files needed to generate the Europa styleguide, but it doesn't contain the generated styleguide.
+In your local environment, in order to generate the styleguide you will need npm (package manager for JavaScript) to be installed on your system, once you have npm you can run npm install from the root of the europa theme and you will get Kss which is the library we are using to generate the styleguide.
+There is a phing task named gen-styleguide which can be used to facilitate the styleguide generation
+./bin/phing gen-styleguide
+The generated files are excluded in .gitignore, so you should never notice them doing a git diff, in any case do not add those files to the repository, please.
+
+### 6. Other files and folders
 
 * `bin/`: Contains command line executables for the various tools we use such as
   Behat, Drush, Phing, PHP CodeSniffer etc.
@@ -80,6 +88,9 @@ For more information about testing within our project, [Read this article](https
   will only be downloaded once. When a new build is started in the future the
   download will be skipped, unless this file is deleted manually.
 * `vendor/`: Composer dependencies and autoloader.
+
+### 7. Deployment on acquia cloud
+The stage environment for the DT projects is in the acquia cloud, in order to stage also the styleguide we include that in the package we submit to acquia. If you intend to deploy on acquia, you will need npm to be installed on your system and you need to run the npm install in the root folder of the Europa theme before attempting it.
 
 ## Tips and tricks
 

@@ -97,6 +97,7 @@ phing.bin = ${project.basedir}/bin/phing
 phing.project.build.dir = build
 phing.project.dist.dir = dist
 phing.project.src.dir = ${project.basedir}/src
+europa = ${project.basedir}/lib/themes/europa/
 
 subsite.build.dir = ${project.basedir}/${phing.project.build.dir}
 dist.build.dir = ${project.basedir}/${phing.project.dist.dir}
