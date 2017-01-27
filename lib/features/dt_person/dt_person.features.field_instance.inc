@@ -1545,7 +1545,7 @@ function dt_person_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 22321,
+      'default_image' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'myfiles',
       'file_extensions' => 'png gif jpg jpeg',

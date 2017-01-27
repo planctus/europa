@@ -63,7 +63,8 @@ function dt_person_field_attach_view_alter(&$output, $context) {
     $element = &$output[$field_name];
     if ($element['#field_type'] == 'entityreference'
       && $element['#field_name'] == 'field_core_persons'
-      && $element['#formatter'] == 'context_nav_item') {
+      && $element['#formatter'] == 'context_nav_item'
+    ) {
 
       // Set our default wrapper label.
       $wrapper_label = t('Commissioner');
@@ -368,6 +369,14 @@ function dt_person_post_features_revert($component) {
       _dt_person_add_default_images();
       $fid = variable_get('dt_person_photo_default_female');
     }
+    else {
+      $file = file_load($fid);
+      if (!file_exists($file->uri)) {
+        _dt_person_add_default_images();
+        $fid = variable_get('dt_person_photo_default_female');
+      }
+    }
+
     $field_instance['settings']['default_image'] = $fid;
     field_update_instance($field_instance);
   }
@@ -435,4 +444,51 @@ function dt_person_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ *
+ * Because default images are calculated programmatic when the node is
+ * being viewed, users are adding the default images themself's
+ * via media module. If they replace the same image they will be
+ * replacing it everywhere, without knowing. This prevents such a change to
+ * happen.
+ */
+function dt_person_field_widget_form_alter(&$element, &$form_state, $context) {
+  // Check if we are editing an existing person.
+  if (isset($form_state['node']->nid) && !isset($form_state['node']->is_new) &&
+    $form_state['node']->type == 'person') {
+    if ($context['field']['type'] == 'image') {
+      $emw = entity_metadata_wrapper('node', $form_state['node']);
+      $pattern = '/person_photo_/i';
+      // Check if there is a picture and the
+      // picture was added via media gallery.
+      if (!empty($emw->field_person_photo->value()) &&
+        preg_match($pattern, $emw->field_person_photo->value()['uri'])
+      ) {
+        foreach (element_children($element) as $key => $child) {
+          $element[$key]['#process'][] = '_dt_person_image_field_widget_hide_edit_button';
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper to hide the edit button if user has a default image.
+ *
+ * @param array $element
+ *    Current form element.
+ * @param array $form_state
+ *    Form state array.
+ * @param array $form
+ *    Form array.
+ *
+ * @return array
+ *    Returns the element without the edit option.
+ */
+function _dt_person_image_field_widget_hide_edit_button($element, &$form_state, $form) {
+  $element['edit']['#type'] = 'hidden';
+  return $element;
 }
