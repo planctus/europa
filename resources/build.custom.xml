@@ -42,8 +42,7 @@
         <exec dir="${acquia.repo}" command="git checkout ${acquia.branch}"></exec>
         <exec dir="${acquia.repo}" command="git pull origin ${acquia.branch}"></exec>
         <exec dir="${acquia.repo}" command="git pull --tags"></exec>
-        <phingcall target="gen-styleguide"></phingcall>
-       
+
         <echo msg="Delete acquia-cloud/docroot."/>
         <delete includeemptydirs="true" failonerror="false">
             <fileset dir="${acquia.docroot}">
@@ -346,7 +345,7 @@
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."
-            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, custom-development-modules, download-development-modules-acceptance"/>
+            depends="build-dist, gen-styleguide, unpack-acceptance-platform, copy-acceptance-files, custom-development-modules, download-development-modules-acceptance"/>
 
     <!-- Builds the CI environment, including the snapshot -->
     <target
@@ -461,7 +460,7 @@
             <then>
                 <!-- Generate the styleguide -->
                 <echo msg="Generating styleguide" />
-                <exec command="${europa}node_modules/.bin/kss --config ${europa}kss-config.json"/>
+                <exec command="grunt styleguide" dir="${europa}"/>
             </then>
             <else>
                 <fail message="It seems you don't have the required software to generate the styleguide, please run npm install in the Europa folder before trying again."/>
