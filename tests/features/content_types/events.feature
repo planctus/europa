@@ -22,7 +22,7 @@ Feature: Checking different state of events
     Given "Event" content:
       | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               | language |
       | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | N/A                             | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel   | en       |
-      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952002             | 1969952002              | Europe/Budapest           | country: NL - locality: Amsterdam | en       |
+      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969966401             | 1969966401              | Europe/Budapest           | country: NL - locality: Amsterdam | en       |
       | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris     | en       |
     And I index all indexes
 
@@ -195,7 +195,7 @@ Feature: Checking different state of events
       | field_event_date:value2     | 1472724000             |
       | field_event_date:timezone   | Europe/Budapest        |
       | status                      | 1                      |
-      | field_core_publications      | Publication test title |
+      | field_core_publications     | Publication test title |
     Then I should see "Publication test title"
 
   # "Watch live streaming" button.
@@ -205,26 +205,32 @@ Feature: Checking different state of events
     - "Date and time of live streaming" current moment is between start and end time of live streaming.
     - When the event status is not "cancelled".
     - "Live streaming link" is given.
+    Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
+      | field_event_is_online                       | no                                    |
       | field_event_is_live_streaming               | yes                                   |
       | field_event_live_streaming_date:show_todate | 1                                     |
-      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value       | 1420070400                            |
       | field_event_live_streaming_date:value2      | 1893456000                            |
       | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
       | field_event_live_streaming_link             | http://localhost                      |
-      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value                      | 1420070400                            |
       | field_event_date:value2                     | 1893456000                            |
       | field_event_date:timezone                   | Europe/Budapest                       |
+      | field_core_location                         | country: FR - locality: Paris         |
       | status                                      | 1                                     |
     Then I should see the link "Watch live streaming"
     Then I should see "This event has started"
     Then I should see a ".field--dt-event-status-message-2 .messages--icon-center.live a" element
     Then I should see "Watch live streaming" in the ".messages--icon-center.live" element
+    And I translate the string "live streaming available" to "French" with "diffusion en direct disponible"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should see the link "Watch live streaming"
+    Then I change the language to "French"
+    Then I should see "diffusion en direct disponible" in the ".icon.icon--livestreaming.icon--text-small" element
 
   # Event translations
   Scenario: "Watch live streaming", "Live: @title", "Related events", "Topic" should be translatable.
@@ -232,30 +238,38 @@ Feature: Checking different state of events
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
       | field_event_status                          | no                                    |
+      | field_event_is_online                       | no                                    |
       | field_event_is_live_streaming               | yes                                   |
+      | field_event_type                            | Conference                            |
       | field_event_live_streaming_date:show_todate | 1                                     |
-      | field_event_live_streaming_date:value       | 42854400                              |
+      | field_event_live_streaming_date:value       | 1420070400                            |
       | field_event_live_streaming_date:value2      | 1893456000                            |
       | field_event_live_streaming_date:timezone    | Europe/Budapest                       |
       | field_event_live_streaming_link             | http://localhost                      |
+      | field_core_departments                      | ClimateAction                         |
       | field_core_topics                           | Energy                                |
-      | field_event_date:value                      | 42854400                              |
+      | field_event_date:value                      | 1420070400                            |
       | field_event_date:value2                     | 1893456000                            |
       | field_event_date:timezone                   | Europe/Budapest                       |
+      | field_core_location                         | country: FR - locality: Paris         |
       | status                                      | 1                                     |
       | language                                    | en                                    |
-    And I translate the string "Live: @title" to "French" with "Live FR: @title"
-    And I translate the string "Watch live streaming" to "French" with "Watch live streaming FR"
-    And I translate the string "Topic" to "French" with "Topic FR"
+    And I translate the string "Live: @title" to "French" with "En direct: @title"
+    And I translate the string "Watch live streaming" to "French" with "Regarder en direct"
+    And I translate the string "Topic" to "French" with "Topique"
+    And I translate the string "live streaming available" to "French" with "diffusion en direct disponible"
+    And I translate the string "Live from @location" to "French" with "En direct de @location"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Watch live test, button should appear FR"
+    And I fill in "title_field[fr][0][value]" with "Regarder le test en direct, le bouton doit apparaître"
     And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see "Topic FR" in the ".context-nav .context-nav__label" element
-    Then I follow "Watch live streaming FR"
-    Then I should see the heading "Live FR: Watch live test, button should appear FR"
+    Then I should see "Topique" in the ".context-nav .context-nav__label" element
+    Then I should see "diffusion en direct disponible" in the ".icon.icon--livestreaming.page-header__livestreaming" element
+    Then I follow "Regarder en direct"
+    Then I should see the heading "En direct: Regarder le test en direct, le bouton doit apparaître"
+    Then I should see the heading "En direct de Paris"
 
   # Event cancelled.
   Scenario: "Watch live streaming" button should not appear, when the event "cancelled".
@@ -274,7 +288,7 @@ Feature: Checking different state of events
       | status                                      | 1                                    |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # No live streaming.
@@ -294,7 +308,7 @@ Feature: Checking different state of events
       | status                                      | 1                                      |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # Current time is before broadcasting start.
@@ -313,7 +327,7 @@ Feature: Checking different state of events
       | status                                   | 1                                                              |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # Current time is outside of broadcasting interval.
@@ -333,7 +347,7 @@ Feature: Checking different state of events
       | status                                      | 1                                                                     |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
   # There is no stream link given.
@@ -352,10 +366,10 @@ Feature: Checking different state of events
       | status                                      | 1                                   |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events"
+    And I go to "events_list"
     Then I should not see the link "Watch live streaming"
 
-  Scenario: Event collection "Upcoming events" and "About @title" should be translatable.
+  Scenario: Event collection "Upcoming events", "Related events" and "About @title" should be translatable.
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                       | Event collection                      |
@@ -371,24 +385,24 @@ Feature: Checking different state of events
       | Energy event |
       | Extra event  |
       | Food event   |
-    And I translate the string "About @title" to "French" with "About FR @title"
+    And I translate the string "About @title" to "French" with "Environ @title"
+    And I translate the string "Related events" to "French" with "Evénements associés"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Event collection FR"
+    And I fill in "title_field[fr][0][value]" with "Collection d'événements"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see the heading "About FR Event collection FR"
+    Then I should see the heading "Environ Collection d'événements"
     Then I follow "Energy event"
-    And I translate the string "Related events" to "French" with "Related events FR"
     And I go to add "fr" translation
-    And I fill in "title_field[fr][0][value]" with "Energy event FR"
+    And I fill in "title_field[fr][0][value]" with "Événement d'énergie"
     And I fill in "field_event_live_streaming_link[fr][0][url]" with "http://localhost_fr"
     And I select "Global editorial team" from "Your groups (all languages)"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    Then I should see the heading "Related events FR"
+    Then I should see the heading "Evénements associés"
 
-  Scenario: Empty events should display no results messages
+  Scenario: Empty event collection should display no results messages
     Given I am viewing an "Event" content:
       | title                  | Event collection                  |
       | field_event_collection | A collection with multiple events |
@@ -396,13 +410,29 @@ Feature: Checking different state of events
     Then I should see "No past events available." in the ".tab-content" element
     Then I should see "No events planned." in the ".tab-content" element
 
+  Scenario: Event collection should display About section only if it has Extended description value
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing an "Event" content:
+      | title                  | Event collection                  |
+      | field_event_collection | A collection with multiple events |
+      | body:value             | Event collection body description |
+      | body:format            | full_html                         |
+      | status                 | 1                                 |
+      | language               | en                                |
+    Then I should see the heading "About Event collection"
+    And I follow "New draft" in the "tabs" region
+    And I fill in "body[en][0][value]" with ""
+    And I fill in "Moderation state" with "published"
+    And I press "Save"
+    Then I should not see the heading "About Event collection"
+
   Scenario: On the events listing page I should see the events.
-    Given I am on "Events"
+    Given I am on "events_list"
     Then I should see "Energy event"
     And I should see "Food event"
 
   Scenario: On the events listing page I should see all the filters.
-    Given I am on "Events"
+    Given I am on "events_list"
     Then I should see "Online events only"
     And I should see "Online events with live streaming available"
     # Here we test select values, simply be selecting them.
@@ -418,7 +448,7 @@ Feature: Checking different state of events
     And I select "France" from "Location"
 
   Scenario Outline: I should be able to filter by Country
-    Given I am on "Events"
+    Given I am on "events_list"
     And I select "<country>" from "Location"
     And I press the "Refine results" button
     Then I should see "<should_see>"
@@ -432,7 +462,7 @@ Feature: Checking different state of events
       | France      | Extra event  | Energy event     | Food event       |
 
   Scenario Outline: I should be able to filter by various filters on the event listing page (select).
-    Given I am on "Events"
+    Given I am on "events_list"
     And I select "<first_value>" from "<filter>"
     And I press the "Refine results" button
     Then I should <first_value_energy> "Energy event"
@@ -451,21 +481,21 @@ Feature: Checking different state of events
       | Organiser  | Any organiser | Budget      | see                | not see          | ClimateAction | not see             | see               |
 
   Scenario: I should be able to filter by online only (checkbox)
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events only"
     And I press the "Refine results" button
     Then I should see "Energy event"
     Then I should not see "Food event"
 
   Scenario: I should be able to filter by livestream (checkbox)
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
     Then I should see "Food event"
 
   Scenario: I should be able to filter by a combination of facets and views and I should see the tags.
-    Given I am on "Events"
+    Given I am on "events_list"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
@@ -543,3 +573,50 @@ Feature: Checking different state of events
       | field_event_date:timezone   | Europe/Budapest |
       | status                      | 1               |
     Then I should not see "Images and videos"
+
+  Scenario: Event collection "Upcoming and Past events" more link points to event list, using a query filter
+    Given I am logged in as a user with the "administrator" role
+    Given "Event" content:
+      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location           | language |
+      | Extra 2 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969955601             | 1969955601              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Extra 3 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969959201             | 1969959201              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Extra 4 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969962801             | 1969962801              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 1 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116970001             | 1116970001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 2 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116966401             | 1116966401              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 3 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116962801             | 1116962801              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 4 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116959201             | 1116959201              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 5 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116955601             | 1116955601              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | Past 6 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+    And I index all indexes
+
+    Given I am viewing an "Event" content:
+      | title                       | Event collection                                                                                                                                                       |
+      | body:value                  | Event collection body description                                                                                                                                      |
+      | body:format                 | full_html                                                                                                                                                              |
+      | field_event_collection      | A collection with multiple events                                                                                                                                      |
+      | field_event_children_events | Energy event, Food event, Extra event, Extra 2 event, Extra 3 event, Extra 4 event, Past 1 event, Past 2 event, Past 3 event, Past 4 event, Past 5 event, Past 6 event |
+      | status                      | 1                                                                                                                                                                      |
+      | language                    | en                                                                                                                                                                     |
+      | nid                         | 100002                                                                                                                                                                 |
+      | is_new                      | 1                                                                                                                                                                      |
+    Then I should see an ".field--current-and-upcoming-events" element
+    And I should see the following in the repeated ".listing__title" element within the context of the ".field--current-and-upcoming-events" element:
+      | text          |
+      | Energy event  |
+      | Extra event   |
+      | Extra 2 event |
+      | Extra 3 event |
+      | Extra 4 event |
+    And I should not see the link "Food event"
+    And I should see the link "View all events for Event collection" linking to "/events_list_en?facet__select__field_event_parent_events=100002"
+    Then I should see an ".field--past-events" element
+    And I should see the following in the repeated ".listing__title" element within the context of the ".field--past-events" element:
+      | text          |
+      | Past 1 event  |
+      | Past 2 event  |
+      | Past 3 event  |
+      | Past 4 event  |
+      | Past 5 event  |
+    And I should not see the link "Past 6 event"
+    Then I follow "View all events for Event collection"
+    Then I should see "Event collection" in the ".filters__active-facets" element

@@ -523,6 +523,7 @@ function dt_person_field_group_info() {
     'children' => array(
       0 => 'title_field',
       1 => 'field_core_jobs',
+      2 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

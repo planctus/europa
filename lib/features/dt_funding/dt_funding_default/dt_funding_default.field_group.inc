@@ -30,6 +30,7 @@ function dt_funding_default_field_group_info() {
       3 => 'field_core_legacy_link',
       4 => 'field_core_link',
       5 => 'field_funding_status',
+      6 => 'field_core_keywords',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

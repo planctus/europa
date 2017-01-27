@@ -27,6 +27,7 @@ function dt_class_field_group_info() {
       0 => 'title_field',
       1 => 'field_core_introduction',
       2 => 'field_core_description',
+      3 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -87,9 +88,10 @@ function dt_class_field_group_info() {
     'label' => 'Content',
     'weight' => '6',
     'children' => array(
-      0 => 'field_class_link_explanation',
-      1 => 'field_class_link_legacy_link',
-      2 => 'title_field',
+      0 => 'title_field',
+      1 => 'field_class_link_explanation',
+      2 => 'field_class_link_legacy_link',
+      3 => 'field_core_keywords',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

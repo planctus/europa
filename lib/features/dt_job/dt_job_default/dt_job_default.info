@@ -28,6 +28,7 @@ features[field_group][] = group_job_representation|node|job|form
 features[field_group][] = group_job_respons_topics|node|job|form
 features[field_group][] = group_job_tabgroup|node|job|form
 features[field_group][] = group_job_technical_fields|node|job|form
+features[field_instance][] = node-job-field_core_keywords
 features[field_instance][] = node-job-field_core_link
 features[field_instance][] = node-job-field_core_persons
 features[field_instance][] = node-job-field_core_topics

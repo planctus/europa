@@ -17,6 +17,7 @@ features[field_group][] = group_policy_keyfile_editorial|node|policy_keyfile|for
 features[field_group][] = group_policy_keyfile_meta|node|policy_keyfile|teaser
 features[field_group][] = group_policy_keyfile_tabgroup|node|policy_keyfile|form
 features[field_instance][] = node-policy_keyfile-field_core_introduction
+features[field_instance][] = node-policy_keyfile-field_core_keywords
 features[field_instance][] = node-policy_keyfile-field_core_legacy_link
 features[field_instance][] = node-policy_keyfile-field_policy_keyfile_image
 features[field_instance][] = node-policy_keyfile-field_policy_keyfile_type

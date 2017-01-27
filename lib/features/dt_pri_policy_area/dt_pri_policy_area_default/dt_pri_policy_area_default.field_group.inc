@@ -125,6 +125,7 @@ function dt_pri_policy_area_default_field_group_info() {
       6 => 'field_core_social_network_links',
       7 => 'field_core_parent',
       8 => 'field_core_link',
+      9 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

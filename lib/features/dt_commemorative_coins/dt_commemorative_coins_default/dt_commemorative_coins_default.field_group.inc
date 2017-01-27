@@ -32,6 +32,7 @@ function dt_commemorative_coins_default_field_group_info() {
       6 => 'field_nal_country',
       7 => 'field_cc_issue_page',
       8 => 'field_cc_volume',
+      9 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

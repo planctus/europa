@@ -1079,3 +1079,161 @@ function dt_core_update_7180() {
   multisite_config_service('filter')->setTextFilterWeight('full_html_track', 'filter_tokens', 50);
   module_enable(['nexteuropa_webtools']);
 }
+
+/**
+ * Updating field_keywords_core and metatags.
+ *
+ * This updates don't touch the CWT site.
+ *
+ * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
+ */
+function dt_core_update_7183(&$sandbox) {
+  $limit = 50;
+  if (!isset($sandbox['max'])) {
+    $sandbox['progress'] = 0;
+    $features = [
+      'brp_initiative' => 'brp_initiative',
+      'dt_announcement' => 'announcement',
+      'dt_announcement_news_prd_importer' => 'news_prd_importer',
+      'dt_call_for_proposal_default' => 'call_for_proposal',
+      'dt_class' => ['class', 'class_link_group'],
+      'dt_commemorative_coins_default' => 'commemorative_coins',
+      'dt_consultation_default' => 'consultation',
+      'dt_contact' => 'contact',
+      'dt_coordination_default' => 'coordination',
+      'dt_core' => '',
+      'dt_department' => 'department',
+      'dt_featured_item' => 'featured_item',
+      'dt_funding_default' => 'funding',
+      'dt_funding_program_default' => 'funding_program',
+      'dt_guidance_default' => 'guidance',
+      'dt_impact_assessment_default' => 'impact_assessment',
+      'dt_info_homepage' => 'info_homepage',
+      'dt_job_default' => 'job',
+      'dt_law_default' => 'law',
+      'dt_basic_page_default' => 'basic_page',
+      'dt_page_extended' => 'basic_page',
+      'dt_person' => 'person',
+      'dt_policy' => 'policy',
+      'dt_policy_area' => 'policy_area',
+      'dt_policy_implementation' => 'policy_implementation',
+      'dt_policy_input' => 'policy_input',
+      'dt_policy_keyfile' => 'policy_keyfile',
+      'dt_pri_policy_git area_default' => 'priority_policy_area',
+      'dt_priority_default' => 'priority',
+      'dt_publication' => 'publication',
+      'dt_tender_default' => 'tender',
+      'dt_topic' => 'topic',
+      'dt_toplink' => 'top_link',
+      'nexteuropa_file' => 'file',
+      'nexteuropa_page' => 'page',
+      'dt_banner_video' => 'banner_video',
+      'dt_banner_quote' => 'banner_quote',
+    ];
+
+    // Revert the feature so we can have the field_core_keywords available.
+    foreach ($features as $feature => $bundle) {
+      // Check if the current feature is enabled.
+      if (module_exists($feature)) {
+        features_revert_module($feature);
+        if (is_array($bundle)) {
+          foreach ($bundle as $content_types) {
+            if (field_info_instance('node', 'field_core_keywords', $content_types)) {
+              // Content types to be processed.
+              $sandbox['content_types'][] = $content_types;
+            }
+          }
+        }
+        else {
+          if (field_info_instance('node', 'field_core_keywords', $bundle)) {
+            // Content types to be processed.
+            $sandbox['content_types'][] = $bundle;
+          }
+        }
+
+      }
+    }
+    // Process keyword meta tag information.
+    $query = new EntityFieldQuery();
+    $sandbox['max'] = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', array_values($sandbox['content_types']), 'IN')
+      ->age(FIELD_LOAD_CURRENT)
+      ->count()->execute();
+  }
+
+  // Process keyword meta tag information.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', array_values($sandbox['content_types']), 'IN')
+    ->age(FIELD_LOAD_CURRENT)
+    ->range($sandbox['progress'], $limit)->execute();
+
+  foreach (array_keys($result['node']) as $item) {
+    $node = node_load($item);
+    $update = FALSE;
+    // Content contains any meta-tag.
+    if (isset($node->metatags) && is_array($node->metatags)) {
+      // Process content, update revisit after and/or update keywords
+      // meta tags value.
+      foreach ($node->metatags as $language => $metatag) {
+        // Keyword meta-tag update.
+        if (isset($node->metatags[$language]['keywords'])
+          && !empty($node->metatags[$language]['keywords']['value'])
+        ) {
+          $old_value = $node->metatags[$language]['keywords']['value'];
+          $value = drupal_substr(trim(str_replace("European Commission, European Union, EU", "", str_replace("European Commission, European Union, EU,", "", $old_value))), 0, 500);
+          // Copy values over to the field.
+          if ($old_value != $value || !empty($value)) {
+            $node->field_core_keywords[$language][0]['value'] = $value;
+            // Remove values from keyword tag.
+            unset($node->metatags[$language]['keywords']);
+            $update = TRUE;
+          }
+
+        }
+        // Update default revisit-after meta tag with a default value.
+        if (!$node->metatags[$language]['revisit-after']['value'] == 15) {
+          $update = TRUE;
+          $node->metatags[$language] = [
+            'revisit-after' => [
+              'value' => 15,
+              'period' => 'day',
+            ],
+          ];
+        }
+      }
+      // Update node if required.
+      if ($update) {
+        $node->uid = 1;
+        $node->log = 'Keyword and revisit-after meta-tag update.';
+        if ($node->status == 1) {
+          // Take care of node revisions.
+          $node->revision = 1;
+          node_save($node);
+          // Publish current draft version.
+          workbench_moderation_moderate($node, 'published');
+        }
+        else {
+          // Leave un-publish but save the new information.
+          node_save($node);
+        }
+        // Write information about the update to watchdog.
+        watchdog('dt_core', 'Updated node: %nid (%type - %state)', [
+          '%nid' => $node->nid,
+          '%type' => $node->type,
+          '%state' => ($node->status == 1) ? 'published' : 'un-published',
+        ], WATCHDOG_NOTICE);
+      }
+    }
+
+    unset($node);
+  }
+  $sandbox['progress'] += $limit;
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+
+}

@@ -382,6 +382,7 @@ function dt_featured_item_field_group_info() {
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
       4 => 'field_feat_item_reference',
+      5 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -33,6 +33,7 @@ features[field_instance][] = node-tender-field_core_departments
 features[field_instance][] = node-tender-field_core_description
 features[field_instance][] = node-tender-field_core_files
 features[field_instance][] = node-tender-field_core_introduction
+features[field_instance][] = node-tender-field_core_keywords
 features[field_instance][] = node-tender-field_core_legacy_link
 features[field_instance][] = node-tender-field_eurovoc_taxonomy
 features[field_instance][] = node-tender-field_core_topics

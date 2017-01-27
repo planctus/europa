@@ -38,8 +38,11 @@ function brp_initiative_field_group_info() {
       11 => 'field_brp_inve_resource_type',
       12 => 'field_brp_inve_unit',
       13 => 'field_core_description',
-      14 => 'field_brp_inve_committee',
-      15 => 'field_brp_inve_expert_group',
+      14 => 'field_core_keywords',
+      15 => 'field_brp_inve_committee',
+      16 => 'field_brp_inve_expert_group',
+      17 => 'field_brp_inve_fb_status',
+      18 => 'field_brp_inve_group',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -41,6 +41,7 @@ features[field_instance][] = node-contact-field_contact_location_office
 features[field_instance][] = node-contact-field_contact_mobile_number
 features[field_instance][] = node-contact-field_contact_phone_number
 features[field_instance][] = node-contact-field_contact_postal_mail
+features[field_instance][] = node-contact-field_core_keywords
 features[field_instance][] = node-contact-field_core_social_network_links
 features[field_instance][] = node-contact-group_content_access
 features[field_instance][] = node-contact-og_group_ref

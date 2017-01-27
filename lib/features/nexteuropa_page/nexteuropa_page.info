@@ -23,6 +23,7 @@ features[field_group][] = group_page_main|node|page|form
 features[field_instance][] = node-page-field_core_description
 features[field_instance][] = node-page-field_core_in_page_navigation
 features[field_instance][] = node-page-field_core_introduction
+features[field_instance][] = node-page-field_core_keywords
 features[field_instance][] = node-page-field_core_links
 features[field_instance][] = node-page-group_content_access
 features[field_instance][] = node-page-og_group_ref
