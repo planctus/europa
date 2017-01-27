@@ -20,6 +20,7 @@ features[field_group][] = group_coordination_tabgroup|node|coordination|form
 features[field_group][] = group_taxonomy|node|coordination|form
 features[field_instance][] = node-coordination-field_core_description
 features[field_instance][] = node-coordination-field_core_introduction
+features[field_instance][] = node-coordination-field_core_keywords
 features[field_instance][] = node-coordination-field_core_legacy_link
 features[field_instance][] = node-coordination-field_eurovoc_taxonomy
 features[field_instance][] = node-coordination-group_content_access

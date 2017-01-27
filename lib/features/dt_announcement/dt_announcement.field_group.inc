@@ -34,6 +34,7 @@ function dt_announcement_field_group_info() {
       8 => 'field_core_date_published',
       9 => 'field_publication_referenceno',
       10 => 'field_core_press_contacts',
+      11 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

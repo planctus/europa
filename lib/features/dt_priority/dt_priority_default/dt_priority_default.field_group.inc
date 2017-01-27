@@ -182,6 +182,7 @@ function dt_priority_default_field_group_info() {
       5 => 'field_core_social_network_links',
       6 => 'field_core_legacy_link',
       7 => 'field_core_parent',
+      8 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

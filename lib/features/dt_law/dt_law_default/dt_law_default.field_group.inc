@@ -59,6 +59,7 @@ function dt_law_default_field_group_info() {
       4 => 'field_law_status',
       5 => 'field_core_background',
       6 => 'field_core_short_title',
+      7 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

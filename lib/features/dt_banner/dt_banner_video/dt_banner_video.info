@@ -35,6 +35,7 @@ features[field_instance][] = node-banner_video-field_banner_caption
 features[field_instance][] = node-banner_video-field_banner_image_file
 features[field_instance][] = node-banner_video-field_banner_video_file
 features[field_instance][] = node-banner_video-field_core_description
+features[field_instance][] = node-banner_video-field_core_keywords
 features[field_instance][] = node-banner_video-field_select_media_type
 features[field_instance][] = node-banner_video-group_content_access
 features[field_instance][] = node-banner_video-og_group_ref
