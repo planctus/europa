@@ -1098,7 +1098,7 @@ function dt_core_update_7180() {
  *
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
  */
-function dt_core_update_7182(&$sandbox) {
+function dt_core_update_7183(&$sandbox) {
   $limit = 50;
   if (!isset($sandbox['max'])) {
     $sandbox['progress'] = 0;
@@ -1194,7 +1194,7 @@ function dt_core_update_7182(&$sandbox) {
           $old_value = $node->metatags[$language]['keywords']['value'];
           $value = drupal_substr(trim(str_replace("European Commission, European Union, EU", "", str_replace("European Commission, European Union, EU,", "", $old_value))), 0, 500);
           // Copy values over to the field.
-          if ($old_value != $value) {
+          if ($old_value != $value || !empty($value)) {
             $node->field_core_keywords[$language][0]['value'] = $value;
             // Remove values from keyword tag.
             unset($node->metatags[$language]['keywords']);
