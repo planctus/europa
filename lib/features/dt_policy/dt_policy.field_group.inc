@@ -125,6 +125,7 @@ function dt_policy_field_group_info() {
       2 => 'field_core_introduction',
       3 => 'field_core_legacy_link',
       4 => 'field_core_parent',
+      5 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -239,9 +240,9 @@ function dt_policy_field_group_info() {
     'children' => array(
       0 => 'og_group_ref',
       1 => 'group_content_access',
-      2 => 'scheduler_settings',
-      3 => 'language',
-      4 => 'field_core_latest_visibility',
+      2 => 'field_core_latest_visibility',
+      3 => 'scheduler_settings',
+      4 => 'language',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

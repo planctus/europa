@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy_implementation.field_group.inc
@@ -54,6 +53,7 @@ function dt_policy_implementation_field_group_info() {
       3 => 'field_policy_imp_type',
       4 => 'field_core_link',
       5 => 'field_core_legacy_link',
+      6 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

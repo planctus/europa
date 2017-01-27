@@ -35,6 +35,7 @@ features[field_group][] = group_editorial_settings|node|file|form
 features[field_group][] = group_file_file|node|file|form
 features[field_instance][] = node-file-field_core_date_published
 features[field_instance][] = node-file-field_core_file
+features[field_instance][] = node-file-field_core_keywords
 features[field_instance][] = node-file-field_core_legacy_link
 features[field_instance][] = node-file-field_file_exclude_from_search
 features[field_instance][] = node-file-field_file_link_upload

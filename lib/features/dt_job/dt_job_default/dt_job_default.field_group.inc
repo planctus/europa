@@ -202,6 +202,7 @@ function dt_job_default_field_group_info() {
     'weight' => '11',
     'children' => array(
       0 => 'title_field',
+      1 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

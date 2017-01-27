@@ -175,6 +175,7 @@ function dt_topic_field_group_info() {
       1 => 'field_core_introduction',
       2 => 'field_core_description',
       3 => 'field_core_legacy_link',
+      4 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

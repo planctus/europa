@@ -61,6 +61,7 @@ features[field_instance][] = node-consultation-field_core_date_opening
 features[field_instance][] = node-consultation-field_core_departments
 features[field_instance][] = node-consultation-field_core_description
 features[field_instance][] = node-consultation-field_core_files
+features[field_instance][] = node-consultation-field_core_keywords
 features[field_instance][] = node-consultation-field_core_legacy_link
 features[field_instance][] = node-consultation-field_core_pages
 features[field_instance][] = node-consultation-field_core_policy_areas

@@ -71,6 +71,7 @@ features[field_instance][] = node-brp_initiative-field_brp_inve_reference
 features[field_instance][] = node-brp_initiative-field_brp_inve_resource_type
 features[field_instance][] = node-brp_initiative-field_brp_inve_unit
 features[field_instance][] = node-brp_initiative-field_core_description
+features[field_instance][] = node-brp_initiative-field_core_keywords
 features[field_instance][] = node-brp_initiative-group_content_access
 features[field_instance][] = node-brp_initiative-og_group_ref
 features[field_instance][] = node-brp_initiative-title_field

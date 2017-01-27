@@ -43,6 +43,7 @@ features[field_instance][] = node-law-field_core_children
 features[field_instance][] = node-law-field_core_departments
 features[field_instance][] = node-law-field_core_description
 features[field_instance][] = node-law-field_core_introduction
+features[field_instance][] = node-law-field_core_keywords
 features[field_instance][] = node-law-field_core_laws
 features[field_instance][] = node-law-field_core_legacy_link
 features[field_instance][] = node-law-field_core_parents

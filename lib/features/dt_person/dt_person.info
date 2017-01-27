@@ -70,6 +70,7 @@ features[field_instance][] = node-person-field_core_departments
 features[field_instance][] = node-person-field_core_file
 features[field_instance][] = node-person-field_core_files
 features[field_instance][] = node-person-field_core_jobs
+features[field_instance][] = node-person-field_core_keywords
 features[field_instance][] = node-person-field_core_legacy_link
 features[field_instance][] = node-person-field_core_links
 features[field_instance][] = node-person-field_core_listing_disable_link

@@ -64,6 +64,7 @@ features[field_group][] = group_topics|node|info_homepage|full
 features[field_group][] = group_topics|node|info_homepage|homepage_informational
 features[field_instance][] = node-info_homepage-field_core_header_image
 features[field_instance][] = node-info_homepage-field_core_introduction
+features[field_instance][] = node-info_homepage-field_core_keywords
 features[field_instance][] = node-info_homepage-field_core_latest_visibility
 features[field_instance][] = node-info_homepage-field_core_links
 features[field_instance][] = node-info_homepage-field_core_social_network_links

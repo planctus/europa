@@ -56,6 +56,7 @@ features[field_instance][] = node-department-field_core_contact
 features[field_instance][] = node-department-field_core_description
 features[field_instance][] = node-department-field_core_ecorganisation
 features[field_instance][] = node-department-field_core_introduction
+features[field_instance][] = node-department-field_core_keywords
 features[field_instance][] = node-department-field_core_latest_visibility
 features[field_instance][] = node-department-field_core_legacy_link
 features[field_instance][] = node-department-field_core_legacy_links

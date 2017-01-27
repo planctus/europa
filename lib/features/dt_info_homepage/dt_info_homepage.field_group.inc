@@ -55,6 +55,7 @@ function dt_info_homepage_field_group_info() {
       1 => 'field_core_header_image',
       2 => 'field_core_introduction',
       3 => 'field_info_highlights',
+      4 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
