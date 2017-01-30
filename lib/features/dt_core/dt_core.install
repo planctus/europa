@@ -1238,7 +1238,7 @@ function dt_core_update_7183(&$sandbox) {
     unset($node);
   }
   $sandbox['progress'] += $limit;
-  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['progress']) {
     $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
   }
   else {
