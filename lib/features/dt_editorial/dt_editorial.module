@@ -359,10 +359,11 @@ function dt_editorial_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_editorial_types']['#weight'] = $form['og_roles_permissions']['#weight'] + 1;
   }
 
-  // Enforce default value (Use group defaults) and hide Group Content Access.
   if (isset($form['group_content_access']) && isset($form['group_content_access'][LANGUAGE_NONE])) {
+    // Enforce default value (Use group defaults) and hide Group Content Access.
     $form['group_content_access']['#attributes']['class'][] = 'element-hidden';
-    $form['group_content_access'][LANGUAGE_NONE]['#attributes']['disabled'] = 'disabled';
+    $form['group_content_access']['#access'] = FALSE;
+    $form['group_content_access'][LANGUAGE_NONE]['#default_value'] = isset($form['group_content_access'][LANGUAGE_NONE]['#default_value']) ? $form['group_content_access'][LANGUAGE_NONE]['#default_value'] : '0';
   }
 
   $field_name = 'og_group_ref';

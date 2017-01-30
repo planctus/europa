@@ -24,6 +24,7 @@ features[field_instance][] = node-commemorative_coins-field_cc_subject
 features[field_instance][] = node-commemorative_coins-field_cc_volume
 features[field_instance][] = node-commemorative_coins-field_core_description
 features[field_instance][] = node-commemorative_coins-field_core_image
+features[field_instance][] = node-commemorative_coins-field_core_keywords
 features[field_instance][] = node-commemorative_coins-field_core_link
 features[field_instance][] = node-commemorative_coins-field_nal_country
 features[field_instance][] = node-commemorative_coins-group_content_access

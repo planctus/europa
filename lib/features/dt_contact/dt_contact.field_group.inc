@@ -56,6 +56,7 @@ function dt_contact_field_group_info() {
       0 => 'title_field',
       1 => 'body',
       2 => 'field_core_social_network_links',
+      3 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

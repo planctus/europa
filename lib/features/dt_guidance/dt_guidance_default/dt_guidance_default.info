@@ -20,6 +20,7 @@ features[field_group][] = group_guidance_tabgroup|node|guidance|form
 features[field_group][] = group_taxonomy|node|guidance|form
 features[field_instance][] = node-guidance-field_core_description
 features[field_instance][] = node-guidance-field_core_introduction
+features[field_instance][] = node-guidance-field_core_keywords
 features[field_instance][] = node-guidance-field_core_legacy_link
 features[field_instance][] = node-guidance-field_eurovoc_taxonomy
 features[field_instance][] = node-guidance-group_content_access

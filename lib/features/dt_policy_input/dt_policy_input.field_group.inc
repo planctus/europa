@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy_input.field_group.inc
@@ -27,8 +26,9 @@ function dt_policy_input_field_group_info() {
       0 => 'title_field',
       1 => 'field_policy_input_status',
       2 => 'field_policy_input_type',
-      4 => 'field_core_introduction',
-      5 => 'field_core_legacy_link',
+      3 => 'field_core_introduction',
+      4 => 'field_core_legacy_link',
+      5 => 'field_core_keywords',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

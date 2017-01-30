@@ -15,6 +15,7 @@ features[features_api][] = api:2
 features[feeds_importer][] = news_prd
 features[field_instance][] = node-news_prd_importer-body
 features[field_instance][] = node-news_prd_importer-field_core_departments
+features[field_instance][] = node-news_prd_importer-field_core_keywords
 features[field_instance][] = node-news_prd_importer-field_core_persons
 features[field_instance][] = node-news_prd_importer-field_core_priorities
 features[field_instance][] = node-news_prd_importer-field_announcement_type

@@ -28,6 +28,7 @@ function dt_banner_quote_field_group_info() {
       1 => 'field_banner_author',
       2 => 'field_banner_author_gender',
       3 => 'title_field',
+      4 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

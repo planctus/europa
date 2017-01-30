@@ -410,6 +410,7 @@ function dt_department_field_group_info() {
       8 => 'field_core_links',
       9 => 'field_department_dg_type',
       10 => 'field_department_news_link',
+      11 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -17,6 +17,7 @@ features[field_group][] = group_policy_imp_content|node|policy_implementation|fo
 features[field_group][] = group_policy_imp_editorial|node|policy_implementation|form
 features[field_group][] = group_policy_imp_tabgroup|node|policy_implementation|form
 features[field_group][] = group_policy_implementation_meta|node|policy_implementation|teaser
+features[field_instance][] = node-policy_implementation-field_core_keywords
 features[field_instance][] = node-policy_implementation-field_core_legacy_link
 features[field_instance][] = node-policy_implementation-field_core_link
 features[field_instance][] = node-policy_implementation-field_policy_imp_introduction

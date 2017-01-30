@@ -1,4 +1,4 @@
-@api @information @nexteuropa_formatters @dt_person  @dt_policy
+@api @information @nexteuropa_formatters @dt_person @dt_policy
 Feature: Contextual navigation
   In order to see related content
   As an editor

@@ -62,6 +62,7 @@ features[field_instance][] = node-publication-field_core_date_updated
 features[field_instance][] = node-publication-field_core_departments
 features[field_instance][] = node-publication-field_core_description
 features[field_instance][] = node-publication-field_core_files
+features[field_instance][] = node-publication-field_core_keywords
 features[field_instance][] = node-publication-field_core_legacy_link
 features[field_instance][] = node-publication-field_core_nal_countries
 features[field_instance][] = node-publication-field_core_policies

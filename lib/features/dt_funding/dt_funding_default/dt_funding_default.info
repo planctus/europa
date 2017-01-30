@@ -20,6 +20,7 @@ features[field_group][] = group_funding_tabgroup|node|funding|form
 features[field_group][] = group_taxonomy|node|funding|form
 features[field_instance][] = node-funding-field_core_description
 features[field_instance][] = node-funding-field_core_introduction
+features[field_instance][] = node-funding-field_core_keywords
 features[field_instance][] = node-funding-field_core_legacy_link
 features[field_instance][] = node-funding-field_core_link
 features[field_instance][] = node-funding-field_eurovoc_taxonomy

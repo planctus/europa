@@ -89,6 +89,7 @@ function dt_consultation_default_field_group_info() {
       6 => 'field_core_policy_areas',
       7 => 'field_core_topics',
       8 => 'field_consultation_status',
+      9 => 'field_core_keywords',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -21,6 +21,7 @@ features[field_group][] = group_impact_assessment_tabgroup|node|impact_assessmen
 features[field_group][] = group_taxonomy|node|impact_assessment|form
 features[field_instance][] = node-impact_assessment-field_core_description
 features[field_instance][] = node-impact_assessment-field_core_introduction
+features[field_instance][] = node-impact_assessment-field_core_keywords
 features[field_instance][] = node-impact_assessment-field_core_legacy_link
 features[field_instance][] = node-impact_assessment-field_eurovoc_taxonomy
 features[field_instance][] = node-impact_assessment-group_content_access
