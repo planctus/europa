@@ -217,9 +217,10 @@ function dt_publication_update_7111() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1514
  */
 function dt_publication_update_7112(&$sandbox) {
-  $limit = 50;
+  $limit = 10;
 
   if (!isset($sandbox['max'])) {
+    drush_print(t('Batch notification start of @update_hook', ['@update_hook' => __FUNCTION__]));
     $sandbox['progress'] = 0;
     // Get all publications which don't have a type.
     $query = new EntityFieldQuery();
@@ -227,6 +228,13 @@ function dt_publication_update_7112(&$sandbox) {
       ->entityCondition('bundle', 'publication')
       ->propertyCondition('status', NODE_PUBLISHED);
     $sandbox['max'] = $query->count()->execute();
+  }
+  else {
+    drush_print(t('Batch notification running @update_hook status: @count of @total', [
+      '@update_hook' => __FUNCTION__,
+      '@count' => $sandbox['progress'],
+      '@total' => $sandbox['max'],
+    ]));
   }
 
   $query = new EntityFieldQuery();
@@ -275,5 +283,6 @@ function dt_publication_update_7112(&$sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
+    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 }
