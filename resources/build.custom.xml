@@ -351,7 +351,7 @@
     <target
             name="build-cphp"
             description="Builds the project for CI testing on CPHP."
-            depends="build-dev, add-dt-dev, install, revert-dt-features, enable-test-modules, cc-all, snapshot" />
+            depends="build-dev, add-dt-dev, install, revert-dt-features, enable-test-modules, reconfigure-dt-permissions, cc-all, snapshot" />
 
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">
@@ -446,6 +446,18 @@
         </if>
         <drush
                 command="${revert.command}"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+    </target>
+
+    <!-- Reconfigures the permissons -->
+    <target name="reconfigure-dt-permissions">
+        <echo msg="Reconfiguring permissions" />
+        <drush
+                command="dtrp"
                 assume="yes"
                 root="${platform.build.dir}"
                 bin="${drush.bin}"

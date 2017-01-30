@@ -236,7 +236,7 @@ function dt_date_format_field_formatter_view($entity_type, $entity, $field, $ins
           $date_object->setFormat($display['settings']['same_day_format']);
         }
         else {
-          // Fallback(Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
+          // FB:(Tuesday 17 March, 9.00 – Wednesday 18 March, 18.00 (CET)).
           $date_object->setFormat($display['settings']['fallback']);
         }
 
