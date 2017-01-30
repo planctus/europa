@@ -1237,3 +1237,10 @@ function dt_core_update_7183(&$sandbox) {
   }
 
 }
+
+/**
+ * Improvement for cache performance.
+ */
+function dt_core_update_7184(&$sandbox) {
+  variable_set('features_rebuild_on_flush', FALSE);
+}
