@@ -278,7 +278,7 @@ function dt_publication_update_7112(&$sandbox) {
   }
 
   $sandbox['progress'] += $limit;
-  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['progress']) {
     $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
   }
   else {
