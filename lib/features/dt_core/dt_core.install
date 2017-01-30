@@ -1088,8 +1088,10 @@ function dt_core_update_7180() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
  */
 function dt_core_update_7183(&$sandbox) {
-  $limit = 50;
+  $limit = 10;
   if (!isset($sandbox['max'])) {
+    drush_print(t('Batch notification start of @update_hook', ['@update_hook' => __FUNCTION__]));
+    variable_set('features_rebuild_on_flush', FALSE);
     $sandbox['progress'] = 0;
     $features = [
       'brp_initiative' => 'brp_initiative',
@@ -1159,6 +1161,13 @@ function dt_core_update_7183(&$sandbox) {
       ->entityCondition('bundle', array_values($sandbox['content_types']), 'IN')
       ->age(FIELD_LOAD_CURRENT)
       ->count()->execute();
+  }
+  else {
+    drush_print(t('Batch notification running @update_hook status: @count of @total', [
+      '@update_hook' => __FUNCTION__,
+      '@count' => $sandbox['progress'],
+      '@total' => $sandbox['max'],
+    ]));
   }
 
   // Process keyword meta tag information.
@@ -1234,13 +1243,7 @@ function dt_core_update_7183(&$sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
+    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 
-}
-
-/**
- * Improvement for cache performance.
- */
-function dt_core_update_7184(&$sandbox) {
-  variable_set('features_rebuild_on_flush', FALSE);
 }
