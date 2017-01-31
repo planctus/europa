@@ -974,3 +974,15 @@ function dt_core_menu_alter(&$items) {
     unset($items['contact']);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Here we remove the field folder to avoid to be rendered in frontend.
+ */
+function dt_core_preprocess_file_entity(&$variables) {
+  // If it is a video or image we remove the field folder field.
+  if (in_array($variables['type'], ['image', 'video'])) {
+    unset($variables['content']['field_folder']);
+  }
+}
