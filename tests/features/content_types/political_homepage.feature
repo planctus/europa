@@ -47,6 +47,27 @@ Feature: Political Homepage different layout
     Then I should see "Highlight fr" in the ".field--field-core-introduction .field__label" element
     Then I should see "Political introduction FR" in the ".field--field-core-introduction .field__items p" element
 
+
+  Scenario: Political Homepage priorities are translated
+    Given I am logged in as a user with the "administrator" role
+    Given "Priority" content:
+      | title                          | status | language |
+      | Content title Lipsum - English | 1      | en       |
+    Given I am viewing a "Homepage" content:
+      | title                   | Political en           |
+      | status                  | 1                      |
+      | language                | en                     |
+      | og_group_ref            | Global editorial team  |
+    Then I should see "Content title Lipsum - English" in the ".field--priorities-listing .listing__item" element
+    And I create the following translations for "info_homepage" content with title "Political en":
+      | title                   | status | language |
+      | Political fr            | 1      | fr       |
+    And I create the following translations for "Priority" content with title "Content title Lipsum - English":
+      | title                         | status | language |
+      | Content title Lipsum - French | 1      | fr       |
+    And I change the language to "French"
+    Then I should see "Content title Lipsum - French" in the ".field--priorities-listing .listing__item" element
+
   Scenario: Latest block can be turned on and off
     Given "Announcement" content:
       | title                   | status | sticky | promote |
@@ -139,10 +160,10 @@ Feature: Political Homepage different layout
   Scenario: Contact block is visible and it is two column
     Given I am logged in as a user with the "administrator" role
     Given I am viewing a "Homepage" content:
-      | title                            | Frontpage title                                   |
-      | field_info_homepage_contacts     | Test - http://google.be, Test2 - http://google.be |
-      | language                         | en                                                |
-      | status                           | 1                                                 |
+      | title                        | Frontpage title                                   |
+      | field_info_homepage_contacts | Test - http://google.be, Test2 - http://google.be |
+      | language                     | en                                                |
+      | status                       | 1                                                 |
     Then I should see the heading "Contact" in the "main_content" region
     Then I should see the link "Test" linking to "http://google.be"
     And I should see the link "Test2" linking to "http://google.be"
