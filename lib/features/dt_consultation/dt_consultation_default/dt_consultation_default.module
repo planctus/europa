@@ -43,7 +43,7 @@ function _dt_consultation_default_get_status($node) {
   if (!empty($cew->field_core_date_closing->value())) {
     // Check if consultation ends today and because the we need to take into
     // account hour granularity, we convert them to date and compared them.
-    if (date('d-m-Y', $cew->field_core_date_closing->value()) == date('d-m-Y', time())) {
+    if (format_date($cew->field_core_date_closing->value(), 'custom', 'd-m-Y') == format_date(time(), 'custom', 'd-m-Y')) {
       return DT_CONSULTATION_DEFAULT_OPEN_STATE;
     }
     elseif ($cew->field_core_date_closing->value() < time()) {
@@ -71,9 +71,9 @@ function dt_consultation_default_form_consultation_node_form_alter(&$form, &$for
  */
 function dt_consultation_default_cron() {
   $dt_consultation_default_cron_last = variable_get('dt_consultation_default_cron_last');
-  if (date('ymd', $dt_consultation_default_cron_last) != date('ymd', time())) {
+  if (format_date($dt_consultation_default_cron_last, 'custom', 'ymd') != format_date(time(), 'custom', 'ymd')) {
     _dt_consultation_default_update_status();
-    variable_set('dt_consultation_default_cron_last', date('ymd', time()));
+    variable_set('dt_consultation_default_cron_last', format_date(time(), 'custom', 'ymd'));
   }
 
 }
