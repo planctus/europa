@@ -1046,19 +1046,8 @@ function dt_core_update_7176() {
 /**
  * DTTSB-1337: Enable Media Browser Plus module.
  */
-function dt_core_update_7177() {
-  module_enable(['media_browser_plus']);
-}
-
-/**
- * DTTSB-1337: Enable multiform.
- *
- * This is only for AC enabling since the module was not added to .make.
- * When merging for the release this can be ignored since 7177 will enable the
- * module in any case.
- */
 function dt_core_update_7178() {
-  module_enable(['multiform']);
+  module_enable(['media_browser_plus']);
 }
 
 /**
@@ -1099,8 +1088,10 @@ function dt_core_update_7180() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
  */
 function dt_core_update_7183(&$sandbox) {
-  $limit = 50;
+  $limit = 10;
   if (!isset($sandbox['max'])) {
+    drush_print(t('Batch notification start of @update_hook', ['@update_hook' => __FUNCTION__]));
+    variable_set('features_rebuild_on_flush', FALSE);
     $sandbox['progress'] = 0;
     $features = [
       'brp_initiative' => 'brp_initiative',
@@ -1171,6 +1162,13 @@ function dt_core_update_7183(&$sandbox) {
       ->age(FIELD_LOAD_CURRENT)
       ->count()->execute();
   }
+  else {
+    drush_print(t('Batch notification running @update_hook status: @count of @total', [
+      '@update_hook' => __FUNCTION__,
+      '@count' => $sandbox['progress'],
+      '@total' => $sandbox['max'],
+    ]));
+  }
 
   // Process keyword meta tag information.
   $query = new EntityFieldQuery();
@@ -1240,11 +1238,12 @@ function dt_core_update_7183(&$sandbox) {
     unset($node);
   }
   $sandbox['progress'] += $limit;
-  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['progress']) {
     $sandbox['#finished'] = $sandbox['progress'] / $sandbox['max'];
   }
   else {
     $sandbox['#finished'] = 1;
+    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 
 }

@@ -169,4 +169,3 @@ Feature: Political Homepage different layout
     And I should see the link "Test2" linking to "http://google.be"
     And I should see an ".pull-right" element
     And I should see an ".listing__wrapper--two-columns" element
-    Then show last response
