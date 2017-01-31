@@ -7,7 +7,6 @@ dependencies[] = dt_contact
 dependencies[] = dt_nal_countries
 dependencies[] = field_group
 dependencies[] = nexteuropa_file
-dependencies[] = nexteuropa_formatters
 dependencies[] = nexteuropa_views
 dependencies[] = views_filters_selective
 php = 5.5

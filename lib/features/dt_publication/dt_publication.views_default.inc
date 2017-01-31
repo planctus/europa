@@ -110,6 +110,7 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Clear';
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
@@ -150,9 +151,13 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['table'] = 'field_data_field_eurovoc_taxonomy';
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['field'] = 'field_eurovoc_taxonomy';
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['type'] = 'entityreference_label';
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['multi_type'] = 'separator';
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['separator'] = ',';
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['settings'] = array(
     'link' => 0,
   );
+  $handler->display->display_options['fields']['field_eurovoc_taxonomy']['group_rows'] = TRUE;
   $handler->display->display_options['fields']['field_eurovoc_taxonomy']['delta_offset'] = '0';
   /* Field: Content: Countries */
   $handler->display->display_options['fields']['field_core_nal_countries']['id'] = 'field_core_nal_countries';
@@ -161,6 +166,12 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['fields']['field_core_nal_countries']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_core_nal_countries']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_core_nal_countries']['delta_offset'] = '0';
+  /* Field: Content: Tags */
+  $handler->display->display_options['fields']['field_core_tags']['id'] = 'field_core_tags';
+  $handler->display->display_options['fields']['field_core_tags']['table'] = 'field_data_field_core_tags';
+  $handler->display->display_options['fields']['field_core_tags']['field'] = 'field_core_tags';
+  $handler->display->display_options['fields']['field_core_tags']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_core_tags']['delta_offset'] = '0';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -260,7 +271,7 @@ function dt_publication_views_default_views() {
     15 => 0,
   );
   $handler->display->display_options['filters']['field_core_date_published_value']['granularity'] = 'year';
-  $handler->display->display_options['filters']['field_core_date_published_value']['year_range'] = '-10:+2';
+  $handler->display->display_options['filters']['field_core_date_published_value']['year_range'] = '+2:-9';
   /* Filter criterion: Content: Publication type (field_publication_type) (translated) */
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['id'] = 'field_publication_type_tid_i18n';
   $handler->display->display_options['filters']['field_publication_type_tid_i18n']['table'] = 'field_data_field_publication_type';
@@ -291,25 +302,23 @@ function dt_publication_views_default_views() {
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['id'] = 'field_core_tags_tid_i18n';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['table'] = 'field_data_field_core_tags';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['field'] = 'field_core_tags_tid_i18n';
-  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['group'] = 1;
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['operator_id'] = 'field_core_tags_tid_i18n_op';
-  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['label'] = 'Tag';
+  $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['label'] = 'Tags';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['operator'] = 'field_core_tags_tid_i18n_op';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['identifier'] = 'field_core_tags_tid_i18n';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    3 => 0,
     6 => 0,
-    4 => 0,
     5 => 0,
-    16 => 0,
-    7 => 0,
-    12 => 0,
-    9 => 0,
-    21 => 0,
+    3 => 0,
+    4 => 0,
     10 => 0,
+    8 => 0,
+    7 => 0,
+    11 => 0,
+    9 => 0,
   );
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['type'] = 'select';
   $handler->display->display_options['filters']['field_core_tags_tid_i18n']['vocabulary'] = 'tags';

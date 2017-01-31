@@ -689,7 +689,9 @@ function dt_publication_field_default_field_instances() {
       'full' => array(
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
-        'settings' => array(),
+        'settings' => array(
+          'align_right' => 0,
+        ),
         'type' => 'link_button_primary',
         'weight' => 2,
       ),
@@ -1838,7 +1840,6 @@ function dt_publication_field_default_field_instances() {
   t('Taxonomy');
   t('The Publications tag field is designed never to be shown to site visitors. It is provided solely for grouping similar Publications together. Select the Publications tag if you wish to display only Publications with the given tag. (You should never select the "Publications tag visibility"; this option will soon be removed, as the Publications tag field should never bee seen by site visitors');
   t('The text displayed (along with title and publication type) when this publication is in a listing');
-  t('The Publications tag field is designed never to be shown to site visitors. It is provided solely for grouping similar Publications together. Select the Publications tag if you wish to display only Publications with the given tag. (You should never select the "Publications tag visibility"; this option will soon be removed, as the Publications tag field should never bee seen by site visitors');
   t('This is displayed as \'meta\' information in addition to the publication title.');
   t('Title');
   t('What do you want to create?');
