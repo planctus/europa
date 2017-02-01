@@ -1356,7 +1356,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     // Takes the nids and sort by their weights.
     $nids = array_column($publication->field_core_files[LANGUAGE_NONE], 'target_id');
     usort($nids, function ($a, $b) {
-      return $this->fileWeight[$a] > $this->fileWeight[$b];
+      return $this->getFileWeight($a) > $this->getFileWeight($b);
     });
 
     // Empty 'field_core_files' and added sorted NodeIDs.
@@ -1364,6 +1364,22 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     foreach ($nids as $nid) {
       $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $nid;
     }
+  }
+
+  /**
+   * Returns the weight of a file.
+   *
+   * @param mixed $item
+   *   The identifier of the item.
+   *
+   * @return int
+   *   The weight.
+   */
+  private function getFileWeight($item) {
+    if (!isset($this->fileWeight[$item])) {
+      return max($this->fileWeight);
+    }
+    return $this->fileWeight[$item];
   }
 
   /**
