@@ -324,9 +324,9 @@ function dt_announcement_update_7117() {
 }
 
 /**
- * DTTSB-1118: Changing the announcement title and path to news.
+ * DTTSB-1621: Ensure redirects in place for any path with announcement prefix.
  */
-function dt_announcement_update_7118(&$sandbox) {
+function dt_announcement_update_7119(&$sandbox) {
   // Initial settings.
   if (!isset($sandbox['max'])) {
     // Reverting dt_announcement.
@@ -336,7 +336,7 @@ function dt_announcement_update_7118(&$sandbox) {
       ->condition('type', 'announcement');
     $count_query->addExpression('COUNT(n.nid)', 'count');
     $sandbox['max'] = $count_query->execute()->fetchField();
-    $sandbox['progress'] = 0;
+    $sandbox['position'] = 0;
   }
 
   $limit = 50;
@@ -351,6 +351,17 @@ function dt_announcement_update_7118(&$sandbox) {
   if (!empty($nids)) {
     $nodes = entity_load('node', $nids);
     foreach ($nodes as $node) {
+      $alias = drupal_get_path_alias('node/' . $node->nid);
+      if (drupal_substr($alias, 0, 14) == 'announcements/') {
+        $redirect_paths = [
+          'source' => $alias,
+          'redirect' => 'node/' . $node->nid,
+        ];
+        $redirect = new stdClass();
+        redirect_object_prepare($redirect, $redirect_paths);
+        redirect_save($redirect);
+      }
+
       $node->path['pathauto'] = TRUE;
       // Make sure the alias will be updated.
       pathauto_node_update_alias($node, 'update');
