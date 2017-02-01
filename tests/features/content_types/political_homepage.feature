@@ -169,3 +169,15 @@ Feature: Political Homepage different layout
     And I should see the link "Test2" linking to "http://google.be"
     And I should see an ".pull-right" element
     And I should see an ".listing__wrapper--two-columns" element
+
+  Scenario: Links in the introduction are visible
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "Homepage":
+      | title                          | Political hp                              |
+      | field_core_introduction:value  | Political introduction <a href=#>test</a> |
+      | field_core_introduction:format | full_html                                 |
+      | status                         | 1                                         |
+      | language                       | en                                        |
+      | og_group_ref                   | Global editorial team                     |
+    Then I should see "Political introduction" in the ".field--field-core-introduction .field__items p" element
+    And I should see "test" in the ".field--field-core-introduction .field__items p a" element
