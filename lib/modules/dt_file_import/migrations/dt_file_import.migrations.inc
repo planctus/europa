@@ -963,7 +963,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
    *   - Rows.
    */
   public function prepare(&$node, $row) {
-    $default_language = $this->getPrimaryLanguage('collection', $row->pid);
+    $default_language = $this->getPrimaryLanguage('publication', $row->pid);
     $node->translations = (object) [
       'original' => $default_language,
       'data' => [],
@@ -1035,6 +1035,9 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 
     // Collection update.
     if (isset($node->cids)) {
+      if (!is_array($node->cids)) {
+        $node->cids = [$node->cids];
+      }
       // Using multiple, comma-separated pids.
       foreach ($node->cids as $cid) {
         if ($collection = node_load($cid)) {
