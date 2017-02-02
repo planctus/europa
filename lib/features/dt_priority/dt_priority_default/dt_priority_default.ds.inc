@@ -191,9 +191,22 @@ function dt_priority_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'priority';
   $ds_fieldsetting->view_mode = 'title';
   $ds_fieldsetting->settings = array(
-    'title_field' => array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(),
+        'link' => '0',
+        'wrapper' => '',
+        'class' => '',
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fis' => TRUE,
+          'fis-el' => 'a ',
+          'fis-cl' => 'listing__title',
+          'fis-at' => '',
+          'fis-def-at' => FALSE,
+        ),
       ),
     ),
   );
