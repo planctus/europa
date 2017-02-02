@@ -4,6 +4,7 @@ core = 7.x
 package = NextEuropa Digital Transformation Political
 dependencies[] = dt_pri_policy_area
 dependencies[] = file_entity
+dependencies[] = nexteuropa_legacy_link
 dependencies[] = text
 php = 5.5
 features[conditional_fields][] = node:priority_policy_area

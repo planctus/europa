@@ -160,17 +160,6 @@ function dt_event_preprocess_views_view(&$variables) {
   ];
 
   $variables['header'] = drupal_render($markup);
-
-  $view = $variables['view'];
-  if ($view->name == 'events' && $view->current_display == 'page') {
-    $hitme = libraries_load('hitme');
-    if ($hitme['installed']) {
-      drupal_add_js($hitme['library path'] . '/jquery.hitMe-min.js');
-      drupal_add_js('(function ($) { $(function () { $(\'.listing__item-link\').hitMe(); }); })(jQuery);',
-        ['type' => 'inline', 'scope' => 'footer']
-      );
-    }
-  }
 }
 
 /**
