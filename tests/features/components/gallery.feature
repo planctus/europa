@@ -65,7 +65,7 @@ Feature: Users can use and see the gallery
     When I go to "/events/test-event/gallery_en"
     Then I should not see the heading "Page not found"
 
-  @javascript @dt_event
+  @javascript @dt_event @wip
   Scenario: Gallery items are browseable.
     Given "Event" content:
       | title      | language | nid     | is_new | status | path[pathauto] | field_event_date:value | field_event_date:value2 | field_event_date:timezone |
