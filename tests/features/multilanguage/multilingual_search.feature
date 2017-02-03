@@ -39,7 +39,7 @@ Feature: Search in views in any given language
       | title         | body | language | status | field_announcement_type | field_announcement_location | field_core_introduction | field_core_type_content          |
       | <sourcetitle> | bar  | en       | 1      | speech                  | Brussels                    | bar                     | A page (default) in this website |
     And the "<language>" language is available
-    And I go to "/announcements_en"
+    And I go to "/news_en"
     Then I fill in the following:
       | Containing | <sourcetitle> |
     Then I press "Refine results"
@@ -52,7 +52,7 @@ Feature: Search in views in any given language
     And I fill in "edit-title-field-<language>-0-value" with "<title>"
     And I fill in "Moderation state" with "published"
     And I press "Save"
-    And I go to "/announcements_<language>"
+    And I go to "/news_<language>"
     Then I fill in the following:
       | Containing | <search> |
     Then I press "edit-submit-announcements"

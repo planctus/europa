@@ -2,22 +2,12 @@
 
 namespace Drupal\dt_gallery;
 
-use Iterator;
-use Countable;
-
 /**
  * Class DtGalleryRow.
  *
  * @package digital_transformation.
  */
-class DtGalleryRow implements Iterator, Countable {
-
-  /**
-   * The items in the row.
-   *
-   * @var array
-   */
-  private $items;
+class DtGalleryRow extends DtGalleryItems {
 
   /**
    * If the gallery row is dynamic.
@@ -35,14 +25,14 @@ class DtGalleryRow implements Iterator, Countable {
    *   If the row is dynamic.
    */
   public function __construct(array $items, $dynamic = TRUE) {
-    $this->setDynamic($dynamic);
-    $this->setItems($items);
+    parent::__construct($items);
     // Calculate the sizes.
+    $this->setDynamic($dynamic);
     $this->calculateSizes();
   }
 
   /**
-   * Calculats the sizes for each item in the row.
+   * Calculates the sizes for each item in the row.
    */
   public function calculateSizes() {
     // Set the original order.
@@ -98,69 +88,6 @@ class DtGalleryRow implements Iterator, Countable {
 
     // Sort back the array by its original key.
     usort($this->items, [$this, 'sortByOriginalKey']);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function current() {
-    return current($this->items);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function next() {
-    return next($this->items);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function key() {
-    return key($this->items);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function valid() {
-    $key = key($this->items);
-    return ($key !== NULL && $key !== FALSE);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function rewind() {
-    return reset($this->items);
-  }
-
-  /**
-   * Gets the items.
-   *
-   * @return array
-   *   Array of items.
-   */
-  private function getItems() {
-    return $this->items;
-  }
-
-  /**
-   * Sets the items.
-   *
-   * @param array $items
-   *   Array of items.
-   */
-  private function setItems($items) {
-    $this->items = $items;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function count() {
-    return count($this->getItems());
   }
 
   /**

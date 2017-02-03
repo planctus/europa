@@ -94,8 +94,15 @@ function dt_info_homepage_views_default_views() {
   $handler->display->display_options['style_options']['listing_item_modifier'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'title';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'weight_weights|weight';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'title';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['block_caching'] = '-1';
   $export['priority_listing_homepage'] = $view;

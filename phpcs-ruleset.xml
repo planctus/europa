@@ -42,7 +42,7 @@
     <exclude-pattern>resources/codedeploy</exclude-pattern>
     <exclude-pattern>resources/vendor</exclude-pattern>
 
-    <!-- Exclude entityreference handlers -->
+    <!-- Exclude EntityReference handlers -->
     <exclude-pattern>*/behavior/*.class.php</exclude-pattern>
 
     <!-- Exclude non drupal folders. -->
@@ -90,12 +90,12 @@
         <exclude-pattern>modules/**/views/*.inc</exclude-pattern>
     </rule>
 
-    <!-- Fieldgroup titles are not translatable. -->
+    <!-- FieldGroup titles are not translatable. -->
     <rule ref="Drupal.Semantics.FunctionT.NotLiteralString">
         <exclude-pattern>*/nexteuropa_inpage_nav.module</exclude-pattern>
     </rule>
 
-    <!-- Exported translatables. -->
+    <!-- Exported translations. -->
     <rule ref="Drupal.Semantics.FunctionT.BackslashSingleQuote">
         <exclude-pattern>*.features.*.inc</exclude-pattern>
     </rule>

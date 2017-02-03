@@ -139,6 +139,30 @@ function dt_publication_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|publication|structured_navigation';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'publication';
+  $ds_fieldsetting->view_mode = 'structured_navigation';
+  $ds_fieldsetting->settings = array(
+    'title_field' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+    'field_core_description' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
+    ),
+  );
+  $export['node|publication|structured_navigation'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|publication|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'publication';
@@ -341,6 +365,41 @@ function dt_publication_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|publication|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|publication|structured_navigation';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'publication';
+  $ds_layout->view_mode = 'structured_navigation';
+  $ds_layout->layout = 'ne_1col_section_item';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'title' => array(
+        0 => 'title_field',
+      ),
+      'description' => array(
+        1 => 'field_core_description',
+      ),
+    ),
+    'fields' => array(
+      'title_field' => 'title',
+      'field_core_description' => 'description',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'title' => 'div',
+      'description' => 'div',
+      'children' => 'div',
+      'links' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|publication|structured_navigation'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

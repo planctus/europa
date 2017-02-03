@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_law.features.field_instance.inc
@@ -31,6 +30,15 @@ function dt_law_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 28,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',

@@ -78,6 +78,15 @@ function nexteuropa_formatters_field_formatter_info() {
         'show_translations' => TRUE,
       ],
     ],
+    'link_download' => [
+      'label' => t('Download file-link'),
+      'field types' => [
+        'link_field',
+      ],
+      'settings' => [
+        'show_translations' => TRUE,
+      ],
+    ],
     'link_button_primary' => [
       'label' => t('Link button primary'),
       'field types' => [
@@ -125,9 +134,10 @@ function nexteuropa_formatters_field_formatter_info() {
       ],
     ],
     'link_listing_title' => [
-      'label' => t('Listing title'),
+      'label' => t('Listing title link'),
       'field types' => [
         'link_field',
+        'text',
         'taxonomy_term_reference',
       ],
       'settings' => [
@@ -135,8 +145,12 @@ function nexteuropa_formatters_field_formatter_info() {
       ],
     ],
     'listing_title' => [
-      'label' => t('Listing title'),
+      'label' => t('Listing title (h3)'),
       'field types' => ['text', 'text_long'],
+    ],
+    'listing_title_element' => [
+      'label' => t('Listing title element'),
+      'field types' => ['text'],
     ],
     'entity_reference_section' => [
       'label' => t('Entity reference section group'),
@@ -251,6 +265,7 @@ function nexteuropa_formatters_field_formatter_settings_form($field, $instance, 
       break;
 
     case 'link_button_download':
+    case 'link_download':
       $element['show_translations'] = [
         '#title' => t('Show translations of the file'),
         '#type' => 'checkbox',
@@ -358,6 +373,7 @@ function _nexteuropa_formatters_field_formatter_view_classes($formatter) {
 
     case 'link_listing_title':
     case 'listing_title':
+    case 'listing_title_element':
       $class = 'listing__title';
       break;
 
@@ -430,6 +446,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
   if (!empty($items)) {
     $formatter = $display['type'];
     $pull_right = !empty($display['settings']['align_right']) ? ' pull-right' : '';
+
     switch ($formatter) {
       // Formatter for the structured content view mode.
       case 'structured_content_links':
@@ -660,6 +677,18 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         }
         break;
 
+      case 'listing_title_element':
+        $class = _nexteuropa_formatters_field_formatter_view_classes($formatter);
+
+        foreach ($items as $delta => $item) {
+          $link = l($item['safe_value'], 'node/' . $entity->nid, ['attributes' => ['class' => $class]]);
+
+          $element[$delta] = [
+            '#markup' => $link,
+          ];
+        }
+        break;
+
       case 'feedback_counter':
         $class = _nexteuropa_formatters_field_formatter_view_classes($formatter);
         foreach ($items as $delta => $item) {
@@ -672,6 +701,7 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
         break;
 
       case 'link_button_download':
+      case 'link_download':
         if (isset($field['type']) && $field['type'] == 'file') {
           foreach ($items as $delta => $item) {
             $file = (object) $item;
@@ -694,8 +724,12 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
             $url['path'] = $item['url'];
             $url['options'] = [];
 
+            // Add modifier.
+            $modifier = ($formatter == "link_download" ? "file--link" : "");
+            drupal_alter('nexteuropa_formatters_modifier', $modifier, $entity_type, $entity);
+
             $element[$delta] = [
-              '#markup' => _nexteuropa_formatters_file_markup($file, NULL, FALSE, TRUE, $url),
+              '#markup' => _nexteuropa_formatters_file_markup($file, $modifier, FALSE, TRUE, $url),
             ];
           }
         }
@@ -1137,7 +1171,7 @@ function nexteuropa_formatters_preprocess_field(&$variables) {
     // Get the settings, fall back to default TRUE.
     $show_translation = isset($info['display'][$view_mode]['settings']['show_translations']) ? $info['display'][$view_mode]['settings']['show_translations'] : TRUE;
 
-    if ($show_translation && $info['display'][$view_mode]['type'] == 'link_button_download') {
+    if ($show_translation && ($info['display'][$view_mode]['type'] == 'link_button_download' || $info['display'][$view_mode]['type'] == 'link_download')) {
       foreach ($variables['items'] as $item_key => $item) {
         $variables['items'][$item_key]['#suffix'] = theme('nexteuropa_file_translations', ['node' => $variables['element']['#object']]);
       }

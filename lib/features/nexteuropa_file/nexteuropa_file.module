@@ -55,3 +55,21 @@ function nexteuropa_file_file_default_types_alter(&$types) {
   $types['document']->mimetypes[] = 'application/zip';
   $types['document']->mimetypes[] = 'application/octet-stream';
 }
+
+/**
+ * Implements hook_nexteuropa_formatters_modifier_alter().
+ */
+function nexteuropa_file_nexteuropa_formatters_modifier_alter(&$modifier, $entity_type, $entity) {
+  if ($entity_type == "node" && $entity->type == "file" && $modifier != "file--link") {
+    $nmw = entity_metadata_wrapper($entity_type, $entity);
+    // If link and location are set.
+    if ($nmw->__isset('field_file_link_upload') && $nmw->__isset('field_file_location')) {
+      $is_link = $nmw->field_file_link_upload->value();
+      $is_location = $nmw->field_file_location->value();
+
+      if ($is_link == "link" && !is_null($is_location)) {
+        $modifier = "file--link";
+      }
+    }
+  }
+}

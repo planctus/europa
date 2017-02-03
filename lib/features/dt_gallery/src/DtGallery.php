@@ -11,6 +11,8 @@ use Exception;
  */
 class DtGallery {
 
+  const GALLERY_PATH_SEGMENT = 'gallery';
+  const GALLERY_FIELD = 'field_core_gallery';
   /**
    * The amount of images to display per row.
    *
@@ -32,6 +34,10 @@ class DtGallery {
    */
   private $dynamic;
 
+  private $items;
+
+  private $gallery;
+
   /**
    * DtGallery constructor.
    *
@@ -41,10 +47,31 @@ class DtGallery {
    *   If the size should be dynamic.
    */
   public function __construct(array $items, $dynamic = TRUE) {
+    $this->setItems($items);
     $this->setDynamic($dynamic);
-    $this->convertItems($items);
-    $this->setRows($this->calculateRows($items));
+    $this->convertItems();
+    $this->setRows($this->calculateRows());
+    $this->setGallery($this->allItems());
+  }
 
+  /**
+   * Sets the items.
+   *
+   * @param array $items
+   *   Items from field value.
+   */
+  public function setItems($items) {
+    $this->items = $items;
+  }
+
+  /**
+   * Gets the items.
+   *
+   * @return array
+   *   Items of the gallery.
+   */
+  public function getItems() {
+    return $this->items;
   }
 
   /**
@@ -53,13 +80,10 @@ class DtGallery {
    * Each file type uses their own class. @see DtGalleryItemBase for the base
    * implementation.
    *
-   * @param array $items
-   *   Array of items.
-   *
    * @throws Exception
    */
-  private function convertItems(&$items) {
-    foreach ($items as &$item) {
+  private function convertItems() {
+    foreach ($this->items as &$item) {
       switch ($item['file']->type) {
         case 'image':
           $item = new DtGalleryItemImage($item);
@@ -78,22 +102,19 @@ class DtGallery {
   /**
    * Calculates the rows to be used in the gallery.
    *
-   * @param array $items
-   *   The items to use in the gallery.
-   *
    * @return array
    *   The items to use in rows.
    */
-  private function calculateRows($items) {
-    $total_images = count($items);
+  public function calculateRows() {
+    $total_images = count($this->items);
     $rows = ceil($total_images / $this->getItemsPerRow());
 
     // Initialize the rows.
     $image_rows = [];
 
     // Build an array of images per row.
-    for ($i = 0; $i <= $rows; $i++) {
-      $image_rows[$i] = new DtGalleryRow(array_slice($items, $i * $this->getItemsPerRow(), $this->getItemsPerRow()), $this->isDynamic());
+    for ($i = 0; $i < $rows; $i++) {
+      $image_rows[$i] = new DtGalleryRow(array_slice($this->items, $i * $this->getItemsPerRow(), $this->getItemsPerRow()), $this->isDynamic());
       // If the images in the row are less then $this->getItemsPerRow(),
       // we can stop.
       if (count($image_rows[$i]) < $this->getItemsPerRow()) {
@@ -142,6 +163,7 @@ class DtGallery {
    */
   public function setImagesPerRow($images_per_row) {
     $this->imagesPerRow = $images_per_row;
+    $this->setRows($this->calculateRows());
   }
 
   /**
@@ -162,6 +184,36 @@ class DtGallery {
    */
   public function setDynamic($dynamic) {
     $this->dynamic = $dynamic;
+  }
+
+  /**
+   * Sets the gallery.
+   *
+   * @param DtGalleryItems $gallery
+   *    Parsed gallery items.
+   */
+  public function setGallery(DtGalleryItems $gallery) {
+    $this->gallery = $gallery;
+  }
+
+  /**
+   * Gets the gallery.
+   *
+   * @return DtGalleryItems
+   *   Gallery with parsed items.
+   */
+  public function getGallery() {
+    return $this->gallery;
+  }
+
+  /**
+   * Create a flat list of all gallery items.
+   *
+   * @return DtGalleryItems
+   *   All items in the gallery, not in rows.
+   */
+  private function allItems() {
+    return new DtGalleryItems($this->items);
   }
 
 }

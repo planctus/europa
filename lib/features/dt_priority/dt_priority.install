@@ -161,3 +161,47 @@ function dt_priority_update_7103() {
     }
   }
 }
+
+/**
+ * DTTSB-1479: update aliases for all priority nodes.
+ */
+function dt_priority_update_7104(&$sandbox) {
+  // Initial settings.
+  if (!isset($sandbox['max'])) {
+    // Reverting dt_priority.
+    features_revert_module('dt_priority');
+    // Query all nid item.
+    $count_query = db_select('node', 'n')
+      ->condition('type', 'priority');
+    $count_query->addExpression('COUNT(n.nid)', 'count');
+    $sandbox['max'] = $count_query->execute()->fetchField();
+    $sandbox['progress'] = 0;
+  }
+
+  $limit = 100;
+  $nids = db_select('node', 'n')
+    ->condition('n.type', 'priority')
+    ->fields('n', ['nid'])
+    ->orderBy('n.nid')
+    ->range($sandbox['position'], $limit)
+    ->execute()
+    ->fetchCol();
+
+  if (!empty($nids)) {
+    $nodes = entity_load('node', $nids);
+    foreach ($nodes as $node) {
+      $node->path['pathauto'] = TRUE;
+      // Make sure the alias will be updated.
+      pathauto_node_update_alias($node, 'update');
+    }
+  }
+  unset($nids);
+  $sandbox['position'] += $limit;
+
+  if ($sandbox['max'] > 0 && $sandbox['max'] > $sandbox['position']) {
+    $sandbox['#finished'] = $sandbox['position'] / $sandbox['max'];
+  }
+  else {
+    $sandbox['#finished'] = 1;
+  }
+}

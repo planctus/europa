@@ -1,0 +1,223 @@
+<?php
+
+/**
+ * @file
+ * Module file for dt_flexible_date.
+ */
+
+/**
+ * Implements hook_field_info().
+ *
+ * Provides the description of the field.
+ */
+
+/**
+ * Implements hook_field_info().
+ */
+function dt_flexible_date_field_info() {
+  return [
+    // We name our field as the associative name of the array.
+    'dt_flexible_date' => [
+      'label' => t('Flexible date'),
+      'description' => t('Some text'),
+      'default_widget' => 'dt_flexible_date',
+      'default_formatter' => 'dt_flexible_date',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function dt_flexible_date_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function dt_flexible_date_field_is_empty($item, $field) {
+  // This has to be here.
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function dt_flexible_date_field_widget_info() {
+  return [
+    'dt_flexible_date' => [
+      'label' => 'Flexible date widget',
+      'field types' => ['dt_flexible_date'],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function dt_flexible_date_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $value = isset($items[$delta]) ? $items[$delta] : NULL;
+
+  $widget = $element;
+  $widget['#delta'] = $delta;
+  $widget['#element_validate'] = ['dt_flexible_date_field_widget_validate'];
+
+  switch ($instance['widget']['type']) {
+    case 'dt_flexible_date':
+
+      $widget += [
+        '#type' => 'fieldset',
+        '#delta' => $delta,
+      ];
+
+      $widget['date'] = [
+        '#type' => 'date_popup',
+        '#default_value' => isset($value['date']) ? date('Y-m-d', $value['date']) : '',
+        '#date_format' => 'd/m/Y',
+      ];
+
+      $options = [
+        '' => '',
+        'year' => 'Year',
+        'month' => 'Month',
+        'day' => 'Day',
+      ];
+
+      $widget['granularity'] = [
+        '#type' => 'select',
+        '#options' => $options,
+        '#title' => 'Display Granularity',
+        '#default_value' => $value['granularity'],
+      ];
+      break;
+  }
+
+  $element += $widget;
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_validate().
+ */
+function dt_flexible_date_field_widget_validate($element, &$form_state) {
+  $delta = $element['#delta'];
+  $field = $form_state['field'][$element['#field_name']][$element['#language']]['field'];
+  $field_name = $field['field_name'];
+
+  if (!isset($form_state['values'][$field_name][$element['#language']][$delta]['date'])) {
+    form_set_value($element['date'], NULL, $form_state);
+    form_set_value($element['granularity'], NULL, $form_state);
+    return;
+  }
+
+  $date_value = $form_state['values'][$field_name][$element['#language']][$delta]['date'];
+  $granularity = $form_state['values'][$field_name][$element['#language']][$delta]['granularity'];
+  $timestamp = strtotime($date_value);
+
+  form_set_value($element['date'], (string) $timestamp, $form_state);
+  form_set_value($element['granularity'], (string) $granularity, $form_state);
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function dt_flexible_date_field_formatter_info() {
+  return [
+    // This formatter just displays the date value in the format indicated.
+    'dt_flexible_date_text_only' => [
+      'label' => t('Flexible Date Text Only'),
+      'field types' => ['dt_flexible_date'],
+      'settings' => [
+        'year' => 'Y',
+        'month' => 'F Y',
+        'day' => 'd F Y',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function dt_flexible_date_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = [];
+
+  // @TODO: Make configurable
+  $granularity_mapper = $display['settings'];
+
+  foreach ($items as $delta => $item) {
+    $elements[$delta] = [
+      '#markup' => date($granularity_mapper[$item['granularity']], $item['date']),
+    ];
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function dt_flexible_date_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  if (isset($form_state['view'])) {
+    $form = [];
+  }
+
+  $form['markup'] = [
+    '#type' => 'markup',
+    '#prefix' => '<p>',
+    '#sufix' => '</p>',
+    '#markup' => t('Date Formats to be configured using <a href="@link">PHP date formats</a>', ['@link' => 'http://php.net/manual/en/function.date.php']),
+  ];
+
+  $form['year'] = [
+    '#title' => t('Year Format'),
+    '#type' => 'textfield',
+    '#default_value' => $settings['year'],
+    '#description' => t('Display setting for Year Granularity'),
+  ];
+  $form['month'] = [
+    '#title' => t('Month Format'),
+    '#type' => 'textfield',
+    '#default_value' => $settings['month'],
+    '#description' => t('Display setting for Month Granularity'),
+  ];
+  $form['day'] = [
+    '#title' => t('Day Format'),
+    '#type' => 'textfield',
+    '#default_value' => $settings['day'],
+    '#description' => t('Display setting for Day Granularity'),
+  ];
+  return $form;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function dt_flexible_date_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $summary = [];
+  $summary[] = t('Settings for Flexible date');
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  foreach ($settings as $key => $setting) {
+    if (isset($setting)) {
+      $summary[] = t('Display for @key is @setting', [
+        '@key' => $key,
+        '@setting' => $setting,
+      ]);
+    }
+  }
+  return implode('<br />', $summary);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function dt_flexible_date_views_api() {
+  return [
+    'api' => 3,
+    'path' => drupal_get_path('module', 'dt_flexible_date') . '/includes',
+  ];
+}

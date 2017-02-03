@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Installation file for the dt_test_flexible_date_content feature.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function dt_test_flexible_date_content_enable() {
+  features_revert_module('dt_test_flexible_date_content');
+}

@@ -19,8 +19,6 @@
 
         <echo message="Set up private files directory"/>
         <phingcall target="set-private-files" />
-        <echo message="Revert project features"/>
-        <phingcall target="revert-dt-features" />
     </target>
 
     <property name="acquia.repo.dir" value="acquia-cloud"/>
@@ -171,10 +169,20 @@
 
     </target>
 
-    <target name="fetch-ac-db" description="Downloads the AC database." depends="">
+    <target name="fetch-ac-db" description="Downloads the AC database without revision data." depends="">
+        <delete file="${acquia.dump}"/>
+        <echo msg="Downloading remote database without revision data"/>
+        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --structure-tables-list=cache,cache_*,field_revision_* --gzip > ${acquia.dump}.gz"/>
+        <echo msg="AC database downloaded."/>
+        <echo msg="Unpacking database"/>
+        <exec command="gunzip ${acquia.dump}.gz"/>
+        <echo msg="Database unpacked"/>
+    </target>
+
+    <target name="fetch-full-ac-db" description="Downloads the full AC database." depends="">
         <delete file="${acquia.dump}"/>
         <echo msg="Downloading remote database"/>
-        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --gzip > ${acquia.dump}.gz"/>
+        <exec command="${drush.bin} -y @${drush.alias.acquia} sql-dump --structure-tables-list=cache,cache_* --gzip > ${acquia.dump}.gz"/>
         <echo msg="AC database downloaded."/>
         <echo msg="Unpacking database"/>
         <exec command="gunzip ${acquia.dump}.gz"/>
@@ -293,12 +301,36 @@
     </target>
 
     <!-- Download development modules. -->
-    <target name="download-development-modules-acceptance" depends="generate-development-makefile">
+    <target name="download-development-modules-acceptance">
         <echo msg="Download development modules."/>
         <phingcall target="drush-make-no-core">
-            <property name="drush.make.target.file" value="${subsite.temporary.development.make}"/>
+            <property name="drush.make.target.file" value="${development.make.dev}"/>
             <property name="drush.make.root" value="${phing.project.tmp.dir}/build"/>
         </phingcall>
+    </target>
+
+    <!-- Copy development modules. -->
+    <target name="custom-development-modules">
+        <if>
+            <not>
+                <equals arg1="${development.modules.custom.acceptance}" arg2=""/>
+            </not>
+            <then>
+                <mkdir dir="${phing.project.tmp.dir}/build/sites/all/modules/develop" />
+                <echo msg="Copy development modules."/>
+                <foreach list="${development.modules.custom.acceptance}" delimiter=" " param="module" target="copy-custom-development-modules"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="copy-custom-development-modules">
+        <echo msg="Copy development module: ${module}."/>
+        <exec
+                command='cp -r ${development.modules.custom}/${module} "${phing.project.tmp.dir}/build/sites/all/modules/develop/"'
+                dir="${project.basedir}"
+                passthru="true"
+                checkreturn="true"
+        />
     </target>
 
     <target name="copy-acceptance-files">
@@ -313,7 +345,13 @@
     <target
             name="build-acceptance"
             description="Build a version of the subsite intended to distribute as a release package."
-            depends="build-dist, unpack-acceptance-platform, copy-acceptance-files, download-development-modules-acceptance"/>
+            depends="build-dist, gen-styleguide, unpack-acceptance-platform, copy-acceptance-files, custom-development-modules, download-development-modules-acceptance"/>
+
+    <!-- Builds the CI environment, including the snapshot -->
+    <target
+            name="build-cphp"
+            description="Builds the project for CI testing on CPHP."
+            depends="build-dev, add-dt-dev, install, revert-dt-features, enable-test-modules, reconfigure-dt-permissions, cc-all, snapshot" />
 
     <!-- Phing target to install standard profile -->
     <target name="generate-settings">
@@ -408,6 +446,70 @@
         </if>
         <drush
                 command="${revert.command}"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+    </target>
+
+    <!-- Reconfigures the permissons -->
+    <target name="reconfigure-dt-permissions">
+        <echo msg="Reconfiguring permissions" />
+        <drush
+                command="dtrp"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+    </target>
+
+    <target name="gen-styleguide">
+        <exec command="if [ -f '${europa}node_modules/.bin/kss' ]; then echo 'true'; else echo 'false'; fi;" outputProperty="output.IS_FILE_EXISTS" />
+        <if>
+            <equals arg1="${output.IS_FILE_EXISTS}" arg2="true" />
+            <then>
+                <!-- Generate the styleguide -->
+                <echo msg="Generating styleguide" />
+                <exec command="grunt styleguide" dir="${europa}"/>
+            </then>
+            <else>
+                <fail message="It seems you don't have the required software to generate the styleguide, please run npm install in the Europa folder before trying again."/>
+            </else>
+        </if>
+    </target>
+
+    <!-- Clears caches -->
+    <target name="cc-all">
+        <echo msg="Clearing caches" />
+        <drush
+            command="cc all"
+            assume="yes"
+            root="${platform.build.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}"
+            haltonerror="false" />
+    </target>
+
+    <target name="enable-test-modules">
+        <echo msg="Enabling and reverting test modules" />
+        <drush
+                command="en dt_test_flexible_date"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+        <drush
+                command="fr dt_test_flexible_date"
+                assume="yes"
+                root="${platform.build.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}"
+                haltonerror="false" />
+        <drush
+                command="en dt_test_flexible_date_content"
                 assume="yes"
                 root="${platform.build.dir}"
                 bin="${drush.bin}"

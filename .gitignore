@@ -36,3 +36,6 @@ src/Phing/QualityAssuranceTask.php
 
 # Ignore external js libraries
 lib/themes/europa/js/libraries
+
+# Ignore styleguide generated files
+lib/themes/europa/styleguide/assets/*
