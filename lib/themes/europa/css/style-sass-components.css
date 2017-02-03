@@ -5934,10 +5934,16 @@ Style guide: page-header.informational
       background-color: #ffffff;
       color: #004494; } }
 
-.node-info-homepage.view-mode-homepage_political .page-header a {
-  color: #004494; }
-  .node-info-homepage.view-mode-homepage_political .page-header a:hover {
-    color: #000; }
+.node-info-homepage.view-mode-homepage_political .page-header .page-header__hero-title a {
+  text-decoration: none; }
+  .node-info-homepage.view-mode-homepage_political .page-header .page-header__hero-title a:hover {
+    text-decoration: underline; }
+
+@media (min-width: 622px) {
+  .node-info-homepage.view-mode-homepage_political .page-header .page-header__hero-title a {
+    color: #004494; }
+    .node-info-homepage.view-mode-homepage_political .page-header .page-header__hero-title a:hover {
+      color: #000; } }
 
 /*
 Pager
