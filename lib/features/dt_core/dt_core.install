@@ -1088,6 +1088,10 @@ function dt_core_update_7180() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
  */
 function dt_core_update_7183(&$sandbox) {
+  // Disable the linkchecker temporarily..
+  variable_set('dt_core_update_7138', variable_get('linkchecker_scan_nodetypes'));
+  variable_set('linkchecker_scan_nodetypes', []);
+
   $limit = 10;
   if (!isset($sandbox['max'])) {
     drush_print(t('Batch notification start of @update_hook', ['@update_hook' => __FUNCTION__]));
@@ -1137,7 +1141,7 @@ function dt_core_update_7183(&$sandbox) {
     foreach ($features as $feature => $bundle) {
       // Check if the current feature is enabled.
       if (module_exists($feature)) {
-        features_revert_module($feature);
+        features_revert([$feature => ['field', 'field_base', 'field_instance']]);
         if (is_array($bundle)) {
           foreach ($bundle as $content_types) {
             if (field_info_instance('node', 'field_core_keywords', $content_types)) {
@@ -1243,7 +1247,9 @@ function dt_core_update_7183(&$sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
-    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
+    drush_print(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 
+  variable_set('linkchecker_scan_nodetypes', variable_get('dt_core_update_7138'));
+  variable_del('dt_core_update_7138');
 }
