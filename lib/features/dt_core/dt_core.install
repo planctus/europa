@@ -1089,7 +1089,7 @@ function dt_core_update_7180() {
  */
 function dt_core_update_7183(&$sandbox) {
   // Disable the linkchecker temporarily..
-  variable_set('dt_core_update_7138', variable_get('linkchecker_scan_nodetypes'));
+  variable_set('dt_core_7183', variable_get('linkchecker_scan_nodetypes'));
   variable_set('linkchecker_scan_nodetypes', []);
 
   $limit = 10;
@@ -1250,6 +1250,6 @@ function dt_core_update_7183(&$sandbox) {
     drush_print(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 
-  variable_set('linkchecker_scan_nodetypes', variable_get('dt_core_update_7138'));
-  variable_del('dt_core_update_7138');
+  variable_set('linkchecker_scan_nodetypes', variable_get('dt_core_7183'));
+  variable_del('dt_core_7183');
 }

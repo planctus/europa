@@ -218,6 +218,10 @@ function dt_publication_update_7111() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1514
  */
 function dt_publication_update_7112(&$sandbox) {
+  // Disable the linkchecker temporarily..
+  variable_set('dt_pub_7112', variable_get('linkchecker_scan_nodetypes'));
+  variable_set('linkchecker_scan_nodetypes', []);
+
   $limit = 10;
 
   if (!isset($sandbox['max'])) {
@@ -284,6 +288,9 @@ function dt_publication_update_7112(&$sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
-    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
+    drush_print(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
+
+  variable_set('linkchecker_scan_nodetypes', variable_get('dt_pub_7112'));
+  variable_del('dt_pub_7112');
 }
