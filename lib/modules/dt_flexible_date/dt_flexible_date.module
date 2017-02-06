@@ -72,7 +72,7 @@ function dt_flexible_date_field_widget_form(&$form, &$form_state, $field, $insta
 
       $widget['date'] = [
         '#type' => 'date_popup',
-        '#default_value' => isset($value['date']) ? date('Y-m-d', $value['date']) : '',
+        '#default_value' => isset($value['date']) ? format_date($value['date'], 'custom', 'Y-m-d') : '',
         '#date_format' => 'd/m/Y',
       ];
 
@@ -147,7 +147,7 @@ function dt_flexible_date_field_formatter_view($entity_type, $entity, $field, $i
 
   foreach ($items as $delta => $item) {
     $elements[$delta] = [
-      '#markup' => date($granularity_mapper[$item['granularity']], $item['date']),
+      '#markup' => format_date($item['date'], 'custom', $granularity_mapper[$item['granularity']]),
     ];
   }
   return $elements;
