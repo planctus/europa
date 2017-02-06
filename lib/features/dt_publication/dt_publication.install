@@ -210,7 +210,7 @@ function dt_publication_update_7111() {
 }
 
 /**
- * Implements hook_update().
+ * DTTSB-1514: Change publication checkboxes.
  *
  * Publications content type: Type selection box no longer "ticked".
  * So collections and pages appear blank.
