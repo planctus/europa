@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_announcement_news_prd_importer.strongarm.inc

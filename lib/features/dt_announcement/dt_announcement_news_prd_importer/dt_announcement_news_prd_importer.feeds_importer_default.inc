@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_announcement_news_prd_importer.feeds_importer_default.inc
@@ -63,6 +62,8 @@ function dt_announcement_news_prd_importer_feeds_importer_default() {
         'context' => '//channel/item',
         'exp' => array(
           'errors' => 0,
+          'tidy' => 0,
+          'tidy_encoding' => 'UTF8',
           'debug' => array(
             'context' => 0,
             'xpathparser:0' => 0,
@@ -100,51 +101,46 @@ function dt_announcement_news_prd_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'xpathparser:2',
-            'target' => 'field_core_description',
-            'unique' => FALSE,
-          ),
-          3 => array(
             'source' => 'xpathparser:3',
             'target' => 'field_announcement_type',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'xpathparser:4',
             'target' => 'field_core_department:etid',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'xpathparser:5',
             'target' => 'field_core_persons:etid',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'xpathparser:6',
             'target' => 'field_core_priorities:etid',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'xpathparser:7',
             'target' => 'field_core_date_published:end',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'xpathparser:8',
             'target' => 'field_core_date_published:start',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'xpathparser:9',
             'target' => 'field_core_legacy_link:url',
             'unique' => FALSE,
           ),
-          10 => array(
+          9 => array(
             'source' => 'xpathparser:10',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          11 => array(
+          10 => array(
             'source' => 'xpathparser:11',
             'target' => 'field_core_type_content',
             'unique' => FALSE,
