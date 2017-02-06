@@ -986,3 +986,24 @@ function dt_core_preprocess_file_entity(&$variables) {
     unset($variables['content']['field_folder']);
   }
 }
+
+/**
+ * Implements hook_ds_pre_render_alter().
+ *
+ * Add hitMe library when view mode template is hitme.
+ */
+function dt_core_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
+  $layout = ds_get_layout($context['entity_type'], $context['bundle'], $context['view_mode']);
+  $hitme_lib_loaded = &drupal_static(__FUNCTION__);
+
+  if (!isset($hitme_lib_loaded) && strpos($layout['layout'], 'hitme') !== FALSE) {
+    $hitme = libraries_load('hitme');
+    if ($hitme['installed']) {
+      drupal_add_js($hitme['library path'] . '/jquery.hitMe-min.js');
+      drupal_add_js('(function ($) { $(function () { $(\'.listing__item-link .listing__column-main\').hitMe(); }); })(jQuery);',
+        ['type' => 'inline', 'scope' => 'footer']
+      );
+    }
+    $hitme_lib_loaded = TRUE;
+  }
+}

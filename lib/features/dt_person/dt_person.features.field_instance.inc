@@ -387,6 +387,7 @@ function dt_person_field_default_field_instances() {
           'nexteuropa_listing_item_modifier' => '',
           'nexteuropa_listing_modifier' => '',
           'nexteuropa_listing_wrapper_modifier' => '',
+          'show_translations' => '',
           'use_content_language' => 1,
           'view_mode' => 'file',
         ),
@@ -722,6 +723,7 @@ function dt_person_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'nexteuropa_formatters',
         'settings' => array(
+          'modifier' => '',
           'nexteuropa_title_item_link_modifier' => '',
           'nexteuropa_title_item_modifier' => '',
           'nexteuropa_title_listing_modifier' => 'listing__wrapper',
@@ -1601,9 +1603,9 @@ function dt_person_field_default_field_instances() {
       ),
       'event_speaker' => array(
         'label' => 'hidden',
-        'module' => 'taxonomy',
+        'module' => 'i18n_taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'i18n_taxonomy_term_reference_plain',
         'weight' => 35,
       ),
       'full' => array(

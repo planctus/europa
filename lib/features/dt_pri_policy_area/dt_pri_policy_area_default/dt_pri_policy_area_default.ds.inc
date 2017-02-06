@@ -195,7 +195,15 @@ function dt_pri_policy_area_default_ds_field_settings_info() {
   $ds_fieldsetting->settings = array(
     'title_field' => array(
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'h3',
+          'ow-cl' => 'listing__title',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
       ),
     ),
     'field_core_description' => array(
@@ -350,7 +358,7 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'priority_policy_area';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ne_2col';
+  $ds_layout->layout = 'ne_2col_hitme';
   $ds_layout->settings = array(
     'classes' => array(),
     'wrappers' => array(
@@ -362,6 +370,7 @@ function dt_pri_policy_area_default_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
     'regions' => array(
       'main' => array(
         0 => 'title_field',
