@@ -69,6 +69,14 @@ function dt_person_press_contacts_list_views_default_views() {
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'field_job_role_target_id';
+  /* Sort criterion: Content: Last Name (field_person_last_name) */
+  $handler->display->display_options['sorts']['field_person_last_name_value']['id'] = 'field_person_last_name_value';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['table'] = 'field_data_field_person_last_name';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['field'] = 'field_person_last_name_value';
+  /* Sort criterion: Content: First Name (field_person_first_name) */
+  $handler->display->display_options['sorts']['field_person_first_name_value']['id'] = 'field_person_first_name_value';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['table'] = 'field_data_field_person_first_name';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['field'] = 'field_person_first_name_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

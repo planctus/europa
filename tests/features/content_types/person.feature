@@ -111,6 +111,14 @@ Feature: Person content type tests
       | field_type_of_person    | 0                            |
       | language                | en                           |
       | field_core_contact      | Contact example 2            |
+
+    #Add some users writh the same job different names to test sorting
+    Given "Person" content:
+      | title      | field_person_first_name | field_person_last_name | field_person_gender | status | field_core_jobs | field_type_of_person | language | field_core_contact |
+      | John Smith | John                    | Smith                  | Male                | 1      | Example job 2   | 0                    | en       | Contact Example 2  |
+      | Jane Smith | Jane                    | Smith                  | Female              | 1      | Example job 2   | 0                    | en       | Contact Example 2  |
+
+
     And I am an anonymous user
 
   Scenario: Press contact listing should not display a link to their entity
@@ -154,7 +162,7 @@ Feature: Person content type tests
     # Avoid false positives.
     And I should not see "People (" in the ".filters__items-number" element
     # Strict version.
-    And I should not see "People (3)" in the ".filters__items-number" element
+    And I should not see "People (5)" in the ".filters__items-number" element
 
   Scenario: When a responsibility is not entered, the job title should be hidden
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
@@ -164,10 +172,13 @@ Feature: Person content type tests
 
   Scenario: Press contacts should be sorted by their role type weight, and should not be duplicate
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
-    Then I should see "Bert Normal" in the ".view-display-id-page li:nth-child(1)" element
-    And I should see "Duo Buo" in the ".view-display-id-page li:nth-child(2)" element
+#    Then print current html
+    And I should see "Duo Buo" in the ".view-display-id-page li:nth-child(1)" element
+    Then I should see "Bert Normal" in the ".view-display-id-page li:nth-child(2)" element
     And I should see "Alfred Rodeo" in the ".view-display-id-page li:nth-child(3)" element
-    And I should see "Jane Wilde" in the ".view-display-id-page li:nth-child(4)" element
+    And I should see "Jane Smith" in the ".view-display-id-page li:nth-child(4)" element
+    And I should see "John Smith" in the ".view-display-id-page li:nth-child(5)" element
+    And I should see "Jane Wilde" in the ".view-display-id-page li:nth-child(6)" element
 
   @dt_topic
   Scenario: Press contact listing should display filters
