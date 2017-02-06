@@ -401,6 +401,8 @@ Feature: Checking different state of events
     And I fill in "Moderation state" with "published"
     And I press "Save"
     Then I should see the heading "Evénements associés"
+    And I should not see the text "%26lt"
+    And I should not see the text "aucun"
 
   Scenario: Empty event collection should display no results messages
     Given I am viewing an "Event" content:
