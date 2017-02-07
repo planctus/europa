@@ -123,6 +123,21 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Contains';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'language' => 'language',
     'language_1' => 'language_1',
@@ -139,6 +154,21 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['field_consultation_status_value']['expose']['label'] = 'Consultation status';
   $handler->display->display_options['filters']['field_consultation_status_value']['expose']['operator'] = 'field_consultation_status_value_op';
   $handler->display->display_options['filters']['field_consultation_status_value']['expose']['identifier'] = 'field_consultation_status_value';
+  $handler->display->display_options['filters']['field_consultation_status_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   /* Filter criterion: Content: Opening date (field_core_date_opening) */
   $handler->display->display_options['filters']['field_core_date_opening_value']['id'] = 'field_core_date_opening_value';
   $handler->display->display_options['filters']['field_core_date_opening_value']['table'] = 'field_data_field_core_date_opening';
@@ -149,6 +179,21 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['field_core_date_opening_value']['expose']['label'] = 'Consultation start date';
   $handler->display->display_options['filters']['field_core_date_opening_value']['expose']['operator'] = 'field_core_date_opening_value_op';
   $handler->display->display_options['filters']['field_core_date_opening_value']['expose']['identifier'] = 'field_core_date_opening_value';
+  $handler->display->display_options['filters']['field_core_date_opening_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   $handler->display->display_options['filters']['field_core_date_opening_value']['form_type'] = 'date_popup';
   /* Filter criterion: Content: Closing date (field_core_date_closing) */
   $handler->display->display_options['filters']['field_core_date_closing_value']['id'] = 'field_core_date_closing_value';
@@ -160,6 +205,21 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['field_core_date_closing_value']['expose']['label'] = 'Consultation end date';
   $handler->display->display_options['filters']['field_core_date_closing_value']['expose']['operator'] = 'field_core_date_closing_value_op';
   $handler->display->display_options['filters']['field_core_date_closing_value']['expose']['identifier'] = 'field_core_date_closing_value';
+  $handler->display->display_options['filters']['field_core_date_closing_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   $handler->display->display_options['filters']['field_core_date_closing_value']['form_type'] = 'date_popup';
   /* Filter criterion: Policy areas (field_core_policy_areas) (selective) */
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['id'] = 'field_core_policy_areas_target_id_selective';
@@ -171,6 +231,21 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['expose']['label'] = 'Policy area';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['expose']['identifier'] = 'field_core_policy_areas_target_id_selective';
+  $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['selective_display_field'] = 'field_core_policy_areas';
   $handler->display->display_options['filters']['field_core_policy_areas_target_id_selective']['selective_items_limit'] = '100';
 

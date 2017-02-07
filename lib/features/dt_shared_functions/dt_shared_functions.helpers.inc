@@ -33,6 +33,41 @@ function _dt_shared_functions_additional_views_config() {
 }
 
 /**
+ * Helper function for submit handler.
+ *
+ * @see dt_shared_functions_form_alter()
+ */
+function _dt_shared_functions_file_callback_helper($options) {
+  $now = variable_get('dt_shared_functions_dt_file_' . $options['option'] . '_' . $options['bundle'] . '_' . $options['field_name'], TRUE);
+  if (!$now) {
+    variable_set('dt_shared_functions_dt_file_' . $options['option'] . '_' . $options['bundle'] . '_' . $options['field_name'], TRUE);
+    $class = 'status';
+    if ($options['option'] == 'use_component') {
+      $message = t('You will use the dt file upload component in your frontend theme.');
+    }
+    else {
+      $message = t('The upload button will be visible when a file is selected.');
+    }
+  }
+  else {
+    variable_set('dt_shared_functions_dt_file_' . $options['option'] . '_' . $options['bundle'] . '_' . $options['field_name'], FALSE);
+    $class = 'warning';
+    if ($options['option'] == 'use_component') {
+      $message = t('You will not use anymore the dt file upload component in your frontend theme.');
+    }
+    else {
+      $message = t('The upload button will not be visible in this instance.');
+    }
+  }
+
+  $output = '<div id="dt_file_' . $options['option'] . '_wrapper">';
+  $output .= '<div class="alert messages ' . $class . '">' . $message . '</div>';
+  $output .= '</div>';
+
+  return $output;
+}
+
+/**
  * Helper function to return the token group.
  *
  * We predefine this in a helper so that we can use it in multiple files, and in
@@ -469,4 +504,24 @@ function _dt_shared_functions_get_blocks_content($delta) {
   }
 
   return $result;
+}
+
+/**
+ * Helper function to sort an array list of values.
+ *
+ * @param string $a
+ *   String to be processed.
+ * @param string $b
+ *   String to be processed.
+ *
+ * @return int
+ *   Calculated value.
+ */
+function _dt_shared_functions_compare_ascii($a, $b) {
+  setlocale(LC_ALL, "en_US.utf8");
+
+  $at = iconv(mb_detect_encoding($a), 'ascii//TRANSLIT', $a);
+  $bt = iconv(mb_detect_encoding($b), 'ascii//TRANSLIT', $b);
+
+  return strcmp($at, $bt);
 }

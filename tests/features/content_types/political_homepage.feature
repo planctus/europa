@@ -17,9 +17,9 @@ Feature: Political Homepage different layout
     Then I should see an "header section.header-search-bar div.header-search-bar__wrapper" element
     # Check pages of other content type
     Given I am viewing an "announcement" content:
-      | title                         | A new web presence for the Commission |
-      | status                        | 1                                     |
-      | language                      | en                                    |
+      | title    | A new web presence for the Commission |
+      | status   | 1                                     |
+      | language | en                                    |
     Then I should see an "header.site-header" element
     Then I should not see an "header.site-header--homepage" element
     # Logo, searchbar and language switch.
@@ -46,6 +46,27 @@ Feature: Political Homepage different layout
     And I press "Save"
     Then I should see "Highlight fr" in the ".field--field-core-introduction .field__label" element
     Then I should see "Political introduction FR" in the ".field--field-core-introduction .field__items p" element
+
+
+  Scenario: Political Homepage priorities are translated
+    Given I am logged in as a user with the "administrator" role
+    Given "Priority" content:
+      | title                          | status | language |
+      | Content title Lipsum - English | 1      | en       |
+    Given I am viewing a "Homepage" content:
+      | title                   | Political en           |
+      | status                  | 1                      |
+      | language                | en                     |
+      | og_group_ref            | Global editorial team  |
+    Then I should see "Content title Lipsum - English" in the ".field--priorities-listing .listing__item" element
+    And I create the following translations for "info_homepage" content with title "Political en":
+      | title                   | status | language |
+      | Political fr            | 1      | fr       |
+    And I create the following translations for "Priority" content with title "Content title Lipsum - English":
+      | title                         | status | language |
+      | Content title Lipsum - French | 1      | fr       |
+    And I change the language to "French"
+    Then I should see "Content title Lipsum - French" in the ".field--priorities-listing .listing__item" element
 
   Scenario: Latest block can be turned on and off
     Given "Announcement" content:
@@ -129,8 +150,34 @@ Feature: Political Homepage different layout
       | field_info_homepage_about_button | More About - http://google.be                     |
       | language                         | en                                                |
       | status                           | 1                                                 |
+    Then I should see the heading "About the European Commission" in the "main_content" region
     Then I should see the link "Test" linking to "http://google.be"
     And I should see the link "Test2" linking to "http://google.be"
     And I should see the link "More About" linking to "http://google.be"
     And I should see an ".pull-right" element
     And I should see an ".listing__wrapper--two-columns" element
+
+  Scenario: Contact block is visible and it is two column
+    Given I am logged in as a user with the "administrator" role
+    Given I am viewing a "Homepage" content:
+      | title                        | Frontpage title                                   |
+      | field_info_homepage_contacts | Test - http://google.be, Test2 - http://google.be |
+      | language                     | en                                                |
+      | status                       | 1                                                 |
+    Then I should see the heading "Contact" in the "main_content" region
+    Then I should see the link "Test" linking to "http://google.be"
+    And I should see the link "Test2" linking to "http://google.be"
+    And I should see an ".pull-right" element
+    And I should see an ".listing__wrapper--two-columns" element
+
+  Scenario: Links in the introduction are visible
+    Given I am logged in as a user with the "administrator" role
+    And I am viewing a "Homepage":
+      | title                          | Political hp                              |
+      | field_core_introduction:value  | Political introduction <a href=#>test</a> |
+      | field_core_introduction:format | full_html                                 |
+      | status                         | 1                                         |
+      | language                       | en                                        |
+      | og_group_ref                   | Global editorial team                     |
+    Then I should see "Political introduction" in the ".field--field-core-introduction .field__items p" element
+    And I should see "test" in the ".field--field-core-introduction .field__items p a" element

@@ -116,14 +116,120 @@ function dt_publication_ds_fields_info($entity_type) {
 }
 
 /**
+ * Implements hook_views_pre_build().
+ */
+function dt_publication_views_pre_build(&$view) {
+  if ($view->name == 'publication_list' && $node = menu_get_object()) {
+    if ($node->field_publications_visibility[LANGUAGE_NONE][0]['value'] == 1) {
+      $prev_filters = $view->display_handler->get_option('filters');
+
+      // Topic.
+      $predefined_topic = NULL;
+      if (!empty($node->field_publications_topic_eurovoc) && $predefined_topic = $node->field_publications_topic_eurovoc[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_eurovoc_taxonomy_target_id_selective']['value'][$predefined_topic] = $predefined_topic;
+      }
+
+      // Country.
+      $predefined_country = NULL;
+      if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_core_nal_countries_tid_selective']['value'][$predefined_country] = $predefined_country;
+      }
+
+      // Year.
+      $predefined_year = NULL;
+      if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
+        $prev_filters['field_core_date_published_value']['value']['year'] = date('Y', $predefined_year);
+        $predefined_year = ['value' => ['year' => date('Y', $predefined_year)]];
+      }
+
+      // Publication type.
+      $predefined_type = NULL;
+      if (!empty($node->field_publications_type) && $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
+      }
+
+      // Publication tag.
+      $predefined_tag = NULL;
+      if (!empty($node->field_publications_tag) && $predefined_tag = $node->field_publications_tag[LANGUAGE_NONE][0]['tid']) {
+        $prev_filters['field_core_tags_tid_i18n']['value'][$predefined_tag] = $predefined_tag;
+      }
+
+      $exp_filters = [
+        'field_eurovoc_taxonomy_target_id_selective' => [
+          'field_publications_topic_on',
+          $predefined_topic,
+        ],
+        'field_core_nal_countries_tid_selective' => [
+          'field_publications_country_on',
+          $predefined_country,
+        ],
+        'field_core_date_published_value' => [
+          'field_publications_year_on',
+          $predefined_year,
+        ],
+        'field_publication_type_tid_i18n' => [
+          'field_publications_type_on',
+          $predefined_type,
+        ],
+        'field_core_tags_tid_i18n' => [
+          'field_publications_tag_on',
+          $predefined_tag,
+        ],
+      ];
+
+      $exposed_input = [];
+
+      // Hide unwanted filters.
+      foreach ($exp_filters as $exp_filter_key => $exp_filter) {
+        if (isset($node->{$exp_filter[0]}) && $node->{$exp_filter[0]}[LANGUAGE_NONE][0]['value']) {
+          // To show view meta when the exposed filter input isn't available.
+          if ($exp_filter[1] && !isset($_GET[$exp_filter_key])) {
+            $exposed_input[$exp_filter_key] = $exp_filter[1];
+          }
+        }
+
+        // If the filter is not enabled, we should set exposed to false.
+        if (isset($node->{$exp_filter[0]}) && !$node->{$exp_filter[0]}[LANGUAGE_NONE][0]['value']) {
+          $prev_filters[$exp_filter_key]['exposed'] = FALSE;
+          $view->filter[$exp_filter_key]->options['exposed'] = FALSE;
+
+          if ($exp_filter[1]) {
+            // Date filter has different structure and we have to be aware.
+            if ($exp_filter_key == 'field_core_date_published_value') {
+              $view->filter[$exp_filter_key]->value = $exp_filter[1];
+              $prev_filters[$exp_filter_key]['value'] = $exp_filter[1];
+              continue;
+            }
+            $view->filter[$exp_filter_key]->value = [$exp_filter[1] => $exp_filter[1]];
+          }
+          else {
+            unset($view->filter[$exp_filter_key]);
+            unset($prev_filters[$exp_filter_key]);
+          }
+        }
+      }
+
+      // Set the exposed input to our values.
+      if (!empty($exposed_input)) {
+        $view->set_exposed_input($exposed_input);
+      }
+      $view->display_handler->override_option('filters', $prev_filters);
+    }
+  }
+}
+
+/**
  * Helper function to embed view.
+ *
+ * @param object $entity
+ *   The entity.
  *
  * @return string
  *    The rendered view.
  */
 function _dt_publication_listing($entity) {
   $emw = entity_metadata_wrapper('node', $entity['entity']);
-  if (isset($emw->field_publications_visibility) && $emw->field_publications_visibility->value() == TRUE) {
+  if (isset($emw->field_publications_visibility) && $emw->field_publications_visibility->value() === TRUE) {
     return views_embed_view('publication_list', 'page_1');
   }
   return NULL;
@@ -132,113 +238,112 @@ function _dt_publication_listing($entity) {
 /**
  * Helper function to embed view exposed filter with applied values.
  *
+ * We only show if there is an exposed filter set to be visible.
+ *
+ * @param object $entity
+ *   The entity.
+ *
  * @return string
- *    The rendered view.
+ *   The rendered view.
  */
 function _dt_publication_listing_exposed($entity) {
-  $emw = entity_metadata_wrapper('node', $entity['entity']);
-  $node = $entity['entity'];
-  if ((isset($emw->field_publications_visibility)
-      && $emw->field_publications_visibility->value() == TRUE)
-      && $emw->field_publications_country_on->value() == 1
-      || $emw->field_publications_year_on->value() == 1
-      || $emw->field_publications_type_on->value() == 1
-      || $emw->field_publications_tag_on->value() == 1
-      || $emw->field_publications_topic_on->value() == 1) {
-    // Get the view with the exposed form.
-    $view = views_get_view('publication_list');
+  if ($entity['entity']->field_publications_visibility[LANGUAGE_NONE][0]['value'] == 1
+  && $entity['entity']->field_publications_topic_on[LANGUAGE_NONE][0]['value'] == 1
+    || $entity['entity']->field_publications_country_on[LANGUAGE_NONE][0]['value'] == 1
+    || $entity['entity']->field_publications_type_on[LANGUAGE_NONE][0]['value'] == 1
+    || $entity['entity']->field_publications_year_on[LANGUAGE_NONE][0]['value'] == 1
+    || $entity['entity']->field_publications_tag_on[LANGUAGE_NONE][0]['value'] == 1) {
     $display_id = 'page_1';
-    $view->set_display($display_id);
-
-    $form_state = [
-      'view' => $view,
-      'display' => $view->display_handler->display,
-      'exposed_form_plugin' => $view->display_handler->get_plugin('exposed_form'),
-      'method' => 'get',
-      'rerender' => TRUE,
-      'no_redirect' => TRUE,
-    ];
-
-    $render = [];
-    $render['dt_title'] = [
-      '#type' => 'markup',
-      '#markup' => t('Refine results'),
-      '#prefix' => '<h3 class="block__title filters__title">',
-      '#suffix' => '</h3>',
-    ];
-    // Add the ready exposed form to the render.
-    $render['form'] = drupal_build_form('views_exposed_form', $form_state);
-
-    // Topic.
-    $predefined_topic = NULL;
-    if (!empty($node->field_publications_topic_eurovoc) && $predefined_topic = $node->field_publications_topic_eurovoc[LANGUAGE_NONE][0]['tid']) {
-      $render['form']['field_eurovoc_taxonomy_target_id_selective']['#value'] = $predefined_topic;
-
-      // Make sure the preselected term is in the options.
-      $options = $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options'];
-      if (!array_key_exists($predefined_topic, $options)) {
-        $term = i18n_taxonomy_localize_terms(taxonomy_term_load($predefined_topic));
-        $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options'][$term->tid] = $term->name;
+    if ($view = views_get_view('publication_list')) {
+      if ($view->access($display_id)) {
+        $view->build($display_id);
+        $view->set_display($display_id);
+        $view->init_handlers();
+        if (isset($view->display_handler)) {
+          $view->execute($display_id);
+          $output = $view->display_handler->view_special_blocks('-exp');
+          $view->destroy();
+          $render = [];
+          $render['dt_title'] = [
+            '#type' => 'markup',
+            '#markup' => t('Refine results'),
+            '#prefix' => '<h3 class="block__title filters__title">',
+            '#suffix' => '</h3>',
+          ];
+          $render['form'] = [
+            '#type' => 'markup',
+            '#markup' => $output['content'],
+          ];
+          return drupal_render($render);
+        }
       }
-      if (!empty($_GET['field_eurovoc_taxonomy_target_id_selective'])) {
-        $render['form']['field_eurovoc_taxonomy_target_id_selective']['#value'] = $_GET['field_eurovoc_taxonomy_target_id_selective'];
-      }
+      $view->destroy();
     }
-    if (!empty($render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All']) && $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] == t('- Any -')) {
-      $render['form']['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] = t('- All topics -');
-    }
-
-    // Country.
-    $predefined_country = NULL;
-    if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
-      $render['form']['field_core_nal_countries_tid_selective']['#value'] = $predefined_country;
-      if (!empty($_GET['field_core_nal_countries_tid_selective'])) {
-        $render['form']['field_core_nal_countries_tid_selective']['#value'] = $_GET['field_core_nal_countries_tid_selective'];
-      }
-    }
-    if (!empty($render['form']['field_core_nal_countries_tid_selective']['#options']['All']) && $render['form']['field_core_nal_countries_tid_selective']['#options']['All'] == t('- Any -')) {
-      $render['form']['field_core_nal_countries_tid_selective']['#options']['All'] = t('- All countries -');
-    }
-
-    // Year.
-    $predefined_year = NULL;
-    if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
-      $render['form']['field_core_date_updated_value']['#value'] = date('Y', $predefined_year);
-      if (!empty($_GET['field_core_date_updated_value'])) {
-        $render['form']['field_core_date_updated_value']['value']['year']['#value'] = $_GET['field_core_date_updated_value']['value']['year'];
-      }
-    }
-    if (!empty($render['form']['field_core_date_updated_value']['value']['year']['#options']['']) && $render['form']['field_core_date_updated_value']['value']['year']['#options'][''] == t('-Year')) {
-      $render['form']['field_core_date_updated_value']['value']['year']['#options'][''] = t('- All years -');
-    }
-
-    // Publication type.
-    $predefined_type = NULL;
-    if (!empty($node->field_publications_type) && $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid']) {
-      $render['form']['field_publication_type_tid_i18n']['#value'] = $predefined_type;
-      if (!empty($_GET['field_publication_type_tid_i18n'])) {
-        $render['form']['field_publication_type_tid_i18n']['#value'] = $_GET['field_publication_type_tid_i18n'];
-      }
-    }
-    if (!empty($render['form']['field_publication_type_tid_i18n']['#options']['All']) && $render['form']['field_publication_type_tid_i18n']['#options']['All'] == t('- Any -')) {
-      $render['form']['field_publication_type_tid_i18n']['#options']['All'] = t('- All publication types -');
-    }
-
-    // Publication tag.
-    $predefined_tag = NULL;
-    if (!empty($node->field_publications_tag) && $predefined_tag = $node->field_publications_tag[LANGUAGE_NONE][0]['tid']) {
-      $render['form']['field_core_tags_tid_i18n']['#value'] = $predefined_tag;
-      if (!empty($_GET['field_core_tags_tid_i18n'])) {
-        $render['form']['field_core_tags_tid_i18n']['#value'] = $_GET['field_core_tags_tid_i18n'];
-      }
-    }
-    if (!empty($render['form']['field_core_tags_tid_i18n']['#options']['All']) && $render['form']['field_core_tags_tid_i18n']['#options']['All'] == t('- Any -')) {
-      $render['form']['field_core_tags_tid_i18n']['#options']['All'] = t('- All tags -');
-    }
-
-    return drupal_render($render);
   }
-  return NULL;
+  return '';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * In order for the dynamically loaded form to submit to the right location we
+ * have to change the action.
+ *
+ * This part is including the specific solution for DTTSB-1570.
+ */
+function dt_publication_form_views_exposed_form_alter(&$form, $form_state, $form_id) {
+  if ($form_state['view']->name == 'publication_list' && $form_state['view']->current_display == 'page_1') {
+    $form['#action'] = '/' . drupal_get_path_alias();
+
+    // Change "All" texts on exposed filters.
+    if (!empty($form['field_eurovoc_taxonomy_target_id_selective']['#options']['All']) && $form['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] == t('- Any -')) {
+      $form['field_eurovoc_taxonomy_target_id_selective']['#options']['All'] = t('- All topics -');
+    }
+    if (!empty($form['field_core_nal_countries_tid_selective']['#options']['All']) && $form['field_core_nal_countries_tid_selective']['#options']['All'] == t('- Any -')) {
+      $form['field_core_nal_countries_tid_selective']['#options']['All'] = t('- All countries -');
+    }
+    if (!empty($form['field_publication_type_tid_i18n']['#options']['All']) && $form['field_publication_type_tid_i18n']['#options']['All'] == t('- Any -')) {
+      $form['field_publication_type_tid_i18n']['#options']['All'] = t('- All publication types -');
+    }
+    if (!empty($form['field_core_tags_tid_i18n']['#options']['All']) && $form['field_core_tags_tid_i18n']['#options']['All'] == t('- Any -')) {
+      $form['field_core_tags_tid_i18n']['#options']['All'] = t('- All tags -');
+    }
+
+    /** @var View $view */
+    $view = $form_state['view'];
+    $input = $view->get_exposed_input();
+    $filters = $view->display_handler->get_option('filters');
+
+    // DTTSB-1570 specific tags selection handling.
+    if (isset($input['field_core_tags_tid_i18n']) && isset($filters['field_core_tags_tid_i18n']['exposed']) && $filters['field_core_tags_tid_i18n']['exposed'] === TRUE) {
+      $tag_tid = $input['field_core_tags_tid_i18n'];
+      // If term has children or parent, show only children.
+      if (!empty($children = taxonomy_get_children($tag_tid))
+      || !empty($parent = taxonomy_get_parents($tag_tid))) {
+        if (isset($parent)) {
+          $children = taxonomy_get_children(key($parent));
+          $tag_tid = key($parent);
+        }
+        foreach ($form['field_core_tags_tid_i18n']['#options'] as $tid => $name) {
+          if (!array_key_exists($tid, $children)) {
+            unset($form['field_core_tags_tid_i18n']['#options'][$tid]);
+          }
+        }
+        $form['field_core_tags_tid_i18n']['#options'] = [$tag_tid => '- Any -'] + $form['field_core_tags_tid_i18n']['#options'];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_date_select_process_alter().
+ */
+function dt_publication_date_select_process_alter(&$element, &$form_state, $context) {
+  if ($context['form']['#id'] == 'views-exposed-form-publication-list-page-1') {
+    if (isset($element['year']['#options']['']) && $element['year']['#options'][''] == '-Year') {
+      $element['year']['#options'][''] = t('- All years -');
+    }
+  }
 }
 
 /**
@@ -316,108 +421,6 @@ function _dt_publication_collections() {
         // "0" == Publication.
         return views_embed_view('publication_collections', 'block');
       }
-    }
-  }
-}
-
-/**
- * Implements hook_views_pre_view().
- */
-function dt_publication_views_pre_view(&$view, &$display_id, &$args) {
-
-  if ($view->name == 'publication_list' && $display_id == 'page_1' && $node = menu_get_object()) {
-    if (empty($node->field_publications_visibility) || !$node->field_publications_visibility[LANGUAGE_NONE][0]['value']) {
-      $view->executed = TRUE;
-      $view->build = TRUE;
-      $view->display['page_1']->handler->default_display->options['empty'] = [];
-    }
-    else {
-      $prev_filters = $view->display_handler->get_option('filters');
-
-      // Topic.
-      $predefined_topic = NULL;
-      if (!empty($node->field_publications_topic_eurovoc) && $predefined_topic = $node->field_publications_topic_eurovoc[LANGUAGE_NONE][0]['tid']) {
-        $prev_filters['field_eurovoc_taxonomy_target_id_selective']['value'][$predefined_topic] = $predefined_topic;
-      }
-
-      // Country.
-      $predefined_country = NULL;
-      if (!empty($node->field_publications_country) && $predefined_country = $node->field_publications_country[LANGUAGE_NONE][0]['tid']) {
-        $prev_filters['field_core_nal_countries_tid_selective']['value'][$predefined_country] = $predefined_country;
-      }
-
-      // Year.
-      $predefined_year = NULL;
-      if (!empty($node->field_publications_year) && $predefined_year = $node->field_publications_year[LANGUAGE_NONE][0]['value']) {
-        $prev_filters['field_core_date_updated_value']['value']['value'] = date('Y', $predefined_year);
-      }
-
-      // Publication type.
-      $predefined_type = NULL;
-      if (!empty($node->field_publications_type) && $predefined_type = $node->field_publications_type[LANGUAGE_NONE][0]['tid']) {
-        $prev_filters['field_publication_type_tid_i18n']['value'][$predefined_type] = $predefined_type;
-      }
-
-      // Publication tag.
-      $predefined_tag = NULL;
-      if (!empty($node->field_publications_tag) && $predefined_tag = $node->field_publications_tag[LANGUAGE_NONE][0]['tid']) {
-        $prev_filters['field_core_tags_tid_i18n']['value'][$predefined_tag] = $predefined_tag;
-      }
-
-      $exp_filters = [
-        'field_eurovoc_taxonomy_target_id_selective' => ['field_publications_topic_on', $predefined_topic],
-        'field_core_nal_countries_tid_selective' => ['field_publications_country_on', $predefined_country],
-        'field_core_date_updated_value' => ['field_publications_year_on', $predefined_year],
-        'field_publication_type_tid_i18n' => ['field_publications_type_on', $predefined_type],
-        'field_core_tags_tid_i18n' => ['field_publications_tag_on', $predefined_tag],
-      ];
-
-      foreach ($exp_filters as $exp_filter_key => $exp_filter) {
-        if (!$node->{$exp_filter[0]}[LANGUAGE_NONE][0]['value']) {
-          if (!$exp_filter[1]) {
-            unset($prev_filters[$exp_filter_key]);
-          }
-          else {
-            $prev_filters[$exp_filter_key]['exposed'] = FALSE;
-          }
-        }
-      }
-
-      $view->display_handler->override_option('filters', $prev_filters);
-    }
-  }
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function dt_publication_preprocess_views_view(&$variables) {
-  if ($variables['name'] == 'publication_list' && $variables['display_id'] == 'page_1' && empty($variables['title'])) {
-    $view = $variables['view'];
-    if (isset($view->filter['type'])) {
-      $content_type_filters = $view->filter['type']->value;
-      if (is_array($content_type_filters)) {
-        // The first element of the array is the right type of filter.
-        $content_type = reset($content_type_filters);
-      }
-      else {
-        // Case for Search API filters.
-        $content_type = (string) $content_type_filters;
-      }
-
-      // Make sure we have a fallback.
-      $content_type_forms = _dt_core_get_plural_content_types($content_type);
-      // Set the display title and uppercase it.
-      $display_title = drupal_ucfirst(format_plural(0, $content_type_forms['singular'], $content_type_forms['plural']));
-
-      $title_markup = [
-        '#markup' => $display_title,
-        '#prefix' => '<div class="filters__result-count"><span class="filters__items-number">',
-        '#suffix' => '</span></div>',
-      ];
-
-      // Set the title to what we just configured.
-      $variables['title'] = drupal_render($title_markup);
     }
   }
 }

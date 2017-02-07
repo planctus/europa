@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_priority_default.field_group.inc

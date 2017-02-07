@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Install file for dt_flexible_date.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function dt_flexible_date_field_schema($field) {
+  return [
+    'columns' => [
+      'date' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'sortable' => TRUE,
+      ],
+      'granularity' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'sortable' => FALSE,
+      ],
+    ],
+  ];
+}

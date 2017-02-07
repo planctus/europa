@@ -27,10 +27,10 @@ Feature: Person content type tests
       | Volgende topic | 1      | nl       |
 
     Given "Job" content:
-      | title         | field_job_role | status | field_job_responsabilities | field_core_topics | field_job_team_group |
-      | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       | press_officer        |
-      | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      | multimedia_team      |
-      | Example job 3 | Third role     | 1      |                            | Second topic      | spokesperson         |
+      | title         | field_job_role | status | field_job_responsabilities | field_core_topics | field_job_team_group | field_job_acting_role |
+      | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       | press_officer        | 1                     |
+      | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      | multimedia_team      | 0                     |
+      | Example job 3 | Third role     | 1      |                            | Second topic      | spokesperson         | 0                     |
     And I create the following translations for "job" content with title "Example job 1":
       | title           | status | language |
       | Voorbeeld job 1 | 1      | nl       |
@@ -117,6 +117,7 @@ Feature: Person content type tests
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
     Then I should not see the link "Jane Wilde"
     Then I should not see the link "Bert Normal"
+    And I should see "(ACTING) SUB ROLE"
 
   Scenario: Press contact listing should display persons along with their contacts
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
@@ -258,4 +259,3 @@ Feature: Person content type tests
     Then I should not see "Bert Normaal"
     And I should not see "Jane Roekeloos"
     And I should see "Fred Rode"
-

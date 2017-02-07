@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_pri_policy_area.features.inc
@@ -17,7 +16,10 @@ function dt_pri_policy_area_default_cer() {
     "cer_weight" : { "und" : [ { "value" : "0" } ] },
     "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
     "cer_right" : { "und" : [ { "path" : "node:basic_page:field_core_parents" } ] },
-    "rdf_mapping" : []
+    "entity_type" : "cer",
+    "rdf_mapping" : [],
+    "entity_translation_handler_id" : "cer-eid-816-0",
+    "translations" : {"original":null,"data":[]}
   }');
   $items['node:priority_policy_area:field_core_child_policies*node:policy:field_core_parent'] = entity_import('cer', '{
     "identifier" : "node:priority_policy_area:field_core_child_policies*node:policy:field_core_parent",
@@ -26,7 +28,10 @@ function dt_pri_policy_area_default_cer() {
     "cer_weight" : { "und" : [ { "value" : "0" } ] },
     "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
     "cer_right" : { "und" : [ { "path" : "node:policy:field_core_parent" } ] },
-    "rdf_mapping" : []
+    "entity_type" : "cer",
+    "rdf_mapping" : [],
+    "entity_translation_handler_id" : "cer-eid-817-0",
+    "translations" : {"original":null,"data":[]}
   }');
   $items['node:priority_policy_area:field_core_child_policies*node:priority_policy_area:field_core_parent'] = entity_import('cer', '{
     "identifier" : "node:priority_policy_area:field_core_child_policies*node:priority_policy_area:field_core_parent",
@@ -35,7 +40,10 @@ function dt_pri_policy_area_default_cer() {
     "cer_weight" : { "und" : [ { "value" : "0" } ] },
     "cer_left" : { "und" : [ { "path" : "node:priority_policy_area:field_core_child_policies" } ] },
     "cer_right" : { "und" : [ { "path" : "node:priority_policy_area:field_core_parent" } ] },
-    "rdf_mapping" : []
+    "entity_type" : "cer",
+    "rdf_mapping" : [],
+    "entity_translation_handler_id" : "cer-eid-818-0",
+    "translations" : {"original":null,"data":[]}
   }');
   return $items;
 }

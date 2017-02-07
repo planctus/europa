@@ -11,6 +11,8 @@
 function dt_consultation_default_install() {
   $t = get_t();
   drupal_set_message($t('NextEuropa consultation feature is installed on your site.'));
+  // Enabling  consulation search module.
+  module_enable(['dt_consultation_search']);
 }
 
 /**

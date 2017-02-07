@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy_area.strongarm.inc
@@ -115,6 +114,42 @@ function dt_policy_area_strongarm() {
       'file' => array(
         'custom_settings' => FALSE,
       ),
+      'structured_navigation' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlight' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_collection' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_livestream' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_past' => array(
+        'custom_settings' => FALSE,
+      ),
+      'hero_links' => array(
+        'custom_settings' => FALSE,
+      ),
+      'image_label' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_informational' => array(
+        'custom_settings' => FALSE,
+      ),
+      'homepage_political' => array(
+        'custom_settings' => FALSE,
+      ),
+      'job' => array(
+        'custom_settings' => FALSE,
+      ),
+      'event_speaker' => array(
+        'custom_settings' => FALSE,
+      ),
+      'name' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -145,6 +180,10 @@ function dt_policy_area_strongarm() {
             'visible' => FALSE,
           ),
           'title' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
+          'structured_navigation' => array(
             'weight' => '4',
             'visible' => FALSE,
           ),

@@ -133,7 +133,7 @@ function brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_al
   $user_types_options = $form['field_brp_fb_user_type'][LANGUAGE_NONE]['#options'];
   // Getting the list of values.
   if ($user_types = BrpTools::buildOptionsFromVocabulary('brp_user_type', 'field_taxonomy_ws_key')) {
-    uasort($user_types, '_brp_feedback_compare_ascii');
+    uasort($user_types, '_dt_shared_functions_compare_ascii');
     // Find and remove 'Other' element and put to the end.
     $other = $user_types['OTHER'];
     unset($user_types['OTHER']);
@@ -158,7 +158,7 @@ function brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_al
   $countries_options = $form['field_brp_fb_country'][LANGUAGE_NONE]['#options'];
   if ($countries = BrpTools::buildOptionsFromVocabulary('nal_countries', 'field_iso3')) {
     // Sorting countries array; get defined locale first.
-    uasort($countries, '_brp_feedback_compare_ascii');
+    uasort($countries, '_dt_shared_functions_compare_ascii');
 
     // Preserving the none option.
     $countries = ['_none' => $countries_options['_none']] + $countries;
@@ -170,7 +170,7 @@ function brp_feedback_form_form_brp_initiatives_feedback_entityform_edit_form_al
   $scope_options = $form['field_brp_fb_scope'][LANGUAGE_NONE]['#options'];
   // Getting the list of values.
   if ($scopes = BrpTools::buildOptionsFromVocabulary('brp_scope', 'field_taxonomy_ws_key')) {
-    uasort($scopes, '_brp_feedback_compare_ascii');
+    uasort($scopes, '_dt_shared_functions_compare_ascii');
     // Preserving the none option.
     $scopes = ['_none' => $scope_options['_none']] + $scopes;
     // Attaching the list of values to the field.
@@ -261,24 +261,4 @@ function brp_feedback_form_form_brp_initiatives_feedback_report_entityform_edit_
   $form['actions']['cancel'] = [
     '#markup' => l(t('Cancel'), _brp_initiative_get_feedback_link(menu_get_object(), $fb_id), ["attributes" => ["class" => "btn"]]),
   ];
-}
-
-/**
- * Helper function to sort countries list.
- *
- * @param string $a
- *   String to be processed.
- * @param string $b
- *   String to be processed.
- *
- * @return int
- *   Calculated value.
- */
-function _brp_feedback_compare_ascii($a, $b) {
-  setlocale(LC_ALL, "en_US.utf8");
-
-  $at = iconv(mb_detect_encoding($a), 'ascii//TRANSLIT', $a);
-  $bt = iconv(mb_detect_encoding($b), 'ascii//TRANSLIT', $b);
-
-  return strcmp($at, $bt);
 }

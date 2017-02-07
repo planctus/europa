@@ -29,6 +29,10 @@ projects[masquerade][version] = "1.0-rc7"
 projects[maillog][subdir] = "develop"
 projects[maillog][version] = "1.0-alpha1"
 
+;node_revision_delete
+projects[node_revision_delete][subdir] = "develop"
+projects[node_revision_delete][version] = "2.6"
+
 ; devel
 projects[devel][subdir] = "develop"
 projects[devel][version] = "1.5"

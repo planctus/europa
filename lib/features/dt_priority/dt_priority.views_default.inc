@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_priority.views_default.inc

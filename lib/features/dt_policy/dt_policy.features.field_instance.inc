@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_policy.features.field_instance.inc
@@ -37,6 +36,12 @@ function dt_policy_field_default_field_instances() {
         ),
         'type' => 'context_nav_item',
         'weight' => 9,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -98,6 +103,13 @@ function dt_policy_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 38,
+      ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -283,6 +295,12 @@ function dt_policy_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -360,9 +378,8 @@ function dt_policy_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 27,
       ),
       'full' => array(
@@ -370,6 +387,12 @@ function dt_policy_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -413,12 +436,17 @@ function dt_policy_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
         'settings' => array(),
-        'type' => 'link_default',
+        'type' => 'hidden',
         'weight' => 24,
       ),
       'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'structured_navigation' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -485,11 +513,8 @@ function dt_policy_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 25,
       ),
       'full' => array(
@@ -497,6 +522,12 @@ function dt_policy_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 23,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -560,6 +591,12 @@ Type name of commissioner to search for it.
         'type' => 'context_nav_item',
         'weight' => 8,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -615,6 +652,12 @@ Type name of commissioner to search for it.
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 37,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -676,6 +719,12 @@ Type name of commissioner to search for it.
         'type' => 'context_nav_item',
         'weight' => 6,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -736,6 +785,12 @@ Type name of commissioner to search for it.
         'type' => 'context_nav_item',
         'weight' => 7,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -780,11 +835,8 @@ Type name of commissioner to search for it.
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 26,
       ),
       'full' => array(
@@ -792,6 +844,12 @@ Type name of commissioner to search for it.
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -855,6 +913,12 @@ Type name of commissioner to search for it.
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 35,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -933,6 +997,12 @@ Type name of commissioner to search for it.
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 32,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1025,6 +1095,12 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
         'type' => 'text_default',
         'weight' => 33,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1107,6 +1183,12 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
         'type' => 'hidden',
         'weight' => 36,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1185,6 +1267,12 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 32,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1268,6 +1356,12 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
         'type' => 'hidden',
         'weight' => 31,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1341,6 +1435,12 @@ https://blogs.ec.europa.eu/eu-digital/content/writing-europa-let%E2%80%99s-guide
         'type' => 'hidden',
         'weight' => 25,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1399,6 +1499,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 26,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1464,6 +1570,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'type' => 'entityreference_entity_view',
         'weight' => 35,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1524,6 +1636,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'type' => 'dt_policy_next_step_formatter_default',
         'weight' => 44,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1580,6 +1698,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 33,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1658,6 +1782,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 34,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1741,6 +1871,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'type' => 'hidden',
         'weight' => 30,
       ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1796,6 +1932,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 28,
+      ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1857,6 +1999,12 @@ When naming it, try not to start with the type of action or law - e.g. avoid sa
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 29,
+      ),
+      'structured_navigation' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1935,6 +2083,13 @@ Avoid:
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 27,
+      ),
+      'structured_navigation' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',

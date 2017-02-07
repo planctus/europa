@@ -110,6 +110,7 @@ projects[options_element][version] = "1.7"
 
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc3"
+projects[redirect][patch][] = "https://www.drupal.org/files/issues/redirect-duplicate_redirect_save_handling-2260499-11.patch"
 
 projects[media_browser_plus][subdir] = "contrib"
 projects[media_browser_plus][version] = "3.0-beta4"

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DT Test flexible date feature.
+ */
+
+include_once 'dt_test_flexible_date.features.inc';

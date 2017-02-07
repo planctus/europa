@@ -117,6 +117,7 @@ function dt_gallery_field_formatter_view($entity_type, $entity, $field, $instanc
         '#theme' => 'mediagallery_item',
         '#size' => $item->getSize(),
         '#image' => drupal_render($image),
+        '#gallery_link' => $item->getGalleryItemLink($entity),
         '#caption' => $item->getCaption(),
         '#type' => $item->getIcon(),
         '#hasicon' => (FALSE !== $item->getIcon()) ? ' has-icon' : '',

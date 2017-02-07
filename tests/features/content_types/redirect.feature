@@ -19,7 +19,7 @@ Feature: Redirect path
       | og_group_ref                | Global editorial team |
 
     # View current announcement page.
-    And I go to "announcements/test-redirect"
+    And I go to "news/test-redirect"
     Then I should see "Test redirect" in the "h1" element
 
     # Create a new draft and update the title field.
@@ -37,13 +37,13 @@ Feature: Redirect path
     And I click "Add URL redirect to this node"
 
     # Create the redirect.
-    And I fill in "edit-source" with "announcements/test-redirect"
+    And I fill in "edit-source" with "news/test-redirect"
     And I press the "Save" button
     And I select "published" from "Moderation state"
     And I press the "Save" button
 
     # Test if the redirect works.
-    And I go to "announcements/test-redirect"
+    And I go to "news/test-redirect"
     Then I should not see "Page not found" in the "h1" element
     Then I should see "Test redirect new alias" in the "h1" element
 
@@ -64,14 +64,14 @@ Feature: Redirect path
       | og_group_ref                | Global editorial team |
 
     # View current announcement page.
-    And I go to "announcements/automatic-redirect"
+    And I go to "news/automatic-redirect"
     Then I should see "Automatic redirect" in the "h1" element
     Then I follow "New draft" in the "tabs"
     And fill in "edit-title-field-en-0-value" with "New automatic redirect"
     And I check the box "Generate automatic URL alias"
     And I select "published" from "Moderation state"
     And I press the "Save" button
-    And I go to "announcements/automatic-redirect"
+    And I go to "news/automatic-redirect"
     Then I should not see "New automatic redirect" in the "h1" element
 
   #Automatic redirect for page child and parent configuration.

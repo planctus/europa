@@ -22,7 +22,7 @@ Feature: As an administrator
       | edit-field-list-view-links-en-0-title | Title 1                                                     |
       | edit-field-list-view-links-en-0-url   | http://test1.com                                            |
     And I press "Save"
-    And I go to "/announcements"
+    And I go to "/news"
     Then I should see "Other news sources" in the ".link-block" element
     And I should see "Title 1" in the ".link-block .link-block__links" element
     And I should see "Introduction Highlights, press releases and speeches" in the ".page-header" element

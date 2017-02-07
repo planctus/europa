@@ -6,7 +6,7 @@ Feature: Display pager region and show/hide pager elements
     Given I have 30 "announcement" content:
       | title               | status |
       | Announcement number | 1      |
-    And I go to "announcements"
+    And I go to "news"
     Then I should see an ".pager__item--current" element
     Then I should not see an ".pager__item--previous" element
     Then I should not see an ".pager__item--first" element
@@ -23,7 +23,7 @@ Feature: Display pager region and show/hide pager elements
     Given I have 110 "announcement" content:
       | title               | status |
       | Announcement number | 1      |
-    And I go to "announcements"
+    And I go to "news"
     Then I should not see an ".pager__item--previous" element
     Then I should not see an ".pager__item--first" element
     Then I should see 1 ".pager__item--ellipsis" elements

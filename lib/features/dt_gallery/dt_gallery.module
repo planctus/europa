@@ -7,16 +7,93 @@
 
 include_once 'dt_gallery.features.inc';
 
-/**
- * @file
- * Code for the Digital transformation gallery feature.
- */
+use Drupal\dt_gallery\DtGallery;
 
 /**
  * Helper files.
  */
 module_load_include('inc', 'dt_gallery', 'dt_gallery.image_styles');
 module_load_include('inc', 'dt_gallery', 'dt_gallery.formatter');
+
+/**
+ * Implements hook_menu().
+ */
+function dt_gallery_menu() {
+  // Reserve /gallery so it is not added accidentally.
+  $items[DtGallery::GALLERY_PATH_SEGMENT] = [
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  $items[DtGallery::GALLERY_PATH_SEGMENT . '/%node/%file'] = [
+    'page callback' => '_dt_gallery_page_view',
+    'page arguments' => [1, 2],
+    'access callback' => 'node_access',
+    'access arguments' => ['view', 1],
+    'file' => 'dt_gallery.pages.inc',
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  $items[DtGallery::GALLERY_PATH_SEGMENT . '/%node'] = [
+    'page callback' => '_dt_gallery_page_view',
+    'page arguments' => [1],
+    'access callback' => 'node_access',
+    'access arguments' => ['view', 1],
+    'file' => 'dt_gallery.pages.inc',
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_url_inbound_alter().
+ *
+ * @see dt_gallery_menu()
+ */
+function dt_gallery_url_inbound_alter(&$path, $original_path, $path_language) {
+  // This hook is triggered before rebuild registry after the registry has been
+  // already cleared. To avoid running into undefined class problem during rr
+  // we add this protection.
+  if (!class_exists('Drupal\dt_gallery\DtGallery')) {
+    return;
+  }
+  // Change path to gallery/[nid], if appears to be a gallery path.
+  // So the menu hook can take it over.
+  if ($gallery_path = _dt_gallery_is_gallery_path($path, $path_language)) {
+    $path = DtGallery::GALLERY_PATH_SEGMENT . '/' . $gallery_path['nid'] . (!$gallery_path['fid'] ? '' : '/' . $gallery_path['fid']);
+  }
+}
+
+/**
+ * Checks the path if it points to a gallery page or not.
+ *
+ * @param array $path
+ *   Path to verify.
+ * @param string $path_language
+ *   Language of the path.
+ *
+ * @return bool|array
+ *   FALSE if not gallery or [nid, fid] if yes.
+ */
+function _dt_gallery_is_gallery_path($path, $path_language) {
+  // Check if the path is matching the gallery pattern.
+  if (preg_match('/\/' . DtGallery::GALLERY_PATH_SEGMENT . '(\/[0-9]*|)$/', $path, $matches)) {
+    // Optional last numeric segment is a file id or NULL.
+    $fid = $matches[1] !== '' ? trim($matches[1], '/') : NULL;
+    // Re-create alias without /gallery to identify the host node.
+    $alias = str_replace($matches[0], '', $path);
+    // Try to resolve $alias.
+    if ($source = drupal_lookup_path('source', $alias, $path_language)) {
+      $alias = $source;
+    }
+    // Alias is already a potential system path, check if it is really a node.
+    if (preg_match('/^node\/([0-9]*)$/', $alias, $matches)) {
+      // Return numeric id as potential nid.
+      return ['nid' => (int) $matches[1], 'fid' => (int) $fid];
+    }
+  }
+  return FALSE;
+}
 
 /**
  * Implements hook_theme().
@@ -32,6 +109,23 @@ function dt_gallery_theme($existing, $type, $theme, $path) {
         'type' => '',
         'caption' => '',
         'hasicon' => '',
+        'gallery_link' => '',
+      ],
+    ],
+    'gallery_overlay' => [
+      'template' => 'gallery_overlay',
+      'path' => drupal_get_path('module', 'dt_gallery') . '/templates',
+      'variables' => [
+        'previous' => '',
+        'next' => '',
+        'media' => '',
+        'type' => '',
+        'count' => '',
+        'description' => '',
+        'close' => '',
+        'copyright' => '',
+        'download' => '',
+        'share' => '',
       ],
     ],
   ];

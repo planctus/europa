@@ -41,6 +41,12 @@ function dt_list_view_content_preprocess_page(&$variables) {
       if (isset($views_content['introduction'])) {
         $variables['field_core_introduction'] = filter_xss($views_content['introduction']['value']);
       }
+      // Adding the views_related_links block to the left sidebar when needed.
+      if (isset($views_content['link_block_links'])) {
+        $block = block_load('dt_list_view_content', 'views_related_links');
+        $output = _block_get_renderable_array(_block_render_blocks([$block]));
+        $variables['page']['sidebar_first'][] = $output;
+      }
     }
   }
 }

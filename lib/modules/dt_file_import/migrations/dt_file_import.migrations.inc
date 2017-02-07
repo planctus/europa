@@ -219,6 +219,39 @@ abstract class DtFileImportGeneralMigration extends XMLMigration {
     return FALSE;
   }
 
+  /**
+   * Publication and Collections prepareRoll method.
+   *
+   * @param array $node_ids
+   *   Node IDs of related publication or collections.
+   */
+  public function publicationAndCollectionPrepareRollback($node_ids) {
+    // Removing all file reference from Publication, which will be deleted.
+    // Querying Publications, which has file reference by the given ids.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'publication')
+      ->fieldCondition('field_core_publications', 'target_id', $node_ids, 'IN');
+    $result = $query->execute();
+    // Loading affected Collections.
+    $nids = array_keys($result['node']);
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $node) {
+      // Removing only the affected publication references.
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $publications = $wrapper->field_core_publications->value();
+      foreach ($publications as $key => $item) {
+        // Should delete the publication reference,
+        // when the reference is NULL
+        // or Publication ID is in the set of files to be deleted.
+        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
+          unset($wrapper->field_core_publications[$key]);
+        }
+      }
+      $wrapper->save();
+    }
+  }
+
 }
 
 /**
@@ -600,6 +633,16 @@ class DtFileImportCollectionImport extends DtFileImportGeneralMigration {
     node_save($node);
   }
 
+  /**
+   * Removing related collections at rollback.
+   *
+   * @param array $node_ids
+   *   Node IDs which will be removed.
+   */
+  public function prepareRollback($node_ids) {
+    $this->publicationAndCollectionPrepareRollback($node_ids);
+  }
+
 }
 
 /**
@@ -920,7 +963,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
    *   - Rows.
    */
   public function prepare(&$node, $row) {
-    $default_language = $this->getPrimaryLanguage('collection', $row->pid);
+    $default_language = $this->getPrimaryLanguage('publication', $row->pid);
     $node->translations = (object) [
       'original' => $default_language,
       'data' => [],
@@ -992,6 +1035,9 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
 
     // Collection update.
     if (isset($node->cids)) {
+      if (!is_array($node->cids)) {
+        $node->cids = [$node->cids];
+      }
       // Using multiple, comma-separated pids.
       foreach ($node->cids as $cid) {
         if ($collection = node_load($cid)) {
@@ -1014,30 +1060,7 @@ class DtFileImportPublicationImport extends DtFileImportGeneralMigration {
    *   Node IDs which will be removed.
    */
   public function prepareRollback($node_ids) {
-    // Removing all file reference from Publication, which will be deleted.
-    // Querying Publications, which has file reference by the given ids.
-    $query = new EntityFieldQuery();
-    $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'publication')
-      ->fieldCondition('field_core_publications', 'target_id', $node_ids, 'IN');
-    $result = $query->execute();
-    // Loading affected Collections.
-    $nids = array_keys($result['node']);
-    $nodes = node_load_multiple($nids);
-    foreach ($nodes as $node) {
-      // Removing only the affected publication references.
-      $wrapper = entity_metadata_wrapper('node', $node);
-      $publications = $wrapper->field_core_publications->value();
-      foreach ($publications as $key => $item) {
-        // Should delete the publication reference,
-        // when the reference is NULL
-        // or Publication ID is in the set of files to be deleted.
-        if (!isset($item->nid) || array_search($item->nid, $node_ids) !== FALSE) {
-          unset($wrapper->field_core_publications[$key]);
-        }
-      }
-      $wrapper->save();
-    }
+    $this->publicationAndCollectionPrepareRollback($node_ids);
   }
 
 }
@@ -1333,7 +1356,7 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     // Takes the nids and sort by their weights.
     $nids = array_column($publication->field_core_files[LANGUAGE_NONE], 'target_id');
     usort($nids, function ($a, $b) {
-      return $this->fileWeight[$a] > $this->fileWeight[$b];
+      return $this->getFileWeight($a) > $this->getFileWeight($b);
     });
 
     // Empty 'field_core_files' and added sorted NodeIDs.
@@ -1341,6 +1364,22 @@ class DtFileImportFileImport extends DtFileImportGeneralMigration {
     foreach ($nids as $nid) {
       $publication->field_core_files[LANGUAGE_NONE][]['target_id'] = $nid;
     }
+  }
+
+  /**
+   * Returns the weight of a file.
+   *
+   * @param mixed $item
+   *   The identifier of the item.
+   *
+   * @return int
+   *   The weight.
+   */
+  private function getFileWeight($item) {
+    if (!isset($this->fileWeight[$item])) {
+      return max($this->fileWeight);
+    }
+    return $this->fileWeight[$item];
   }
 
   /**

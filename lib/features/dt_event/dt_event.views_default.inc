@@ -62,6 +62,14 @@ function dt_event_views_default_views() {
   $handler->display->display_options['arguments']['field_event_parent_events']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['field_event_parent_events']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['field_event_parent_events']['not'] = 0;
+  /* Filter criterion: Indexed Node: What do you want to create? */
+  $handler->display->display_options['filters']['field_event_collection']['id'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['table'] = 'search_api_index_event_index';
+  $handler->display->display_options['filters']['field_event_collection']['field'] = 'field_event_collection';
+  $handler->display->display_options['filters']['field_event_collection']['value'] = array(
+    0 => '0',
+  );
+  $handler->display->display_options['filters']['field_event_collection']['group'] = 1;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_event_index';
@@ -245,14 +253,29 @@ function dt_event_views_default_views() {
   );
   $handler->display->display_options['filters']['field_event_date_value_1']['widget_type'] = 'date_popup';
   $handler->display->display_options['filters']['field_event_date_value_1']['date_popup_format'] = 'Y-m-d';
-  /* Filter criterion: Indexed Node: What do you want to create? */
-  $handler->display->display_options['filters']['field_event_collection']['id'] = 'field_event_collection';
-  $handler->display->display_options['filters']['field_event_collection']['table'] = 'search_api_index_event_index';
-  $handler->display->display_options['filters']['field_event_collection']['field'] = 'field_event_collection';
-  $handler->display->display_options['filters']['field_event_collection']['value'] = array(
-    0 => '0',
+  /* Filter criterion: Facets: Exposed facet */
+  $handler->display->display_options['filters']['facet_filter_6']['id'] = 'facet_filter_6';
+  $handler->display->display_options['filters']['facet_filter_6']['table'] = 'facets';
+  $handler->display->display_options['filters']['facet_filter_6']['field'] = 'facet_filter';
+  $handler->display->display_options['filters']['facet_filter_6']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['facet_filter_6']['expose']['label'] = 'Collection';
+  $handler->display->display_options['filters']['facet_filter_6']['expose']['identifier'] = 'collection';
+  $handler->display->display_options['filters']['facet_filter_6']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
   );
-  $handler->display->display_options['filters']['field_event_collection']['group'] = 1;
+  $handler->display->display_options['filters']['facet_filter_6']['facet']['facet'] = 'field_event_parent_events';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -266,7 +289,7 @@ function dt_event_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Events list';
+  $view->human_name = 'Events list (upcoming, current and past)';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -374,7 +397,7 @@ function dt_event_views_default_views() {
 
   /* Display: Upcoming and current events */
   $handler = $view->new_display('block', 'Upcoming and current events', 'block');
-  $handler->display->display_options['link_url'] = '/events/!1';
+  $handler->display->display_options['link_url'] = '/events?facet__select__field_event_parent_events=!1';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
@@ -432,7 +455,7 @@ function dt_event_views_default_views() {
 
   /* Display: Past events */
   $handler = $view->new_display('block', 'Past events', 'block_1');
-  $handler->display->display_options['link_url'] = '/events/!1';
+  $handler->display->display_options['link_url'] = '/events?facet__select__field_event_parent_events=!1';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';

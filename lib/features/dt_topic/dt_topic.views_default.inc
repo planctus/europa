@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * dt_topic.views_default.inc

@@ -107,9 +107,6 @@ function dt_event_preprocess_file_entity(&$variables) {
     ];
     // If it is a video, we have to apply additional modifiers.
     if ($variables['type'] == 'video') {
-      /* @todo This should be fixed in the ticket DTTSB-1578 and then we can
-       * remove this line of code. */
-      unset($variables['content']['field_folder']);
       // Adds the modifier class to apply the background color.
       $variables['classes_array'][] = 'file-video--with-background';
       // Also add the description to the content render array.
