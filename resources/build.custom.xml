@@ -81,25 +81,6 @@
         <exec dir="${acquia.repo}" command="git push origin ${acquia.branch}"></exec>
     </target>
 
-    <!-- Addititonal custom cphp test targets -->
-    <target name="test-multisite-requirements" description="Tests the multisite requirements">
-        <drush
-                command="code-review"
-                assume="yes"
-                bin="${drush.bin}"
-                pipe="yes"
-                verbose="${drush.verbose}"
-                root="${platform.build.dir}">
-            <param>${multisite-review.pattern}</param>
-            <option name="exclude-checks">${multisite-review.excludechecks}</option>
-            <option name="multisite-version">${multisite-review.msversion}</option>
-            <option name="php-version">${multisite-review.phpversion}</option>
-            <option name="break-cphp">TRUE</option>
-            <option name="include">${multisite-review.path}</option>
-            <option name="check-directory">${multisite-review.directory}</option>
-        </drush>
-    </target>
-
     <target name="restore-ac-db" description="Replaces the local database with the AC database." depends="add-dt-dev">
         <drush command="sql-drop" assume="yes" root="${platform.build.dir}" bin="${drush.bin}">
         </drush>
