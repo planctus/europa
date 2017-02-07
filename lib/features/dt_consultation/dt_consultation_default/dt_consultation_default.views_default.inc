@@ -55,34 +55,22 @@ function dt_consultation_default_views_default_views() {
     'link' => 0,
   );
   $handler->display->display_options['fields']['field_core_policy_areas']['delta_offset'] = '0';
-  /* Field: Content: How to submit your contribution (field_consultation_how_to_submit:language) */
-  $handler->display->display_options['fields']['language']['id'] = 'language';
-  $handler->display->display_options['fields']['language']['table'] = 'field_data_field_consultation_how_to_submit';
-  $handler->display->display_options['fields']['language']['field'] = 'language';
-  $handler->display->display_options['fields']['language']['label'] = '';
-  $handler->display->display_options['fields']['language']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['language']['element_label_colon'] = FALSE;
-  /* Field: Content: Objective of the consultation (field_consultation_objective:language) */
-  $handler->display->display_options['fields']['language_1']['id'] = 'language_1';
-  $handler->display->display_options['fields']['language_1']['table'] = 'field_data_field_consultation_objective';
-  $handler->display->display_options['fields']['language_1']['field'] = 'language';
-  $handler->display->display_options['fields']['language_1']['label'] = '';
-  $handler->display->display_options['fields']['language_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['language_1']['element_label_colon'] = FALSE;
-  /* Field: Content: Target group(s) (field_consultation_target_groups:language) */
-  $handler->display->display_options['fields']['language_2']['id'] = 'language_2';
-  $handler->display->display_options['fields']['language_2']['table'] = 'field_data_field_consultation_target_groups';
-  $handler->display->display_options['fields']['language_2']['field'] = 'language';
-  $handler->display->display_options['fields']['language_2']['label'] = '';
-  $handler->display->display_options['fields']['language_2']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['language_2']['element_label_colon'] = FALSE;
-  /* Field: Content: View the questionnaire (field_consultation_questionnaire:language) */
-  $handler->display->display_options['fields']['language_3']['id'] = 'language_3';
-  $handler->display->display_options['fields']['language_3']['table'] = 'field_data_field_consultation_questionnaire';
-  $handler->display->display_options['fields']['language_3']['field'] = 'language';
-  $handler->display->display_options['fields']['language_3']['label'] = '';
-  $handler->display->display_options['fields']['language_3']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['language_3']['element_label_colon'] = FALSE;
+  /* Field: Entity translation: How to submit your contribution: translated */
+  $handler->display->display_options['fields']['field_consultation_how_to_submit_et']['id'] = 'field_consultation_how_to_submit_et';
+  $handler->display->display_options['fields']['field_consultation_how_to_submit_et']['table'] = 'field_data_field_consultation_how_to_submit';
+  $handler->display->display_options['fields']['field_consultation_how_to_submit_et']['field'] = 'field_consultation_how_to_submit_et';
+  /* Field: Entity translation: Objective of the consultation: translated */
+  $handler->display->display_options['fields']['field_consultation_objective_et']['id'] = 'field_consultation_objective_et';
+  $handler->display->display_options['fields']['field_consultation_objective_et']['table'] = 'field_data_field_consultation_objective';
+  $handler->display->display_options['fields']['field_consultation_objective_et']['field'] = 'field_consultation_objective_et';
+  /* Field: Entity translation: View the questionnaire: translated */
+  $handler->display->display_options['fields']['field_consultation_questionnaire_et']['id'] = 'field_consultation_questionnaire_et';
+  $handler->display->display_options['fields']['field_consultation_questionnaire_et']['table'] = 'field_data_field_consultation_questionnaire';
+  $handler->display->display_options['fields']['field_consultation_questionnaire_et']['field'] = 'field_consultation_questionnaire_et';
+  /* Field: Entity translation: Target group(s): translated */
+  $handler->display->display_options['fields']['field_consultation_target_groups_et']['id'] = 'field_consultation_target_groups_et';
+  $handler->display->display_options['fields']['field_consultation_target_groups_et']['table'] = 'field_data_field_consultation_target_groups';
+  $handler->display->display_options['fields']['field_consultation_target_groups_et']['field'] = 'field_consultation_target_groups_et';
   /* Sort criterion: Content: Status (field_consultation_status) */
   $handler->display->display_options['sorts']['field_consultation_status_value']['id'] = 'field_consultation_status_value';
   $handler->display->display_options['sorts']['field_consultation_status_value']['table'] = 'field_data_field_consultation_status';
@@ -126,23 +114,22 @@ function dt_consultation_default_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
+    7 => 0,
+    5 => 0,
     3 => 0,
     6 => 0,
     4 => 0,
-    5 => 0,
-    14 => 0,
-    7 => 0,
-    12 => 0,
+    11 => 0,
     9 => 0,
-    18 => 0,
+    8 => 0,
+    12 => 0,
     10 => 0,
-    15 => 0,
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
-    'language' => 'language',
-    'language_1' => 'language_1',
-    'language_2' => 'language_2',
-    'language_3' => 'language_3',
+    'field_consultation_how_to_submit_et' => 'field_consultation_how_to_submit_et',
+    'field_consultation_objective_et' => 'field_consultation_objective_et',
+    'field_consultation_questionnaire_et' => 'field_consultation_questionnaire_et',
+    'field_consultation_target_groups_et' => 'field_consultation_target_groups_et',
   );
   /* Filter criterion: Content: Status (field_consultation_status) */
   $handler->display->display_options['filters']['field_consultation_status_value']['id'] = 'field_consultation_status_value';
