@@ -167,6 +167,13 @@ function nexteuropa_formatters_field_formatter_info() {
       'label' => t('Telephone link'),
       'field types' => ['text'],
     ],
+    'text_number' => [
+      'label' => t('Text as number'),
+      'field types' => ['text'],
+      'settings' => [
+        'suffix' => '',
+      ],
+    ],
     'label' => [
       'label' => t('Label'),
       'field types' => [
@@ -298,6 +305,15 @@ function nexteuropa_formatters_field_formatter_settings_form($field, $instance, 
         '#title' => t('Use the content language for referenced items.'),
         '#type' => 'checkbox',
         '#default_value' => $settings['use_content_language'],
+      ];
+      break;
+
+    case 'text_number':
+      $element['suffix'] = [
+        '#title' => t('Suffix'),
+        '#type' => 'textfield',
+        '#size' => 2,
+        '#default_value' => '',
       ];
       break;
 
@@ -631,6 +647,14 @@ function nexteuropa_formatters_field_formatter_view($entity_type, $entity, $fiel
           $telf = dt_shared_function_phonetohtml($label, $item['safe_value']);
           $element[$delta] = [
             '#markup' => $telf,
+          ];
+        }
+        break;
+
+      case 'text_number':
+        foreach ($items as $delta => $item) {
+          $element[$delta] = [
+            '#markup' => number_format($item['safe_value'], 0, ".", ",") . $display['settings']['suffix'],
           ];
         }
         break;

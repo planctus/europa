@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * DTTSB-1560: Change issuing volume field from int to string.
+ */
+function dt_commemorative_coins_default_update_7103() {
+  // Revert first to prepare the fields.
+  features_revert_module('dt_commemorative_coins');
+  features_revert_module('dt_commemorative_coins_default');
+
+  // Query the entities.
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'commemorative_coins');
+  $result = $query->execute();
+
+  // Get the entity ids from result.
+  $ids = array_keys($result['node']);
+  // Load entities using ids.
+  $entities = entity_load('node', $ids, [], TRUE);
+
+  foreach ($entities as $entity) {
+    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+    if (
+      isset($entity_wrapper->field_cc_volume)
+      && $entity_wrapper->field_cc_volume->value()
+      && $entity_wrapper->field_cc_issuing_volumes->value() == NULL
+    ) {
+      $entity_wrapper->field_cc_issuing_volumes = $entity_wrapper->field_cc_volume->value();
+      // Save the entity.
+      $entity_wrapper->save();
+    }
+  }
+
+  // Remove field instance.
+  if ($instance = field_info_instance('node', 'field_cc_volume', 'commemorative_coins')) {
+    field_delete_instance($instance);
+    // Then the field base.
+    if ($field_base = field_info_field('field_cc_volume')) {
+      field_delete_field($field_base);
+    }
+  }
+}

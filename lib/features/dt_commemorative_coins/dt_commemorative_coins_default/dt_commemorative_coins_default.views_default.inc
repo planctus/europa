@@ -211,7 +211,7 @@ function dt_commemorative_coins_default_views_default_views() {
   $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['group'] = 1;
   $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['expose']['label'] = 'Collective issue';
+  $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['expose']['label'] = 'Collection';
   $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['expose']['identifier'] = 'field_cc_issue_page_target_id_selective';
   $handler->display->display_options['filters']['field_cc_issue_page_target_id_selective']['expose']['remember_roles'] = array(
     2 => '2',
@@ -245,7 +245,7 @@ function dt_commemorative_coins_default_views_default_views() {
     'translator' => 0,
     'translator reviewer' => 0,
   );
-  $handler->display->display_options['path'] = 'commemorative-coins';
+  $handler->display->display_options['path'] = 'about-european-union/euro/euro-coins-and-notes/euro-coins/commemorative-and-collector-euro-coins';
   $export['commemorative_coins'] = $view;
 
   return $export;

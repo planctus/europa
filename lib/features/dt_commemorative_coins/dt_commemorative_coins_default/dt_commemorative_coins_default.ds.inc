@@ -17,7 +17,7 @@ function dt_commemorative_coins_default_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'commemorative_coins';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'field_core_image' => array(
+    'field_cc_issuing_volumes' => array(
       'formatter_settings' => array(
         'ft' => array(),
       ),
@@ -48,12 +48,12 @@ function dt_commemorative_coins_default_ds_layout_settings_info() {
         1 => 'field_core_description',
         2 => 'field_nal_country',
         3 => 'field_cc_date',
-        4 => 'field_cc_volume',
+        4 => 'field_cc_issuing_volumes',
         5 => 'field_core_link',
         6 => 'field_cc_issue_page',
       ),
       'second' => array(
-        7 => 'field_core_image',
+        8 => 'field_core_image',
       ),
     ),
     'fields' => array(
@@ -61,7 +61,7 @@ function dt_commemorative_coins_default_ds_layout_settings_info() {
       'field_core_description' => 'main',
       'field_nal_country' => 'main',
       'field_cc_date' => 'main',
-      'field_cc_volume' => 'main',
+      'field_cc_issuing_volumes' => 'main',
       'field_core_link' => 'main',
       'field_cc_issue_page' => 'main',
       'field_core_image' => 'second',

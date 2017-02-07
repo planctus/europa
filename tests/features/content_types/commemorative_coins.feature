@@ -20,16 +20,16 @@ Feature: Commemorative coins content type
   Scenario: Fields are visible on a listing page without link to the content
     Given I am logged in as a user with the "administrator" role
     And I am viewing an "commemorative_coins" content:
-      | title                  | Commemorative Coin 1     |
-      | status                 | 1                        |
-      | language               | en                       |
-      | field_cc_subject       | First commemorative coin |
-      | field_core_description | A test description.      |
-      | field_nal_country      | Belgium                  |
-      | field_cc_date          | 1456790400               |
-      | field_cc_volume        | 500000                   |
-      | field_cc_issue_page    | RelatedPage              |
-      | field_core_link        | Test - http://google.be  |
+      | title                    | Commemorative Coin 1     |
+      | status                   | 1                        |
+      | language                 | en                       |
+      | field_cc_subject         | First commemorative coin |
+      | field_core_description   | A test description.      |
+      | field_nal_country        | Belgium                  |
+      | field_cc_date            | 1456790400               |
+      | field_cc_issuing_volumes | 500000                   |
+      | field_cc_issue_page      | RelatedPage              |
+      | field_core_link          | Test - http://google.be  |
     Then I click "New draft" in the "tabs" region
     And I click "Browse"
     And I switch to the frame "mediaBrowser"
@@ -42,7 +42,7 @@ Feature: Commemorative coins content type
     And I click "Publishing options"
     And I select "Published" from "Moderation state"
     And I press "Save"
-    Then I go to "/commemorative-coins"
+    Then I go to "/about-european-union/euro/euro-coins-and-notes/euro-coins/commemorative-and-collector-euro-coins"
     And I should see an "img" element
     And I should see "First commemorative coin"
     And I should see "A test description."
