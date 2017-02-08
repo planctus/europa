@@ -1,8 +1,10 @@
-name = dt_person_press_contacts_list
+name = Press contact list
 description = Listing page for press contacts persons
 core = 7.x
 package = NextEuropa Digital Transformation
 dependencies[] = context
+dependencies[] = dt_person
+dependencies[] = dt_job
 dependencies[] = entity
 dependencies[] = nexteuropa_views
 dependencies[] = views

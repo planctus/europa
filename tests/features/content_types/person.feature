@@ -7,10 +7,11 @@ Feature: Person content type tests
       | Main Role | 987 |
 
     Given "Job Role types" terms:
-      | name       | parent | weight |
-      | Sub Role   | 987    | 10     |
-      | Other Role | 987    | 30     |
-      | Third Role | 987    | 20     |
+      | name        | parent | weight |
+      | Sub Role    | 987    | 10     |
+      | Other Role  | 987    | 30     |
+      | Third Role  | 987    | 20     |
+      | Fourth Role | 987    | 40     |
     And I translate the term "Sub Role" to "Dutch" with "Sub rol"
     And I translate the term "Other Role" to "Dutch" with "Andere rol"
     And I translate the term "Third Role" to "Dutch" with "Derde rol"
@@ -19,6 +20,7 @@ Feature: Person content type tests
       | title        | status |
       | First topic  | 1      |
       | Second topic | 1      |
+      | Third topic  | 1      |
     And I create the following translations for "topic" content with title "First topic":
       | title        | status | language |
       | Eerste topic | 1      | nl       |
@@ -28,9 +30,10 @@ Feature: Person content type tests
 
     Given "Job" content:
       | title         | field_job_role | status | field_job_responsabilities | field_core_topics | field_job_team_group | field_job_acting_role |
-      | Example job 1 | Sub Role       | 1      | Bert his responsabilities  | First topic       | press_officer        | 1                     |
-      | Example job 2 | Other role     | 1      | Jane her responsabilities  | Second topic      | multimedia_team      | 0                     |
+      | Example job 1 | Sub Role       | 1      | Bert his responsibility    | First topic       | press_officer        | 1                     |
+      | Example job 2 | Other role     | 1      | Jane her responsibilities  | Second topic      | multimedia_team      | 0                     |
       | Example job 3 | Third role     | 1      |                            | Second topic      | spokesperson         | 0                     |
+      | Example job 4 | Fourth Role    | 1      |                            | Third topic       | spokesperson         | 0                     |
     And I create the following translations for "job" content with title "Example job 1":
       | title           | status | language |
       | Voorbeeld job 1 | 1      | nl       |
@@ -101,24 +104,17 @@ Feature: Person content type tests
       | workbench_moderation_state_new        | published |
     And I press "Save"
 
-    Given I am viewing a "Person":
-      | title                   | Duo Buo                      |
-      | field_person_first_name | Duo                          |
-      | field_person_last_name  | Buo                          |
-      | field_person_gender     | Male                         |
-      | status                  | 1                            |
-      | field_core_jobs         | Example job 3, Example job 1 |
-      | field_type_of_person    | 0                            |
-      | language                | en                           |
-      | field_core_contact      | Contact example 2            |
+    #Add some users with different jobs and topics to test search
+    Given "Person" content:
+      | title    | field_person_first_name | field_person_last_name | field_person_gender | status | field_core_jobs              | field_type_of_person | language | field_core_contact |
+      | Duo Buo  | Duo                     | Buo                    | Male                | 1      | Example job 3, Example job 1 | 0                    | en       | Contact example 2  |
+      | John Doe | John                    | Doe                    | Male                | 1      | Example job 4                | 0                    | en       | Contact example 2  |
 
-    #Add some users writh the same job different names to test sorting
+    #Add some users with the same job different names to test sorting
     Given "Person" content:
       | title      | field_person_first_name | field_person_last_name | field_person_gender | status | field_core_jobs | field_type_of_person | language | field_core_contact |
       | John Smith | John                    | Smith                  | Male                | 1      | Example job 2   | 0                    | en       | Contact Example 2  |
       | Jane Smith | Jane                    | Smith                  | Female              | 1      | Example job 2   | 0                    | en       | Contact Example 2  |
-
-
     And I am an anonymous user
 
   Scenario: Press contact listing should not display a link to their entity
@@ -137,7 +133,7 @@ Feature: Person content type tests
     And I should see "Office"
     # Check all the fields.
     Then I should see "Bert Normal"
-    And I should see "Bert his responsabilities"
+    And I should see "Bert his responsibility"
     And I should see "COMM"
     And I should see "12345"
     And I should see "003212"
@@ -145,7 +141,7 @@ Feature: Person content type tests
     And I should see "info@behat.org"
     # Check all the fields.
     Then I should see "Jane Wilde"
-    And I should see "Jane her responsabilities"
+    And I should see "Jane her responsibilities"
     And I should see "DIGIT"
     And I should see "98765"
     And I should see "003298"
@@ -166,9 +162,9 @@ Feature: Person content type tests
 
   Scenario: When a responsibility is not entered, the job title should be hidden
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
-    And I fill in "Search by name" with "Alfred Rodeo"
+    And I select "Third topic" from "Topics"
     And I press "Refine results"
-    Then I should not see "Third role" in the ".view-display-id-page .node-job" element
+    Then I should not see "Fourth Role" in the ".view-display-id-page .node-job" element
 
   Scenario: Press contacts should be sorted by their role type weight, and should not be duplicate
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
@@ -183,6 +179,7 @@ Feature: Person content type tests
   @dt_topic
   Scenario: Press contact listing should display filters
     Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
+    Then I should see "Responsibilities or portfolio" in the "#block-views-exp-press-contacts-page" element
     Then I should see "Topics" in the "#block-views-exp-press-contacts-page" element
     And I select "First topic" from "Topics"
     And I select "Second topic" from "Topics"
@@ -192,7 +189,7 @@ Feature: Person content type tests
     And I select "Press Officer" from "Team/role"
     And I select "Multimedia team" from "Team/role"
     And I select "Communications" from "Team/role"
-    Then I should see "Search by name" in the "#block-views-exp-press-contacts-page" element
+    Then I should not see "Search by name" in the "#block-views-exp-press-contacts-page" element
     # Check multilingual. This works, but test needs to be rewritten.
     And I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     Then I should see "Topics" in the "#block-views-exp-press-contacts-page" element
@@ -260,7 +257,7 @@ Feature: Person content type tests
     And I should see "Alfred Rodeo"
 
   @wip
-  Scenario: Press contact listing can be filtered by Team/role can be translated
+  Scenario: Press contact listing can be filtered by Team/role and can be translated
     # Check multilingual, if we test one here it is ok.
     And I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service_nl"
     And I select "Woordvoerder" from "Team/role"
@@ -270,3 +267,11 @@ Feature: Person content type tests
     Then I should not see "Bert Normaal"
     And I should not see "Jane Roekeloos"
     And I should see "Fred Rode"
+
+  Scenario: Press contact listing can be filtered by Responsibilities or portfolio
+    Given I am on "contact/press-services/press-contacts/press-contacts-spokespersons-service"
+    And I fill in "Responsibilities or portfolio" with "Jane her responsibilities"
+    And I press "Refine results"
+    Then I should see "Jane Wilde"
+    And I should not see "Bert Normal"
+    And I should not see "Alfred Rodeo"

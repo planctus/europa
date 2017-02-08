@@ -92,6 +92,33 @@ function dt_person_press_contacts_list_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Responsabilities attached to this job (field_job_responsabilities) */
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['id'] = 'field_job_responsabilities_value';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['table'] = 'field_data_field_job_responsabilities';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['field'] = 'field_job_responsabilities_value';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['relationship'] = 'field_core_jobs_target_id';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['expose']['operator_id'] = 'field_job_responsabilities_value_op';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['expose']['label'] = 'Responsibilities or portfolio';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['expose']['operator'] = 'field_job_responsabilities_value_op';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['expose']['identifier'] = 'field_job_responsabilities_value';
+  $handler->display->display_options['filters']['field_job_responsabilities_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    6 => 0,
+    4 => 0,
+    5 => 0,
+    14 => 0,
+    7 => 0,
+    12 => 0,
+    9 => 0,
+    18 => 0,
+    10 => 0,
+    15 => 0,
+  );
   /* Filter criterion: Content: Topics (field_core_topics) (reference filter) */
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['id'] = 'field_core_topics_target_id_entityreference_filter';
   $handler->display->display_options['filters']['field_core_topics_target_id_entityreference_filter']['table'] = 'field_data_field_core_topics';
@@ -129,30 +156,6 @@ function dt_person_press_contacts_list_views_default_views() {
   $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['operator'] = 'field_job_team_group_value_i18n_op';
   $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['identifier'] = 'field_job_team_group_value_i18n';
   $handler->display->display_options['filters']['field_job_team_group_value_i18n']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    6 => 0,
-    5 => 0,
-    3 => 0,
-    4 => 0,
-    10 => 0,
-    8 => 0,
-    7 => 0,
-    11 => 0,
-    9 => 0,
-  );
-  /* Filter criterion: Content: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'node';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['title']['group'] = 1;
-  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search by name';
-  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'name';
-  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
