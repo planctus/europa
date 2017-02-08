@@ -227,7 +227,7 @@ Feature: Checking different state of events
     Then I should see "Watch live streaming" in the ".messages--icon-center.live" element
     And I translate the string "live streaming available" to "French" with "diffusion en direct disponible"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should see the link "Watch live streaming"
     Then I change the language to "French"
     Then I should see "diffusion en direct disponible" in the ".icon.icon--livestreaming.icon--text-small" element
@@ -288,7 +288,7 @@ Feature: Checking different state of events
       | status                                      | 1                                    |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should not see the link "Watch live streaming"
 
   # No live streaming.
@@ -308,7 +308,7 @@ Feature: Checking different state of events
       | status                                      | 1                                      |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should not see the link "Watch live streaming"
 
   # Current time is before broadcasting start.
@@ -327,7 +327,7 @@ Feature: Checking different state of events
       | status                                   | 1                                                              |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should not see the link "Watch live streaming"
 
   # Current time is outside of broadcasting interval.
@@ -347,7 +347,7 @@ Feature: Checking different state of events
       | status                                      | 1                                                                     |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should not see the link "Watch live streaming"
 
   # There is no stream link given.
@@ -366,7 +366,7 @@ Feature: Checking different state of events
       | status                                      | 1                                   |
     Then I should not see the link "Watch live streaming"
     And I index all indexes
-    And I go to "events_list"
+    And I go to "events"
     Then I should not see the link "Watch live streaming"
 
   Scenario: Event collection "Upcoming events", "Related events" and "About @title" should be translatable.
@@ -429,12 +429,12 @@ Feature: Checking different state of events
     Then I should not see the heading "About Event collection"
 
   Scenario: On the events listing page I should see the events.
-    Given I am on "events_list"
+    Given I am on "events"
     Then I should see "Energy event"
     And I should see "Food event"
 
   Scenario: On the events listing page I should see all the filters.
-    Given I am on "events_list"
+    Given I am on "events"
     Then I should see "Online events only"
     And I should see "Online events with live streaming available"
     # Here we test select values, simply be selecting them.
@@ -450,7 +450,7 @@ Feature: Checking different state of events
     And I select "France" from "Location"
 
   Scenario Outline: I should be able to filter by Country
-    Given I am on "events_list"
+    Given I am on "events"
     And I select "<country>" from "Location"
     And I press the "Refine results" button
     Then I should see "<should_see>"
@@ -464,7 +464,7 @@ Feature: Checking different state of events
       | France      | Extra event  | Energy event     | Food event       |
 
   Scenario Outline: I should be able to filter by various filters on the event listing page (select).
-    Given I am on "events_list"
+    Given I am on "events"
     And I select "<first_value>" from "<filter>"
     And I press the "Refine results" button
     Then I should <first_value_energy> "Energy event"
@@ -483,21 +483,21 @@ Feature: Checking different state of events
       | Organiser  | Any organiser | Budget      | see                | not see          | ClimateAction | not see             | see               |
 
   Scenario: I should be able to filter by online only (checkbox)
-    Given I am on "events_list"
+    Given I am on "events"
     And I check the box "Online events only"
     And I press the "Refine results" button
     Then I should see "Energy event"
     Then I should not see "Food event"
 
   Scenario: I should be able to filter by livestream (checkbox)
-    Given I am on "events_list"
+    Given I am on "events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
     Then I should see "Food event"
 
   Scenario: I should be able to filter by a combination of facets and views and I should see the tags.
-    Given I am on "events_list"
+    Given I am on "events"
     And I check the box "Online events with live streaming available"
     And I press the "Refine results" button
     Then I should not see "Energy event"
@@ -610,7 +610,7 @@ Feature: Checking different state of events
       | Extra 3 event |
       | Extra 4 event |
     And I should not see the link "Food event"
-    And I should see the link "View all events for Event collection" linking to "/events_list_en?facet__select__field_event_parent_events=100002"
+    And I should see the link "View all events for Event collection" linking to "/events_en?facet__select__field_event_parent_events=100002"
     Then I should see an ".field--past-events" element
     And I should see the following in the repeated ".listing__title" element within the context of the ".field--past-events" element:
       | text          |

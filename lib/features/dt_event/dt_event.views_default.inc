@@ -281,7 +281,7 @@ function dt_event_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['dt_shared_functions_views_config_title'] = 'Events';
-  $handler->display->display_options['path'] = 'events_list';
+  $handler->display->display_options['path'] = 'events';
   $export['events'] = $view;
 
   $view = new view();
@@ -397,7 +397,7 @@ function dt_event_views_default_views() {
 
   /* Display: Upcoming and current events */
   $handler = $view->new_display('block', 'Upcoming and current events', 'block');
-  $handler->display->display_options['link_url'] = '/events_list?facet__select__field_event_parent_events=!1';
+  $handler->display->display_options['link_url'] = '/events?facet__select__field_event_parent_events=!1';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
@@ -455,7 +455,7 @@ function dt_event_views_default_views() {
 
   /* Display: Past events */
   $handler = $view->new_display('block', 'Past events', 'block_1');
-  $handler->display->display_options['link_url'] = '/events_list?facet__select__field_event_parent_events=!1';
+  $handler->display->display_options['link_url'] = '/events?facet__select__field_event_parent_events=!1';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';

@@ -1081,6 +1081,58 @@ function dt_core_update_7180() {
 }
 
 /**
+ * Reverts features in preperation for the next update hook.
+ */
+function dt_core_update_7182() {
+  $features = [
+    'brp_initiative' => 'brp_initiative',
+    'dt_announcement' => 'announcement',
+    'dt_announcement_news_prd_importer' => 'news_prd_importer',
+    'dt_call_for_proposal_default' => 'call_for_proposal',
+    'dt_class' => ['class', 'class_link_group'],
+    'dt_commemorative_coins_default' => 'commemorative_coins',
+    'dt_consultation_default' => 'consultation',
+    'dt_contact' => 'contact',
+    'dt_coordination_default' => 'coordination',
+    'dt_core' => '',
+    'dt_department' => 'department',
+    'dt_featured_item' => 'featured_item',
+    'dt_funding_default' => 'funding',
+    'dt_funding_program_default' => 'funding_program',
+    'dt_guidance_default' => 'guidance',
+    'dt_impact_assessment_default' => 'impact_assessment',
+    'dt_info_homepage' => 'info_homepage',
+    'dt_job_default' => 'job',
+    'dt_law_default' => 'law',
+    'dt_basic_page_default' => 'basic_page',
+    'dt_page_extended' => 'basic_page',
+    'dt_person' => 'person',
+    'dt_policy' => 'policy',
+    'dt_policy_area' => 'policy_area',
+    'dt_policy_implementation' => 'policy_implementation',
+    'dt_policy_input' => 'policy_input',
+    'dt_policy_keyfile' => 'policy_keyfile',
+    'dt_pri_policy_git area_default' => 'priority_policy_area',
+    'dt_priority_default' => 'priority',
+    'dt_publication' => 'publication',
+    'dt_tender_default' => 'tender',
+    'dt_topic' => 'topic',
+    'dt_toplink' => 'top_link',
+    'nexteuropa_file' => 'file',
+    'nexteuropa_page' => 'page',
+    'dt_banner_video' => 'banner_video',
+    'dt_banner_quote' => 'banner_quote',
+  ];
+  // Revert the feature so we can have the field_core_keywords available.
+  foreach ($features as $feature => $bundle) {
+    // Check if the current feature is enabled.
+    if (module_exists($feature)) {
+      features_revert([$feature => ['field', 'field_base', 'field_instance']]);
+    }
+  }
+}
+
+/**
  * Updating field_keywords_core and metatags.
  *
  * This updates don't touch the CWT site.
@@ -1088,6 +1140,10 @@ function dt_core_update_7180() {
  * @see: https://webgate.ec.europa.eu/CITnet/jira/browse/DTTSB-1200
  */
 function dt_core_update_7183(&$sandbox) {
+  // Disable the linkchecker temporarily..
+  variable_set('dt_core_7183', variable_get('linkchecker_scan_nodetypes'));
+  variable_set('linkchecker_scan_nodetypes', []);
+
   $limit = 10;
   if (!isset($sandbox['max'])) {
     drush_print(t('Batch notification start of @update_hook', ['@update_hook' => __FUNCTION__]));
@@ -1137,7 +1193,6 @@ function dt_core_update_7183(&$sandbox) {
     foreach ($features as $feature => $bundle) {
       // Check if the current feature is enabled.
       if (module_exists($feature)) {
-        features_revert_module($feature);
         if (is_array($bundle)) {
           foreach ($bundle as $content_types) {
             if (field_info_instance('node', 'field_core_keywords', $content_types)) {
@@ -1243,7 +1298,9 @@ function dt_core_update_7183(&$sandbox) {
   }
   else {
     $sandbox['#finished'] = 1;
-    drupal_set_message(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
+    drush_print(t('Batch of @update_hook done.', ['@update_hook' => __FUNCTION__]));
   }
 
+  variable_set('linkchecker_scan_nodetypes', variable_get('dt_core_7183'));
+  variable_del('dt_core_7183');
 }

@@ -175,10 +175,10 @@ function dt_priority_update_7104(&$sandbox) {
       ->condition('type', 'priority');
     $count_query->addExpression('COUNT(n.nid)', 'count');
     $sandbox['max'] = $count_query->execute()->fetchField();
-    $sandbox['progress'] = 0;
+    $sandbox['position'] = 0;
   }
 
-  $limit = 100;
+  $limit = 10;
   $nids = db_select('node', 'n')
     ->condition('n.type', 'priority')
     ->fields('n', ['nid'])
