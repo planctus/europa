@@ -1007,3 +1007,11 @@ function dt_core_ds_pre_render_alter(&$layout_render_array, $context, &$vars) {
     $hitme_lib_loaded = TRUE;
   }
 }
+
+/**
+ * Implements hook_countries_alter().
+ */
+function dt_core_countries_alter(&$countries) {
+  // Put the right name for Macedonia.
+  $countries['MK'] = 'Former Yugoslav Republic of Macedonia';
+}
