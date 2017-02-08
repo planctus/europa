@@ -57,7 +57,13 @@ function _entityreference_remoteoverride_add_table_field($field_name, array $rem
       if (isset($result['data'])) {
         $unserialized_data = unserialize($result['data']);
         // Add the titleoverwrite config if it is not there.
-        if (!isset($unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'])) {
+        // Required override tables. As some of the fields could be set by
+        // reverting features, we need to check multiple items.
+        if (
+          !isset($unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'])
+          || !isset($unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overwrite_title_mandatory'])
+          || !isset($unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'])
+        ) {
           $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['status'] = 1;
           $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overwrite_title_mandatory'] = $mandatory;
           $unserialized_data['settings']['handler_settings']['behaviors']['remoteoverride_field_behavior']['overrideable_fields'][$field] = $field;
