@@ -33,7 +33,7 @@ function dt_commemorative_coins_default_form_commemorative_coins_node_form_alter
  *   The form state array.
  */
 function _dt_commemorative_coins_validate(&$form, &$form_state) {
-  if (!is_numeric($form_state['values']['field_cc_issuing_volumes'][LANGUAGE_NONE][0]['value'])) {
+  if (!empty($form_state['values']['field_cc_issuing_volumes'][LANGUAGE_NONE][0]['value']) && !is_numeric($form_state['values']['field_cc_issuing_volumes'][LANGUAGE_NONE][0]['value'])) {
     form_set_error('error', t('The field Issuing volume has to contain only numbers.'));
   }
 }
