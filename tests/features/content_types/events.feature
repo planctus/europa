@@ -20,19 +20,19 @@ Feature: Checking different state of events
       | Conference |
 
     Given "Event" content:
-      | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location               | language |
-      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | N/A                             | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | country: BE - locality: Brussel   | en       |
-      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969966401             | 1969966401              | Europe/Budapest           | country: NL - locality: Amsterdam | en       |
-      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | country: FR - locality: Paris     | en       |
+      | title        | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_event_date:offset | field_event_date:offset2 | field_core_location               | language |
+      | Energy event | 1      | Energy            | Budget                 | yes                   | no                            | N/A                             | Dialogue         | 1969952000             | 1969952000              | Europe/Budapest           | 3600                    | 3600                     | country: BE - locality: Brussel   | en       |
+      | Food event   | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969966401             | 1969966401              | Europe/Budapest           | 3600                    | 3600                     | country: NL - locality: Amsterdam | en       |
+      | Extra event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969952001             | 1969952001              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris     | en       |
     And I index all indexes
 
   Scenario Outline: Status messages before event.
-    Before the event:
-    - Current time < Event start time
-    Status message:
-    - Status field: "no", then see no message.
-    - Status field: "reschedule", then see message: "The event has been rescheduled".
-    - Status field: "cancelled", then see message: "The event has been cancelled".
+  Before the event:
+  - Current time < Event start time
+  Status message:
+  - Status field: "no", then see no message.
+  - Status field: "reschedule", then see message: "The event has been rescheduled".
+  - Status field: "cancelled", then see message: "The event has been cancelled".
     Given I am viewing an "Event" content:
       | title                     | <title>         |
       | field_event_status        | <event_status>  |
@@ -50,12 +50,12 @@ Feature: Checking different state of events
 
   # "Book your seat" should appear.
   Scenario: "Book your seat" button should appear and be translatable.
-    "Book your seat" button displaying criteria:
-    - Before the event or event is ongoing.
-    - Have registration link, minimum the link.
-    - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
-    - Not "Fully booked".
-    - When the event status is not "cancelled".
+  "Book your seat" button displaying criteria:
+  - Before the event or event is ongoing.
+  - Have registration link, minimum the link.
+  - Have registration deadline, but the deadline is following the current time, or there is no registration deadline.
+  - Not "Fully booked".
+  - When the event status is not "cancelled".
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                 | Book your seat test, button should appears, link and title |
@@ -200,11 +200,11 @@ Feature: Checking different state of events
 
   # "Watch live streaming" button.
   Scenario: "Watch live streaming" button should appear on ongoing event.
-    In case of the following conjunction:
-    - "Live streaming available": yes.
-    - "Date and time of live streaming" current moment is between start and end time of live streaming.
-    - When the event status is not "cancelled".
-    - "Live streaming link" is given.
+  In case of the following conjunction:
+  - "Live streaming available": yes.
+  - "Date and time of live streaming" current moment is between start and end time of live streaming.
+  - When the event status is not "cancelled".
+  - "Live streaming link" is given.
     Given I am logged in as a user with the "administrator" role
     Given I am viewing an "Event" content:
       | title                                       | Watch live test, button should appear |
@@ -579,16 +579,16 @@ Feature: Checking different state of events
   Scenario: Event collection "Upcoming and Past events" more link points to event list, using a query filter
     Given I am logged in as a user with the "administrator" role
     Given "Event" content:
-      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_core_location           | language |
-      | Extra 2 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969955601             | 1969955601              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Extra 3 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969959201             | 1969959201              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Extra 4 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969962801             | 1969962801              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 1 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116970001             | 1116970001              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 2 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116966401             | 1116966401              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 3 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116962801             | 1116962801              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 4 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116959201             | 1116959201              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 5 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116955601             | 1116955601              | Europe/Budapest           | country: FR - locality: Paris | en       |
-      | Past 6 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | country: FR - locality: Paris | en       |
+      | title         | status | field_core_topics | field_core_departments | field_event_is_online | field_event_is_live_streaming | field_event_live_streaming_link | field_event_type | field_event_date:value | field_event_date:value2 | field_event_date:timezone | field_event_date:offset | field_event_date:offset2 | field_core_location           | language |
+      | Extra 2 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969955601             | 1969955601              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Extra 3 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969959201             | 1969959201              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Extra 4 event | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1969962801             | 1969962801              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 1 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116970001             | 1116970001              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 2 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116966401             | 1116966401              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 3 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116962801             | 1116962801              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 4 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116959201             | 1116959201              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 5 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116955601             | 1116955601              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
+      | Past 6 event  | 1      | Food              | ClimateAction          | no                    | yes                           | http://localhost                | Conference       | 1116952001             | 1116952001              | Europe/Budapest           | 3600                    | 3600                     | country: FR - locality: Paris | en       |
     And I index all indexes
 
     Given I am viewing an "Event" content:
@@ -613,12 +613,12 @@ Feature: Checking different state of events
     And I should see the link "View all events for Event collection" linking to "/events_en?facet__select__field_event_parent_events=100002"
     Then I should see an ".field--past-events" element
     And I should see the following in the repeated ".listing__title" element within the context of the ".field--past-events" element:
-      | text          |
-      | Past 1 event  |
-      | Past 2 event  |
-      | Past 3 event  |
-      | Past 4 event  |
-      | Past 5 event  |
+      | text         |
+      | Past 1 event |
+      | Past 2 event |
+      | Past 3 event |
+      | Past 4 event |
+      | Past 5 event |
     And I should not see the link "Past 6 event"
     Then I follow "View all events for Event collection"
     Then I should see "Event collection" in the ".filters__active-facets" element

@@ -170,8 +170,48 @@ function dt_event_preprocess_views_view(&$variables) {
  */
 function dt_event_views_query_alter(&$view, &$query) {
   if ($view->name == 'related_events' && isset($view->args[0]) && $view->current_display == 'block') {
-    // Make sure that we dont include the current child event.
+    // Make sure that we don't include the current child event.
     $query->add_where(0, 'node_field_data_field_event_children_events.nid', $view->args[0], '<>');
+  }
+
+  if ($view->name == 'events_list') {
+    $user_timezone = new DateTimeZone(drupal_get_user_timezone());
+    $end_date_timezoned = 'node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_value2 + node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_offset2';
+    switch ($view->current_display) {
+      case "block":
+        // Upcoming and current events.
+        $comparision_date_qry_string_now = 'DATE_FORMAT(FROM_UNIXTIME(' . $end_date_timezoned . '), \'%Y-%m-%d\T%H:%i:%s\') >= :field_data_field_event_date_field_event_date_value2';
+        $comparision_date_qry_string_today = 'DATE_FORMAT(FROM_UNIXTIME(' . $end_date_timezoned . '), \'%Y-%m-%d\T%H:%i:%s\') >= :field_data_field_event_date_field_event_date_value3';
+        break;
+
+      case "block_1":
+        // Past events.
+        $comparision_date_qry_string_now = 'DATE_FORMAT(FROM_UNIXTIME(' . $end_date_timezoned . '), \'%Y-%m-%d\T%H:%i:%s\') < :field_data_field_event_date_field_event_date_value2';
+        $comparision_date_qry_string_today = 'DATE_FORMAT(FROM_UNIXTIME(' . $end_date_timezoned . '), \'%Y-%m-%d\T%H:%i:%s\') < :field_data_field_event_date_field_event_date_value3';
+        break;
+    }
+    // Query for events with start date != end date defined -> uses now.
+    $date_now = new DateTime('now', $user_timezone);
+    $qry_now = db_and()
+      ->where(
+        $comparision_date_qry_string_now,
+        [
+          ':field_data_field_event_date_field_event_date_value2' => $date_now->format('Y-m-d\TH:i:s'),
+        ]
+      )
+      ->where('node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_value != node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_value2');
+    // Query for events with only start date = end date -> uses today.
+    $date_today = new DateTime('today', $user_timezone);
+    $qry_today = db_and()
+      ->where(
+        $comparision_date_qry_string_today,
+        [
+          ':field_data_field_event_date_field_event_date_value3' => $date_today->format('Y-m-d\TH:i:s'),
+        ]
+      )
+      ->where('node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_value = node_field_data_field_event_children_events__field_data_field_event_date.field_event_date_value2');
+
+    $query->add_where(NULL, db_or()->condition($qry_now)->condition($qry_today));
   }
 }
 
